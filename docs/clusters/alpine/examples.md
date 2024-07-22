@@ -69,5 +69,4 @@ conda activate custom-env
 python myscript.py
 ```
 
-Alpine is jointly funded by the University of Colorado Boulder, the University of Colorado Anschutz, Colorado State University, and the National Science Foundation (award 2201538).
 
