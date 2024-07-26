@@ -1,7 +1,7 @@
 #  Cheat Sheet
 ## Accessing Riviera
 ### Get a research computing account on rivieria
-- <https://www.research.colostate.edu/dsri/hpc-riviera/>
+ <https://www.research.colostate.edu/dsri/hpc-riviera/>
 ### Logging in from a terminal 
 - ssh {username}@riviera.colostate.edu
 ### Windows/Mac Clients
