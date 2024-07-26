@@ -13,10 +13,7 @@ Users accessing RC's resources will be connected to a login node. A login node i
 + Access storage resources  
 
 > **Note:** the [login node policy](../additional-resources/policies.md#login-nodes) states that login nodes should not be used for resource-intensive tasks such as running code. For all other tasks, users should run batch jobs, interactive jobs, or use the compile nodes. 
-
-
 ---
-
 ## Getting an account
 
 Although Research Computing resources are free and available to the CSU research community, they are also managed resources with large value and high demand. Therefore, Research Computing mandates that each user obtain a Research Computing account. 
@@ -33,8 +30,6 @@ Logging in from a Windows machine requires the additional step of [installing th
 2. Enter your Identikey in response to the “login as” prompt
 3. When prompted to enter your password:
     * Note that as a security feature, PuTTY does not display any text while you type your password
-
-
 ## Logging in from a Mac
 
 Logging in with a Mac requires no extra installation on your local machine. Simply utilize the terminal application that is pre-installed with your operating system to access Research Computing resources. 

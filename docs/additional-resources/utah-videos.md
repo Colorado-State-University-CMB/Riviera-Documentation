@@ -1,8 +1,7 @@
 # University of Utah videos
 
 These videos were made by the Center for High Performance Computing (CHPC) at the University of Utah. These videos include information
-that is useful for CU Research Computing users, but some of the information is specific to resources at the University of Utah. If you
-are a CU Boulder user with questions about these videos, please contact rc-help@colorado.edu.
+that is useful for CU Research Computing users, but some of the information is specific to resources at the University of Utah.
 
 ## Introduction to Linux
 
