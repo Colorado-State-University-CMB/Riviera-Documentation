@@ -51,7 +51,7 @@ In addition to these partitions, Research Computing also provides specialized pa
 
 To run a job longer than 24 hours on the `amilan`, `ami100`, or `aa100` partitions, use the `long` QOS.
 
-More details about each type of node can be found [here](../clusters/alpine/alpine-hardware.md).
+More details about each type of node can be found [here](riviera-hardware.md).
 
 ## Quality of Service
 

@@ -12,13 +12,13 @@ of 22,180 cores. Alpine can be securely accessed anywhere, anytime using Open On
    $ module load slurm/alpine
    ```
 
-2. Once the Alpine Slurm job scheduler has been loaded you can submit and start jobs on the Alpine cluster. Consult the [requesting resources](./alpine-hardware.md#requesting-hardware-resources) section and the [examples](examples.md) section to learn how to direct your jobs to the appropriate Alpine compute nodes.
+2. Once the Alpine Slurm job scheduler has been loaded you can submit and start jobs on the Alpine cluster. Consult the [requesting resources](riviera-hardware.md#requesting-hardware-resources) section and the [examples](examples.md) section to learn how to direct your jobs to the appropriate Alpine compute nodes.
 
 3. Software can be loaded into the Alpine compute environment via the LMOD [module system](../../compute/modules.md), which allows users choose software from our pre-installed software stack.
 
 4. If you would like to use software that is not within our preinstalled stack your application 
 must be compiled using `acompile`. More information about the `acompile` function can be found under our 
-[partitions](./alpine-hardware.md#partitions)
+[partitions](riviera-hardware.md#partitions)
 section.
 
 Consult our [compiling and linking documentation](../../compute/compiling.md) for more information on compiling software. 
