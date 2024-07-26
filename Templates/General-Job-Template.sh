@@ -8,7 +8,7 @@
 
 
 # Written by:	 Shelley Knuth
-# Modified by: Jacob Lamb
+# Modified by: Daniel Traham
 # Date:		     24 February 2014
 # Updated:	   26 July 2024
 # Purpose: 	   This script submits a general job to the Slurm job scheduler
