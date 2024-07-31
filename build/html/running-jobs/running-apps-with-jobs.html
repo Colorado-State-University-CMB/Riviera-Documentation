@@ -1,0 +1,546 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Running applications with Jobs &#8212; Research Computing
+University of Colorado Boulder  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=31992893" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'running-jobs/running-apps-with-jobs';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Batch Jobs and Job Scripting" href="batch-jobs.html" />
+    <link rel="prev" title="Monitoring Resources" href="../compute/monitoring-resources.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Research_Computing_black_letters.png" class="logo__image only-light" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>
+    <script>document.write(`<img src="../_static/Research_Computing_white_letters.png" class="logo__image only-dark" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accessing RC Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../access/logging-in.html">Logging In</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Compute Environment</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../compute/node-types.html">Node types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/filesystems.html">Filesystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/modules.html">The Modules System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/data-transfer.html">Data Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/compiling.html">Compiling and Linking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/monitoring-resources.html">Monitoring Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Jobs</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Running applications with Jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="batch-jobs.html">Batch Jobs and Job Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactive-jobs.html">Interactive jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slurm-commands.html">Useful Slurm commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="job-resources.html">Slurm Flags, Partitions, and QoS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="squeue-status-codes.html"><code class="docutils literal notranslate"><span class="pre">squeue</span></code> status and reason codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roce-enabled.html">Running jobs on RoCE enabled Nodes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gateways &amp; Portals</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../gateways/OnDemand.html">Open OnDemand <em>(Browser Based HPC Portal)</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gateways/jupyterhub.html">Jupyter Sessions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/loadbalancer.html">Load Balancer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/gaussian.html">Gaussian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/matlab.html">Matlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/python.html">Python and R with Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/GNUParallel.html">GNU Parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vasp.html">VASP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/Containerizationon.html">Containerization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/alphafold.html">AlphaFold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/spack.html">Spack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/sratoolkit.html">SRA Toolkit on Alpine</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming and Parallelization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../programming/coding-best-practices.html">Coding best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/parallel-programming-fundamentals.html">Fundamentals of parallel programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPIBestpractices.html">MPI Best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-C.html">Using MPI with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-Fortran.html">Using MPI with Fortran</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-C.html">Using OpenMP with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-Fortran.html">Using OpenMP with Fortran</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/index.html">CUmulus Cloud</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus1.html">Tutorial: Creating a CUmulus instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus2.html">Establish a Database to query Twitter and Store Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus3.html">CUmulus integration with CURC HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus4.html">Mounting a remote filesystem from a CUmulus Virtual Machine</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/utah-videos.html">University of Utah videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/other.html">Facilities, equipment, and other resources</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ResearchComputing/Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/running-jobs/running-apps-with-jobs.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Running applications with Jobs</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-jobs">Batch Jobs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-jobs">Interactive Jobs</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="running-applications-with-jobs">
+<h1>Running applications with Jobs<a class="headerlink" href="#running-applications-with-jobs" title="Link to this heading">#</a></h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dZLSEyYTiBM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<p>Because our HPC system is shared among many researchers, Research Computing manages usage of the system through jobs. <strong>Jobs</strong> are simply an allotment of resources that can be used to execute processes. Research Computing uses a program named the <em>Simple Linux Utility for Resource Management</em>, or <strong>Slurm</strong>, to create and manage jobs.</p>
+<p>In order to run a program on a cluster, you must request resources from Slurm to generate a job. Resources can be requested from a login node or a compile node. You must then provide commands to run your program on those requested resources. Where you provide you commands depends on whether you are running a <a class="reference internal" href="batch-jobs.html"><span class="std std-doc">batch job</span></a> or an <a class="reference internal" href="interactive-jobs.html"><span class="std std-doc">interactive job</span></a>.</p>
+<p>When you run a batch job or an interactive job, it will be placed in a queue until resources are available. <a class="reference internal" href="slurm-commands.html"><span class="std std-doc">A detailed guide on the Slurm queue and accounting tools can be found here.</span></a></p>
+<section id="batch-jobs">
+<h2>Batch Jobs<a class="headerlink" href="#batch-jobs" title="Link to this heading">#</a></h2>
+<p>The primary method of running applications on Research Computing resources is through a batch job. A <strong>batch job</strong> is a job that runs on a compute node with little or no interaction with the users. You should use batch jobs for:</p>
+<ul class="simple">
+<li><p>Any computationally expensive application that could take hours or days to run</p></li>
+<li><p>Any application that requires little or no user input</p></li>
+<li><p>Applications that you do not need to monitor extensively</p></li>
+</ul>
+<p>Unlike running an application on your personal machine, you do not call the application you wish to run directly. Instead you create a <strong>job script</strong> that includes a call to your application. Job scripts are simply a set of resource requests and commands. When a job script is run, all the commands in the job script are executed on a compute node.</p>
+<p>Once created, you can run your job script by passing it to the Slurm queue with the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command followed by your job script name:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>&lt;your-jobscript-name&gt;
+</pre></div>
+</div>
+<p>If no job script is provided then <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> will take whatever commands follow as standard input.</p>
+<p>A detailed guide <a class="reference internal" href="batch-jobs.html"><span class="std std-doc">on constructing and running Job scripts can be found here.</span></a></p>
+</section>
+<section id="interactive-jobs">
+<h2>Interactive Jobs<a class="headerlink" href="#interactive-jobs" title="Link to this heading">#</a></h2>
+<p>Another method of running applications on Research Computing resources is through an interactive job. As the name would imply, an <strong>interactive job</strong> is a job that allows users to interact with requested resources in real time. Users can run applications, execute scripts, or run other commands directly on a compute node. Interactive jobs should be used for:</p>
+<ul class="simple">
+<li><p>Debugging applications or workflows</p></li>
+<li><p>Any application that requires user input at runtime</p></li>
+<li><p>Any application with a GUI (Graphical User Interface)</p></li>
+</ul>
+<p>You can request an interactive job by using the <code class="docutils literal notranslate"><span class="pre">sinteractive</span></code> command. Unlike the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>, resources must be requested via the command line through the use of flags. Though running sinteractive without any flags is possible, this will result in default values being used for your jobs. Research Computing highly recommends you provide a <code class="docutils literal notranslate"><span class="pre">time</span></code> directive to avoid long queue times.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sinteractive<span class="w"> </span>--time<span class="o">=</span><span class="m">00</span>:10:00
+</pre></div>
+</div>
+<p><a class="reference internal" href="#riviera-hardware.md"><span class="xref myst">A list of ainteractive parameters can be found here</span></a></p>
+<p>The example above will run an interactive job that will run a terminal session on one core of one node with the interactive quality of service (QoS) for ten minutes. Once the interactive session has started you can run any interactive terminal application you may need on the command line.</p>
+<p>More details <a class="reference internal" href="interactive-jobs.html"><span class="std std-doc">on running Interactive Jobs can be found here.</span></a></p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../compute/monitoring-resources.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Monitoring Resources</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="batch-jobs.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Batch Jobs and Job Scripting</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-jobs">Batch Jobs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-jobs">Interactive Jobs</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,700 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Coding best practices &#8212; Research Computing
+University of Colorado Boulder  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=31992893" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/tabs.js?v=3030b3cb"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'programming/coding-best-practices';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Fundamentals of parallel programming" href="parallel-programming-fundamentals.html" />
+    <link rel="prev" title="SRA Toolkit on Alpine" href="../software/sratoolkit.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Research_Computing_black_letters.png" class="logo__image only-light" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>
+    <script>document.write(`<img src="../_static/Research_Computing_white_letters.png" class="logo__image only-dark" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accessing RC Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../access/logging-in.html">Logging In</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Compute Environment</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../compute/node-types.html">Node types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/filesystems.html">Filesystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/modules.html">The Modules System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/data-transfer.html">Data Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/compiling.html">Compiling and Linking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/monitoring-resources.html">Monitoring Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Jobs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/running-apps-with-jobs.html">Running applications with Jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/batch-jobs.html">Batch Jobs and Job Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/interactive-jobs.html">Interactive jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/slurm-commands.html">Useful Slurm commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/job-resources.html">Slurm Flags, Partitions, and QoS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/squeue-status-codes.html"><code class="docutils literal notranslate"><span class="pre">squeue</span></code> status and reason codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/roce-enabled.html">Running jobs on RoCE enabled Nodes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gateways &amp; Portals</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../gateways/OnDemand.html">Open OnDemand <em>(Browser Based HPC Portal)</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gateways/jupyterhub.html">Jupyter Sessions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/loadbalancer.html">Load Balancer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/gaussian.html">Gaussian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/matlab.html">Matlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/python.html">Python and R with Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/GNUParallel.html">GNU Parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vasp.html">VASP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/Containerizationon.html">Containerization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/alphafold.html">AlphaFold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/spack.html">Spack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/sratoolkit.html">SRA Toolkit on Alpine</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming and Parallelization</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Coding best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel-programming-fundamentals.html">Fundamentals of parallel programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MPIBestpractices.html">MPI Best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MPI-C.html">Using MPI with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MPI-Fortran.html">Using MPI with Fortran</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OpenMP-C.html">Using OpenMP with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OpenMP-Fortran.html">Using OpenMP with Fortran</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/index.html">CUmulus Cloud</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus1.html">Tutorial: Creating a CUmulus instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus2.html">Establish a Database to query Twitter and Store Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus3.html">CUmulus integration with CURC HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus4.html">Mounting a remote filesystem from a CUmulus Virtual Machine</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/utah-videos.html">University of Utah videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/other.html">Facilities, equipment, and other resources</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ResearchComputing/Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/programming/coding-best-practices.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Coding best practices</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-naming-conventions">Variable Naming Conventions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiword-delimited">Multiword Delimited</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-and-class-naming-conventions">Function and Class Naming conventions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whitespace-and-tabbing">Whitespace and Tabbing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commenting-your-code">Commenting your code</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="coding-best-practices">
+<h1>Coding best practices<a class="headerlink" href="#coding-best-practices" title="Link to this heading">#</a></h1>
+<p>Programmers employ numerous tactics to ensure readable and organized
+code. These include:</p>
+<ol class="arabic simple">
+<li><p>using naming conventions for variables;</p></li>
+<li><p>placing whitespaces, indentations and tabs within code;</p></li>
+<li><p>adding comments throughout to aid in interpretation.</p></li>
+</ol>
+<p>In this tutorial we will examine these concepts.</p>
+<section id="variable-naming-conventions">
+<h2>Variable Naming Conventions<a class="headerlink" href="#variable-naming-conventions" title="Link to this heading">#</a></h2>
+<p>Variable naming is an important aspect in making your code
+readable. Naming variables follow a simple idea: Create variables that
+describe their function and which follow a consistent theme throughout
+your code. Let’s take a look at some naming conventions.</p>
+<section id="multiword-delimited">
+<h3>Multiword Delimited<a class="headerlink" href="#multiword-delimited" title="Link to this heading">#</a></h3>
+<p>This convention is to separate words in a variable name without the
+use of whitespace. Whitespace within variables is usually difficult
+for programming languages to interpret. Because of this variables
+must be delimited in some way. Here are several delimiting conventions
+commonly used in code:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-U25ha2VjYXNl" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-U25ha2VjYXNl" name="U25ha2VjYXNl" role="tab" tabindex="0">Snakecase</button><button aria-controls="panel-0-UGFzY2FsY2FzZQ==" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-UGFzY2FsY2FzZQ==" name="UGFzY2FsY2FzZQ==" role="tab" tabindex="-1">Pascalcase</button><button aria-controls="panel-0-Q2FtZWxjYXNl" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-Q2FtZWxjYXNl" name="Q2FtZWxjYXNl" role="tab" tabindex="-1">Camelcase</button><button aria-controls="panel-0-SHVuZ2FyaWFuIE5vdGF0aW9u" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-SHVuZ2FyaWFuIE5vdGF0aW9u" name="SHVuZ2FyaWFuIE5vdGF0aW9u" role="tab" tabindex="-1">Hungarian Notation</button></div><div aria-labelledby="tab-0-U25ha2VjYXNl" class="sphinx-tabs-panel code-tab group-tab" id="panel-0-U25ha2VjYXNl" name="U25ha2VjYXNl" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Words are delimited by an underscore.</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">  </span>variable_one
+<span class="w">  </span>variable_two
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-0-UGFzY2FsY2FzZQ==" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-UGFzY2FsY2FzZQ==" name="UGFzY2FsY2FzZQ==" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Words are delimited by capital letters.</span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">  </span>VariableOne
+<span class="w">  </span>VariableTwo
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-0-Q2FtZWxjYXNl" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-Q2FtZWxjYXNl" name="Q2FtZWxjYXNl" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Words are delimited by capital letters, except the initial word.</span><a class="headerlink" href="#id3" title="Link to this code">#</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">  </span>variableOne
+<span class="w">  </span>variableTwo
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-0-SHVuZ2FyaWFuIE5vdGF0aW9u" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-SHVuZ2FyaWFuIE5vdGF0aW9u" name="SHVuZ2FyaWFuIE5vdGF0aW9u" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">This notation describes the variable type or purpose at the start of the variable name, followed by a descriptor that indicates the variable’s function. The Camelcase notation is used to delimit words.</span><a class="headerlink" href="#id4" title="Link to this code">#</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="n">arrDistributeGroup</span><span class="w">  </span><span class="c1">//Array called “Distribute Group”</span>
+<span class="w">  </span><span class="n">sUserName</span><span class="w">           </span><span class="c1">//String called “User Name”</span>
+<span class="w">  </span><span class="n">iRandomSeed</span><span class="w">         </span><span class="c1">//Integer called “Random Seed”</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<p>These conventions are by no means binding, but instead examples of how
+many programmers format their code. Consistency and readability are
+key ideas that should be utilized in the naming of variables.
+Regardless of how you choose to name your variables, always ensure
+that your naming conventions are consistent throughout the
+code. Consistency allows others to more easily understand your code.</p>
+</section>
+</section>
+<section id="function-and-class-naming-conventions">
+<h2>Function and Class Naming conventions<a class="headerlink" href="#function-and-class-naming-conventions" title="Link to this heading">#</a></h2>
+<p>Much like variable naming conventions, functions and classes should
+also follow a similar structure of descriptive titles delimited with
+the conventions described above. An important aspect of naming is to
+ensure your classes, functions, and variables can be distinguished
+from each other. For example, one could use Camelcase and Pascalcase
+for functions and classes respectively, while reserving Snakecase or
+Hungarian notation for variable names. Distinguishing functions,
+classes, and variables with different naming conventions can greatly
+aid other users of your code, and can eliminate the need for large
+sections of comments that would otherwise be needed.</p>
+</section>
+<section id="whitespace-and-tabbing">
+<h2>Whitespace and Tabbing<a class="headerlink" href="#whitespace-and-tabbing" title="Link to this heading">#</a></h2>
+<p>Whitespace and tabbing are critical for organizing code. Whitespace is
+any space in your code that is not taken up by physical characters.
+Tabbing is one way to create whitespace in consistent units using the ‘tab’ key.
+While some languages ignore whitespace and tabbing all together, others entirely rely on the concept.
+Because of this, it is important to ensure your code is
+consistently organized. Whitespace and tabbing are often used to clarify nested
+loops and logical statements. Let’s look at some examples of C code
+that demonstrate the effect of whitespace.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-TWluaW1hbCBXaGl0ZXNwYWNl" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-TWluaW1hbCBXaGl0ZXNwYWNl" name="TWluaW1hbCBXaGl0ZXNwYWNl" role="tab" tabindex="0">Minimal Whitespace</button><button aria-controls="panel-1-TGliZXJhbCB1c2Ugb2YgV2hpdGVzcGFjZQ==" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-1-TGliZXJhbCB1c2Ugb2YgV2hpdGVzcGFjZQ==" name="TGliZXJhbCB1c2Ugb2YgV2hpdGVzcGFjZQ==" role="tab" tabindex="-1">Liberal use of Whitespace</button></div><div aria-labelledby="tab-1-TWluaW1hbCBXaGl0ZXNwYWNl" class="sphinx-tabs-panel code-tab group-tab" id="panel-1-TWluaW1hbCBXaGl0ZXNwYWNl" name="TWluaW1hbCBXaGl0ZXNwYWNl" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">loop_Sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span>
+<span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span><span class="w"> </span><span class="n">loop_Sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;}</span><span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">loop_Sum</span><span class="p">);</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-1-TGliZXJhbCB1c2Ugb2YgV2hpdGVzcGFjZQ==" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-1-TGliZXJhbCB1c2Ugb2YgV2hpdGVzcGFjZQ==" name="TGliZXJhbCB1c2Ugb2YgV2hpdGVzcGFjZQ==" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">){</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">loop_Sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+<span class="w">        </span><span class="n">loop_Sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">loop_Sum</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></div>
+<p>It is important to note that like variable naming, whitespace can be
+utilized in various different styles and approaches. Just remember to
+use whitespace and tabbing in a consistent, readable style
+throughout your code.</p>
+</section>
+<section id="commenting-your-code">
+<h2>Commenting your code<a class="headerlink" href="#commenting-your-code" title="Link to this heading">#</a></h2>
+<p>Commenting may be the most important way to organize and segment
+code. Comments are sections of code that the compiler ignores,
+which are useful to label code and segment code. For example, one can label loops,
+scopes, functions, and other code snippets with the expected function of the code.
+Lines with comments in code are preceded by a symbol that tells
+the compiler/interpretor to ignore that line, for example “#”, “!” or “;” (the symbol depends
+on the programming language). Let’s look at some C++ code that uses no
+comments vs. comments.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-Tm8gY29tbWVudHM=" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-Tm8gY29tbWVudHM=" name="Tm8gY29tbWVudHM=" role="tab" tabindex="0">No comments</button><button aria-controls="panel-2-Q29tbWVudHM=" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-2-Q29tbWVudHM=" name="Q29tbWVudHM=" role="tab" tabindex="-1">Comments</button></div><div aria-labelledby="tab-2-Tm8gY29tbWVudHM=" class="sphinx-tabs-panel code-tab group-tab" id="panel-2-Tm8gY29tbWVudHM=" name="Tm8gY29tbWVudHM=" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">){</span>
+
+<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">multiples</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<span class="w">            </span><span class="n">multiples</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">multiples</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d is a multiple of 5</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">multiples</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-2-Q29tbWVudHM=" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-2-Q29tbWVudHM=" name="Q29tbWVudHM=" role="tabpanel" tabindex="0"><div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">){</span>
+
+<span class="w">    </span><span class="c1">//Declare a vector to store values</span>
+<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">multiples</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">//Iterate from 0 to 50</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+
+<span class="w">        </span><span class="c1">//If iterator is a multiple of 5 add it to the vector</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<span class="w">            </span><span class="n">multiples</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">//Print all items that are a multiple of 5</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">multiples</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d is a multiple of 5</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">multiples</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></div>
+<blockquote>
+<div><p><strong>Note:</strong>  It is entirely possible to “over comment” code. Code should
+be designed in an efficient, consistent and intuitive manner such that
+comments enhance user understanding but are not needed to describe the
+entire code.</p>
+</div></blockquote>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../software/sratoolkit.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">SRA Toolkit on Alpine</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="parallel-programming-fundamentals.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Fundamentals of parallel programming</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-naming-conventions">Variable Naming Conventions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiword-delimited">Multiword Delimited</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-and-class-naming-conventions">Function and Class Naming conventions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whitespace-and-tabbing">Whitespace and Tabbing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commenting-your-code">Commenting your code</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

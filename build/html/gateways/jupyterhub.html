@@ -1,0 +1,658 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Jupyter Sessions &#8212; Research Computing
+University of Colorado Boulder  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=31992893" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'gateways/jupyterhub';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Load Balancer" href="../software/loadbalancer.html" />
+    <link rel="prev" title="Open OnDemand (Browser Based HPC Portal)" href="OnDemand.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Research_Computing_black_letters.png" class="logo__image only-light" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>
+    <script>document.write(`<img src="../_static/Research_Computing_white_letters.png" class="logo__image only-dark" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accessing RC Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../access/logging-in.html">Logging In</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Compute Environment</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../compute/node-types.html">Node types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/filesystems.html">Filesystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/modules.html">The Modules System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/data-transfer.html">Data Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/compiling.html">Compiling and Linking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/monitoring-resources.html">Monitoring Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Jobs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/running-apps-with-jobs.html">Running applications with Jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/batch-jobs.html">Batch Jobs and Job Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/interactive-jobs.html">Interactive jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/slurm-commands.html">Useful Slurm commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/job-resources.html">Slurm Flags, Partitions, and QoS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/squeue-status-codes.html"><code class="docutils literal notranslate"><span class="pre">squeue</span></code> status and reason codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/roce-enabled.html">Running jobs on RoCE enabled Nodes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gateways &amp; Portals</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="OnDemand.html">Open OnDemand <em>(Browser Based HPC Portal)</em></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Jupyter Sessions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/loadbalancer.html">Load Balancer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/gaussian.html">Gaussian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/matlab.html">Matlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/python.html">Python and R with Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/GNUParallel.html">GNU Parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vasp.html">VASP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/Containerizationon.html">Containerization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/alphafold.html">AlphaFold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/spack.html">Spack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/sratoolkit.html">SRA Toolkit on Alpine</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming and Parallelization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../programming/coding-best-practices.html">Coding best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/parallel-programming-fundamentals.html">Fundamentals of parallel programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPIBestpractices.html">MPI Best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-C.html">Using MPI with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-Fortran.html">Using MPI with Fortran</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-C.html">Using OpenMP with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-Fortran.html">Using OpenMP with Fortran</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/index.html">CUmulus Cloud</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus1.html">Tutorial: Creating a CUmulus instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus2.html">Establish a Database to query Twitter and Store Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus3.html">CUmulus integration with CURC HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus4.html">Mounting a remote filesystem from a CUmulus Virtual Machine</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/utah-videos.html">University of Utah videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/other.html">Facilities, equipment, and other resources</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ResearchComputing/Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/gateways/jupyterhub.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Jupyter Sessions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#navigating-the-jupyterlab-interface">Navigating the JupyterLab Interface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-packages-available-to-you-within-a-notebook">Find packages available to you within a notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-your-own-custom-jupyter-kernel">Creating your own custom Jupyter kernel</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-your-conda-settings">1.  Configure your conda settings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activate-the-curc-anaconda-environment">2. Activate the CURC Anaconda environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-custom-environment">3. Create a new custom environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activate-your-new-environment">4. Activate your new environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-your-own-custom-kernel-which-will-enable-you-to-use-this-environment-in-your-jupyter-session">5. Create your own custom kernel, which will enable you to use this environment in your Jupyter Session</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="jupyter-sessions">
+<h1>Jupyter Sessions<a class="headerlink" href="#jupyter-sessions" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://jupyter.org/">Jupyter Notebooks</a> are an excellent resource for interactive development and data analysis using <em>Python</em>, <em>R</em>, and other languages. Jupyter notebooks can contain live code, equations, visualizations, and explanatory text, which provide an integrated environment to use, learn, and teach interactive data analysis. Users can obtain quick access to Jupyter sessions using <a class="reference internal" href="OnDemand.html"><span class="std std-doc">Open OnDemand</span></a> and easily launch a JupyterLab interface. The JupyterLab interface is a fantastic tool that provides a highly customizable graphical user interface (GUI) that allows users to easily navigate multiple Jupyter Notebooks and the CURC filesystem.</p>
+<section id="navigating-the-jupyterlab-interface">
+<h2>Navigating the JupyterLab Interface<a class="headerlink" href="#navigating-the-jupyterlab-interface" title="Link to this heading">#</a></h2>
+<p>The following features are available in the <a class="reference external" href="https://jupyterlab.readthedocs.io/en/stable/user/interface.html">JupyterLab Interface</a>:</p>
+<ul class="simple">
+<li><p><em>Left sidebar:</em> Click on a tab to change what you see in the left menu bar.  Options include the file browser, a list of running kernels and terminals, a command palette, a notebook cell tools inspector, an extension manager, and a tabs list.</p></li>
+<li><p><em>Left menu bar:</em></p>
+<ul>
+<li><p>The <em>file browser</em> will be active when you log in.</p>
+<ul>
+<li><p>You can navigate to your other CURC directories by clicking the folder next
+to <code class="docutils literal notranslate"><span class="pre">/</span></code> or going to “File” then “Open Path” and entering your path in the field. Your other CURC file systems are available too:
+<code class="docutils literal notranslate"><span class="pre">/projects/&lt;username&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">/pl/active</span></code> (for users with PetaLibrary allocations),
+<code class="docutils literal notranslate"><span class="pre">/scratch/alpine/&lt;username&gt;</span></code> (Alpine only), and <code class="docutils literal notranslate"><span class="pre">/rc_scratch/&lt;username&gt;</span></code> (Blanca
+only).</p></li>
+<li><p>To open an existing notebook, just click on the notebook name in the file browser (e.g., <em>mynotebook.ipynb</em>).</p></li>
+<li><p>Above your working directory contents are buttons to add a new Launcher, create a new folder, upload files from your local computer, and refresh the working directory.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>Main Work Area:</em> Your workspaces will be in this large area on the right hand side. Under the “Launcher” tab you can:</p>
+<ul>
+<li><p>Open a new notebook with any of the kernels listed:</p>
+<ul>
+<li><p><strong>Python 3 (idp)</strong>: Python3 notebook (Intel Python distribution)</p></li>
+<li><p><strong>Bash</strong>: BASH notebook</p></li>
+<li><p><strong>R</strong>: R notebook</p></li>
+<li><p>…and any other custom kernels you add on your own <em>(see the <a class="reference internal" href="#creating-your-own-custom-jupyter-kernel">section below</a> on creating your own custom kernels).</em></p></li>
+</ul>
+</li>
+<li><p>Open a new console (command line) for any of the kernels.</p></li>
+<li><p>Open other functions; the “Terminal” function is particularly useful as it enables you to access the command line on the Alpine or Blanca node your Jupyter Session
+job is currently running on.</p></li>
+</ul>
+</li>
+<li><p>See Jupyter’s <a class="reference external" href="https://jupyterlab.readthedocs.io/en/stable/user/interface.html">documentation on the JupyterLab Interface for additional information.</a></p></li>
+</ul>
+</section>
+<section id="find-packages-available-to-you-within-a-notebook">
+<h2>Find packages available to you within a notebook<a class="headerlink" href="#find-packages-available-to-you-within-a-notebook" title="Link to this heading">#</a></h2>
+<p>The <em><strong>Python 3 (idp)</strong></em> notebook kernels have many preinstalled packages. To query a list of available packages from a python notebook, you can use the following nomenclature:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pip._internal</span> <span class="kn">import</span> <span class="n">main</span> <span class="k">as</span> <span class="n">pipmain</span> 
+<span class="n">pipmain</span><span class="p">([</span><span class="s1">&#39;freeze&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>If the packages you need are not available, you can create your own custom environment and Jupyter kernel.</p>
+</section>
+<section id="creating-your-own-custom-jupyter-kernel">
+<h2>Creating your own custom Jupyter kernel<a class="headerlink" href="#creating-your-own-custom-jupyter-kernel" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="http://anaconda.com">Anaconda</a> is an open-source software that provides access to <em>python</em> and <em>R</em> distributions, and it includes the <em>conda</em> package manager to easily install software and packages. Software and associated Jupyter <a class="reference external" href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels">kernels</a> other than <em>python</em> and <em>R</em> can also be installed using <em>conda</em>. The following steps describe how to create your own custom Anaconda environments and associated Jupyter kernels for use within a Jupyter Session.</p>
+<p>Follow these steps from a terminal session. You can get a new terminal session directly from Jupyter using <code class="docutils literal notranslate"><span class="pre">New</span></code>-&gt; <code class="docutils literal notranslate"><span class="pre">Terminal</span></code>.</p>
+<section id="configure-your-conda-settings">
+<h3>1.  Configure your conda settings<a class="headerlink" href="#configure-your-conda-settings" title="Link to this heading">#</a></h3>
+<p>Follow our Anaconda documentation for <a class="reference internal" href="../software/python.html#configuring-conda-with-condarc"><span class="std std-ref">steps on configuring your conda settings via ~.condarc</span></a>.</p>
+</section>
+<section id="activate-the-curc-anaconda-environment">
+<h3>2. Activate the CURC Anaconda environment<a class="headerlink" href="#activate-the-curc-anaconda-environment" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[johndoe@c3cpu-a5-u15-4 ~]$ module load anaconda
+</pre></div>
+</div>
+<p>You will know that you have properly activated the environment because you should see <code class="docutils literal notranslate"><span class="pre">(base)</span></code> in front of your prompt. For example,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(base) [johndoe@c3cpu-a5-u15-4 ~]$
+</pre></div>
+</div>
+</section>
+<section id="create-a-new-custom-environment">
+<h3>3. Create a new custom environment<a class="headerlink" href="#create-a-new-custom-environment" title="Link to this heading">#</a></h3>
+<p>Follow our Anaconda documentation for <a class="reference internal" href="../software/python.html#create-your-own-custom-environment"><span class="std std-ref">steps on creating your own custom conda environment</span></a>.</p>
+</section>
+<section id="activate-your-new-environment">
+<h3>4. Activate your new environment<a class="headerlink" href="#activate-your-new-environment" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(base) [johndoe@c3cpu-a5-u15-4 ~]$ conda activate mycustomenv
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note: We assume here that you’ve named your environment <em>mycustomenv</em>; please replace <em>mycustomenv</em> with whatever name you gave your environment!</p>
+</div></blockquote>
+</section>
+<section id="create-your-own-custom-kernel-which-will-enable-you-to-use-this-environment-in-your-jupyter-session">
+<h3>5. Create your own custom kernel, which will enable you to use this environment in your Jupyter Session<a class="headerlink" href="#create-your-own-custom-kernel-which-will-enable-you-to-use-this-environment-in-your-jupyter-session" title="Link to this heading">#</a></h3>
+<p><strong>For a <em>python</em> kernel</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(mycustomenv) [johndoe@c3cpu-a5-u15-4 ~]$ conda install -y ipykernel
+(mycustomenv) [johndoe@c3cpu-a5-u15-4 ~]$ python -m ipykernel install --user --name mycustomenv --display-name mycustomenv
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The first command will install the <em>ipykernel</em> package if not installed already.</p></li>
+<li><p>The second command will create a <em>python</em> kernel with the name <em>mycustomenv</em> with the Jupyter display name <em>mycustomenv</em> (note: the name and display-name are not required to match the environment name – call them anything you want). By specifying the <code class="docutils literal notranslate"><span class="pre">--user</span></code> flag, the kernel will be installed in <code class="docutils literal notranslate"><span class="pre">/home/$USER/.local/share/jupyter/kernels</span></code> (a directory that is in the default <strong>JUPYTER_PATH</strong>) and will ensure your new kernel is available to you the next time you launch a Jupyter Session.</p></li>
+</ul>
+<p><strong>For an <em>R</em> kernel</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(mycustomenv) [johndoe@c3cpu-a5-u15-4 ~]$ conda install -y r-irkernel
+(mycustomenv) [johndoe@c3cpu-a5-u15-4 ~]$ R
+&gt; IRkernel::installspec(name = &#39;mycustomenv&#39;, displayname = &#39;mycustomenv&#39;)
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The first command will install the <em>irkernel</em> package if not installed already.</p></li>
+<li><p>The second command will start <em>R</em>. The third command, executed from within <em>R</em>, will create an <em>R</em> kernel with the name <em>mycustomenv</em> with the Jupyter display name <em>mycustomenv</em> (note: that the name and display-name are not required to match the environment name – call them anything you want). The kernel will be installed in <code class="docutils literal notranslate"><span class="pre">/home/$USER/.local/share/jupyter/kernels</span></code> (a directory that is in the default <strong>JUPYTER_PATH</strong>) and will ensure your new kernel is available to you the next time you launch a Jupyter Session.</p></li>
+</ul>
+</section>
+<section id="notes">
+<h3>Notes:<a class="headerlink" href="#notes" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>If you have already installed your own version of Anaconda or Miniconda, it is possible to create Jupyter kernels for your preexisting environments by following <em>Step 4</em> above from within the active environment.</p></li>
+<li><p>If you need to use custom kernels that are in a location other than <code class="docutils literal notranslate"><span class="pre">/home/$USER/.local/share/jupyter</span></code> (for example, if your research team has a group installation of Anaconda environments located in <code class="docutils literal notranslate"><span class="pre">/pl/active/&lt;some_env&gt;</span></code>), you can create a file in your home directory named <code class="docutils literal notranslate"><span class="pre">~/.jupyterrc</span></code> containing the following line:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">JUPYTER_PATH</span><span class="o">=/</span><span class="n">pl</span><span class="o">/</span><span class="n">active</span><span class="o">/&lt;</span><span class="n">some_env</span><span class="o">&gt;/</span><span class="n">share</span><span class="o">/</span><span class="n">jupyter</span>
+</pre></div>
+</div>
+<p>If you need assistance creating or installing environments or Jupyter kernels, contact us at <a class="reference external" href="mailto:rc-help&#37;&#52;&#48;colorado&#46;edu">rc-help<span>&#64;</span>colorado<span>&#46;</span>edu</a>.</p>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>If you are a CSU or ACCESS user and are having trouble with packages that employ PERL (due to the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> symbol), visit our documentation on setting up a user variable that links to alternate paths without the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> symbol in <a class="reference internal" href="#../additional-resources/csu-xsede-usernames.md"><span class="xref myst">CSU and XSEDE/ACCESS usernames</span></a></p></li>
+</ul>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../software/python.html"><span class="std std-doc">CURC Anaconda distribution</span></a></p></li>
+<li><p><a class="reference external" href="https://jupyterlab.readthedocs.io">JupyterLab homepage</a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="OnDemand.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Open OnDemand <em>(Browser Based HPC Portal)</em></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../software/loadbalancer.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Load Balancer</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#navigating-the-jupyterlab-interface">Navigating the JupyterLab Interface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-packages-available-to-you-within-a-notebook">Find packages available to you within a notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-your-own-custom-jupyter-kernel">Creating your own custom Jupyter kernel</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-your-conda-settings">1.  Configure your conda settings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activate-the-curc-anaconda-environment">2. Activate the CURC Anaconda environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-custom-environment">3. Create a new custom environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activate-your-new-environment">4. Activate your new environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-your-own-custom-kernel-which-will-enable-you-to-use-this-environment-in-your-jupyter-session">5. Create your own custom kernel, which will enable you to use this environment in your Jupyter Session</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See Also</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

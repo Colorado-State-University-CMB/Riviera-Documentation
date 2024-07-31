@@ -1,0 +1,799 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Research Computing User Guide &#8212; Research Computing
+University of Colorado Boulder  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=31992893" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Frequently Asked Questions" href="faq.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/Research_Computing_black_letters.png" class="logo__image only-light" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>
+    <script>document.write(`<img src="_static/Research_Computing_white_letters.png" class="logo__image only-dark" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accessing RC Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="access/logging-in.html">Logging In</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Compute Environment</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="compute/node-types.html">Node types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compute/filesystems.html">Filesystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compute/modules.html">The Modules System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compute/data-transfer.html">Data Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compute/compiling.html">Compiling and Linking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compute/monitoring-resources.html">Monitoring Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Jobs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="running-jobs/running-apps-with-jobs.html">Running applications with Jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running-jobs/batch-jobs.html">Batch Jobs and Job Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running-jobs/interactive-jobs.html">Interactive jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running-jobs/slurm-commands.html">Useful Slurm commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running-jobs/job-resources.html">Slurm Flags, Partitions, and QoS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running-jobs/squeue-status-codes.html"><code class="docutils literal notranslate"><span class="pre">squeue</span></code> status and reason codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running-jobs/roce-enabled.html">Running jobs on RoCE enabled Nodes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gateways &amp; Portals</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="gateways/OnDemand.html">Open OnDemand <em>(Browser Based HPC Portal)</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="gateways/jupyterhub.html">Jupyter Sessions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="software/loadbalancer.html">Load Balancer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software/gaussian.html">Gaussian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software/matlab.html">Matlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software/python.html">Python and R with Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software/GNUParallel.html">GNU Parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software/vasp.html">VASP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software/Containerizationon.html">Containerization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software/alphafold.html">AlphaFold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software/spack.html">Spack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software/sratoolkit.html">SRA Toolkit on Alpine</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming and Parallelization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="programming/coding-best-practices.html">Coding best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming/parallel-programming-fundamentals.html">Fundamentals of parallel programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming/MPIBestpractices.html">MPI Best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming/MPI-C.html">Using MPI with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming/MPI-Fortran.html">Using MPI with Fortran</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming/OpenMP-C.html">Using OpenMP with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming/OpenMP-Fortran.html">Using OpenMP with Fortran</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="tutorials/index.html">CUmulus Cloud</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/cumulus1.html">Tutorial: Creating a CUmulus instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/cumulus2.html">Establish a Database to query Twitter and Store Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/cumulus3.html">CUmulus integration with CURC HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/cumulus4.html">Mounting a remote filesystem from a CUmulus Virtual Machine</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="additional-resources/utah-videos.html">University of Utah videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-resources/other.html">Facilities, equipment, and other resources</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ResearchComputing/Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Research Computing User Guide</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#courses-using-rc-resources">Courses using RC Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledging-rc">Acknowledging RC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledging-alpine">Acknowledging Alpine</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledging-cumulus">Acknowledging Cumulus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledging-summit">Acknowledging Summit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledging-blanca">Acknowledging Blanca</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledging-petalibrary">Acknowledging PetaLibrary</a><ul class="nav section-nav flex-column">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="research-computing-user-guide">
+<h1>Research Computing User Guide<a class="headerlink" href="#research-computing-user-guide" title="Link to this heading">#</a></h1>
+<p>Documentation covering the use of Research Computing resources.</p>
+<p>Here are some quick links to documentation to get you started.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="access/logging-in.html"><span class="std std-doc">Logging In</span></a></p></li>
+<li><p><a class="reference internal" href="compute/filesystems.html"><span class="std std-doc">Research Computing Filesystems</span></a></p></li>
+<li><p><a class="reference internal" href="compute/compiling.html"><span class="std std-doc">Compiling Software</span></a></p></li>
+<li><p><a class="reference internal" href="running-jobs/batch-jobs.html"><span class="std std-doc">Batch Jobs</span></a></p></li>
+<li><p><a class="reference internal" href="compute/modules.html"><span class="std std-doc">The Module System</span></a></p></li>
+<li><p><a class="reference internal" href="faq.html"><span class="std std-doc">Frequently Asked Questions (FAQ)</span></a></p></li>
+</ul>
+<p><a class="reference external" href="https://forms.gle/bSQEeFrdvyeQWPtW9">Can’t find what you need? Provide feedback on the CURC docs!</a></p>
+<p>More information is available at https://www.colorado.edu/rc.</p>
+<p>If you have any questions, please contact <a class="reference external" href="mailto:rc-help&#37;&#52;&#48;colorado&#46;edu">rc-help<span>&#64;</span>colorado<span>&#46;</span>edu</a>.</p>
+<section id="courses-using-rc-resources">
+<h2>Courses using RC Resources<a class="headerlink" href="#courses-using-rc-resources" title="Link to this heading">#</a></h2>
+<p>Instructors who wish to lead a class using CURC resources must complete the <a class="reference external" href="https://forms.office.com/r/3Bx0Dp0635">course intake form</a> at least 3 weeks prior to the beginning of the semester in which the course will be taught. Completing the intake form will ensure that CU Research Computing can determine whether adequate resources and support are available to meet your needs, and that resources are allocated appropriately.  Upon completion, a case will be automatically generated in CURC’s case management system. A CURC team member will subsequently follow up with you in the case via email, to discuss details and begin provisioning resources as needed.</p>
+<p>Note that CU Research Computing conducts planned maintenance the first Wednesday of each month, which may impact resource availability between 7a-5p. Instructors should expect that resources will not be available during the first Wednesday of each month. The CU Research Computing help desk is staffed from 8:00a-5:00p M-F; support outside of these times should not be expected.</p>
+<p>The following resources are available for course support:</p>
+<ul class="simple">
+<li><p>Alpine</p>
+<ul>
+<li><p>Batch or Interactive Compute on Alpine</p></li>
+<li><p>JupterHub in Open OnDemand (Alpine)</p></li>
+<li><p>RStudio in Open OnDemand (Alpine)</p></li>
+<li><p>MatLab in Open OnDemand (Alpine)</p></li>
+<li><p>Remote Desktop in Open OnDemand</p></li>
+<li><p>Shared storage space for students (up to 1 TB)</p></li>
+<li><p>Standing reservation for Alpine resources during class meeting times</p></li>
+<li><p>Compute allocations if student needs exceed their <code class="docutils literal notranslate"><span class="pre">ucb-general</span></code> account</p></li>
+<li><p>Assistance building software or conda environments to support the course</p></li>
+</ul>
+</li>
+<li><p>Cloud</p>
+<ul>
+<li><p>Custom JupyterHub hosted in the cloud (costs may be incurred)</p></li>
+<li><p>Custom RStudio hosted in the cloud (costs may be incurred)</p></li>
+</ul>
+</li>
+<li><p>Lectures/training</p>
+<ul>
+<li><p>CURC staff can lecture on specified topics during the class meeting time (once per course per semester).</p></li>
+</ul>
+</li>
+</ul>
+<p>Students are welcome to use RC resources on their own for class projects and can request access as a regular UCB affiliate via the link off the RC homepage at: https://www.colorado.edu/rc. Students are not required to complete the course intake form noted above. To request help, contact rc-help&#64;colorado.edu and please indicate that the work is for a class project and any deadlines.</p>
+</section>
+<section id="acknowledging-rc">
+<h2>Acknowledging RC<a class="headerlink" href="#acknowledging-rc" title="Link to this heading">#</a></h2>
+<p>Use of University of Colorado Research Computing resources, including (but not limited to) the Janus, Summit, and Alpine supercomputers, the Blanca Condo Cluster, and the PetaLibrary data storage service must be acknowledged in any and all publications.</p>
+<section id="acknowledging-alpine">
+<h3>Acknowledging Alpine<a class="headerlink" href="#acknowledging-alpine" title="Link to this heading">#</a></h3>
+<p>“This work utilized the Alpine high performance computing resource at the University of Colorado Boulder. Alpine is jointly funded by the University of Colorado Boulder, the University of Colorado Anschutz, Colorado State University, and the National Science Foundation (award 2201538).”</p>
+<ul class="simple">
+<li><p>DOI: https://doi.org/10.25811/k3w6-pk81</p></li>
+<li><p>Citation: University of Colorado Boulder Research Computing. (2023). Alpine. University of Colorado Boulder. https://doi.org/10.25811/k3w6-pk81</p></li>
+</ul>
+</section>
+<section id="acknowledging-cumulus">
+<h3>Acknowledging Cumulus<a class="headerlink" href="#acknowledging-cumulus" title="Link to this heading">#</a></h3>
+<p>“This work utilized the CUmulus on-premise cloud service at the University of Colorado Boulder. CUmulus is jointly funded by the National Science Foundation (award OAC-1925766) and the University of Colorado Boulder.”</p>
+</section>
+<section id="acknowledging-summit">
+<h3>Acknowledging Summit<a class="headerlink" href="#acknowledging-summit" title="Link to this heading">#</a></h3>
+<p>“This work utilized the Summit supercomputer, which is supported by the National Science Foundation (awards ACI-1532235 and ACI-1532236), the University of Colorado Boulder, and Colorado State University. The Summit supercomputer is a joint effort of the University of Colorado Boulder and Colorado State University.”</p>
+<ul class="simple">
+<li><p>DOI: https://doi.org/10.25811/8np0-je59</p></li>
+<li><p>Citation: University of Colorado Boulder Research Computing. (2021). RMACC Summit Supercomputer. University of Colorado Boulder. https://doi.org/10.25811/8np0-je59</p></li>
+</ul>
+</section>
+<section id="acknowledging-blanca">
+<h3>Acknowledging Blanca<a class="headerlink" href="#acknowledging-blanca" title="Link to this heading">#</a></h3>
+<p>“This work utilized the Blanca condo computing resource at the University of Colorado Boulder. Blanca is jointly funded by computing users and the University of Colorado Boulder.”</p>
+<ul class="simple">
+<li><p>DOI: https://doi.org/10.25811/v32c-gy42</p></li>
+<li><p>Citation: University of Colorado Boulder Research Computing. (2021). Blanca Condo Cluster. University of Colorado Boulder. https://doi.org/10.25811/v32c-gy42</p></li>
+</ul>
+</section>
+<section id="acknowledging-petalibrary">
+<h3>Acknowledging PetaLibrary<a class="headerlink" href="#acknowledging-petalibrary" title="Link to this heading">#</a></h3>
+<p>“Data storage supported by the University of Colorado Boulder ‘PetaLibrary’”</p>
+<ul class="simple">
+<li><p>DOI: https://doi.org/10.25811/81nc-wv41</p></li>
+<li><p>Citation: University of Colorado Boulder Research Computing. (2021). PetaLibrary. University of Colorado Boulder. https://doi.org/10.25811/81nc-wv41</p></li>
+</ul>
+<hr class="docutils" />
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accessing RC Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="access/logging-in.html">Logging In</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Compute Environment</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="compute/node-types.html">Node types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compute/filesystems.html">Filesystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compute/modules.html">The Modules System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compute/data-transfer.html">Data Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compute/compiling.html">Compiling and Linking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compute/monitoring-resources.html">Monitoring Resources</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Jobs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="running-jobs/running-apps-with-jobs.html">Running applications with Jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running-jobs/batch-jobs.html">Batch Jobs and Job Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running-jobs/interactive-jobs.html">Interactive jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running-jobs/slurm-commands.html">Useful Slurm commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running-jobs/job-resources.html">Slurm Flags, Partitions, and QoS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running-jobs/squeue-status-codes.html"><code class="docutils literal notranslate"><span class="pre">squeue</span></code> status and reason codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running-jobs/roce-enabled.html">Running jobs on RoCE enabled Nodes</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gateways &amp; Portals</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gateways/OnDemand.html">Open OnDemand <em>(Browser Based HPC Portal)</em></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gateways/OnDemand.html#getting-started-with-curc-open-ondemand">Getting started with CURC Open OnDemand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gateways/OnDemand.html#features">Features</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gateways/jupyterhub.html">Jupyter Sessions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gateways/jupyterhub.html#navigating-the-jupyterlab-interface">Navigating the JupyterLab Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gateways/jupyterhub.html#find-packages-available-to-you-within-a-notebook">Find packages available to you within a notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gateways/jupyterhub.html#creating-your-own-custom-jupyter-kernel">Creating your own custom Jupyter kernel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gateways/jupyterhub.html#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gateways/jupyterhub.html#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="software/loadbalancer.html">Load Balancer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software/loadbalancer.html#why-use-the-load-balancer">Why Use the Load Balancer?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software/loadbalancer.html#using-the-load-balancer">Using the Load Balancer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software/loadbalancer.html#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="software/gaussian.html">Gaussian</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software/gaussian.html#running-g16">Running G16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software/gaussian.html#running-gaussview">Running GaussView</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software/gaussian.html#sample-input-file">Sample input file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="software/matlab.html">Matlab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software/matlab.html#running-matlab-interactive-jobs">Running Matlab Interactive Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software/matlab.html#running-matlab-batch-jobs">Running Matlab Batch Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software/matlab.html#parallel-matlab-on-alpine">Parallel Matlab on Alpine</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="software/python.html">Python and R with Anaconda</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software/python.html#configuring-conda-with-condarc">Configuring conda with <code class="docutils literal notranslate"><span class="pre">.condarc</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="software/python.html#using-the-curc-anaconda-environment">Using the CURC Anaconda environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software/python.html#mamba-package-manager">Mamba Package Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software/python.html#dbus-error">Dbus Error</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="software/GNUParallel.html">GNU Parallel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software/GNUParallel.html#why-use-gnu-parallel">Why Use GNU Parallel?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software/GNUParallel.html#using-gnu-parallel">Using GNU Parallel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software/GNUParallel.html#additional-resources"><strong>Additional Resources</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="software/vasp.html">VASP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software/vasp.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software/vasp.html#assumptions">Assumptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software/vasp.html#to-compile-vasp">To compile vasp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software/vasp.html#to-use-vasp-example-job-script">To use vasp (example job script)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="software/Containerizationon.html">Containerization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software/Containerizationon.html#containerization-fundamentals">Containerization Fundamentals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software/Containerizationon.html#container-engines">Container engines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software/Containerizationon.html#apptainer">Apptainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software/Containerizationon.html#docker">Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software/Containerizationon.html#requesting-a-container-installation">Requesting a Container Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="software/alphafold.html">AlphaFold</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software/alphafold.html#alphafold-overview">AlphaFold Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software/alphafold.html#running-alphafold">Running AlphaFold</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="software/spack.html">Spack</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software/spack.html#using-spack-on-curc">Using Spack on CURC</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="software/sratoolkit.html">SRA Toolkit on Alpine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="software/sratoolkit.html#loading-the-module">Loading the Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software/sratoolkit.html#configuring-sra-toolkit">Configuring SRA Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software/sratoolkit.html#common-sra-toolkit-issues">Common SRA Toolkit Issues</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming and Parallelization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="programming/coding-best-practices.html">Coding best practices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="programming/coding-best-practices.html#variable-naming-conventions">Variable Naming Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/coding-best-practices.html#function-and-class-naming-conventions">Function and Class Naming conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/coding-best-practices.html#whitespace-and-tabbing">Whitespace and Tabbing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/coding-best-practices.html#commenting-your-code">Commenting your code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="programming/parallel-programming-fundamentals.html">Fundamentals of parallel programming</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="programming/parallel-programming-fundamentals.html#why-parallel">Why Parallel?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/parallel-programming-fundamentals.html#serial-and-parallel-processes">Serial and Parallel Processes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/parallel-programming-fundamentals.html#how-parallel-computation-works">How parallel computation works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/parallel-programming-fundamentals.html#tools-for-parallel-programming">Tools for Parallel Programming</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="programming/MPIBestpractices.html">MPI Best practices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="programming/MPIBestpractices.html#mpi-compatible-compilers-and-libraries">MPI Compatible Compilers and Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/MPIBestpractices.html#commands-to-run-mpi-applications">Commands to Run MPI Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/MPIBestpractices.html#running-mpi-on-alpine">Running MPI on Alpine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/MPIBestpractices.html#running-mpi-on-blanca">Running MPI on Blanca</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="programming/MPI-C.html">Using MPI with C</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="programming/MPI-C.html#setup-and-hello-world">Setup and “Hello, World”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/MPI-C.html#mpi-barriers-and-synchronization">MPI Barriers and Synchronization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/MPI-C.html#message-passing">Message Passing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/MPI-C.html#group-operators-scatter-and-gather">Group Operators: Scatter and Gather</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="programming/MPI-Fortran.html">Using MPI with Fortran</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="programming/MPI-Fortran.html#setup-and-hello-world">Setup and “Hello World”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/MPI-Fortran.html#mpi-barriers-and-synchronization">MPI Barriers and Synchronization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/MPI-Fortran.html#message-passing">Message Passing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/MPI-Fortran.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/MPI-Fortran.html#group-operators-scatter-and-gather">Group Operators: Scatter and Gather</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="programming/OpenMP-C.html">Using OpenMP with C</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="programming/OpenMP-C.html#parallel-hello-world-program">Parallel “Hello, World” Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/OpenMP-C.html#private-vs-shared-variables">Private vs. Shared Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/OpenMP-C.html#barrier-and-critical-directives">Barrier and Critical Directives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/OpenMP-C.html#work-sharing-directive-omp-for">Work Sharing Directive: omp for</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="programming/OpenMP-Fortran.html">Using OpenMP with Fortran</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="programming/OpenMP-Fortran.html#parallel-hello-world-program">Parallel “Hello, World” Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/OpenMP-Fortran.html#private-vs-shared-variables">Private vs. Shared Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/OpenMP-Fortran.html#barrier-and-critical-directives">Barrier and Critical Directives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="programming/OpenMP-Fortran.html#work-sharing-directive-omp-do">Work Sharing Directive: omp do</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">CUmulus Cloud</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="additional-resources/utah-videos.html">University of Utah videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional-resources/other.html">Facilities, equipment, and other resources</a></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="right-next"
+       href="faq.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Frequently Asked Questions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#courses-using-rc-resources">Courses using RC Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledging-rc">Acknowledging RC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledging-alpine">Acknowledging Alpine</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledging-cumulus">Acknowledging Cumulus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledging-summit">Acknowledging Summit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledging-blanca">Acknowledging Blanca</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledging-petalibrary">Acknowledging PetaLibrary</a><ul class="nav section-nav flex-column">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

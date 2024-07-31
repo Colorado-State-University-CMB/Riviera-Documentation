@@ -1,0 +1,890 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Monitoring Resources &#8212; Research Computing
+University of Colorado Boulder  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=31992893" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'compute/monitoring-resources';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Running applications with Jobs" href="../running-jobs/running-apps-with-jobs.html" />
+    <link rel="prev" title="Compiling and Linking" href="compiling.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Research_Computing_black_letters.png" class="logo__image only-light" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>
+    <script>document.write(`<img src="../_static/Research_Computing_white_letters.png" class="logo__image only-dark" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accessing RC Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../access/logging-in.html">Logging In</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Compute Environment</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="node-types.html">Node types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filesystems.html">Filesystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">The Modules System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-transfer.html">Data Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling and Linking</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Monitoring Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Jobs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/running-apps-with-jobs.html">Running applications with Jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/batch-jobs.html">Batch Jobs and Job Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/interactive-jobs.html">Interactive jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/slurm-commands.html">Useful Slurm commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/job-resources.html">Slurm Flags, Partitions, and QoS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/squeue-status-codes.html"><code class="docutils literal notranslate"><span class="pre">squeue</span></code> status and reason codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/roce-enabled.html">Running jobs on RoCE enabled Nodes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gateways &amp; Portals</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../gateways/OnDemand.html">Open OnDemand <em>(Browser Based HPC Portal)</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gateways/jupyterhub.html">Jupyter Sessions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/loadbalancer.html">Load Balancer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/gaussian.html">Gaussian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/matlab.html">Matlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/python.html">Python and R with Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/GNUParallel.html">GNU Parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vasp.html">VASP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/Containerizationon.html">Containerization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/alphafold.html">AlphaFold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/spack.html">Spack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/sratoolkit.html">SRA Toolkit on Alpine</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming and Parallelization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../programming/coding-best-practices.html">Coding best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/parallel-programming-fundamentals.html">Fundamentals of parallel programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPIBestpractices.html">MPI Best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-C.html">Using MPI with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-Fortran.html">Using MPI with Fortran</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-C.html">Using OpenMP with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-Fortran.html">Using OpenMP with Fortran</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/index.html">CUmulus Cloud</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus1.html">Tutorial: Creating a CUmulus instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus2.html">Establish a Database to query Twitter and Store Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus3.html">CUmulus integration with CURC HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus4.html">Mounting a remote filesystem from a CUmulus Virtual Machine</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/utah-videos.html">University of Utah videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/other.html">Facilities, equipment, and other resources</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ResearchComputing/Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/compute/monitoring-resources.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Monitoring Resources</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slurmtools">Slurmtools</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-log-in"><strong>Step 1</strong>: Log in</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-load-the-slurm-module-for-the-hpc-resource-you-want-to-query-metrics-about-blanca-alpine"><strong>Step 2</strong>: Load the slurm module for the HPC resource you want to query metrics about (Blanca, Alpine):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-load-the-slurmtools-module"><strong>Step 3</strong>: Load the <code class="docutils literal notranslate"><span class="pre">slurmtools</span></code> module</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-get-some-metrics"><strong>Step 4</strong>: Get some metrics!</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xdmod">XDMoD</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-navigate-to-the-curc-xdmod-instance">Step 1: Navigate to the CURC XDMoD instance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-login-cu-boulder-users-only">Step 2: Login (CU Boulder users only)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-familiarize-yourself-with-xdmod">Step 3: Familiarize yourself with XDMoD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-become-a-pro">Step 4: Become a pro!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-use-case">Example use case</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="monitoring-resources">
+<h1>Monitoring Resources<a class="headerlink" href="#monitoring-resources" title="Link to this heading">#</a></h1>
+<p>CU Research Computing has two main tools which can help users monitor their HPC resources:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#slurmtools">Slurmtools</a>: A <a class="reference internal" href="modules.html"><span class="std std-doc">module</span></a> that loads a collection of functions to assess recent usage statistics</p></li>
+<li><p><a class="reference internal" href="#xdmod">XDMoD</a>: A web portal for viewing metrics at the system, partition, and user-levels.</p></li>
+</ul>
+<section id="slurmtools">
+<h2>Slurmtools<a class="headerlink" href="#slurmtools" title="Link to this heading">#</a></h2>
+<p>Slurmtools is a collection of helper scripts for everyday use of the <a class="reference external" href="https://slurm.schedmd.com/overview.html">SLURM</a> job scheduler. Slurmtools can be loaded in as a module from any node (including login nodes). Slurmtools can help us understand the following questions:</p>
+<ul class="simple">
+<li><p>How many core hours (SUs) have I used recently?</p></li>
+<li><p>Who is using all of the SUs on my group’s account?</p></li>
+<li><p>What jobs have I run over the past few days?</p></li>
+<li><p>What is my priority?</p></li>
+<li><p>How efficient are my jobs?</p></li>
+</ul>
+<section id="step-1-log-in">
+<h3><strong>Step 1</strong>: Log in<a class="headerlink" href="#step-1-log-in" title="Link to this heading">#</a></h3>
+<p>If you have a CURC account, login as you <a class="reference internal" href="../access/logging-in.html"><span class="std std-doc">normally would</span></a> using your identikey and Duo from a terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ssh<span class="w"> </span>ralphie@login.rc.colorado.edu
+</pre></div>
+</div>
+</section>
+<section id="step-2-load-the-slurm-module-for-the-hpc-resource-you-want-to-query-metrics-about-blanca-alpine">
+<h3><strong>Step 2</strong>: Load the slurm module for the HPC resource you want to query metrics about (Blanca, Alpine):<a class="headerlink" href="#step-2-load-the-slurm-module-for-the-hpc-resource-you-want-to-query-metrics-about-blanca-alpine" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>slurm/alpine<span class="w"> </span><span class="c1"># substitute alpine for blanca</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-load-the-slurmtools-module">
+<h3><strong>Step 3</strong>: Load the <code class="docutils literal notranslate"><span class="pre">slurmtools</span></code> module<a class="headerlink" href="#step-3-load-the-slurmtools-module" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>slurmtools
+</pre></div>
+</div>
+<p>You will see the following informational message:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">You</span> <span class="n">have</span> <span class="n">sucessfully</span> <span class="n">loaded</span> <span class="n">slurmtools</span><span class="p">,</span> <span class="n">a</span> <span class="n">collection</span> <span class="n">of</span> <span class="n">functions</span>
+ <span class="n">to</span> <span class="n">assess</span> <span class="n">recent</span> <span class="n">usage</span> <span class="n">statistics</span><span class="o">.</span> <span class="n">Available</span> <span class="n">commands</span> <span class="n">include</span><span class="p">:</span>
+
+ <span class="s1">&#39;suacct&#39;</span> <span class="p">(</span><span class="n">SU</span> <span class="n">usage</span> <span class="k">for</span> <span class="n">each</span> <span class="n">user</span> <span class="n">of</span> <span class="n">a</span> <span class="n">specified</span> <span class="n">account</span> <span class="n">over</span> <span class="n">N</span> <span class="n">days</span><span class="p">)</span>
+
+ <span class="s1">&#39;suuser&#39;</span> <span class="p">(</span><span class="n">SU</span> <span class="n">usage</span> <span class="k">for</span> <span class="n">a</span> <span class="n">specfied</span> <span class="n">user</span> <span class="n">over</span> <span class="n">N</span> <span class="n">days</span><span class="p">)</span>
+
+ <span class="s1">&#39;seff&#39;</span> <span class="p">(</span><span class="n">CPU</span> <span class="ow">and</span> <span class="n">RAM</span> <span class="n">efficiency</span> <span class="k">for</span> <span class="n">a</span> <span class="n">specified</span> <span class="n">job</span><span class="p">)</span>
+
+ <span class="s1">&#39;seff-array&#39;</span> <span class="p">(</span><span class="n">CPU</span><span class="p">,</span> <span class="n">RAM</span><span class="p">,</span> <span class="ow">and</span> <span class="n">time</span> <span class="n">efficiency</span> <span class="k">for</span> <span class="n">a</span> <span class="n">specified</span> <span class="n">array</span> <span class="n">job</span><span class="p">)</span>
+
+ <span class="s1">&#39;jobstats&#39;</span> <span class="p">(</span><span class="n">job</span> <span class="n">statistics</span> <span class="k">for</span> <span class="nb">all</span> <span class="n">jobs</span> <span class="n">run</span> <span class="n">by</span> <span class="n">a</span> <span class="n">specified</span> <span class="n">user</span> <span class="n">over</span> <span class="n">N</span> <span class="n">days</span><span class="p">)</span>
+
+ <span class="s1">&#39;levelfs&#39;</span> <span class="p">(</span><span class="n">current</span> <span class="n">fair</span> <span class="n">share</span> <span class="n">priority</span> <span class="k">for</span> <span class="n">a</span> <span class="n">specified</span> <span class="n">user</span><span class="p">)</span>
+
+
+ <span class="n">Type</span> <span class="nb">any</span> <span class="n">command</span> <span class="n">without</span> <span class="n">arguments</span> <span class="k">for</span> <span class="n">usage</span> <span class="n">instructions</span>
+</pre></div>
+</div>
+</section>
+<section id="step-4-get-some-metrics">
+<h3><strong>Step 4</strong>: Get some metrics!<a class="headerlink" href="#step-4-get-some-metrics" title="Link to this heading">#</a></h3>
+<p><em><strong>How many Service Units (core hours) have I used?</strong></em></p>
+<p>Type the command name for usage hint:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>suuser
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Purpose</span><span class="p">:</span> <span class="n">This</span> <span class="n">function</span> <span class="n">computes</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">Service</span> <span class="n">Units</span> <span class="p">(</span><span class="n">SUs</span><span class="p">)</span>
+<span class="n">consumed</span> <span class="n">by</span> <span class="n">a</span> <span class="n">specified</span> <span class="n">user</span> <span class="n">over</span> <span class="n">N</span> <span class="n">days</span><span class="o">.</span>
+
+<span class="n">Usage</span><span class="p">:</span> <span class="n">suuser</span> <span class="p">[</span><span class="n">userid</span><span class="p">]</span> <span class="p">[</span><span class="n">days</span><span class="p">,</span> <span class="n">default</span> <span class="mi">30</span><span class="p">]</span>
+<span class="n">Hint</span><span class="p">:</span> <span class="n">suuser</span> <span class="n">ralphie</span> <span class="mi">15</span>
+</pre></div>
+</div>
+<p>Check usage for the last 365 days:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>suuser<span class="w"> </span>ralphie<span class="w"> </span><span class="m">365</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SU</span> <span class="n">used</span> <span class="n">by</span> <span class="n">user</span> <span class="n">ralphie</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">last</span> <span class="mi">365</span> <span class="n">days</span><span class="p">:</span>
+<span class="n">Cluster</span><span class="o">|</span><span class="n">Account</span><span class="o">|</span><span class="n">Login</span><span class="o">|</span><span class="n">Proper</span> <span class="n">Name</span><span class="o">|</span><span class="n">Used</span><span class="o">|</span><span class="n">Energy</span><span class="o">|</span>
+<span class="n">alpine</span><span class="o">|</span><span class="n">admin</span><span class="o">|</span><span class="n">ralphie</span><span class="o">|</span><span class="n">Ralphie</span><span class="o">|</span><span class="mi">15987</span><span class="o">|</span><span class="mi">0</span><span class="o">|</span>
+<span class="n">alpine</span><span class="o">|</span><span class="n">ucb</span><span class="o">-</span><span class="n">testing</span><span class="o">|</span><span class="n">ralphie</span><span class="o">|</span><span class="n">Ralphie</span><span class="o">|</span><span class="mi">3812</span><span class="o">|</span><span class="mi">0</span><span class="o">|</span>
+<span class="n">alpine</span><span class="o">|</span><span class="n">tutorial1</span><span class="o">|</span><span class="n">ralphie</span><span class="o">|</span><span class="n">Ralphie</span><span class="o">|</span><span class="mi">3812</span><span class="o">|</span><span class="mi">0</span><span class="o">|</span>
+<span class="n">alpine</span><span class="o">|</span><span class="n">ucb</span><span class="o">-</span><span class="n">general</span><span class="o">|</span><span class="n">ralphie</span><span class="o">|</span><span class="n">Ralphie</span><span class="o">|</span><span class="mi">5403</span><span class="o">|</span><span class="mi">0</span><span class="o">|</span>
+</pre></div>
+</div>
+<p>This output tells us that:</p>
+<ul class="simple">
+<li><p>Ralphie has used “SUs” across four different accounts over the past year</p></li>
+<li><p>Ralphie’s usage by account varied from 3,812 SUs to 15,987 SUs</p></li>
+</ul>
+<p><em><strong>Who is using all of the SUs on my groups’ account?</strong></em></p>
+<p>Type the command name for usage hint:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>suacct
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Purpose</span><span class="p">:</span> <span class="n">This</span> <span class="n">function</span> <span class="n">computes</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">Service</span> <span class="n">Units</span> <span class="p">(</span><span class="n">SUs</span><span class="p">)</span>
+<span class="n">consumed</span> <span class="n">by</span> <span class="n">each</span> <span class="n">user</span> <span class="n">of</span> <span class="n">a</span> <span class="n">specified</span> <span class="n">account</span> <span class="n">over</span> <span class="n">N</span> <span class="n">days</span><span class="o">.</span>
+
+<span class="n">Usage</span><span class="p">:</span> <span class="n">suacct</span> <span class="p">[</span><span class="n">account_name</span><span class="p">]</span> <span class="p">[</span><span class="n">days</span><span class="p">,</span> <span class="n">default</span> <span class="mi">30</span><span class="p">]</span>
+<span class="n">Hint</span><span class="p">:</span> <span class="n">suacct</span> <span class="n">ucb</span><span class="o">-</span><span class="n">general</span> <span class="mi">15</span>
+</pre></div>
+</div>
+<p>Check <code class="docutils literal notranslate"><span class="pre">admin</span></code> account usage over past 180 days:</p>
+<blockquote>
+<div><p>Note: Most user accounts follow the naming convention <code class="docutils literal notranslate"><span class="pre">ucbXXX_ascX</span></code>, in this example we show the <code class="docutils literal notranslate"><span class="pre">admin</span></code> account.</p>
+</div></blockquote>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>suacct<span class="w"> </span>admin<span class="w"> </span><span class="m">180</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SU</span> <span class="n">used</span> <span class="n">by</span> <span class="n">account</span> <span class="p">(</span><span class="n">allocation</span><span class="p">)</span> <span class="n">admin</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">last</span> <span class="mi">180</span> <span class="n">days</span><span class="p">:</span>
+<span class="n">Cluster</span><span class="o">|</span><span class="n">Account</span><span class="o">|</span><span class="n">Login</span><span class="o">|</span><span class="n">Proper</span> <span class="n">Name</span><span class="o">|</span><span class="n">Used</span><span class="o">|</span><span class="n">Energy</span>
+<span class="n">alpine</span><span class="o">|</span><span class="n">admin</span><span class="o">|||</span><span class="mi">763240</span><span class="o">|</span><span class="mi">0</span>
+<span class="n">alpine</span><span class="o">|</span> <span class="n">admin</span><span class="o">|</span><span class="n">coke4948</span><span class="o">|</span><span class="n">Corey</span> <span class="n">Keasling</span><span class="o">|</span><span class="mi">84216</span><span class="o">|</span><span class="mi">0</span>
+<span class="n">alpine</span><span class="o">|</span> <span class="n">admin</span><span class="o">|</span><span class="n">frahm</span><span class="o">|</span><span class="n">Joel</span> <span class="n">Frahm</span><span class="o">|</span><span class="mi">24</span><span class="o">|</span><span class="mi">0</span>
+<span class="n">alpine</span><span class="o">|</span> <span class="n">admin</span><span class="o">|</span><span class="n">holtat</span><span class="o">|</span><span class="n">Aaron</span> <span class="n">Holt</span><span class="o">|</span><span class="mi">9832</span><span class="o">|</span><span class="mi">0</span>
+<span class="n">alpine</span><span class="o">|</span> <span class="n">admin</span><span class="o">|</span><span class="n">joan5896</span><span class="o">|</span><span class="n">Jonathon</span> <span class="n">Anderson</span><span class="o">|</span><span class="mi">9357</span><span class="o">|</span><span class="mi">0</span>
+<span class="n">alpine</span><span class="o">|</span> <span class="n">admin</span><span class="o">|</span><span class="n">ralphie</span><span class="o">|</span><span class="n">Ralphie</span><span class="o">|</span><span class="mi">9357</span><span class="o">|</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>This output tells us that:</p>
+<ul class="simple">
+<li><p>Five users used the account in the past 180 days.</p></li>
+<li><p>Their usage ranged from 24 SUs to 84,216 SUs</p></li>
+</ul>
+<p><em><strong>What jobs have I run over the past few days?</strong></em></p>
+<p>Type the command name for usage hint:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>jobstats
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Purpose</span><span class="p">:</span> <span class="n">This</span> <span class="n">function</span> <span class="n">shows</span> <span class="n">statistics</span> <span class="k">for</span> <span class="n">each</span> <span class="n">job</span>
+<span class="n">run</span> <span class="n">by</span> <span class="n">a</span> <span class="n">specified</span> <span class="n">user</span> <span class="n">over</span> <span class="n">N</span> <span class="n">days</span><span class="o">.</span>
+
+<span class="n">Usage</span><span class="p">:</span> <span class="n">jobstats</span> <span class="p">[</span><span class="n">userid</span><span class="p">]</span> <span class="p">[</span><span class="n">days</span><span class="p">,</span> <span class="n">default</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">Hint</span><span class="p">:</span> <span class="n">jobstats</span> <span class="n">ralphie</span> <span class="mi">15</span>
+</pre></div>
+</div>
+<p>Check ralphie’s jobstats for the past 35 days:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>jobstats<span class="w"> </span>ralphie<span class="w"> </span><span class="m">35</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">job</span> <span class="n">stats</span> <span class="k">for</span> <span class="n">user</span> <span class="n">ralphie</span> <span class="n">over</span> <span class="n">past</span> <span class="mi">35</span> <span class="n">days</span>
+<span class="n">jobid</span>        <span class="n">jobname</span>  <span class="n">partition</span>    <span class="n">qos</span>          <span class="n">account</span>      <span class="n">cpus</span> <span class="n">state</span>    <span class="n">start</span><span class="o">-</span><span class="n">date</span><span class="o">-</span><span class="n">time</span>     <span class="n">elapsed</span>    <span class="n">wait</span>
+<span class="o">-------------------------------------------------------------------------------------------------------------------</span>
+<span class="mi">8483382</span>      <span class="n">sys</span><span class="o">/</span><span class="n">dash</span> <span class="n">amilan</span>       <span class="n">normal</span>       <span class="n">ucb</span><span class="o">-</span><span class="n">gener</span><span class="o">+</span>   <span class="mi">1</span>    <span class="n">TIMEOUT</span>  <span class="mi">2021</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">14</span><span class="n">T09</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">09</span> <span class="mi">01</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">16</span>   <span class="mi">0</span> <span class="n">hrs</span>
+<span class="mi">8487254</span>      <span class="n">test</span><span class="o">.</span><span class="n">sh</span>  <span class="n">amilan</span>       <span class="n">normal</span>       <span class="n">ucb</span><span class="o">-</span><span class="n">gener</span><span class="o">+</span>   <span class="mi">1</span>    <span class="n">COMPLETE</span> <span class="mi">2021</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">14</span><span class="n">T13</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mi">12</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">02</span>   <span class="mi">0</span> <span class="n">hrs</span>
+<span class="mi">8487256</span>      <span class="n">interact</span> <span class="n">ahub</span>         <span class="n">interacti</span><span class="o">+</span>   <span class="n">ucb</span><span class="o">-</span><span class="n">gener</span><span class="o">+</span>   <span class="mi">1</span>    <span class="n">TIMEOUT</span>  <span class="mi">2021</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">14</span><span class="n">T13</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mi">11</span> <span class="mi">12</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">22</span>   <span class="mi">0</span> <span class="n">hrs</span>
+<span class="mi">8508557</span>      <span class="n">acompile</span> <span class="n">acompile</span>     <span class="nb">compile</span>      <span class="n">ucb</span><span class="o">-</span><span class="n">gener</span><span class="o">+</span>   <span class="mi">2</span>    <span class="n">COMPLETE</span> <span class="mi">2021</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">16</span><span class="n">T10</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mi">45</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>   <span class="mi">0</span> <span class="n">hrs</span>
+<span class="mi">8508561</span>      <span class="n">test</span><span class="o">.</span><span class="n">sh</span>  <span class="n">amilan</span>       <span class="n">normal</span>       <span class="n">ucb</span><span class="o">-</span><span class="n">gener</span><span class="o">+</span>   <span class="mi">24</span>   <span class="n">CANCELLE</span> <span class="mi">2021</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">22</span><span class="n">T10</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mi">03</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>   <span class="mi">143</span> <span class="n">hrs</span>
+<span class="mi">8508569</span>      <span class="n">test</span>     <span class="n">amilan</span>       <span class="n">normal</span>       <span class="n">ucb</span><span class="o">-</span><span class="n">gener</span><span class="o">+</span>   <span class="mi">4096</span> <span class="n">FAILED</span>   <span class="mi">2021</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">16</span><span class="n">T10</span><span class="p">:</span><span class="mi">42</span><span class="p">:</span><span class="mi">46</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>   <span class="mi">0</span> <span class="n">hrs</span>
+<span class="mi">8508575</span>      <span class="n">test</span>     <span class="n">amilan</span>       <span class="n">normal</span>       <span class="n">ucb</span><span class="o">-</span><span class="n">gener</span><span class="o">+</span>   <span class="mi">8192</span> <span class="n">FAILED</span>   <span class="mi">2021</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">16</span><span class="n">T10</span><span class="p">:</span><span class="mi">43</span><span class="p">:</span><span class="mi">17</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>   <span class="mi">0</span> <span class="n">hrs</span>
+<span class="mi">8508593</span>      <span class="n">test</span>     <span class="n">amilan</span>       <span class="n">normal</span>       <span class="n">ucb</span><span class="o">-</span><span class="n">gener</span><span class="o">+</span>   <span class="mi">4096</span> <span class="n">CANCELLE</span> <span class="mi">2021</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">16</span><span class="n">T10</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mi">47</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>   <span class="mi">0</span> <span class="n">hrs</span>
+<span class="mi">8508604</span>      <span class="n">test</span>     <span class="n">amilan</span>       <span class="n">normal</span>       <span class="n">ucb</span><span class="o">-</span><span class="n">gener</span><span class="o">+</span>   <span class="mi">2048</span> <span class="n">CANCELLE</span> <span class="mi">2021</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">16</span><span class="n">T10</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">40</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>   <span class="mi">0</span> <span class="n">hrs</span>
+<span class="mi">8512083</span>      <span class="n">spawner</span><span class="o">-</span> <span class="n">ahub</span>         <span class="n">interacti</span><span class="o">+</span>   <span class="n">ucb</span><span class="o">-</span><span class="n">gener</span><span class="o">+</span>   <span class="mi">1</span>    <span class="n">TIMEOUT</span>  <span class="mi">2021</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">16</span><span class="n">T16</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">37</span> <span class="mi">04</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">23</span>   <span class="mi">0</span> <span class="n">hrs</span>
+<span class="mi">8579077</span>      <span class="n">acompile</span> <span class="n">acompile</span>     <span class="nb">compile</span>      <span class="n">ucb</span><span class="o">-</span><span class="n">gener</span><span class="o">+</span>   <span class="mi">1</span>    <span class="n">COMPLETE</span> <span class="mi">2021</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">24</span><span class="n">T15</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">32</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">47</span>   <span class="mi">0</span> <span class="n">hrs</span>
+<span class="mi">8627076</span>      <span class="n">acompile</span> <span class="n">acompile</span>     <span class="nb">compile</span>      <span class="n">ucb</span><span class="o">-</span><span class="n">gener</span><span class="o">+</span>   <span class="mi">24</span>   <span class="n">CANCELLE</span> <span class="mi">2021</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">04</span><span class="n">T12</span><span class="p">:</span><span class="mi">17</span><span class="p">:</span><span class="mi">30</span> <span class="mi">00</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">03</span>   <span class="mi">0</span> <span class="n">hrs</span>
+<span class="mi">8672525</span>      <span class="n">interact</span> <span class="n">ahub</span>         <span class="n">interacti</span><span class="o">+</span>   <span class="n">ucb</span><span class="o">-</span><span class="n">gener</span><span class="o">+</span>   <span class="mi">1</span>    <span class="n">CANCELLE</span> <span class="mi">2021</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">08</span><span class="n">T13</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mi">13</span> <span class="mi">00</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mi">25</span>   <span class="mi">0</span> <span class="n">hrs</span>
+<span class="mi">8800741</span>      <span class="n">interact</span> <span class="n">ahub</span>         <span class="n">interacti</span><span class="o">+</span>   <span class="n">ucb</span><span class="o">-</span><span class="n">gener</span><span class="o">+</span>   <span class="mi">1</span>    <span class="n">CANCELLE</span> <span class="mi">2021</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">19</span><span class="n">T08</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">44</span> <span class="mi">01</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mi">38</span>   <span class="mi">0</span> <span class="n">hrs</span>
+</pre></div>
+</div>
+<p>This output tells me that:</p>
+<ul class="simple">
+<li><p>Ralphie has run 14 jobs in the past 35 days</p></li>
+<li><p>Most jobs had queue waits of &lt; 1 hour</p></li>
+<li><p>The number of cores requested ranged from 1–&gt;8192</p></li>
+<li><p>The elapsed times ranged from 0 hours to 1 hour and 48 minutes</p></li>
+</ul>
+<p><em><strong>What is my priority?</strong></em></p>
+<p>Type the command name for usage hint:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>levelfs
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Purpose</span><span class="p">:</span> <span class="n">This</span> <span class="n">function</span> <span class="n">shows</span> <span class="n">the</span> <span class="n">current</span> <span class="n">fair</span> <span class="n">share</span> <span class="n">priority</span> <span class="n">of</span> <span class="n">a</span> <span class="n">specified</span> <span class="n">user</span><span class="o">.</span>
+<span class="n">A</span> <span class="n">value</span> <span class="n">of</span> <span class="mi">1</span> <span class="n">indicates</span> <span class="n">average</span> <span class="n">priority</span> <span class="n">compared</span> <span class="n">to</span> <span class="n">other</span> <span class="n">users</span> <span class="ow">in</span> <span class="n">an</span> <span class="n">account</span><span class="o">.</span>
+<span class="n">A</span> <span class="n">value</span> <span class="n">of</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="n">indicates</span> <span class="n">lower</span> <span class="n">than</span> <span class="n">average</span> <span class="n">priority</span>
+	<span class="p">(</span><span class="n">longer</span> <span class="n">than</span> <span class="n">average</span> <span class="n">queue</span> <span class="n">waits</span><span class="p">)</span>
+<span class="n">A</span> <span class="n">value</span> <span class="n">of</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="n">indicates</span> <span class="n">higher</span> <span class="n">than</span> <span class="n">average</span> <span class="n">priority</span>
+	<span class="p">(</span><span class="n">shorter</span> <span class="n">than</span> <span class="n">average</span> <span class="n">queue</span> <span class="n">waits</span><span class="p">)</span>
+
+<span class="n">Usage</span><span class="p">:</span> <span class="n">levelfs</span> <span class="p">[</span><span class="n">userid</span><span class="p">]</span>
+<span class="n">Hint</span><span class="p">:</span> <span class="n">levelfs</span> <span class="n">ralphie</span>
+</pre></div>
+</div>
+<p>Check Ralphie’s fair share priority:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>levelfs<span class="w"> </span>ralphie
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ralphie</span>
+<span class="n">admin</span> <span class="n">LevelFS</span><span class="p">:</span> <span class="n">inf</span>
+<span class="n">ucb</span><span class="o">-</span><span class="n">general</span> <span class="n">LevelFS</span><span class="p">:</span> <span class="mf">44.796111</span>
+<span class="n">tutorial1</span> <span class="n">LevelFS</span><span class="p">:</span> <span class="n">inf</span>
+<span class="n">ucb</span><span class="o">-</span><span class="n">testing</span> <span class="n">LevelFS</span><span class="p">:</span> <span class="n">inf</span>
+</pre></div>
+</div>
+<p>This output tells me:</p>
+<ul class="simple">
+<li><p>Ralphie hasn’t used <code class="docutils literal notranslate"><span class="pre">admin</span></code>, <code class="docutils literal notranslate"><span class="pre">tutorial1</span></code>, or <code class="docutils literal notranslate"><span class="pre">ucb-testing</span></code> for more than a month, and therefore Ralphie has very high (“infinite”) priority.</p></li>
+<li><p>Ralphie has used <code class="docutils literal notranslate"><span class="pre">ucb-general</span></code> but not much. Priority is &gt;&gt; 1 , therefore Ralphie can expect lower-than-average queue waits compared to average ucb-general waits.</p></li>
+</ul>
+<p><em><strong>NOTE</strong></em></p>
+<p>What is “Priority”?</p>
+<ul class="simple">
+<li><p>Your priority is a number between 0.0 –&gt; 1.0 that defines your relative placement in the queue of scheduled jobs</p></li>
+<li><p>Your priority is computed each time a job is scheduled and reflects the following factors:</p>
+<ul>
+<li><p>Your “Fair Share priority” (the ratio of resources you are allocated versus those you have consumed for a given account)</p></li>
+<li><p>Your job size (slightly larger jobs have higher priority)</p></li>
+<li><p>Your time spent in the queue (jobs gain priority the longer they wait)</p></li>
+<li><p>The partition and qos you choose (this is a minor consideration on CURC systems)</p></li>
+</ul>
+</li>
+<li><p>Your “Fair Share” priority has a half life of 14 days (i.e., it recovers fully in ~1 month with zero usage)</p></li>
+</ul>
+<p><em><strong>How efficient are my jobs?</strong></em></p>
+<p>Type the command name for usage hint:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>seff
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Usage</span><span class="p">:</span> <span class="n">seff</span> <span class="p">[</span><span class="n">Options</span><span class="p">]</span> <span class="o">&lt;</span><span class="n">Jobid</span><span class="o">&gt;</span>
+       <span class="n">Options</span><span class="p">:</span>
+       <span class="o">-</span><span class="n">h</span>    <span class="n">Help</span> <span class="n">menu</span>
+       <span class="o">-</span><span class="n">v</span>    <span class="n">Version</span>
+       <span class="o">-</span><span class="n">d</span>    <span class="n">Debug</span> <span class="n">mode</span><span class="p">:</span> <span class="n">display</span> <span class="n">raw</span> <span class="n">Slurm</span> <span class="n">data</span>
+</pre></div>
+</div>
+<p>Now check the efficiency of job 8636572:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>seff<span class="w"> </span><span class="m">8636572</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Job</span> <span class="n">ID</span><span class="p">:</span> <span class="mi">8636572</span>
+<span class="n">Cluster</span><span class="p">:</span> <span class="n">alpine</span>
+<span class="n">User</span><span class="o">/</span><span class="n">Group</span><span class="p">:</span> <span class="n">ralphie</span><span class="o">/</span><span class="n">ralphiegrp</span>
+<span class="n">State</span><span class="p">:</span> <span class="n">COMPLETED</span> <span class="p">(</span><span class="n">exit</span> <span class="n">code</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">Nodes</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">Cores</span> <span class="n">per</span> <span class="n">node</span><span class="p">:</span> <span class="mi">24</span>
+<span class="n">CPU</span> <span class="n">Utilized</span><span class="p">:</span> <span class="mi">04</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mi">05</span>
+<span class="n">CPU</span> <span class="n">Efficiency</span><span class="p">:</span> <span class="mf">92.18</span><span class="o">%</span> <span class="n">of</span> <span class="mi">04</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">48</span> <span class="n">core</span><span class="o">-</span><span class="n">walltime</span>
+<span class="n">Job</span> <span class="n">Wall</span><span class="o">-</span><span class="n">clock</span> <span class="n">time</span><span class="p">:</span> <span class="mi">00</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">02</span>
+<span class="n">Memory</span> <span class="n">Utilized</span><span class="p">:</span> <span class="mf">163.49</span> <span class="n">MB</span>
+<span class="n">Memory</span> <span class="n">Efficiency</span><span class="p">:</span> <span class="mf">0.14</span><span class="o">%</span> <span class="n">of</span> <span class="mf">113.62</span> <span class="n">GB</span>
+</pre></div>
+</div>
+<p>This output tells us that:</p>
+<ul class="simple">
+<li><p>the 24 cores reserved for this job were 92% utilized (anything &gt; 80% is pretty good)</p></li>
+<li><p>163.49 MB RAM was used of 113.62 GB RAM reserved (0.14%). This job is “cpu bound” so the memory inefficiency is not a major issue.</p></li>
+</ul>
+<p>This information is also sent to users who include the <code class="docutils literal notranslate"><span class="pre">--mail</span></code> directive in jobs.</p>
+<p><em><strong>How can I check the efficiency of array jobs?</strong></em></p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">seff-array</span></code> command with the help flag for a usage hint:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ seff-array -h
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">seff</span><span class="o">-</span><span class="n">array</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span> <span class="n">CLUSTER</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">version</span><span class="p">]</span> <span class="n">jobid</span>
+
+<span class="n">positional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="n">jobid</span>
+
+<span class="n">options</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">-</span><span class="n">c</span> <span class="n">CLUSTER</span><span class="p">,</span> <span class="o">--</span><span class="n">cluster</span> <span class="n">CLUSTER</span>
+  <span class="o">--</span><span class="n">version</span>             <span class="n">show</span> <span class="n">program</span><span class="s1">&#39;s version number and exit</span>
+</pre></div>
+</div>
+<p>In order to check the efficiency of all jobs in job array 8636572, run the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ seff-array 8636572
+</pre></div>
+</div>
+<p>This will display the status of all jobs in the array:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--------------------------------------------------------</span>
+<span class="n">Job</span> <span class="n">Status</span>
+<span class="n">COMPLETED</span><span class="p">:</span> <span class="mi">249</span>
+<span class="n">FAILED</span><span class="p">:</span> <span class="mi">4</span>
+<span class="n">PENDING</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">RUNNING</span><span class="p">:</span> <span class="mi">22</span>
+<span class="n">TIMEOUT</span><span class="p">:</span> <span class="mi">4</span>
+<span class="o">--------------------------------------------------------</span>
+</pre></div>
+</div>
+<p>Additionally, <code class="docutils literal notranslate"><span class="pre">seff-array</span></code> will display a histogram of the efficiency statistics all of the jobs in the array, separated into 10% increments. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CPU Efficiency (%)
+---------------------
++0.00e+00 - +1.00e+01  [  3]  ▌
++1.00e+01 - +2.00e+01  [244]  ████████████████████████████████████████
++2.00e+01 - +3.00e+01  [  8]  █▎
++3.00e+01 - +4.00e+01  [  2]  ▍
++4.00e+01 - +5.00e+01  [  0]
++5.00e+01 - +6.00e+01  [  0]
++6.00e+01 - +7.00e+01  [  0]
++7.00e+01 - +8.00e+01  [  0]
++8.00e+01 - +9.00e+01  [  0]
++9.00e+01 - +1.00e+02  [  0]
+</pre></div>
+</div>
+<p>The above indicates that all of the jobs displayed less than 40% CPU efficiency, with the majority (244/256) demonstrating between 10% and 20% efficiency. This information will also be displayed for memory and time efficiency.</p>
+</section>
+</section>
+<section id="xdmod">
+<h2>XDMoD<a class="headerlink" href="#xdmod" title="Link to this heading">#</a></h2>
+<p>XDMoD is a web portal for viewing metrics at the system-, partition- and user-levels.</p>
+<p>Would you like to know average queue wait times?  Do you need to better understand your historical resource utilization or utilization of your project account by user? The XDMoD (<a class="reference external" href="https://open.xdmod.org/9.0/index.html">XD Metrics on Demand</a>) web-based tool provides users with the ability to easily obtain detailed metrics for high performance computing resources. This open-source tool was developed by the University at Buffalo <a class="reference external" href="http://www.buffalo.edu/ccr.html">Center for Computational Research (CCR)</a>. CU Boulder Research Computing runs its own instance, <a class="reference external" href="https://xdmod.rc.colorado.edu">CURC XDMoD</a> that enables users to query metrics for the <em>RMACC</em>, <em>Alpine</em> and <em>Blanca</em> computing resources.</p>
+<p><strong>Getting started with XDMoD</strong></p>
+<p>All CURC users have access to XDMoD (CU Boulder, CSU and RMACC). At this time, login is only supported for CU Boulder users.  Non-CU Boulder users may still query all of the statistics available to CU Boulder users, they just won’t have the ability to personalize metrics.</p>
+<section id="step-1-navigate-to-the-curc-xdmod-instance">
+<h3>Step 1: Navigate to the CURC XDMoD instance<a class="headerlink" href="#step-1-navigate-to-the-curc-xdmod-instance" title="Link to this heading">#</a></h3>
+<p>In your browser navigate to <a class="reference external" href="https://xdmod.rc.colorado.edu">https://xdmod.rc.colorado.edu</a>. Upon reaching there you will see a summary screen similar to the following image.</p>
+<p><img alt="" src="../_images/xdmod_homescreen.png" /></p>
+<p>This screen provides some “quick stats” and summary plots that address some of the most common user questions, such as average wait times and recent resource usage by system (Alpine or Blanca) and partition.  These metrics may be all you need. If you want to personalize metrics you can login with your CURC username and password (<em>currently only supported for CU Boulder users</em>).</p>
+</section>
+<section id="step-2-login-cu-boulder-users-only">
+<h3>Step 2: Login (CU Boulder users only)<a class="headerlink" href="#step-2-login-cu-boulder-users-only" title="Link to this heading">#</a></h3>
+<p>Choose the <strong>Sign In</strong> option near the upper left of the screen.  This will initiate a pop-up window that gives you the option to <em>“Sign in with CU Boulder Research Computing”</em> or <em>“Sign in with a local XDMoD account”</em>.</p>
+<p><img alt="" src="../_images/xdmod_sign_in.png" /></p>
+<p>Choose the option for <em>“Sign in with CU Boulder Research Computing”</em> and enter your CURC username and password. The portal uses 2-factor authentication, so you will need to accept the Duo push to your phone to complete login.</p>
+</section>
+<section id="step-3-familiarize-yourself-with-xdmod">
+<h3>Step 3: Familiarize yourself with XDMoD<a class="headerlink" href="#step-3-familiarize-yourself-with-xdmod" title="Link to this heading">#</a></h3>
+<p>Whether or not you login, you’ll start on the <em>“Summary”</em> screen.</p>
+<p><img alt="" src="../_images/xdmod_post_login.png" /></p>
+<p>The following tabs will be available, depending on whether you are logged in</p>
+<ul class="simple">
+<li><p><strong>Summary</strong> (the screen you are on when you login)</p></li>
+<li><p><strong>Usage</strong> (provides access to an expansive set of resource-wide metrics)</p></li>
+<li><p><strong>Metrics Explorer**</strong> (similar to the <em>Usage</em> tab, but with additional functionality)</p></li>
+<li><p><strong>Data Export**</strong> (enables raw data to be output in <em>csv</em> or <em>json</em> format for use in other apps)</p></li>
+<li><p><strong>Report Generator**</strong> (facilitates the creation of reports that can be saved and shared)</p></li>
+<li><p><strong>Job Viewer**</strong> (enables users to search for and view jobs that meet specified criteria)</p></li>
+<li><p><strong>About</strong> (provide general information on the XDMoD software)</p></li>
+</ul>
+<p><em>** - only available to users who are logged in.</em></p>
+<blockquote>
+<div><p><em>Notes on XDMoD Syntax</em></p>
+<ul class="simple">
+<li><p>a “CPU Hour” is a “core hour” (e.g., for a single job, this would be the number of <code class="docutils literal notranslate"><span class="pre">ntasks</span></code> a user specifies in their job script multipled by how long the job runs)</p></li>
+<li><p>a “PI” is a project account (e.g., <code class="docutils literal notranslate"><span class="pre">ucb-general</span></code> or <code class="docutils literal notranslate"><span class="pre">ucb124_asc1</span></code>)</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="step-4-become-a-pro">
+<h3>Step 4: Become a pro!<a class="headerlink" href="#step-4-become-a-pro" title="Link to this heading">#</a></h3>
+<p>XDMoD can query a seemingly endless number of metrics, more than could ever be described in this documentation.  To learn how to query specific metrics, customize your views, etc., please refer to the <a class="reference external" href="https://xdmod.rc.colorado.edu/user_manual/index.php">XDMoD documentation</a>.</p>
+</section>
+<section id="example-use-case">
+<h3>Example use case<a class="headerlink" href="#example-use-case" title="Link to this heading">#</a></h3>
+<p>Let’s say you want to see how many core hours you project account has used over time, including the usage by user.</p>
+<ul class="simple">
+<li><p>Go to the <em>Usage</em> tab.</p></li>
+<li><p>In the “Metrics and Options” menu, choose <em>CPU Hours: Total</em> to create a graph of total CPU hours consumed over a default period. In XDMoD syntax a “CPU Hour” refers to a “core hour” (for a single job, this would be the number of <code class="docutils literal notranslate"><span class="pre">ntasks</span></code> a user chooses in their job script multipled by how long the job runs).</p></li>
+<li><p>Click anywhere on the blue line in the graph to expose the “Drill Down” menu:</p></li>
+</ul>
+<p><img alt="" src="../_images/xdmod_cpuhrs_total.png" /></p>
+<ul class="simple">
+<li><p>Choose the “PI” option.  In XDMoD syntax a “PI” is a project account (e.g., <code class="docutils literal notranslate"><span class="pre">ucb-general</span></code> or <code class="docutils literal notranslate"><span class="pre">ucb124_asc1</span></code>).</p></li>
+<li><p>This will revise the graph to show CPU usage for different “PIs” (accounts), showing only the accounts with the greatest usage. Your account may not be shown. To find it click the <em>Filter</em> tab at the top and search for your project (e.g., <code class="docutils literal notranslate"><span class="pre">ucb-general</span></code>).</p></li>
+<li><p>You will now see a graph showing only core hours used by your account. To see core hours used for each user of the account, click anywhere on the line to expose the “Drill Down” menu and choose the <em>User</em> option.</p></li>
+<li><p>This will revise the graph to show CPU usage by user.  If you don’t see your user of interest, you can use the <em>Filter</em> tab at the top to find them.</p></li>
+<li><p>You can change the time range of the x-axis by specifying the dates in the “Start” and “End” boxes near the top of the screen.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="compiling.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Compiling and Linking</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../running-jobs/running-apps-with-jobs.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Running applications with Jobs</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slurmtools">Slurmtools</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-log-in"><strong>Step 1</strong>: Log in</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-load-the-slurm-module-for-the-hpc-resource-you-want-to-query-metrics-about-blanca-alpine"><strong>Step 2</strong>: Load the slurm module for the HPC resource you want to query metrics about (Blanca, Alpine):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-load-the-slurmtools-module"><strong>Step 3</strong>: Load the <code class="docutils literal notranslate"><span class="pre">slurmtools</span></code> module</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-get-some-metrics"><strong>Step 4</strong>: Get some metrics!</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xdmod">XDMoD</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-navigate-to-the-curc-xdmod-instance">Step 1: Navigate to the CURC XDMoD instance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-login-cu-boulder-users-only">Step 2: Login (CU Boulder users only)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-familiarize-yourself-with-xdmod">Step 3: Familiarize yourself with XDMoD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-become-a-pro">Step 4: Become a pro!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-use-case">Example use case</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

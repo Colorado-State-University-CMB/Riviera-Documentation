@@ -1,0 +1,645 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Compiling and Linking &#8212; Research Computing
+University of Colorado Boulder  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=31992893" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'compute/compiling';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Monitoring Resources" href="monitoring-resources.html" />
+    <link rel="prev" title="Data Transfer" href="data-transfer.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Research_Computing_black_letters.png" class="logo__image only-light" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>
+    <script>document.write(`<img src="../_static/Research_Computing_white_letters.png" class="logo__image only-dark" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accessing RC Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../access/logging-in.html">Logging In</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Compute Environment</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="node-types.html">Node types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filesystems.html">Filesystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">The Modules System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data-transfer.html">Data Transfer</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Compiling and Linking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monitoring-resources.html">Monitoring Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Jobs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/running-apps-with-jobs.html">Running applications with Jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/batch-jobs.html">Batch Jobs and Job Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/interactive-jobs.html">Interactive jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/slurm-commands.html">Useful Slurm commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/job-resources.html">Slurm Flags, Partitions, and QoS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/squeue-status-codes.html"><code class="docutils literal notranslate"><span class="pre">squeue</span></code> status and reason codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/roce-enabled.html">Running jobs on RoCE enabled Nodes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gateways &amp; Portals</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../gateways/OnDemand.html">Open OnDemand <em>(Browser Based HPC Portal)</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gateways/jupyterhub.html">Jupyter Sessions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/loadbalancer.html">Load Balancer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/gaussian.html">Gaussian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/matlab.html">Matlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/python.html">Python and R with Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/GNUParallel.html">GNU Parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vasp.html">VASP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/Containerizationon.html">Containerization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/alphafold.html">AlphaFold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/spack.html">Spack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/sratoolkit.html">SRA Toolkit on Alpine</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming and Parallelization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../programming/coding-best-practices.html">Coding best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/parallel-programming-fundamentals.html">Fundamentals of parallel programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPIBestpractices.html">MPI Best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-C.html">Using MPI with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-Fortran.html">Using MPI with Fortran</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-C.html">Using OpenMP with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-Fortran.html">Using OpenMP with Fortran</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/index.html">CUmulus Cloud</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus1.html">Tutorial: Creating a CUmulus instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus2.html">Establish a Database to query Twitter and Store Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus3.html">CUmulus integration with CURC HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus4.html">Mounting a remote filesystem from a CUmulus Virtual Machine</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/utah-videos.html">University of Utah videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/other.html">Facilities, equipment, and other resources</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ResearchComputing/Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/compute/compiling.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Compiling and Linking</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#navigating-the-software-stack">Navigating the Software Stack</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compiler-and-optimization-recommendations">Compiler and Optimization Recommendations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linking-to-the-math-kernel-library-mkl">Linking to the Math Kernel Library (MKL)</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="compiling-and-linking">
+<h1>Compiling and Linking<a class="headerlink" href="#compiling-and-linking" title="Link to this heading">#</a></h1>
+<p>Before compiling in the RC environment, begin a compile job by using the <code class="docutils literal notranslate"><span class="pre">acompile</span></code> command. Next, load the modules corresponding to the compiler, MPI version (if needed), and any third-party libraries required by your application. The load order should always be compiler first, MPI second, and third-party libraries last.</p>
+<p>For example, suppose your application requires MPI and the HDF5
+library. To compile using the Intel compiler and Intel MPI, the
+sequence of <code class="docutils literal notranslate"><span class="pre">module</span></code> commands would be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">intel</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">impi</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">hdf5</span>
+</pre></div>
+</div>
+<p>Supporting library-modules will be loaded as needed, and your
+environment will be updated so that the appropriate library
+directories are prepended to your <code class="docutils literal notranslate"><span class="pre">$PATH</span></code> and <code class="docutils literal notranslate"><span class="pre">$LD_LIBRARY_PATH</span></code>. The standard compiler variables <code class="docutils literal notranslate"><span class="pre">FC</span></code>, <code class="docutils literal notranslate"><span class="pre">CC</span></code> and <code class="docutils literal notranslate"><span class="pre">CXX</span></code> are set as appropriate for your compiler/MPI combination. These environment variables reference to the Fortran, C, and C++ compilers respectively</p>
+<p>In addition, several environment variables are set that may be useful during the compilation process.  These variables are prefixed by <code class="docutils literal notranslate"><span class="pre">CURC</span></code> and may easily be found by searching your environment for <code class="docutils literal notranslate"><span class="pre">CURC</span></code> via <code class="docutils literal notranslate"><span class="pre">env</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">CURC</span></code>. This will yield output similar to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[johndoe@@c3cpu-a5-u17-2 ~]$ env | grep CURC
+CURC_INTEL_BIN=/curc/sw/intel/17.4/bin
+CURC_INTEL_INC=/curc/sw/intel/17.4/include
+CURC_INTEL_ROOT=/curc/sw/intel/17.4
+CURC_INTEL_LIB=/curc/sw/intel/17.4/lib
+CURC_HDF5_ROOT=/curc/sw/hdf5/1.10.1/impi/17.3/intel/17.4
+CURC_HDF5_INC=/curc/sw/hdf5/1.10.1/impi/17.3/intel/17.4/include
+CURC_HDF5_BIN=/curc/sw/hdf5/1.10.1/impi/17.3/intel/17.4/bin
+CURC_HDF5_LIB=/curc/sw/hdf5/1.10.1/impi/17.3/intel/17.4/lib
+[...]
+</pre></div>
+</div>
+<p>Once the relevant modules are loaded, you are ready to compile. For our HDF5 example, a compilation command that uses the environment variables set by the module system may look like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$FC my_program.f90 -I$CURC_HDF5_INC -L$CURC_HDF5_LIB -lhdf5_fortran -o my_program
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>Note:</strong> Your run-time environment should reflect your compilation environment. Be sure to include the same sequence of <code class="docutils literal notranslate"><span class="pre">module</span></code> commands in your job script as that used at compile time.</p>
+</div></blockquote>
+<section id="navigating-the-software-stack">
+<h2>Navigating the Software Stack<a class="headerlink" href="#navigating-the-software-stack" title="Link to this heading">#</a></h2>
+<p>The RC module system is hierarchical in nature, and available software libraries become visible to the user only after the compiler and MPI implementations that they depend on have been loaded. As noted above, modules should be loaded in the order: compiler, MPI, third-party software.  At each stage of the load, executing <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">avail</span></code> will reveal a list of newly available modules.  The <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code> command can be used to unload all currently loaded modules (note that the software stack will be unavailable from login nodes).</p>
+<p>For example, before choosing a compiler, we can view the available compilers with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[janedoe@c3cpu-a5-u17-2 ~]$ module purge
+[janedoe@c3cpu-a5-u17-2 ~]$ module avail
+</pre></div>
+</div>
+<p>This will yield output similar to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-----------------------------------</span> <span class="n">Compilers</span> <span class="o">--------------------------------------</span>
+   <span class="n">gcc</span><span class="o">/</span><span class="mf">6.1.0</span>    <span class="n">intel</span><span class="o">/</span><span class="mf">16.0.3</span> <span class="p">(</span><span class="n">m</span><span class="p">)</span>    <span class="n">intel</span><span class="o">/</span><span class="mf">17.0.0</span> <span class="p">(</span><span class="n">m</span><span class="p">)</span>    <span class="n">intel</span><span class="o">/</span><span class="mf">17.4</span> <span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">D</span><span class="p">)</span>    <span class="n">pgi</span><span class="o">/</span><span class="mf">16.5</span> <span class="p">,</span>
+</pre></div>
+</div>
+<p>Several compiler-independent modules will also be displayed. Those modules (e.g., the Julia module) can be loaded at any time, irrespective of the compiler or MPI version in use.</p>
+<p>If multiple versions of a package are available, a <code class="docutils literal notranslate"><span class="pre">D</span></code> is used to indicate the default version. When the version number is omitted during the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span></code> command, the default version will be used. Considering the output above, the following two commands are equivalent:</p>
+<p><code class="docutils literal notranslate"><span class="pre">[janedoe&#64;c3cpu-a5-u17-2</span> <span class="pre">~]$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">intel</span> </code></p>
+<p><code class="docutils literal notranslate"><span class="pre">[janedoe&#64;c3cpu-a5-u17-2</span> <span class="pre">~]$</span> <span class="pre">module</span> <span class="pre">load</span> <span class="pre">intel/17.4</span> </code></p>
+<p>Once the compiler is loaded, MPI-implementations and third-party
+serial libraries that depend on that compiler appear in the available module list until <code class="docutils literal notranslate"><span class="pre">MPI</span> <span class="pre">Implementations</span></code> and <code class="docutils literal notranslate"><span class="pre">Compiler</span> <span class="pre">Dependent</span> <span class="pre">Applications</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[janedoe@c3cpu-a5-u17-2 ~]$ module load intel
+[janedoe@c3cpu-a5-u17-2 ~]$ module avail
+----------------------------------- MPI Implementations --------------------------------------
+   impi/17.3
+---------------------------------- Compiler Dependent Applications ---------------------------
+   antlr/2.7.7    gdal/2.2.1    gsl/2.4        hdf5/1.10.1              (D)    jasper/1.900.1    mkl/17.3  (m)    ncview/2.1.7      openjpeg/2.2.0    szip/2.1.1
+   fftw/3.3.4     geos/3.6.2    hdf5/1.8.18    intel_cluster_tools/17.3        jpeg/9b           nco/4.6.0        netcdf/4.4.1.1    proj/4.9.2        zlib/1.2.11
+</pre></div>
+</div>
+<p>Choosing an MPI implementation will similarly reveal MPI-dependent software under the header <code class="docutils literal notranslate"><span class="pre">MPI</span> <span class="pre">Dependent</span> <span class="pre">Applications</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[janedoe@c3cpu-a5-u17-2 ~]$ module load impi
+[janedoe@c3cpu-a5-u17-2 ~]$ module avail
+ ---------------------------------- MPI Dependent Applications -------------------
+   boost/1.64.0        hdf5/1.8.18        lammps/31Mar17        perfsuite/1.1.4
+   fftw/3.3.4   (D)    hdf5/1.10.1 (D)    netcdf/4.4.1.1 (D)    petsc/3.8.0
+
+</pre></div>
+</div>
+<p>You may search for a particular software package using the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">spider</span></code> command. This is typically a two-stage process. First search on the general software name without including any version information. If the software exists on our system, a list of available versions will appear:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[janedoe@c3cpu-a5-u17-2 ~]$ module spider hdf5
+----------------------------------------------------------------
+  hdf5:
+----------------------------------------------------------------
+    Description:
+      HDF5 Tools and Library
+
+     Versions:
+        hdf5/1.8.15
+        hdf5/1.8.18
+        hdf5/1.10.0
+        hdf5/1.10.1
+</pre></div>
+</div>
+<p>Finally, to see which modules must be loaded to make your desired version available, run the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">spider</span></code> command again with the version information included:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[janedoe@c3cpu-a5-u17-2 ~]$ module spider hdf5/1.10.1
+------------------------------------------------------------------
+  hdf5: hdf5/1.10.1
+------------------------------------------------------------------
+    Description:
+      HDF5 Tools and Library
+
+    You will need to load all module(s) on any one of the lines below before
+    the &quot;hdf5/1.10.1&quot; module is available to load.
+
+      intel/17.4
+      intel/17.4  impi/17.3
+[...]
+</pre></div>
+</div>
+</section>
+<section id="compiler-and-optimization-recommendations">
+<h2>Compiler and Optimization Recommendations<a class="headerlink" href="#compiler-and-optimization-recommendations" title="Link to this heading">#</a></h2>
+<p>The Alpine cluster runs on AMD-designed hardware, whereas the Blanca cluster runs on Intel-designed hardware. As such, we <strong>strongly recommend</strong> using the appropriate compiler and MPI library when compiling software.  For production, we
+suggest compiling with the <code class="docutils literal notranslate"><span class="pre">-O2</span></code> or <code class="docutils literal notranslate"><span class="pre">-O3</span></code> optimization flags along with the vectorization flags appropriate for the node you plan to run on. More compiler options and flags can be found in <a class="reference external" href="https://developer.amd.com/wp-content/resources/Compiler%20Options%20Quick%20Ref%20Guide%20for%20AMD%20EPYC%207xx3%20Series%20Processors.pdf">AMD’s reference guide</a>.</p>
+</section>
+<section id="linking-to-the-math-kernel-library-mkl">
+<h2>Linking to the Math Kernel Library (MKL)<a class="headerlink" href="#linking-to-the-math-kernel-library-mkl" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://software.intel.com/en-us/mkl/documentation">The Intel Math Kernel Library
+(MKL)</a> provides optimized routines for a number of common mathematical
+operations. Notably, it provides interfaces to the LAPack and BLAS linear algebra libraries as well as the FFTW Fourier transform package.</p>
+<p>If you wish to link MKL to your Intel-compiled application, use the <code class="docutils literal notranslate"><span class="pre">-mkl</span></code> flag:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$CXX -O3 -xCORE-AVX2 my_program.cpp -o my_program.out -mkl
+</pre></div>
+</div>
+<p>If your application uses FFTW, you will also need to include MKL’s FFTW directory in your compilation command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$CXX -O3 -xCORE-AVX2 -I$CURC_MKL_INC/fftw my_program.cpp -o my_program.out -mkl
+</pre></div>
+</div>
+<p>For the GNU and PGI compilers, the link syntax becomes more
+complex. <a class="reference external" href="https://software.intel.com/en-us/articles/intel-mkl-link-line-advisor">The Intel Link
+Advisor</a> can be used to generate the appropriate linking syntax based on your application’s needs.</p>
+<p>For the GNU compiler, linking against sequential MKL libraries, the appropriate Fortran linking syntax is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$FC my_program.f90  -m64 -I$CURC_MKL_INC -o my_program.out  -L$CURC_MKL_LIB -Wl,--no-as-needed -lmkl_gf_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl
+</pre></div>
+</div>
+<p>The comparable c/c++ syntax would be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$FC my_program.cpp  -m64 -I$CURC_MKL_INC -o my_program.out   -L$CURC_MKL_LIB -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl
+</pre></div>
+</div>
+<p>Note that if your application uses FFTW, you will must use the FFTW include flag just as with the Intel compiler. See the link advisor or contact <a class="reference external" href="mailto:rc-help&#37;&#52;&#48;colorado&#46;edu">rc-help<span>&#64;</span>colorado<span>&#46;</span>edu</a> if you have additional questions about how to link MKL to your application.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="data-transfer.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data Transfer</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="monitoring-resources.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Monitoring Resources</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#navigating-the-software-stack">Navigating the Software Stack</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compiler-and-optimization-recommendations">Compiler and Optimization Recommendations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linking-to-the-math-kernel-library-mkl">Linking to the Math Kernel Library (MKL)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

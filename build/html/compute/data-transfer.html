@@ -1,0 +1,1114 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Data Transfer &#8212; Research Computing
+University of Colorado Boulder  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=31992893" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'compute/data-transfer';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Compiling and Linking" href="compiling.html" />
+    <link rel="prev" title="The Modules System" href="modules.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Research_Computing_black_letters.png" class="logo__image only-light" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>
+    <script>document.write(`<img src="../_static/Research_Computing_white_letters.png" class="logo__image only-dark" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accessing RC Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../access/logging-in.html">Logging In</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Compute Environment</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="node-types.html">Node types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filesystems.html">Filesystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">The Modules System</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compiling.html">Compiling and Linking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monitoring-resources.html">Monitoring Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Jobs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/running-apps-with-jobs.html">Running applications with Jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/batch-jobs.html">Batch Jobs and Job Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/interactive-jobs.html">Interactive jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/slurm-commands.html">Useful Slurm commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/job-resources.html">Slurm Flags, Partitions, and QoS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/squeue-status-codes.html"><code class="docutils literal notranslate"><span class="pre">squeue</span></code> status and reason codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/roce-enabled.html">Running jobs on RoCE enabled Nodes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gateways &amp; Portals</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../gateways/OnDemand.html">Open OnDemand <em>(Browser Based HPC Portal)</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gateways/jupyterhub.html">Jupyter Sessions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/loadbalancer.html">Load Balancer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/gaussian.html">Gaussian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/matlab.html">Matlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/python.html">Python and R with Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/GNUParallel.html">GNU Parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vasp.html">VASP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/Containerizationon.html">Containerization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/alphafold.html">AlphaFold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/spack.html">Spack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/sratoolkit.html">SRA Toolkit on Alpine</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming and Parallelization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../programming/coding-best-practices.html">Coding best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/parallel-programming-fundamentals.html">Fundamentals of parallel programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPIBestpractices.html">MPI Best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-C.html">Using MPI with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-Fortran.html">Using MPI with Fortran</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-C.html">Using OpenMP with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-Fortran.html">Using OpenMP with Fortran</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/index.html">CUmulus Cloud</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus1.html">Tutorial: Creating a CUmulus instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus2.html">Establish a Database to query Twitter and Store Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus3.html">CUmulus integration with CURC HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus4.html">Mounting a remote filesystem from a CUmulus Virtual Machine</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/utah-videos.html">University of Utah videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/other.html">Facilities, equipment, and other resources</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ResearchComputing/Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/compute/data-transfer.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Data Transfer</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#globus-transfers">Globus transfers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guest-collections-globus-shared-endpoints">Guest Collections (Globus Shared Endpoints)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#globus-to-aws-s3-bucket-connection">Globus to AWS S3 Bucket connection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filezilla">Filezilla</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-copy-scp">Secure Copy (scp)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rsync">Rsync</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-file-transfer-with-sftp">Interactive file transfer with sftp</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-scp-and-rsync">Automated scp and rsync</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rclone">Rclone</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-can-rclone-do-for-you">What can rclone do for you?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#features">Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-rclone-with-curc">How to use rclone with CURC</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-make-sure-rclone-is-installed">Step 1: Make sure rclone is installed</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-configuring-rclone-remote-connections">Step 2: Configuring rclone remote connections</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-basic-usage-commands-for-rclone">Step 3: Basic usage commands for rclone</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cu-large-file-transfer-service">CU Large File Transfer service</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dtn-ssh-host-keys">DTN SSH Host Keys</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-reading">More reading</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="data-transfer">
+<h1>Data Transfer<a class="headerlink" href="#data-transfer" title="Link to this heading">#</a></h1>
+<p>Research Computing supports several methods of file transfer. File
+transfers from a local system can be done through a web-based
+application called <em>Globus</em> or through command-line tools such as
+secure copy (<em>scp</em>), secure ftp (<em>sftp</em>) and <em>rsync</em>.</p>
+<p>Data transfers using SSH protocols can be done through the
+<a class="reference internal" href="node-types.html"><span class="std std-doc">CURC data transfer nodes</span></a> (DTN).
+Transfers via the DTNs support all types of transfers, including large and/or frequent file
+transfers and automated (passwordless) transfers.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UMBD7pSE0qI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<section id="globus-transfers">
+<h2>Globus transfers<a class="headerlink" href="#globus-transfers" title="Link to this heading">#</a></h2>
+<p>Globus file transfers are typically initiated through an interactive
+web application (command-line access to Globus is also available, but
+is beyond the scope of this document). Globus addresses deficiencies
+in traditional file-transfer mechanisms by automating large data
+transfers, resuming failed transfers, distributing large transfers
+across multiple servers, and brokering direct transfers between remote
+computing centers. Globus performs an MD5-Checksum for transfer verification.</p>
+<p>Globus can be used on macOS, Linux, and Windows operating systems and
+is RC’s recommended way of transferring data.</p>
+<p><a class="reference external" href="https://app.globus.org/">Sign into Globus Connect</a> by
+selecting “University of Colorado at Boulder” from the dropdown menu
+and by logging in using your CU IdentiKey and password.</p>
+<blockquote>
+<div><p><strong><em>Note for non-CU Boulder users:</em></strong> If you are with an institution other than CU Boulder (e.g. <strong>ACCESS</strong>), your institution may still be available for Globus authentication using the InCommon federation. Look for your institution in the dropdown menu (e.g. instead of <code class="docutils literal notranslate"><span class="pre">University</span> <span class="pre">of</span> <span class="pre">Colorado</span> <span class="pre">at</span> <span class="pre">Boulder</span></code> use <code class="docutils literal notranslate"><span class="pre">ACCESS</span></code>) and sign in with your local credentials. If your institution is not listed, you will need to <a class="reference external" href="https://www.globusid.org/create">create a Globus account</a>.</p>
+</div></blockquote>
+<p><img alt="" src="https://raw.githubusercontent.com/ResearchComputing/Research-Computing-User-Tutorials/master/File-Transfers/globus-image-1.png" /></p>
+<p>Research Computing storage resources are available via multiple Globus
+“endpoints.” You can connect to an RC endpoint using the “collections”
+field in the Globus web interface and searching for <code class="docutils literal notranslate"><span class="pre">CU</span> <span class="pre">Boulder</span> <span class="pre">Research</span> <span class="pre">Computing</span></code>. Log into the endpoint using your Research
+Computing credentials.</p>
+<p>You must configure a local endpoint in order to transfer files to/from
+your local computer. You can easily set up a Globus endpoint by
+installing <a class="reference external" href="https://www.globus.org/globus-connect-personal">Globus Connect
+Personal</a></p>
+<p>Using the web app, connect your local workstation endpoint with the
+Research Computing endpoint and transfer files easily using the Globus
+GUI.</p>
+<p><img alt="" src="https://raw.githubusercontent.com/ResearchComputing/Documentation/4597b5079815b791944251a1645ae91180e22d59/File-Transfers/globus-image-2new.PNG" /></p>
+</section>
+<section id="guest-collections-globus-shared-endpoints">
+<h2>Guest Collections (Globus Shared Endpoints)<a class="headerlink" href="#guest-collections-globus-shared-endpoints" title="Link to this heading">#</a></h2>
+<p>Using a Guest Collection (also known as a “Shared Endpoint”), You can share
+any file or folder that you have access to with anyone who
+has a Globus account. This is particularly useful for PetaLibrary users. PetaLibrary
+allocation owners can nominate a technical contact that is able to create <a class="reference external" href="https://docs.globus.org/how-to/share-files/">Globus Guest
+Collections</a> within their PetaLibrary allocation.</p>
+<p>Detailed information on creating Guest Collections is available <a class="reference external" href="https://docs.globus.org/how-to/share-files/">at
+docs.globus.org</a>.</p>
+</section>
+<section id="globus-to-aws-s3-bucket-connection">
+<h2>Globus to AWS S3 Bucket connection<a class="headerlink" href="#globus-to-aws-s3-bucket-connection" title="Link to this heading">#</a></h2>
+<p>CU Research Computing has a trial license for Globus to AWS S3 bucket connections which allow for transfers to/from CURC resources to AWS S3 buckets using the familiar Globus web app. For those that would like to use a command-line tool rclone is also available for transfers to/from AWS S3 buckets (see <a class="reference internal" href="#rclone">rclone example</a>). For <em>both</em> transfer methods it is assumed you already have an AWS S3 bucket already created and available. First search for your S3 bucket in the Globus collections search bar. The first time you establish connection to your S3 bucket you will need to authenticate via 2 sources:</p>
+<ol class="arabic simple">
+<li><p>Your CU IdentiKey and accept a Duo push</p></li>
+<li><p>Your AWS Credentials (access key and secret key)</p></li>
+</ol>
+<p>Once you have signed in one time, your AWS credentials will be stored on your individual Globus account. You will now be able to explore the file structure like you would any other Globus endpoint.</p>
+<blockquote>
+<div><p>Note: Transfer speeds from S3 buckets to CURC resources are roughly 20-30 times higher than the opposite direction. We are currently investigating this asymmetry, but if you are in need of fast transfer speeds from CURC resources to your S3 bucket we recommend using rclone.</p>
+</div></blockquote>
+</section>
+<section id="filezilla">
+<h2>Filezilla<a class="headerlink" href="#filezilla" title="Link to this heading">#</a></h2>
+<p>RC Users also have the option of connecting to RC via <em>Filezilla</em>. <em>Filezilla</em> is a file transfer GUI application that can be used on Windows, Mac, and Linux. Simply <a class="reference external" href="https://filezilla-project.org/">install Filezilla</a> and follow these steps:</p>
+<ol class="arabic simple">
+<li><p>Fill in the hostname, username, and password fields at the top of the application window.</p>
+<ul class="simple">
+<li><p><em>Data Transfer Node</em></p>
+<ul>
+<li><p>Host: sftp://dtn.rc.colorado.edu</p></li>
+<li><p>Username: your-rc-username</p></li>
+<li><p>Password: your-rc-password</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Press Enter. Accept your Duo 2-Factor notification. If the connection succeeds you will see your CURC filesystem on the “Remote Site” tab.</p></li>
+<li><p>Navigate to the file you would like to transfer in either your local filesystem or your CURC filesystem. Right click the file and click “Upload” or “Download”.</p></li>
+</ol>
+<p><strong>Troubleshooting:</strong></p>
+<ul class="simple">
+<li><p>If your connection is timing out before getting a Duo notification, try increasing the <em>Timeout</em> setting in <code class="docutils literal notranslate"><span class="pre">File-&gt;Settings</span></code>.</p></li>
+<li><p>If you receive the message ‘Insecure FTP Notification’, simply click cancel and ensure you have selected ‘sftp’ as your file transfer method.</p></li>
+<li><p>If your connection to a Data Transfer Node is not prompting a Duo notification double check you are connected to the CU Boulder Internal Network (if you are off campus VPN is required to connect to the campus internal network).</p></li>
+</ul>
+</section>
+<section id="secure-copy-scp">
+<h2>Secure Copy (scp)<a class="headerlink" href="#secure-copy-scp" title="Link to this heading">#</a></h2>
+<p>The Secure Copy utility, <code class="docutils literal notranslate"><span class="pre">scp</span></code>, can send data to and fetch data
+from a remote server.</p>
+<p>In the examples here, replace <code class="docutils literal notranslate"><span class="pre">&lt;path-to-file&gt;</span></code> with the path of the
+file you wish to copy, <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;</span></code> with your Research Computing
+username, and <code class="docutils literal notranslate"><span class="pre">&lt;target-path&gt;</span></code> with the full path to the directory you
+would like to send the file to.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copying files from a local workstation to Research Computing</span>
+scp<span class="w"> </span>&lt;path-to-file&gt;<span class="w"> </span>&lt;username&gt;@dtn.rc.colorado.edu:&lt;target-path&gt;<span class="w">   </span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copying files from Research Computing to a local workstation</span>
+scp<span class="w"> </span>&lt;username&gt;@dtn.rc.colorado.edu:&lt;path-to-file&gt;<span class="w"> </span>&lt;target-path&gt;<span class="w">    </span>
+</pre></div>
+</div>
+<p>Windows users can access scp through PowerShell or using a GUI
+application like <a class="reference external" href="https://winscp.net/eng/docs/protocols">WinSCP</a>.</p>
+<p>For more information on secure copy take a <a class="reference internal" href="#more-reading">look at some of our listed
+resources</a> or consult the scp manual page.</p>
+</section>
+<section id="rsync">
+<h2>Rsync<a class="headerlink" href="#rsync" title="Link to this heading">#</a></h2>
+<p>While <code class="docutils literal notranslate"><span class="pre">scp</span></code> is useful for simple file copy operations, the <code class="docutils literal notranslate"><span class="pre">rsync</span></code>
+utility can be used to synchronize files and directories across two
+locations. This can often lead to efficiencies in repeat-transfer
+scenarios, as rsync only copies files that are different between the
+source and target locations (and can even transfer partial files when
+only part of a file has changed). This can be very useful in reducing
+the amount of copies you may perform when synchronizing two
+datasets.</p>
+<p>In the examples here, replace <code class="docutils literal notranslate"><span class="pre">&lt;path-to-file&gt;</span></code> with the path of the
+file you wish to copy, <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;</span></code> with your Research Computing
+username, and <code class="docutils literal notranslate"><span class="pre">&lt;target-path&gt;</span></code> with the full path to the directory you
+would like to send the file to.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Synchronizing from a local workstation to Research Computing</span>
+rsync<span class="w"> </span>-r<span class="w"> </span>&lt;path-to-directory&gt;<span class="w"> </span>&lt;username&gt;@dtn.rc.colorado.edu:&lt;target-path&gt;<span class="w">  </span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Synchronizing from Research Computing to a local workstation</span>
+rsync<span class="w"> </span>-r<span class="w"> </span>&lt;username&gt;@dtn.rc.colorado.edu:&lt;path-to-directory&gt;<span class="w"> </span>&lt;target-path&gt;<span class="w">  </span>
+</pre></div>
+</div>
+<p>rsync is not available on Windows by default, but <a class="reference external" href="https://www.itefix.net/cwrsync">may be installed
+individually</a> or as part of <a class="reference external" href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">Windows
+Subsystem for Linux
+(WSL)</a>.</p>
+<p>For more information on rsync <a class="reference internal" href="#more-reading">check out some of our listed
+resources</a> or consult the rsync manual page.</p>
+</section>
+<section id="interactive-file-transfer-with-sftp">
+<h2>Interactive file transfer with sftp<a class="headerlink" href="#interactive-file-transfer-with-sftp" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">sftp</span></code> utility is an interactive alternative to <code class="docutils literal notranslate"><span class="pre">scp</span></code> that allows
+multiple, bi-directional transfer operations in a single
+session. Within an sftp session, a series of domain-specific file
+system commands can be used to navigate, move, remove, and copy data
+between a local system and Research Computing resources.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sftp<span class="w"> </span>&lt;username&gt;@dtn.rc.colorado.edu
+</pre></div>
+</div>
+<p>We can then use various commands to traverse and manipulate both local
+and remote file systems.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Function</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>cd</p></td>
+<td><p>Changes the directory of the remote computer</p></td>
+<td><p>cd remote_directory</p></td>
+</tr>
+<tr class="row-odd"><td><p>lcd</p></td>
+<td><p>Changes the directory of the local computer</p></td>
+<td><p>lcd local_directory</p></td>
+</tr>
+<tr class="row-even"><td><p>ls</p></td>
+<td><p>Lists the contents of the remote directory</p></td>
+<td><p>ls</p></td>
+</tr>
+<tr class="row-odd"><td><p>lls</p></td>
+<td><p>Lists the contents of the local directory</p></td>
+<td><p>lls</p></td>
+</tr>
+<tr class="row-even"><td><p>pwd</p></td>
+<td><p>Prints working directory of the remote computer</p></td>
+<td><p>pwd</p></td>
+</tr>
+<tr class="row-odd"><td><p>lpwd</p></td>
+<td><p>Prints working directory of the local computer</p></td>
+<td><p>lpwd</p></td>
+</tr>
+<tr class="row-even"><td><p>get</p></td>
+<td><p>Copies a file from the remote directory to the local directory</p></td>
+<td><p>get remote_file</p></td>
+</tr>
+<tr class="row-odd"><td><p>put</p></td>
+<td><p>Copies a file from the local directory to the remote directory</p></td>
+<td><p>put local_file</p></td>
+</tr>
+<tr class="row-even"><td><p>exit</p></td>
+<td><p>Closes the connection to the remote computer and exits the program</p></td>
+<td><p>exit</p></td>
+</tr>
+<tr class="row-odd"><td><p>help</p></td>
+<td><p>Displays application information on using commands</p></td>
+<td><p>help</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Windows users can access sftp through PowerShell or using a GUI
+application like <a class="reference external" href="https://winscp.net/eng/docs/protocols">WinSCP</a>.</p>
+<p>For more information on sftp <a class="reference internal" href="#more-reading">check out some of our listed
+resources</a> or consult the sftp manual page.</p>
+</section>
+<section id="automated-scp-and-rsync">
+<h2>Automated scp and rsync<a class="headerlink" href="#automated-scp-and-rsync" title="Link to this heading">#</a></h2>
+<p>Key-based transfers over the DTNs are only available to CU Boulder, CU Anschutz, and CU Denver users. <em>You must be on a CU (UCB/AMC/UCD) campus network or logged into the campus VPN to perform passwordless data transfers to CURC.</em> The <code class="docutils literal notranslate"><span class="pre">scp</span></code> and <code class="docutils literal notranslate"><span class="pre">rsync</span></code> commands both allow a user to transfer files without needing to reenter a password. All that is required is a few
+simple setup procedures to prepare your local machine.</p>
+<p><em>Note: these instructions only apply to local macOS and Linux systems. Automating file transfers from Windows is outside of the scope of this document.</em></p>
+<ol class="arabic simple">
+<li><p>Generate a local ssh key pair. You will only need to perform this once per local system. From a local terminal run:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519
+</pre></div>
+</div>
+<p>This creates <code class="docutils literal notranslate"><span class="pre">~/.ssh/id_ed25519</span></code> and <code class="docutils literal notranslate"><span class="pre">~/.ssh/id_ed25519.pub</span></code> on your
+local workstation (“~” denotes your home directory). <code class="docutils literal notranslate"><span class="pre">id_ed25519.pub</span></code>
+is public, and can be shared with others (including Research
+Computing). <code class="docutils literal notranslate"><span class="pre">id_ed25519</span></code> is private and <strong>should never leave the
+system that it was generated on.</strong></p>
+<ol class="arabic simple" start="2">
+<li><p>Follow the instructions <a class="reference internal" href="#../additional-resources/registrycilogon-instructions.md"><span class="xref myst">here</span></a> for requesting access to the CILogon Registry and uploading an ssh key.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">rsync</span></code> or <code class="docutils literal notranslate"><span class="pre">scp</span></code> to transfer files using an ssh key.</p></li>
+</ol>
+<p>With an ssh key pair generated and uploaded to <a class="reference external" href="https://registry.cilogon.org">https://registry.cilogon.org</a>,
+you are ready to transfer files over the DTNs using <code class="docutils literal notranslate"><span class="pre">rsync</span></code> or <code class="docutils literal notranslate"><span class="pre">scp</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rsync<span class="w"> </span>-av<span class="w"> </span>./myfile.txt<span class="w"> </span>dtn.rc.colorado.edu:/projects/ralphie/myfile.txt<span class="w">    </span><span class="c1"># using rsync</span>
+
+scp<span class="w"> </span>-v<span class="w"> </span>./myfile23.txt<span class="w"> </span>dtn.rc.colorado.edu:/pl/active/crdds/myfile.txt<span class="w">      </span><span class="c1"># using scp</span>
+</pre></div>
+</div>
+</section>
+<section id="rclone">
+<h2>Rclone<a class="headerlink" href="#rclone" title="Link to this heading">#</a></h2>
+<p>Rclone is a command line program to manage files on cloud storage. It is a feature rich alternative to cloud vendors’ web storage interfaces. <a class="reference external" href="https://rclone.org/#providers">Over 40 cloud storage products</a> support rclone including S3 object stores, business &amp; consumer file storage services, as well as standard transfer protocols. Rclone has powerful cloud equivalents to the unix commands rsync, cp, mv, mount, ls, ncdu, tree, rm, and cat. Rclone’s familiar syntax includes shell pipeline support, and <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> protection. It can be used at the command line, in scripts or via its <a class="reference external" href="https://rclone.org/rc/">API</a>.</p>
+<section id="what-can-rclone-do-for-you">
+<h3>What can rclone do for you?<a class="headerlink" href="#what-can-rclone-do-for-you" title="Link to this heading">#</a></h3>
+<p><strong>Rclone helps you:</strong></p>
+<ul class="simple">
+<li><p>Backup (and encrypt) files to cloud storage</p></li>
+<li><p>Restore (and decrypt) files from cloud storage</p></li>
+<li><p>Mirror cloud data to other cloud services or locally</p></li>
+<li><p>Migrate data to the cloud, or between cloud storage vendors</p></li>
+<li><p>Mount multiple, encrypted, cached or diverse cloud storage as a disk</p></li>
+<li><p>Analyse and account for data held on cloud storage using <a class="reference external" href="https://rclone.org/commands/rclone_lsf/">lsf</a>, <a class="reference external" href="https://rclone.org/commands/rclone_lsjson/">ljson</a>, <a class="reference external" href="https://rclone.org/commands/rclone_size/">size</a>, <a class="reference external" href="https://rclone.org/commands/rclone_ncdu/">ncdu</a></p></li>
+<li><p><a class="reference external" href="https://rclone.org/union/">Union</a> file systems together to present multiple local and/or cloud file systems as one</p></li>
+</ul>
+</section>
+<section id="features">
+<h3>Features<a class="headerlink" href="#features" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Transfers</p>
+<ul>
+<li><p>MD5, SHA1 hashes are checked at all times for file integrity</p></li>
+<li><p>Timestamps are preserved on files</p></li>
+<li><p>Operations can be restarted at any time</p></li>
+<li><p>Can be to and from network, e.g. two different cloud providers</p></li>
+<li><p>Can use multi-threaded downloads to local disk</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://rclone.org/commands/rclone_copy/">Copy</a> new or changed files to cloud storage</p></li>
+<li><p><a class="reference external" href="https://rclone.org/commands/rclone_sync/">Sync </a> (one way) to make a directory identical</p></li>
+<li><p><a class="reference external" href="https://rclone.org/commands/rclone_move/">Move</a> files to cloud storage deleting the local after verification</p></li>
+<li><p><a class="reference external" href="https://rclone.org/commands/rclone_check/">Check</a> hashes and for missing/extra files</p></li>
+<li><p><a class="reference external" href="https://rclone.org/commands/rclone_mount/">Mount</a> your cloud storage as a network disk</p></li>
+<li><p><a class="reference external" href="https://rclone.org/commands/rclone_serve/">Serve</a> local or remote files over HTTP/WebDav/FTP/SFTP/dlna</p></li>
+</ul>
+</section>
+<section id="how-to-use-rclone-with-curc">
+<h3>How to use rclone with CURC<a class="headerlink" href="#how-to-use-rclone-with-curc" title="Link to this heading">#</a></h3>
+<p>Since rclone is intended to be used with cloud technologies, any server that can use cloud protocols can use rclone to transfer data. Rclone can be used on the CURC system to connect and transfer data to/from cloud-based storage (e.g. google drive or AWS S3 buckets) as well as locally from your machine to connect to RC storage via ssh/sftp connection.</p>
+<section id="step-1-make-sure-rclone-is-installed">
+<h4>Step 1: Make sure rclone is installed<a class="headerlink" href="#step-1-make-sure-rclone-is-installed" title="Link to this heading">#</a></h4>
+<p><strong>On a laptop or desktop:</strong> Before connecting CURC storage resources to your local machine, you will need to first <a class="reference external" href="https://rclone.org/downloads/">download</a> and <a class="reference external" href="https://rclone.org/install/">install</a> it according to your system from the rclone <a class="reference external" href="https://rclone.org/">website</a>.</p>
+<p><strong>On CURC:</strong>
+Rclone has been added to the Alpine module stacks. To use rclone first first load the cluster-specific SLURM job scheduler instance (Alpine in this case) from a <em>login node</em>, then ssh to a compile or compute node to access the cluster’s module stack:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load slurm/alpine 	# Load Alpine Slurm Instance
+$ sinteractive 			# Access an Alpine compute node via an interactive job
+$ module load rclone/1.58.0 	# Load rclone module
+</pre></div>
+</div>
+</section>
+<section id="step-2-configuring-rclone-remote-connections">
+<h4>Step 2: Configuring rclone remote connections<a class="headerlink" href="#step-2-configuring-rclone-remote-connections" title="Link to this heading">#</a></h4>
+<p>Before using rclone you must set up a configuration file that details the information about the remote server you want to transfer data to. There are two different ways of setting up your rclone configuration file:</p>
+<p><strong>Create the <code class="docutils literal notranslate"><span class="pre">.conf</span></code> file manually</strong></p>
+<p>If you are already familiar with rclone and the options that are available to include into your rclone configuration file, you can simply navigate to your .config folder in your home directory on and create a folder for rclone to create a file to enter these options. Example below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd ~/.config
+$ mkdir rclone
+$ cd rclone
+$ vim rclone-test.conf
+</pre></div>
+</div>
+<p>Example <code class="docutils literal notranslate"><span class="pre">rclone-test.conf</span></code> contents:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">my_aws_s3_bucket</span><span class="p">]</span>
+<span class="nb">type</span> <span class="o">=</span> <span class="n">s3</span>
+<span class="n">provider</span> <span class="o">=</span> <span class="n">S3</span>
+<span class="n">access_key_id</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">enter</span> <span class="n">your</span> <span class="n">access</span> <span class="n">key</span> <span class="n">here</span><span class="o">&gt;</span>
+<span class="n">secret_access_key</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">enter</span> <span class="n">your</span> <span class="n">secret</span> <span class="n">key</span> <span class="n">here</span><span class="o">&gt;</span>
+<span class="n">region</span> <span class="o">=</span> <span class="n">us</span><span class="o">-</span><span class="n">west</span><span class="o">-</span><span class="mi">2</span>
+<span class="n">location_contraint</span> <span class="o">=</span> <span class="n">us</span><span class="o">-</span><span class="n">west</span><span class="o">-</span><span class="mi">2</span>
+<span class="n">acl</span> <span class="o">=</span> <span class="n">private</span>
+</pre></div>
+</div>
+<p><strong>Using the rclone prompt to create the .conf file</strong></p>
+<p>Once rclone is available to use run the command <code class="docutils literal notranslate"><span class="pre">rclone</span> <span class="pre">config</span></code> to see the options to create the configuration file. This example outlines configuring a connection to an AWS S3 bucket from Research Computing. See our <a class="reference internal" href="#../storage/petalibrary/gdrive.md"><span class="xref myst">Google Drive connection</span></a> and <a class="reference internal" href="#../storage/petalibrary/rclone.md"><span class="xref myst">Local connection to RC</span></a> examples for guides on other rclone connection methods.</p>
+<blockquote>
+<div><p><em><strong>Note: This example assumes you have an S3 bucket already set up with AWS credentials.</strong></em></p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Enter the value you wish to start with. For the purposes of this example, we are going to start with a new remote connection. So the value we will enter is ‘n’ and we will give a name to remote we are going to create.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rclone config
+Current remotes:
+
+Name                 Type
+====                 ====
+gdrive_test          drive
+s3_test	    	     s3
+
+e) Edit existing remote
+n) New remote
+d) Delete remote
+r) Rename remote
+c) Copy remote
+s) Set configuration password
+q) Quit config
+e/n/d/r/c/s/q&gt;n
+name&gt; aws_s3
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Next, you will be asked for a type of remote connection. There are <em>many</em> connection types (at the time of writing 46) - with new connection types added frequently - so please make sure to read through the options as they will likely change over time. We choose option <code class="docutils literal notranslate"><span class="pre">5</span></code> below for Amazon S3:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Option</span> <span class="n">Storage</span><span class="o">.</span>
+<span class="n">Type</span> <span class="n">of</span> <span class="n">storage</span> <span class="n">to</span> <span class="n">configure</span><span class="o">.</span>
+<span class="n">Choose</span> <span class="n">a</span> <span class="n">number</span> <span class="kn">from</span> <span class="nn">below</span><span class="p">,</span> <span class="ow">or</span> <span class="nb">type</span> <span class="ow">in</span> <span class="n">your</span> <span class="n">own</span> <span class="n">value</span><span class="o">.</span>
+ <span class="mi">1</span> <span class="o">/</span> <span class="mi">1</span><span class="n">Fichier</span>
+   \ <span class="p">(</span><span class="n">fichier</span><span class="p">)</span>
+	 <span class="o">...</span>
+ <span class="mi">5</span> <span class="o">/</span> <span class="n">Amazon</span> <span class="n">S3</span> <span class="n">Compliant</span> <span class="n">Storage</span> <span class="n">Providers</span> <span class="n">including</span> <span class="n">AWS</span><span class="p">,</span> <span class="n">Alibaba</span><span class="p">,</span> <span class="n">Ceph</span><span class="p">,</span> <span class="n">Digital</span> <span class="n">Ocean</span><span class="p">,</span> <span class="n">Dreamhost</span><span class="p">,</span> <span class="n">IBM</span> <span class="n">COS</span><span class="p">,</span> <span class="n">Lyve</span> <span class="n">Cloud</span><span class="p">,</span> <span class="n">Minio</span><span class="p">,</span> <span class="n">RackCorp</span><span class="p">,</span> <span class="n">SeaweedFS</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Tencent</span> <span class="n">COS</span>
+   \ <span class="p">(</span><span class="n">s3</span><span class="p">)</span>
+	 <span class="o">...</span>
+<span class="mi">46</span> <span class="o">/</span> <span class="n">seafile</span>
+   \ <span class="p">(</span><span class="n">seafile</span><span class="p">)</span>
+<span class="n">Storage</span><span class="o">&gt;</span> <span class="mi">5</span>
+
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Next, you will specify that the config file uses S3, in this case option 1:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Option</span> <span class="n">provider</span><span class="o">.</span>
+<span class="n">Choose</span> <span class="n">your</span> <span class="n">S3</span> <span class="n">provider</span><span class="o">.</span>
+<span class="n">Choose</span> <span class="n">a</span> <span class="n">number</span> <span class="kn">from</span> <span class="nn">below</span><span class="p">,</span> <span class="ow">or</span> <span class="nb">type</span> <span class="ow">in</span> <span class="n">your</span> <span class="n">own</span> <span class="n">value</span><span class="o">.</span>
+<span class="n">Press</span> <span class="n">Enter</span> <span class="n">to</span> <span class="n">leave</span> <span class="n">empty</span><span class="o">.</span>
+<span class="mi">1</span> <span class="o">/</span> <span class="n">Amazon</span> <span class="n">Web</span> <span class="n">Services</span> <span class="p">(</span><span class="n">AWS</span><span class="p">)</span> <span class="n">S3</span>
+   \ <span class="p">(</span><span class="n">AWS</span><span class="p">)</span>
+	 <span class="o">...</span>
+<span class="mi">17</span> <span class="o">/</span> <span class="n">Any</span> <span class="n">other</span> <span class="n">S3</span> <span class="n">compatible</span> <span class="n">provider</span>
+   \ <span class="p">(</span><span class="n">Other</span><span class="p">)</span>
+<span class="n">provider</span><span class="o">&gt;</span> <span class="mi">1</span> 
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Next, you will be asked for AWS credentials. At this point we are going to enter “false” because this example assumes you have your AWS S3 Accesskey/Secretkey combo which you will enter at the next step:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Option</span> <span class="n">env_auth</span><span class="o">.</span>
+<span class="n">Get</span> <span class="n">AWS</span> <span class="n">credentials</span> <span class="kn">from</span> <span class="nn">runtime</span> <span class="p">(</span><span class="n">environment</span> <span class="n">variables</span> <span class="ow">or</span> <span class="n">EC2</span><span class="o">/</span><span class="n">ECS</span> <span class="n">meta</span> <span class="n">data</span> <span class="k">if</span> <span class="n">no</span> <span class="n">env</span> <span class="nb">vars</span><span class="p">)</span><span class="o">.</span>
+<span class="n">Only</span> <span class="n">applies</span> <span class="k">if</span> <span class="n">access_key_id</span> <span class="ow">and</span> <span class="n">secret_access_key</span> <span class="ow">is</span> <span class="n">blank</span><span class="o">.</span>
+<span class="n">Choose</span> <span class="n">a</span> <span class="n">number</span> <span class="kn">from</span> <span class="nn">below</span><span class="p">,</span> <span class="ow">or</span> <span class="nb">type</span> <span class="ow">in</span> <span class="n">your</span> <span class="n">own</span> <span class="n">boolean</span> <span class="n">value</span> <span class="p">(</span><span class="n">true</span> <span class="ow">or</span> <span class="n">false</span><span class="p">)</span><span class="o">.</span>
+<span class="n">Press</span> <span class="n">Enter</span> <span class="k">for</span> <span class="n">the</span> <span class="n">default</span> <span class="p">(</span><span class="n">false</span><span class="p">)</span><span class="o">.</span>
+ <span class="mi">1</span> <span class="o">/</span> <span class="n">Enter</span> <span class="n">AWS</span> <span class="n">credentials</span> <span class="ow">in</span> <span class="n">the</span> <span class="nb">next</span> <span class="n">step</span><span class="o">.</span>
+   \ <span class="p">(</span><span class="n">false</span><span class="p">)</span>
+ <span class="mi">2</span> <span class="o">/</span> <span class="n">Get</span> <span class="n">AWS</span> <span class="n">credentials</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">environment</span> <span class="p">(</span><span class="n">env</span> <span class="nb">vars</span> <span class="ow">or</span> <span class="n">IAM</span><span class="p">)</span><span class="o">.</span>
+   \ <span class="p">(</span><span class="n">true</span><span class="p">)</span>
+<span class="n">env_auth</span><span class="o">&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Your Accesskey/Secretkey combo is unique to your AWS S3 Bucket. It is important to keep these secure to keep your data protected. So your entries for each value will be something similar in the faux example below:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Option</span> <span class="n">access_key_id</span><span class="o">.</span>
+<span class="n">AWS</span> <span class="n">Access</span> <span class="n">Key</span> <span class="n">ID</span><span class="o">.</span>
+<span class="n">Leave</span> <span class="n">blank</span> <span class="k">for</span> <span class="n">anonymous</span> <span class="n">access</span> <span class="ow">or</span> <span class="n">runtime</span> <span class="n">credentials</span><span class="o">.</span>
+<span class="n">Enter</span> <span class="n">a</span> <span class="n">value</span><span class="o">.</span> <span class="n">Press</span> <span class="n">Enter</span> <span class="n">to</span> <span class="n">leave</span> <span class="n">empty</span><span class="o">.</span>
+<span class="n">access_key_id</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">ACCESS</span><span class="o">-</span><span class="n">KEY</span><span class="o">&gt;</span>     
+<span class="n">Option</span> <span class="n">secret_access_key</span><span class="o">.</span>
+<span class="n">AWS</span> <span class="n">Secret</span> <span class="n">Access</span> <span class="n">Key</span> <span class="p">(</span><span class="n">password</span><span class="p">)</span><span class="o">.</span>
+<span class="n">Leave</span> <span class="n">blank</span> <span class="k">for</span> <span class="n">anonymous</span> <span class="n">access</span> <span class="ow">or</span> <span class="n">runtime</span> <span class="n">credentials</span><span class="o">.</span>
+<span class="n">Enter</span> <span class="n">a</span> <span class="n">value</span><span class="o">.</span> <span class="n">Press</span> <span class="n">Enter</span> <span class="n">to</span> <span class="n">leave</span> <span class="n">empty</span><span class="o">.</span>
+<span class="n">secret_access_key</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">SECRET</span><span class="o">-</span><span class="n">KEY</span><span class="o">&gt;</span> 
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>You will then be prompted to enter your region, here we are going to enter the value of ‘1’ (you can set your appropreate region):</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Option</span> <span class="n">region</span><span class="o">.</span>
+<span class="n">Region</span> <span class="n">to</span> <span class="n">connect</span> <span class="n">to</span><span class="o">.</span>
+<span class="n">Choose</span> <span class="n">a</span> <span class="n">number</span> <span class="kn">from</span> <span class="nn">below</span><span class="p">,</span> <span class="ow">or</span> <span class="nb">type</span> <span class="ow">in</span> <span class="n">your</span> <span class="n">own</span> <span class="n">value</span><span class="o">.</span>
+<span class="n">Press</span> <span class="n">Enter</span> <span class="n">to</span> <span class="n">leave</span> <span class="n">empty</span><span class="o">.</span>
+   <span class="o">/</span> <span class="n">The</span> <span class="n">default</span> <span class="n">endpoint</span> <span class="o">-</span> <span class="n">a</span> <span class="n">good</span> <span class="n">choice</span> <span class="k">if</span> <span class="n">you</span> <span class="n">are</span> <span class="n">unsure</span><span class="o">.</span>
+ <span class="mi">1</span> <span class="o">|</span> <span class="n">US</span> <span class="n">Region</span><span class="p">,</span> <span class="n">Northern</span> <span class="n">Virginia</span><span class="p">,</span> <span class="ow">or</span> <span class="n">Pacific</span> <span class="n">Northwest</span><span class="o">.</span>
+   <span class="o">|</span> <span class="n">Leave</span> <span class="n">location</span> <span class="n">constraint</span> <span class="n">empty</span><span class="o">.</span>
+   \ <span class="p">(</span><span class="n">us</span><span class="o">-</span><span class="n">east</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+	 <span class="o">...</span>
+<span class="n">region</span><span class="o">&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The next section asks for your endpoint to connect to. We are using AWS as the default endpoint, leave empty.</p></li>
+<li><p>Next will be a location prompt, we are going to leave this blank since we choose the default region above.</p></li>
+<li><p>The last step in the configuration file setup to choose the acl settings. This part is very important. There are many options for both private and public read/write/delete permissions, take extra care in choosing the value you enter. This example is going to choose the “private” option for informational purposes only. We will enter the value ‘1’ hit enter/return.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Option</span> <span class="n">acl</span><span class="o">.</span>
+<span class="n">Canned</span> <span class="n">ACL</span> <span class="n">used</span> <span class="n">when</span> <span class="n">creating</span> <span class="n">buckets</span> <span class="ow">and</span> <span class="n">storing</span> <span class="ow">or</span> <span class="n">copying</span> <span class="n">objects</span><span class="o">.</span>
+<span class="n">This</span> <span class="n">ACL</span> <span class="ow">is</span> <span class="n">used</span> <span class="k">for</span> <span class="n">creating</span> <span class="n">objects</span> <span class="ow">and</span> <span class="k">if</span> <span class="n">bucket_acl</span> <span class="n">isn</span><span class="s1">&#39;t set, for creating buckets too.</span>
+<span class="n">For</span> <span class="n">more</span> <span class="n">info</span> <span class="n">visit</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">docs</span><span class="o">.</span><span class="n">aws</span><span class="o">.</span><span class="n">amazon</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">AmazonS3</span><span class="o">/</span><span class="n">latest</span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">acl</span><span class="o">-</span><span class="n">overview</span><span class="o">.</span><span class="n">html</span><span class="c1">#canned-acl</span>
+<span class="n">Note</span> <span class="n">that</span> <span class="n">this</span> <span class="n">ACL</span> <span class="ow">is</span> <span class="n">applied</span> <span class="n">when</span> <span class="n">server</span><span class="o">-</span><span class="n">side</span> <span class="n">copying</span> <span class="n">objects</span> <span class="k">as</span> <span class="n">S3</span>
+<span class="n">doesn</span><span class="s1">&#39;t copy the ACL from the source but rather writes a fresh one.</span>
+<span class="n">Choose</span> <span class="n">a</span> <span class="n">number</span> <span class="kn">from</span> <span class="nn">below</span><span class="p">,</span> <span class="ow">or</span> <span class="nb">type</span> <span class="ow">in</span> <span class="n">your</span> <span class="n">own</span> <span class="n">value</span><span class="o">.</span>
+<span class="n">Press</span> <span class="n">Enter</span> <span class="n">to</span> <span class="n">leave</span> <span class="n">empty</span><span class="o">.</span>
+   <span class="o">/</span> <span class="n">Owner</span> <span class="n">gets</span> <span class="n">FULL_CONTROL</span><span class="o">.</span>
+ <span class="mi">1</span> <span class="o">|</span> <span class="n">No</span> <span class="n">one</span> <span class="k">else</span> <span class="n">has</span> <span class="n">access</span> <span class="n">rights</span> <span class="p">(</span><span class="n">default</span><span class="p">)</span><span class="o">.</span>
+   \ <span class="p">(</span><span class="n">private</span><span class="p">)</span>
+   <span class="o">/</span> <span class="n">Owner</span> <span class="n">gets</span> <span class="n">FULL_CONTROL</span><span class="o">.</span>
+ <span class="mi">2</span> <span class="o">|</span> <span class="n">The</span> <span class="n">AllUsers</span> <span class="n">group</span> <span class="n">gets</span> <span class="n">READ</span> <span class="n">access</span><span class="o">.</span>
+   \ <span class="p">(</span><span class="n">public</span><span class="o">-</span><span class="n">read</span><span class="p">)</span>
+   <span class="o">/</span> <span class="n">Owner</span> <span class="n">gets</span> <span class="n">FULL_CONTROL</span><span class="o">.</span>
+ <span class="mi">3</span> <span class="o">|</span> <span class="n">The</span> <span class="n">AllUsers</span> <span class="n">group</span> <span class="n">gets</span> <span class="n">READ</span> <span class="ow">and</span> <span class="n">WRITE</span> <span class="n">access</span><span class="o">.</span>
+   <span class="o">|</span> <span class="n">Granting</span> <span class="n">this</span> <span class="n">on</span> <span class="n">a</span> <span class="n">bucket</span> <span class="ow">is</span> <span class="n">generally</span> <span class="ow">not</span> <span class="n">recommended</span><span class="o">.</span>
+   \ <span class="p">(</span><span class="n">public</span><span class="o">-</span><span class="n">read</span><span class="o">-</span><span class="n">write</span><span class="p">)</span>
+   <span class="o">/</span> <span class="n">Owner</span> <span class="n">gets</span> <span class="n">FULL_CONTROL</span><span class="o">.</span>
+ <span class="mi">4</span> <span class="o">|</span> <span class="n">The</span> <span class="n">AuthenticatedUsers</span> <span class="n">group</span> <span class="n">gets</span> <span class="n">READ</span> <span class="n">access</span><span class="o">.</span>
+   \ <span class="p">(</span><span class="n">authenticated</span><span class="o">-</span><span class="n">read</span><span class="p">)</span>
+   <span class="o">/</span> <span class="n">Object</span> <span class="n">owner</span> <span class="n">gets</span> <span class="n">FULL_CONTROL</span><span class="o">.</span>
+ <span class="mi">5</span> <span class="o">|</span> <span class="n">Bucket</span> <span class="n">owner</span> <span class="n">gets</span> <span class="n">READ</span> <span class="n">access</span><span class="o">.</span>
+   <span class="o">|</span> <span class="n">If</span> <span class="n">you</span> <span class="n">specify</span> <span class="n">this</span> <span class="n">canned</span> <span class="n">ACL</span> <span class="n">when</span> <span class="n">creating</span> <span class="n">a</span> <span class="n">bucket</span><span class="p">,</span> <span class="n">Amazon</span> <span class="n">S3</span> <span class="n">ignores</span> <span class="n">it</span><span class="o">.</span>
+   \ <span class="p">(</span><span class="n">bucket</span><span class="o">-</span><span class="n">owner</span><span class="o">-</span><span class="n">read</span><span class="p">)</span>
+   <span class="o">/</span> <span class="n">Both</span> <span class="n">the</span> <span class="nb">object</span> <span class="n">owner</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">bucket</span> <span class="n">owner</span> <span class="n">get</span> <span class="n">FULL_CONTROL</span> <span class="n">over</span> <span class="n">the</span> <span class="nb">object</span><span class="o">.</span>
+ <span class="mi">6</span> <span class="o">|</span> <span class="n">If</span> <span class="n">you</span> <span class="n">specify</span> <span class="n">this</span> <span class="n">canned</span> <span class="n">ACL</span> <span class="n">when</span> <span class="n">creating</span> <span class="n">a</span> <span class="n">bucket</span><span class="p">,</span> <span class="n">Amazon</span> <span class="n">S3</span> <span class="n">ignores</span> <span class="n">it</span><span class="o">.</span>
+   \ <span class="p">(</span><span class="n">bucket</span><span class="o">-</span><span class="n">owner</span><span class="o">-</span><span class="n">full</span><span class="o">-</span><span class="n">control</span><span class="p">)</span>
+<span class="n">acl</span><span class="o">&gt;</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The following sections specify server side encryption and storage class, we will leave these as defaults.</p></li>
+<li><p>Next, choose ‘n’ to not continue to advanced settings, ‘y’ to continue with the setup, and then ‘q’ to quit the configuration file set up.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Edit advanced config?
+y) Yes
+n) No (default)
+y/n&gt; n
+--------------------
+[aws_s3]
+type = s3
+provider = AWS
+access_key_id = &lt;ACCESS-KEY&gt;
+secret_access_key = &lt;SECRET-KEY&gt; 
+region = us-east-1
+acl = private
+--------------------
+y) Yes this is OK (default)
+e) Edit this remote
+d) Delete this remote
+y/e/d&gt; y
+Current remotes:
+
+Name                 Type
+====                 ====
+gdrive_test          drive
+s3_test		     s3
+aws_s3	       	     s3
+
+e) Edit existing remote
+n) New remote
+d) Delete remote
+r) Rename remote
+c) Copy remote
+s) Set configuration password
+q) Quit config
+e/n/d/r/c/s/q&gt; q
+
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Once you have configured your connection you can list out your rclone remote connections:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rclone listremotes
+gdrive_test:
+s3_test:
+aws_s3:
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>and test your connection by listing out the contents within that remote connection:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ rclone ls aws_s3:
+</pre></div>
+</div>
+<p>Congratulations! You now have a remote rclone connection set up.</p>
+</section>
+<section id="step-3-basic-usage-commands-for-rclone">
+<h4>Step 3: Basic usage commands for rclone<a class="headerlink" href="#step-3-basic-usage-commands-for-rclone" title="Link to this heading">#</a></h4>
+<p>The basic syntax goes as follows rclone <code class="docutils literal notranslate"><span class="pre">&lt;function&gt;</span> <span class="pre">&lt;source&gt;</span> <span class="pre">&lt;destination</span> <span class="pre">endpoint&gt;:&lt;bucket&gt;</span></code>.</p>
+<p>the basic functions are:</p>
+<ul class="simple">
+<li><p>copy</p></li>
+<li><p>sync</p></li>
+<li><p>move</p></li>
+<li><p>check</p></li>
+<li><p>mount</p></li>
+<li><p>serve</p></li>
+</ul>
+<p>More information on rclone and the transfer functions can be found on <a class="reference external" href="https://rclone.org/docs/">their official documentation</a>.</p>
+<p>Example of a transfer via the rclone copy command from a CURC PetaLibrary allocation to your S3 bucket:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd /pl/active/rcops
+$ ls
+rclonetest.csv
+$ rclone copy rclonetest.csv aws_s3:testbucket/
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="cu-large-file-transfer-service">
+<h2>CU Large File Transfer service<a class="headerlink" href="#cu-large-file-transfer-service" title="Link to this heading">#</a></h2>
+<p>OIT also offers a <a class="reference external" href="http://oit.colorado.edu/safe-transfer">file transfer
+service</a> with a web interface
+which provides a good way to transfer files to collaborators. Files
+are uploaded to a server and a link to download the file can be
+emailed to an on- or off-campus user.</p>
+</section>
+<section id="dtn-ssh-host-keys">
+<h2>DTN SSH Host Keys<a class="headerlink" href="#dtn-ssh-host-keys" title="Link to this heading">#</a></h2>
+<p>The first time you use <code class="docutils literal notranslate"><span class="pre">scp</span></code>, <code class="docutils literal notranslate"><span class="pre">sftp</span></code>, or <code class="docutils literal notranslate"><span class="pre">ssh</span></code> with a DTN you will be
+asked to verify the host key. You can refer to the keys published here
+to confirm that you are connecting to a valid data transfer node.</p>
+<p>Our DTNs support multiple key types, but only one is used (or displayed)
+by your client at any given time.</p>
+<p>Fingerprint: <code class="docutils literal notranslate"><span class="pre">256</span> <span class="pre">SHA256:c8362Adxws21Si5dyqngBp1eCfvo7m/3cjT+gG6Nln4</span> <span class="pre">no</span> <span class="pre">comment</span> <span class="pre">(ECDSA)</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ecdsa</span><span class="o">-</span><span class="n">sha2</span><span class="o">-</span><span class="n">nistp256</span> <span class="n">AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOA0dGntTpowZ</span><span class="o">/</span><span class="n">YdjXJzaummHbw59nTRuUQZDXjnPvZXrEtpF</span><span class="o">+</span><span class="n">Db31iM9ytWCyjHAfH8FGfKJt</span><span class="o">/</span><span class="n">MuPubNcfr1Sg</span><span class="o">=</span>
+</pre></div>
+</div>
+<p>Fingerprint: <code class="docutils literal notranslate"><span class="pre">256</span> <span class="pre">SHA256:7o6maYG7Y3Mgw0js7GUTMb2r+FLIrcirXX1cHMOiUeo</span> <span class="pre">no</span> <span class="pre">comment</span> <span class="pre">(ED25519)</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span><span class="o">-</span><span class="n">ed25519</span> <span class="n">AAAAC3NzaC1lZDI1NTE5AAAAIKXkp8RQhYvNZMYGYzBpECKwwyB929enmFVz1Jm2LtkG</span>
+</pre></div>
+</div>
+<p>Fingerprint: <code class="docutils literal notranslate"><span class="pre">2048</span> <span class="pre">SHA256:6ZOTX25SbIBaH2HU3VClSD5GpdScFkeyzl/v4uWpBGI</span> <span class="pre">no</span> <span class="pre">comment</span> <span class="pre">(RSA)</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span><span class="o">-</span><span class="n">rsa</span> <span class="n">AAAAB3NzaC1yc2EAAAADAQABAAABAQC0Pp4D</span><span class="o">+</span><span class="n">GvSYfq0GB</span><span class="o">+</span><span class="n">dAEBQcKJTkeTkJ5bQlMPzkh1N8Zs1koh3fKymmV6FuMI5chuvP6pnmWogbwaCHuarF8pMKAIiYC6QHGKkMODFeAO1V0</span><span class="o">+</span><span class="n">ZBmRpTO0PdkqNCV04Y76lCnYH</span><span class="o">+</span><span class="n">VD2</span><span class="o">/</span><span class="n">gClqenTcEVS8OD7WZYz9YhlevXFuw</span><span class="o">/</span><span class="mi">4</span><span class="n">aQGCMmU0OdpKsJ1bAEGXDGrBasOXRV5uekbX6WrTYphr</span><span class="o">/</span><span class="n">ayPOjqltlTfP4</span><span class="o">/</span><span class="mi">2</span><span class="n">qhh2YCQhOEH</span><span class="o">+</span><span class="n">cKGIj2Tg7asP3PB</span><span class="o">/</span><span class="mi">7</span><span class="n">VFqRPKsN7nLrGCYD8tcdmvi6J0A0hmab1zgxYunxbEq</span><span class="o">+</span><span class="n">XSlN3gyT4WEy3qb1zu60IWRO4rJbrPD</span><span class="o">/</span><span class="n">uParzN3</span>
+</pre></div>
+</div>
+</section>
+<section id="more-reading">
+<h2>More reading<a class="headerlink" href="#more-reading" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://kb.iu.edu/d/akqg">Indiana University Tutorial on SFTP</a></p></li>
+<li><p><a class="reference external" href="https://acloudguru.com/blog/engineering/ssh-and-scp-howto-tips-tricks">A Cloud Guru’s Tutorial on SSH and SCP</a></p></li>
+<li><p><a class="reference external" href="https://www.ssh.com/ssh/sftp/">ssh.com’s Tutorial on SCP and SFTP</a></p></li>
+<li><p><a class="reference external" href="https://linuxize.com/post/how-to-use-rsync-for-local-and-remote-data-transfer-and-synchronization/">Linuxize’s Tutorial on Rsync</a></p></li>
+<li><p><a class="reference external" href="https://help.ubuntu.com/community/rsync">Ubuntu’s Documentation on Rsync</a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="modules.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">The Modules System</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="compiling.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Compiling and Linking</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#globus-transfers">Globus transfers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guest-collections-globus-shared-endpoints">Guest Collections (Globus Shared Endpoints)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#globus-to-aws-s3-bucket-connection">Globus to AWS S3 Bucket connection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filezilla">Filezilla</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-copy-scp">Secure Copy (scp)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rsync">Rsync</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-file-transfer-with-sftp">Interactive file transfer with sftp</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-scp-and-rsync">Automated scp and rsync</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rclone">Rclone</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-can-rclone-do-for-you">What can rclone do for you?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#features">Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-rclone-with-curc">How to use rclone with CURC</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-make-sure-rclone-is-installed">Step 1: Make sure rclone is installed</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-configuring-rclone-remote-connections">Step 2: Configuring rclone remote connections</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-basic-usage-commands-for-rclone">Step 3: Basic usage commands for rclone</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cu-large-file-transfer-service">CU Large File Transfer service</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dtn-ssh-host-keys">DTN SSH Host Keys</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-reading">More reading</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

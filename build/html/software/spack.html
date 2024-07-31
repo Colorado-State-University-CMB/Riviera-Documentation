@@ -1,0 +1,782 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Spack &#8212; Research Computing
+University of Colorado Boulder  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=31992893" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'software/spack';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SRA Toolkit on Alpine" href="sratoolkit.html" />
+    <link rel="prev" title="AlphaFold" href="alphafold.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Research_Computing_black_letters.png" class="logo__image only-light" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>
+    <script>document.write(`<img src="../_static/Research_Computing_white_letters.png" class="logo__image only-dark" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accessing RC Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../access/logging-in.html">Logging In</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Compute Environment</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../compute/node-types.html">Node types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/filesystems.html">Filesystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/modules.html">The Modules System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/data-transfer.html">Data Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/compiling.html">Compiling and Linking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/monitoring-resources.html">Monitoring Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Jobs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/running-apps-with-jobs.html">Running applications with Jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/batch-jobs.html">Batch Jobs and Job Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/interactive-jobs.html">Interactive jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/slurm-commands.html">Useful Slurm commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/job-resources.html">Slurm Flags, Partitions, and QoS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/squeue-status-codes.html"><code class="docutils literal notranslate"><span class="pre">squeue</span></code> status and reason codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/roce-enabled.html">Running jobs on RoCE enabled Nodes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gateways &amp; Portals</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../gateways/OnDemand.html">Open OnDemand <em>(Browser Based HPC Portal)</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gateways/jupyterhub.html">Jupyter Sessions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="loadbalancer.html">Load Balancer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gaussian.html">Gaussian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matlab.html">Matlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Python and R with Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GNUParallel.html">GNU Parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vasp.html">VASP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Containerizationon.html">Containerization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alphafold.html">AlphaFold</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Spack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sratoolkit.html">SRA Toolkit on Alpine</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming and Parallelization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../programming/coding-best-practices.html">Coding best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/parallel-programming-fundamentals.html">Fundamentals of parallel programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPIBestpractices.html">MPI Best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-C.html">Using MPI with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-Fortran.html">Using MPI with Fortran</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-C.html">Using OpenMP with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-Fortran.html">Using OpenMP with Fortran</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/index.html">CUmulus Cloud</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus1.html">Tutorial: Creating a CUmulus instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus2.html">Establish a Database to query Twitter and Store Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus3.html">CUmulus integration with CURC HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus4.html">Mounting a remote filesystem from a CUmulus Virtual Machine</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/utah-videos.html">University of Utah videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/other.html">Facilities, equipment, and other resources</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ResearchComputing/Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/software/spack.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Spack</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-spack-on-curc">Using Spack on CURC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activate-and-use-the-curc-spack-module">Activate and Use the CURC Spack Module</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-spack-environments">Using Spack Environments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-software-with-spack">Installing Software with Spack</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-locations-and-specifics">Installation Locations and Specifics</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-using-compilers-with-spack">Installing and Using Compilers with Spack</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-compiler-from-the-curc-stack">Adding a compiler from the CURC stack</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-spack-terms">Key Spack Terms:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-spack-commands">Basic Spack commands:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting-spack">Troubleshooting Spack</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="spack">
+<h1>Spack<a class="headerlink" href="#spack" title="Link to this heading">#</a></h1>
+<p><em>Currently, Spack is only available on Alpine.</em> <a class="reference external" href="https://spack.readthedocs.io/en/latest/">Spack</a> is a package manager designed for installing multiple configurations. Spack is designed for Supercomputing clusters, making it easy to install and configure software that may not currently be available in the Alpine software stack. The following documentation demonstrates how to activate &amp; use the CURC Spack module and utilize your own Spack environments to install packages and compilers.</p>
+<section id="using-spack-on-curc">
+<h2>Using Spack on CURC<a class="headerlink" href="#using-spack-on-curc" title="Link to this heading">#</a></h2>
+<p>You can follow these steps from a Research Computing terminal session via a compile job (<code class="docutils literal notranslate"><span class="pre">acompile</span></code>) or within a batch or interactive job.</p>
+<section id="activate-and-use-the-curc-spack-module">
+<h3>Activate and Use the CURC Spack Module<a class="headerlink" href="#activate-and-use-the-curc-spack-module" title="Link to this heading">#</a></h3>
+<p>Run the following command to load the Spack module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[johndoe@c3cpu-c11-u17-2 ~]$ module load spack
+</pre></div>
+</div>
+<p>You can confirm that spack has been loaded and find a list of useful spack commands by running the <code class="docutils literal notranslate"><span class="pre">spack</span> <span class="pre">help</span></code> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[johndoe@c3cpu-c11-u17-2 ~]$ spack help --all
+</pre></div>
+</div>
+</section>
+<section id="using-spack-environments">
+<h3>Using Spack Environments<a class="headerlink" href="#using-spack-environments" title="Link to this heading">#</a></h3>
+<p>Now that you’ve loaded the Spack module, you’ll need to create a spack environment in which you’ll install software.</p>
+<p><strong>1. Create a Spack environment.</strong>
+You can create a Spack environment with the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[johndoe@c3cpu-c11-u17-2 ~]$ spack env create &lt;environment name&gt;
+</pre></div>
+</div>
+<p>Note that, by default, environment specs are stored in <code class="docutils literal notranslate"><span class="pre">/projects/$USER/spack/environments/</span></code>. This location can be changed by modifying the <code class="docutils literal notranslate"><span class="pre">environments_root</span></code> variable within <code class="docutils literal notranslate"><span class="pre">~/.spack/config.yaml</span></code>.</p>
+<p><strong>2. Activate your Spack environment.</strong>
+You can activate your Spack environment with one of the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[johndoe@c3cpu-c11-u17-2 ~]$ spacktivate &lt;environment name&gt;
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[johndoe@c3cpu-c11-u17-2 ~]$ spack env activate &lt;environment name&gt;
+</pre></div>
+</div>
+<p>To deactivate your environment, you can use one of the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[johndoe@c3cpu-c11-u17-2 ~]$ despacktivate
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[johndoe@c3cpu-c11-u17-2 ~]$ spack env deactivate
+</pre></div>
+</div>
+</section>
+<section id="installing-software-with-spack">
+<h3>Installing Software with Spack<a class="headerlink" href="#installing-software-with-spack" title="Link to this heading">#</a></h3>
+<p>Once you’ve created and activated an environment, you can begin installing software using Spack. To search for available software in Spack easily, you can use <a class="reference external" href="https://packages.spack.io/">Spack’s provided search engine</a>. Additionally, you can use the Spack list command <code class="docutils literal notranslate"><span class="pre">spack</span> <span class="pre">list</span></code>, however, this command is slow as it lists all 7000+ packages available for installation with Spack. To search for a specific software by name, you can use <code class="docutils literal notranslate"><span class="pre">spack</span> <span class="pre">list</span> <span class="pre">&lt;software</span> <span class="pre">name&gt;</span></code>. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[johndoe@c3cpu-c11-u17-2 ~]$ spack list fastqc
+fastqc
+==&gt; 1 packages
+</pre></div>
+</div>
+<blockquote>
+<div><p>For additional information about a specific piece of software (available versions, variants, and dependencies), you can use the <code class="docutils literal notranslate"><span class="pre">spack</span> <span class="pre">info</span> <span class="pre">&lt;software</span> <span class="pre">name&gt;</span></code> command. Note that the ‘preferred version’ is the default version which will be installed if no alternative version is specified.</p>
+</div></blockquote>
+<p>Once you’ve confirmed that a piece of software is available, you can install it in the active environment using the <code class="docutils literal notranslate"><span class="pre">spack</span> <span class="pre">install</span> <span class="pre">--add</span></code> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[johndoe@c3cpu-c11-u17-2 ~]$ spack install --add fastqc
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>Note:</strong></p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">--add</span></code> argument is required to add package specs to an environment. You can separately add specs &gt;without installing a package using the <code class="docutils literal notranslate"><span class="pre">spack</span> <span class="pre">add</span> <span class="pre">&lt;software</span> <span class="pre">name&gt;</span></code> command.</p></li>
+<li><p>If no compiler is specified, then a default compiler will be installed and used within the environment.</p></li>
+</ul>
+</div></blockquote>
+<p>You can also modify the installation commands to meet your installation needs. You can specify which version you’d like to install using the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> operator:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[johndoe@c3cpu-c11-u17-2 ~]$ spack install --add fastqc@0.11.9
+</pre></div>
+</div>
+<p>Once you have installed a package, you can view what packages are installed in your environment using the <code class="docutils literal notranslate"><span class="pre">spack</span> <span class="pre">find</span></code> command. For example,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[johndoe@c3cpu-c11-u17-2 ~]$ spack find
+==&gt; In environment my_test_environment
+==&gt; Root specs
+fastqc@0.11.9
+
+==&gt; Installed packages
+-- linux-rhel8-zen / gcc@8.5.0 ----------------------------------
+berkeley-db@18.1.40  fastqc@0.11.9  ncurses@6.4        pkgconf@1.9.5
+bzip2@1.0.8          gdbm@1.23      openjdk@11.0.17_8  readline@8.2
+diffutils@3.9        libiconv@1.17  perl@5.36.0        zlib@1.2.13
+==&gt; 12 installed packages
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note that since we did not specify a compiler, the default compiler of <code class="docutils literal notranslate"><span class="pre">gcc&#64;8.5.0</span></code> was used. Please also note that the default compiler may change.</p>
+</div></blockquote>
+<section id="installation-locations-and-specifics">
+<h4>Installation Locations and Specifics<a class="headerlink" href="#installation-locations-and-specifics" title="Link to this heading">#</a></h4>
+<p>The root of the Spack installation tree, by default, is <code class="docutils literal notranslate"><span class="pre">/projects/$USER/software/spack</span></code> (this can be changed in <code class="docutils literal notranslate"><span class="pre">~/config.yaml</span></code>). From there, executables can be found in subdirectories depending on the OS and compiler used to install the software. Software will be installed here regardless of whether the software was installed in an environment.</p>
+<p>Spack will always check the installation root prior to installing software, in an environment or otherwise. If the software is not found in the installation root, it will be installed there. If the software is found in the installation root, it will not be installed. When attempting to install in an environment, symbolic links to the installation root will be created in <code class="docutils literal notranslate"><span class="pre">/projects/$USER/spack/environments/&lt;envname&gt;/.spack-env/view</span></code>. This behavior means that once a piece of software is installed, it can be linked to any environment without having to perform the installation again.</p>
+<p>The default cache is located at <code class="docutils literal notranslate"><span class="pre">/scratch/alpine/$USER/spack/cache</span></code>. This directory will contain any previously-installed tarballs and repositories, as well as any miscellaneous cache items.</p>
+</section>
+</section>
+<section id="installing-and-using-compilers-with-spack">
+<h3>Installing and Using Compilers with Spack<a class="headerlink" href="#installing-and-using-compilers-with-spack" title="Link to this heading">#</a></h3>
+<p>In addition to standard software packages, you can use Spack to install compilers which are not currently available in the Alpine software stack. It is highly recommended to <strong>NOT</strong> install compilers directly within the environment. Instead, we suggest that you first install the compiler outside of the environment. If it is installed directly within an environment, then it will depend on the default compiler within the environment. The following is our recommended way to install a new compiler and set it as the default compiler for your environment.</p>
+<ol class="arabic">
+<li><p>Install the compiler outside of your environment (only needs to be done once):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spack</span> <span class="n">install</span> <span class="n">gcc</span><span class="o">@</span><span class="mf">13.1.0</span>
+</pre></div>
+</div>
+</li>
+<li><p>Obtain the location of the compiler install and save it into a local environmental variable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>gcc_location=$(spack location -i gcc@13.1.0)
+</pre></div>
+</div>
+</li>
+<li><p>Create and activate your environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spack</span> <span class="n">env</span> <span class="n">create</span> <span class="n">my_test_env</span>
+<span class="n">spack</span> <span class="n">env</span> <span class="n">activate</span> <span class="n">my_test_env</span>
+</pre></div>
+</div>
+</li>
+<li><p>Remove any compilers that are in the environment already:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spack</span> <span class="n">compiler</span> <span class="n">remove</span> <span class="n">gcc</span> <span class="o">-</span><span class="n">a</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note that you can also remove intel compilers using <code class="docutils literal notranslate"><span class="pre">spack</span> <span class="pre">compiler</span> <span class="pre">remove</span> <span class="pre">intel</span> <span class="pre">-a</span></code></p>
+</div></blockquote>
+</li>
+<li><p>Add the compiler you installed outside of the environment and install the compiler into the environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>spack compiler add $gcc_location
+spack install --add gcc@13.1.0
+</pre></div>
+</div>
+</li>
+</ol>
+<blockquote>
+<div><p>Note that the install of the compiler within the environment is necessary as it will install all dependencies needed for the compiler.</p>
+</div></blockquote>
+<p>Once the compiler is added, you can install any subsequent packages using the compiler you’ve installed with the <code class="docutils literal notranslate"><span class="pre">%</span></code> operator. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[johndoe@c3cpu-c11-u17-2 ~]$ spack install --add fastqc%gcc@13.1.0
+</pre></div>
+</div>
+<blockquote>
+<div><p>Installing compilers can take a long time, so make sure you request enough time with <code class="docutils literal notranslate"><span class="pre">acompile</span></code> using the <code class="docutils literal notranslate"><span class="pre">--time</span></code> directive. Additionally, build times can be reduced by specifying more cores with <code class="docutils literal notranslate"><span class="pre">acompile</span> <span class="pre">-n</span> <span class="pre">4</span></code> (or even more cores with sinteractive jobs) in conjunction with <code class="docutils literal notranslate"><span class="pre">spack</span> <span class="pre">install</span> <span class="pre">--add</span> <span class="pre">-j</span> <span class="pre">4</span></code>.</p>
+</div></blockquote>
+<section id="adding-a-compiler-from-the-curc-stack">
+<h4>Adding a compiler from the CURC stack<a class="headerlink" href="#adding-a-compiler-from-the-curc-stack" title="Link to this heading">#</a></h4>
+<p>You can also add any compilers to spack that are already available in the Alpine software stack. To accomplish this, simply load the module associated with your preferred compiler:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[johndoe@c3cpu-c11-u17-2 ~]$ module load aocc/3.2.0
+</pre></div>
+</div>
+<p>From there, you can add the compiler to Spack. All compilers in the Alpine software stack can be located with the environment variable <code class="docutils literal notranslate"><span class="pre">CURC_&lt;compiler&gt;_BIN</span></code>. In the case of <code class="docutils literal notranslate"><span class="pre">aocc/3.2.0</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[johndoe@c3cpu-c11-u17-2 ~]$ spack compiler add $CURC_AOCC_BIN
+</pre></div>
+</div>
+</section>
+</section>
+<section id="key-spack-terms">
+<h3>Key Spack Terms:<a class="headerlink" href="#key-spack-terms" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Term</p></th>
+<th class="head"><p>Definition</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Spec</p></td>
+<td><p>Description of the build requirements for an installation. This includes the software, version, compiler, and other variants.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Variant</p></td>
+<td><p>An option or feature that can be toggled for a specific package. These usually correspond to a configuration or compilation setting.</p></td>
+</tr>
+<tr class="row-even"><td><p>Repo</p></td>
+<td><p>A central location which stores packages. Repo locations can be configured.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Environment</p></td>
+<td><p>A collection of packages and dependencies that are available to a user. In Spack, environments do not interact.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="basic-spack-commands">
+<h3>Basic Spack commands:<a class="headerlink" href="#basic-spack-commands" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">spack</span> <span class="pre">list</span></code></p></td>
+<td><p>Find and search for available packages by name</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">spack</span> <span class="pre">info</span></code></p></td>
+<td><p>Display detailed information about a package, including versions and dependencies</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">spack</span> <span class="pre">env</span> <span class="pre">create</span> <span class="pre">&lt;environment</span> <span class="pre">name&gt;</span></code></p></td>
+<td><p>Create a Spack environment</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">spack</span> <span class="pre">env</span> <span class="pre">list</span></code></p></td>
+<td><p>List all of your environments</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">spack</span> <span class="pre">env</span> <span class="pre">status</span></code></p></td>
+<td><p>Check which environment is currently activated</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">spack</span> <span class="pre">remove</span> <span class="pre">&lt;environment</span> <span class="pre">name&gt;</span></code></p></td>
+<td><p>Remove an environment</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">spacktivate</span> <span class="pre">&lt;environment</span> <span class="pre">name&gt;</span></code></p></td>
+<td><p>Activates a Spack environment</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">despacktivate</span></code></p></td>
+<td><p>Deactivates a Spack environment</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">spack</span> <span class="pre">find</span></code></p></td>
+<td><p>List and search packages installed in the active environment</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">spack</span> <span class="pre">install</span> <span class="pre">--add</span> <span class="pre">&lt;software&gt;</span></code></p></td>
+<td><p>Adds specs for selected package and installs it in the active environment</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">spack</span> <span class="pre">uninstall</span> <span class="pre">&lt;software&gt;</span></code></p></td>
+<td><p>Removes package from the activate environment. Refer to the <a class="reference external" href="https://spack-tutorial.readthedocs.io/en/latest/tutorial_environments.html#uninstalling-packages">spack documentation</a> for additional information</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">spack</span> <span class="pre">compilers</span></code></p></td>
+<td><p>Lists available compilers</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">spack</span> <span class="pre">spec</span> <span class="pre">&lt;software&gt;</span></code></p></td>
+<td><p>Shows all dependencies and items that would be installed if <code class="docutils literal notranslate"><span class="pre">&lt;software&gt;</span></code> is installed &gt;</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="troubleshooting-spack">
+<h3>Troubleshooting Spack<a class="headerlink" href="#troubleshooting-spack" title="Link to this heading">#</a></h3>
+<p>If an installation fails, there are several ways to troubleshoot the failure. Common issues with installations include:</p>
+<ul class="simple">
+<li><p><strong>Building with the wrong compiler:</strong> Double check if the compiler you are using is compatible with the software you are attempting to build.</p></li>
+<li><p><strong>Building with an incompatible variant set:</strong> Confirm that the configuration settings for the software are compatible and as expected. If not, try enabling or disabling variants that may be causing problems.</p>
+<ul>
+<li><p>One can easily see variants and possible conflicts by searching the package using <a class="reference external" href="https://packages.spack.io/">Spack’s provided search engine</a> and viewing the “Variants” and “Conflicts” section of the documentation. Additionally, one can view <code class="docutils literal notranslate"><span class="pre">package.py</span></code> in the “Build System” section to directly view the code that defines variants and conflicts.</p></li>
+</ul>
+</li>
+<li><p><strong>Building an unexpected version:</strong> Make sure you are building the intended version of a software. If a new version is failing, try insalling an older version.</p></li>
+<li><p><strong>Building with an unexpected version of a dependency:</strong> If there are issues installing a dependency, you can modify the specs of a dependency.</p></li>
+</ul>
+<p>Additionally, Spack will oftentimes output troubleshooting suggestions. To increase the verbosity of <code class="docutils literal notranslate"><span class="pre">spack</span> <span class="pre">install</span></code>, use <code class="docutils literal notranslate"><span class="pre">spack</span> <span class="pre">-dv</span> <span class="pre">install</span></code>.</p>
+<p><strong>Need additional help?</strong> Fill out our <a class="reference external" href="https://www.colorado.edu/rc/userservices/contact">help form</a> to request assistance. We are be happy to help with any questions you may have!</p>
+<p>Suggestions provided in the <code class="docutils literal notranslate"><span class="pre">Troubleshooting</span> <span class="pre">Spack</span></code> subsection were based off of Spack documentation written by <a class="reference external" href="https://docs.nersc.gov/development/build-tools/spack/">NERSC</a>.</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="alphafold.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">AlphaFold</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="sratoolkit.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">SRA Toolkit on Alpine</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-spack-on-curc">Using Spack on CURC</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activate-and-use-the-curc-spack-module">Activate and Use the CURC Spack Module</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-spack-environments">Using Spack Environments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-software-with-spack">Installing Software with Spack</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-locations-and-specifics">Installation Locations and Specifics</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-using-compilers-with-spack">Installing and Using Compilers with Spack</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-compiler-from-the-curc-stack">Adding a compiler from the CURC stack</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-spack-terms">Key Spack Terms:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-spack-commands">Basic Spack commands:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting-spack">Troubleshooting Spack</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

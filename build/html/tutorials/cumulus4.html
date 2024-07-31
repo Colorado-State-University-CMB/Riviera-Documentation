@@ -1,0 +1,614 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Mounting a remote filesystem from a CUmulus Virtual Machine &#8212; Research Computing
+University of Colorado Boulder  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=31992893" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/cumulus4';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="University of Utah videos" href="../additional-resources/utah-videos.html" />
+    <link rel="prev" title="CUmulus integration with CURC HPC" href="cumulus3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Research_Computing_black_letters.png" class="logo__image only-light" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>
+    <script>document.write(`<img src="../_static/Research_Computing_white_letters.png" class="logo__image only-dark" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accessing RC Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../access/logging-in.html">Logging In</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Compute Environment</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../compute/node-types.html">Node types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/filesystems.html">Filesystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/modules.html">The Modules System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/data-transfer.html">Data Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/compiling.html">Compiling and Linking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/monitoring-resources.html">Monitoring Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Jobs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/running-apps-with-jobs.html">Running applications with Jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/batch-jobs.html">Batch Jobs and Job Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/interactive-jobs.html">Interactive jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/slurm-commands.html">Useful Slurm commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/job-resources.html">Slurm Flags, Partitions, and QoS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/squeue-status-codes.html"><code class="docutils literal notranslate"><span class="pre">squeue</span></code> status and reason codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/roce-enabled.html">Running jobs on RoCE enabled Nodes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gateways &amp; Portals</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../gateways/OnDemand.html">Open OnDemand <em>(Browser Based HPC Portal)</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gateways/jupyterhub.html">Jupyter Sessions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/loadbalancer.html">Load Balancer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/gaussian.html">Gaussian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/matlab.html">Matlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/python.html">Python and R with Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/GNUParallel.html">GNU Parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vasp.html">VASP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/Containerizationon.html">Containerization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/alphafold.html">AlphaFold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/spack.html">Spack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/sratoolkit.html">SRA Toolkit on Alpine</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming and Parallelization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../programming/coding-best-practices.html">Coding best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/parallel-programming-fundamentals.html">Fundamentals of parallel programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPIBestpractices.html">MPI Best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-C.html">Using MPI with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-Fortran.html">Using MPI with Fortran</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-C.html">Using OpenMP with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-Fortran.html">Using OpenMP with Fortran</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">CUmulus Cloud</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cumulus1.html">Tutorial: Creating a CUmulus instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cumulus2.html">Establish a Database to query Twitter and Store Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cumulus3.html">CUmulus integration with CURC HPC</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Mounting a remote filesystem from a CUmulus Virtual Machine</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/utah-videos.html">University of Utah videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/other.html">Facilities, equipment, and other resources</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ResearchComputing/Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/tutorials/cumulus4.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Mounting a remote filesystem from a CUmulus Virtual Machine</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial">Tutorial</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-install-sshfs">Part 1: Install <code class="docutils literal notranslate"><span class="pre">sshfs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-mount-petalibrary-with-sshfs">Part 2: Mount PetaLibrary with <code class="docutils literal notranslate"><span class="pre">sshfs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-test-your-mount">Part 3: Test your mount</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4-remove-your-mount">Part 4: Remove your mount</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-information">Additional Information</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="mounting-a-remote-filesystem-from-a-cumulus-virtual-machine">
+<h1>Mounting a remote filesystem from a CUmulus Virtual Machine<a class="headerlink" href="#mounting-a-remote-filesystem-from-a-cumulus-virtual-machine" title="Link to this heading">#</a></h1>
+<p><em><strong>Learning Objectives:</strong></em></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/ResearchComputing/CUmulus_tutorials/edit/main/tutorial4/README.md#part-1-install-sshfs">Install the software needed to remotely mount a CURC PetaLibrary allocation</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ResearchComputing/CUmulus_tutorials/edit/main/tutorial4/README.md#part-2-mount-petalibrary-with-sshfs">Establish the remote mount to PetaLibrary</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ResearchComputing/CUmulus_tutorials/edit/main/tutorial4/README.md#part-3-test-your-mount">Test that you can view files and copy files to/from PetaLibrary</a></p></li>
+<li><p><a class="reference external" href="https://github.com/ResearchComputing/CUmulus_tutorials/edit/main/tutorial4/README.md#part-4-remove-your-mount">Remove the remote mount</a></p></li>
+</ul>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>Remote filesystems on CURC can be mounted as filesystems on CUmulus VMs.  This enables access to large datasets that may not otherwise be practical to place on the CUmulus VM, where storage is more limited. This tutorial demonstrates this capability. As a prerequisite, it is assumed you have already “spun-up” a CUmulus VM, as covered in <a class="reference internal" href="cumulus1.html"><span class="std std-doc">Tutorial 1</span></a>.</p>
+</section>
+<section id="tutorial">
+<h2>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading">#</a></h2>
+<p>Completing the steps below requires that you have first <a class="reference internal" href="cumulus1.html#part-3-logging-into-your-instance"><span class="std std-ref">logged into your VM</span></a></p>
+<section id="part-1-install-sshfs">
+<h3>Part 1: Install <code class="docutils literal notranslate"><span class="pre">sshfs</span></code><a class="headerlink" href="#part-1-install-sshfs" title="Link to this heading">#</a></h3>
+<p>The <a class="reference external" href="https://osxfuse.github.io">sshfs</a> software package provides an open-source solution for mounting your Petalibrary allocation to your CUmulus VM.</p>
+<p>If you are on an <em>Ubuntu</em> or <em>Debian</em> VM, <code class="docutils literal notranslate"><span class="pre">sshfs</span></code> can be installed as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>sshfs
+</pre></div>
+</div>
+<p>…or, if you are on a <em>Centos</em> or <em>Redhat</em> VM, <code class="docutils literal notranslate"><span class="pre">sshfs</span></code> can be installed as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum<span class="w"> </span>install<span class="w"> </span>fuse-sshfs
+</pre></div>
+</div>
+<p>…or, if you are on a <em>Windows</em> VM, see our documentation <a class="reference external" href="https://curc.readthedocs.io/en/latest/storage/petalibrary/mounting.html?highlight=sshfs#sshfs-on-windows">here</a></p>
+</section>
+<section id="part-2-mount-petalibrary-with-sshfs">
+<h3>Part 2: Mount PetaLibrary with <code class="docutils literal notranslate"><span class="pre">sshfs</span></code><a class="headerlink" href="#part-2-mount-petalibrary-with-sshfs" title="Link to this heading">#</a></h3>
+<p>Create a folder on the VM where you would like to mount your PetaLibrary allocation.  For simplicity, we will create a folder called <code class="docutils literal notranslate"><span class="pre">mypetalibrary</span></code> in our home (<code class="docutils literal notranslate"><span class="pre">~</span></code>) directory, but you could place the directory anywhere and call it anything you want:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>~/mypetalibrary
+</pre></div>
+</div>
+<p>Now mount your PetaLibrary allocation to the directory.  The generic syntax is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sshfs<span class="w"> </span>&lt;your-rc-username&gt;@dtn.rc.colorado.edu:/pl/active/&lt;your-pl-directory&gt;<span class="w"> </span>&lt;local-directory&gt;
+</pre></div>
+</div>
+<p>For example if your CURC username is <code class="docutils literal notranslate"><span class="pre">ralphie</span></code> and you want to mount your PetaLibrary allocation called <code class="docutils literal notranslate"><span class="pre">rcops</span></code> to <code class="docutils literal notranslate"><span class="pre">~/mypetalibrary</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sshfs<span class="w"> </span>ralphie@dtn.rc.colorado.edu:/pl/active/rcops<span class="w"> </span>~mypetalibrary
+</pre></div>
+</div>
+<p>You will be prompted for your password after execution. Type your password and accept the duo prompt.
+Your selected directory will now be mounted to your Petalibrary allocation.</p>
+</section>
+<section id="part-3-test-your-mount">
+<h3>Part 3: Test your mount<a class="headerlink" href="#part-3-test-your-mount" title="Link to this heading">#</a></h3>
+<p>Can you <em>see</em> the files in your PetaLibrary allocation?</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ubuntu@198.59.83.67:$<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span>~/mypetalibrary/
+drwxr-sr-x<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">411465</span><span class="w"> </span><span class="m">1000000</span><span class="w">        </span><span class="m">2</span><span class="w"> </span>Jun<span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">2021</span><span class="w">  </span>gtest
+drwxr-sr-x<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">416810</span><span class="w"> </span><span class="m">1000000</span><span class="w">        </span><span class="m">8</span><span class="w"> </span>Feb<span class="w"> </span><span class="m">20</span><span class="w">  </span><span class="m">2020</span><span class="w">  </span>ior-testing
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w">    </span>root<span class="w">     </span><span class="m">4194304</span><span class="w"> </span>Oct<span class="w">  </span><span class="m">8</span><span class="w">  </span><span class="m">2020</span><span class="w">  </span>testfile
+</pre></div>
+</div>
+<p>…yes!</p>
+<p>Can you copy a file <em>from</em> the PetaLibrary allocation?</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ubuntu@198.59.83.67:$<span class="w"> </span>cp<span class="w"> </span>~/mypetalibrary/testfile<span class="w"> </span>.
+ubuntu@198.59.83.67:$<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span>.
+total<span class="w"> </span><span class="m">4100</span>
+drwxrws--x<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1000000</span><span class="w"> </span><span class="m">1000000</span><span class="w">      </span><span class="m">70</span><span class="w"> </span>Mar<span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">16</span>:07<span class="w"> </span>mypetalibrary
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>ubuntu<span class="w">  </span>ubuntu<span class="w">  </span><span class="m">4194304</span><span class="w"> </span>Mar<span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">19</span>:13<span class="w"> </span>testfile
+</pre></div>
+</div>
+<p>…yes! Can you create a new file and copy it <em>to</em> the PetaLibrary allocation?</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ubuntu@198.59.83.67:$<span class="w"> </span>touch<span class="w"> </span>newtestfile
+ubuntu@198.59.83.67:$<span class="w"> </span>cp<span class="w"> </span>newtestfile<span class="w"> </span>~/mypetalibrary/
+ubuntu@198.59.83.67:$<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span>~/mypetalibrary/newtestfile
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">122971</span><span class="w"> </span><span class="m">1000000</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>Mar<span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">19</span>:14<span class="w"> </span>/home/ubuntu/mypetalibrary/newtestfile
+</pre></div>
+</div>
+<p>…yes!  Note that the user and group IDs (UID/GID) don’t map from CURC to CUmulus by default. so these will show up as numbers that correspond with the username under which you established the ssh mount (i.e., <code class="docutils literal notranslate"><span class="pre">122971</span></code> maps to <code class="docutils literal notranslate"><span class="pre">ralphie</span></code> in the example above).</p>
+</section>
+<section id="part-4-remove-your-mount">
+<h3>Part 4: Remove your mount<a class="headerlink" href="#part-4-remove-your-mount" title="Link to this heading">#</a></h3>
+<p>Should you need to remove your mount, type the following, for example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sshfs<span class="w"> </span>umount<span class="w"> </span>~/mypetalibrary
+</pre></div>
+</div>
+</section>
+</section>
+<section id="additional-information">
+<h2>Additional Information<a class="headerlink" href="#additional-information" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#../cloud/cumulus/cumulus.md"><span class="xref myst">CUmulus documentation</span></a></p></li>
+<li><p><a class="reference external" href="https://docs.openstack.org/horizon/latest/user/index.html">OpenStack User Documentation</a></p></li>
+<li><p><a class="reference internal" href="#../storage/petalibrary/index.md"><span class="xref myst">PetaLibrary Documentation</span></a></p></li>
+</ul>
+<blockquote>
+<div><p>This work has been funded in part by the National Science Foundation under grant OAC-1925766</p>
+</div></blockquote>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="cumulus3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">CUmulus integration with CURC HPC</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../additional-resources/utah-videos.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">University of Utah videos</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial">Tutorial</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-install-sshfs">Part 1: Install <code class="docutils literal notranslate"><span class="pre">sshfs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-mount-petalibrary-with-sshfs">Part 2: Mount PetaLibrary with <code class="docutils literal notranslate"><span class="pre">sshfs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-test-your-mount">Part 3: Test your mount</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4-remove-your-mount">Part 4: Remove your mount</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-information">Additional Information</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

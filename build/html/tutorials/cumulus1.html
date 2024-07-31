@@ -1,0 +1,778 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tutorial: Creating a CUmulus instance &#8212; Research Computing
+University of Colorado Boulder  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=31992893" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/cumulus1';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Establish a Database to query Twitter and Store Results" href="cumulus2.html" />
+    <link rel="prev" title="CUmulus Cloud" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Research_Computing_black_letters.png" class="logo__image only-light" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>
+    <script>document.write(`<img src="../_static/Research_Computing_white_letters.png" class="logo__image only-dark" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accessing RC Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../access/logging-in.html">Logging In</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Compute Environment</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../compute/node-types.html">Node types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/filesystems.html">Filesystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/modules.html">The Modules System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/data-transfer.html">Data Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/compiling.html">Compiling and Linking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/monitoring-resources.html">Monitoring Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Jobs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/running-apps-with-jobs.html">Running applications with Jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/batch-jobs.html">Batch Jobs and Job Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/interactive-jobs.html">Interactive jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/slurm-commands.html">Useful Slurm commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/job-resources.html">Slurm Flags, Partitions, and QoS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/squeue-status-codes.html"><code class="docutils literal notranslate"><span class="pre">squeue</span></code> status and reason codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/roce-enabled.html">Running jobs on RoCE enabled Nodes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gateways &amp; Portals</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../gateways/OnDemand.html">Open OnDemand <em>(Browser Based HPC Portal)</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gateways/jupyterhub.html">Jupyter Sessions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/loadbalancer.html">Load Balancer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/gaussian.html">Gaussian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/matlab.html">Matlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/python.html">Python and R with Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/GNUParallel.html">GNU Parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vasp.html">VASP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/Containerizationon.html">Containerization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/alphafold.html">AlphaFold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/spack.html">Spack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/sratoolkit.html">SRA Toolkit on Alpine</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming and Parallelization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../programming/coding-best-practices.html">Coding best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/parallel-programming-fundamentals.html">Fundamentals of parallel programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPIBestpractices.html">MPI Best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-C.html">Using MPI with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-Fortran.html">Using MPI with Fortran</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-C.html">Using OpenMP with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-Fortran.html">Using OpenMP with Fortran</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">CUmulus Cloud</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Tutorial: Creating a CUmulus instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cumulus2.html">Establish a Database to query Twitter and Store Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cumulus3.html">CUmulus integration with CURC HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cumulus4.html">Mounting a remote filesystem from a CUmulus Virtual Machine</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/utah-videos.html">University of Utah videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/other.html">Facilities, equipment, and other resources</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ResearchComputing/Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/tutorials/cumulus1.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tutorial: Creating a CUmulus instance</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives"><em>Learning Objectives:</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-logging-in-to-cumulus-via-horizon">Part 1: Logging in to CUmulus via Horizon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-in-with-your-institutions-credentials"><em>Log in with your institution’s credentials:</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#navigate-horizon"><em>Navigate Horizon</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#navigate-horizon-overview"><em>Navigate Horizon: Overview</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-instance-creation">Part 2: Instance Creation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-creation-launch-a-new-instance"><em>Instance creation: Launch a new instance</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-creation-details"><em>Instance creation: Details</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-creation-source"><em>Instance creation: Source</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-creation-flavor"><em>Instance creation: Flavor</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-creation-networks-network-ports"><em>Instance creation: Networks &amp; Network Ports</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-creation-security-groups"><em>Instance creation: Security Groups</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-creation-key-pair"><em>Instance creation: Key Pair</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-creation-configuration-server-group-scheduler-hints-and-metadata"><em>Instance creation: Configuration, Server Group, Scheduler Hints, and Metadata</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-creation-launch-instance-and-associate-ip"><em>Instance creation: Launch Instance and Associate IP</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-logging-into-your-instance">Part 3: Logging into your Instance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-information">Additional Information</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="tutorial-creating-a-cumulus-instance">
+<h1>Tutorial: Creating a CUmulus instance<a class="headerlink" href="#tutorial-creating-a-cumulus-instance" title="Link to this heading">#</a></h1>
+<section id="learning-objectives">
+<h2><em>Learning Objectives:</em><a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#part-1-logging-in-to-cumulus-via-horizon">Logging into CUmulus via Horizon</a> (the CUmulus web portal)</p></li>
+<li><p><a class="reference internal" href="#part-2-instance-creation">Creating your instance</a> (i.e. virtual machine)</p></li>
+<li><p><a class="reference internal" href="#part-3-logging-into-your-instance">Logging into your instance</a> via <code class="docutils literal notranslate"><span class="pre">ssh</span></code></p></li>
+</ul>
+</section>
+<section id="part-1-logging-in-to-cumulus-via-horizon">
+<h2>Part 1: Logging in to CUmulus via Horizon<a class="headerlink" href="#part-1-logging-in-to-cumulus-via-horizon" title="Link to this heading">#</a></h2>
+<p><em>Horizon is the CUmulus web portal, hosted at https://cumulus.rc.colorado.edu. Let’s take a brief tour of Horizon</em>.</p>
+</section>
+<section id="log-in-with-your-institutions-credentials">
+<h2><em>Log in with your institution’s credentials:</em><a class="headerlink" href="#log-in-with-your-institutions-credentials" title="Link to this heading">#</a></h2>
+<p>Navigate to https://cumulus.rc.colorado.edu and authenticate using your insitution’s credentials (e.g., University of Colorado Boulder)</p>
+<p><img alt="" src="../_images/login.png" /></p>
+</section>
+<section id="navigate-horizon">
+<h2><em>Navigate Horizon</em><a class="headerlink" href="#navigate-horizon" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Choose your project (top left)</p>
+<ul>
+<li><p><em>Note: Generally users only have 1 project</em></p></li>
+</ul>
+</li>
+<li><p>There are 4 main sections we use to administer projects:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Compute</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Volumes</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Networks</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Orchestration</span></code></p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="../_images/navigate_intro.png" /></p>
+</section>
+<section id="navigate-horizon-overview">
+<h2><em>Navigate Horizon: Overview</em><a class="headerlink" href="#navigate-horizon-overview" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Land on the Overview page under “Compute” to get a quick summary of your project</p></li>
+</ul>
+<p><img alt="" src="../_images/navigate_overview.png" /></p>
+</section>
+<section id="part-2-instance-creation">
+<h2>Part 2: Instance Creation<a class="headerlink" href="#part-2-instance-creation" title="Link to this heading">#</a></h2>
+<section id="instance-creation-launch-a-new-instance">
+<h3><em>Instance creation: Launch a new instance</em><a class="headerlink" href="#instance-creation-launch-a-new-instance" title="Link to this heading">#</a></h3>
+<p><em>Instances are virtual machines that run inside the cloud, more simply: an instance is just a digital version of a physical computer.</em></p>
+<ul class="simple">
+<li><p><em>Instances can perform almost all of the same functions as a computer, including running applications and operating systems.</em></p></li>
+</ul>
+<p>Do the following:</p>
+<ol class="arabic simple">
+<li><p>Select a project</p></li>
+<li><p>Navigate to “Compute”</p></li>
+<li><p>Select “Instances”</p></li>
+<li><p>click “Launch Instance” to begin creating your virtual machine.</p></li>
+</ol>
+<p><img alt="" src="../_images/navigate_to_instances.png" /></p>
+</section>
+<section id="instance-creation-details">
+<h3><em>Instance creation: Details</em><a class="headerlink" href="#instance-creation-details" title="Link to this heading">#</a></h3>
+<p>The first instance creation screen is entiled <em><strong>Details</strong></em>:</p>
+<p><img alt="" src="../_images/instance_details.png" /></p>
+<ul class="simple">
+<li><p>Fill out the instance <em>name</em> and <em>description</em></p>
+<ul>
+<li><p><em>availability zone</em> and <em>count</em> can be left as default. This value is set to the availability zone given by the cloud provider (for example, us-west or apac-south).</p></li>
+</ul>
+</li>
+<li><p>click <code class="docutils literal notranslate"><span class="pre">Next</span></code> when done to go to the <em><strong>Source</strong></em> screen.</p></li>
+</ul>
+</section>
+<section id="instance-creation-source">
+<h3><em>Instance creation: Source</em><a class="headerlink" href="#instance-creation-source" title="Link to this heading">#</a></h3>
+<p>Next, we’ll select our boot source. We’re starting a new instance from scratch here so we’ll boot from a source OS image.</p>
+<p><img alt="" src="../_images/instance_source.png" /></p>
+<ul class="simple">
+<li><p>Choose an operating system from the list of images CURC provides (in this example we pick Ubuntu 18.04)</p></li>
+<li><p>Choose a storage volume size</p>
+<ul>
+<li><p><em>For this tutorial, choose 4 GB</em></p></li>
+<li><p><em>Choosing an image will auto-populate the size, warning you if it is too small</em></p></li>
+</ul>
+</li>
+<li><p>Choose to have your storage volume deleted on Instance Deletion</p>
+<ul>
+<li><p>If you select <em>No</em> be aware “zombie” volumes will remain when the instance is deleted (you will need to remove them manually later!)</p></li>
+</ul>
+</li>
+<li><p>click <code class="docutils literal notranslate"><span class="pre">Next</span></code> when done to go to the <em><strong>Flavor</strong></em> screen.</p></li>
+</ul>
+</section>
+<section id="instance-creation-flavor">
+<h3><em>Instance creation: Flavor</em><a class="headerlink" href="#instance-creation-flavor" title="Link to this heading">#</a></h3>
+<p>A flavor defines the compute, memory, and storage capacity of our instance.</p>
+<p><img alt="" src="../_images/instance_flavor.png" /></p>
+<ul class="simple">
+<li><p>Choose the most appropriate sizing for your use case from a list of pre-selected resources</p>
+<ul>
+<li><p><em>For this tutorial, select the smallest size</em></p></li>
+</ul>
+</li>
+<li><p>click <code class="docutils literal notranslate"><span class="pre">Next</span></code> when done to go to the <em><strong>Networks</strong></em> screen.</p></li>
+</ul>
+</section>
+<section id="instance-creation-networks-network-ports">
+<h3><em>Instance creation: Networks &amp; Network Ports</em><a class="headerlink" href="#instance-creation-networks-network-ports" title="Link to this heading">#</a></h3>
+<p><img alt="" src="../_images/instance_networks.png" /></p>
+<ul class="simple">
+<li><p>Select a project network, which determines routability of either a public/internet (26140) or campus/internal (1840) floating IP.</p>
+<ul>
+<li><p><em>For this tutorial we’ll choose an external network, 26140</em></p></li>
+</ul>
+</li>
+<li><p>click <code class="docutils literal notranslate"><span class="pre">Next</span></code> when done to go to the <em><strong>Ports</strong></em> screen.</p>
+<ul>
+<li><p>Ports provide extra communication channels to your instances.</p></li>
+<li><p>You can select ports instead of networks or a mix of both.</p></li>
+</ul>
+</li>
+<li><p>click <code class="docutils literal notranslate"><span class="pre">Next</span></code> when done to go to the <em><strong>Security Groups</strong></em> screen.</p></li>
+</ul>
+</section>
+<section id="instance-creation-security-groups">
+<h3><em>Instance creation: Security Groups</em><a class="headerlink" href="#instance-creation-security-groups" title="Link to this heading">#</a></h3>
+<p><img alt="" src="../_images/instance_security_groups.png" /></p>
+<ul class="simple">
+<li><p>Security Groups act as a virtual firewall for your instance to control inbound and outbound traffic.</p>
+<ul>
+<li><p>Choose <code class="docutils literal notranslate"><span class="pre">ssh-restricted</span></code>, <code class="docutils literal notranslate"><span class="pre">http</span></code>, and <code class="docutils literal notranslate"><span class="pre">https</span></code> for this tutorial</p></li>
+</ul>
+</li>
+<li><p>click <code class="docutils literal notranslate"><span class="pre">Next</span></code> when done to go to the <em><strong>Key Pair</strong></em> screen.</p></li>
+</ul>
+</section>
+<section id="instance-creation-key-pair">
+<h3><em>Instance creation: Key Pair</em><a class="headerlink" href="#instance-creation-key-pair" title="Link to this heading">#</a></h3>
+<p><img alt="" src="../_images/instance_keypair.png" /></p>
+<ul class="simple">
+<li><p>A key pair allows you to SSH into your new instance.</p></li>
+<li><p>You may select an existing key pair, import a key pair, or generate a new key pair.</p>
+<ul>
+<li><p><em>Tip: it is often easiest to create a keypair in a terminal on your local machine and import it: https://www.ssh.com/academy/ssh/public-key-authentication</em></p></li>
+</ul>
+</li>
+<li><p>click <code class="docutils literal notranslate"><span class="pre">Next</span></code> when done to go to the <em><strong>Configuration</strong></em> screen.</p></li>
+</ul>
+<blockquote>
+<div><p><em><strong>An aside on SSH keypairs:</strong></em> SSH keys are an access credential that is used in the SSH protocol and they are foundational to modern Infrastructure-as-a-Service platforms. Public key authentication provides cryptographic strength that even extremely long passwords can not offer. With <a class="reference external" href="https://www.ssh.com/ssh/">SSH</a>, public key authentication improves security considerably as it frees the users from remembering complicated passwords (or worse yet, writing them down).</p>
+<p>They can be tricky to set up for new users however, so we’ll go over a simple example here. From your terminal in a local machine use the <code class="docutils literal notranslate"><span class="pre">ssh-keygen</span></code> command to create a new ssh keypair (you can specify cryptographic algorithm, in this case we’ll use the Ed25519 algorithm):</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519
+Generating<span class="w"> </span>public/private<span class="w"> </span>ed25519<span class="w"> </span>key<span class="w"> </span>pair.
+Enter<span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>which<span class="w"> </span>to<span class="w"> </span>save<span class="w"> </span>the<span class="w"> </span>key<span class="w"> </span><span class="o">(</span>/home/username/.ssh/id_ed25519<span class="o">)</span>:
+</pre></div>
+</div>
+<p>Here you can specify the full path/name of the keypair files and even set a extra passwords. We’ll press enter twice for the <code class="docutils literal notranslate"><span class="pre">no</span> <span class="pre">passphrase</span></code> option. Our new keypairs have been created at <code class="docutils literal notranslate"><span class="pre">/home/username/.ssh/</span></code> and are called <code class="docutils literal notranslate"><span class="pre">id_ed25519</span></code>  and <code class="docutils literal notranslate"><span class="pre">id_ed25519.pub.</span></code> The public key (.pub) can be transferred to other remote servers (this is the key we will import to our CUmulus instance) but the private key (no suffix) should never leave the host machine.</p>
+</div></blockquote>
+</section>
+<section id="instance-creation-configuration-server-group-scheduler-hints-and-metadata">
+<h3><em>Instance creation: Configuration, Server Group, Scheduler Hints, and Metadata</em><a class="headerlink" href="#instance-creation-configuration-server-group-scheduler-hints-and-metadata" title="Link to this heading">#</a></h3>
+<p><img alt="" src="../_images/instance_config.png" /></p>
+<ul class="simple">
+<li><p>For the remaining screens – <em>Configuration</em>, <em>Server Group</em>, <em>Scheduler Hints</em>, and <em>Metadata</em> – leave these as defaults, as they are extra, optional configuration for the instances.</p></li>
+</ul>
+</section>
+<section id="instance-creation-launch-instance-and-associate-ip">
+<h3><em>Instance creation: Launch Instance and Associate IP</em><a class="headerlink" href="#instance-creation-launch-instance-and-associate-ip" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><em><strong>Finally</strong></em> you can click <code class="docutils literal notranslate"><span class="pre">Launch</span> <span class="pre">instance</span></code>!</p>
+<ul>
+<li><p>the instance will take a few minutes to finish provisioning.</p></li>
+</ul>
+</li>
+<li><p>You can now associate a Floating IP to enable access to the instance from outside of the CU network.</p>
+<ul>
+<li><p>On the right hand side of the newly created instance choose <code class="docutils literal notranslate"><span class="pre">Associate</span> <span class="pre">Floating</span> <span class="pre">IP</span></code> under the <code class="docutils literal notranslate"><span class="pre">Actions</span></code> dropdown</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="../_images/instance_ip1.png" /></p>
+<ul class="simple">
+<li><p>Now select from available IP addresses if needed (e.g., if you’ll be adding a web portal to your instance)</p></li>
+<li><p>The <em>Select port to be associated</em> option should already be pre-populated with the internal IP of your new instance</p></li>
+</ul>
+<p><img alt="" src="../_images/instance_ip2.png" /></p>
+</section>
+</section>
+<section id="part-3-logging-into-your-instance">
+<h2>Part 3: Logging into your Instance<a class="headerlink" href="#part-3-logging-into-your-instance" title="Link to this heading">#</a></h2>
+<p>At a minimum, you’ll need to login to your instance via <code class="docutils literal notranslate"><span class="pre">ssh</span></code> to install the software you’ll be using. Other reasons to login to the instance may be to stop or start services, associate a domain name with your IP, run your software, troubleshoot problems, etc. You are essentially the “system administrator” of your own instance.</p>
+<ul class="simple">
+<li><p>To login to an instance via <code class="docutils literal notranslate"><span class="pre">ssh</span></code>, you <em>must</em> be on CU VPN to connect (this is CURC restriction)</p></li>
+<li><p>Open up an ssh connection providing the identity (key) file that you associated with the instance in the <em>Key Pair</em> step covered earlier:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ssh<span class="w"> </span>-i<span class="w"> </span>~/.ssh/&lt;private<span class="w"> </span>key&gt;<span class="w"> </span>&lt;hostname&gt;@&lt;external<span class="w"> </span>floating<span class="w"> </span>IP&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Note that <code class="docutils literal notranslate"><span class="pre">hostname</span></code> will be “ubuntu” for Ubuntu instances, “centos” for Centos instances, etc.</p>
+<ul>
+<li><p>For example, for an ubuntu instance your <code class="docutils literal notranslate"><span class="pre">ssh</span></code> command may look something like this:</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ssh<span class="w"> </span>-i<span class="w"> </span>~/.ssh/testkey<span class="w"> </span>ubuntu@123.456.789.123
+</pre></div>
+</div>
+<p><strong>Congratulations! You are now logged into your instance!</strong></p>
+<ul class="simple">
+<li><p>You can now:</p>
+<ul>
+<li><p>Install Software</p></li>
+<li><p>Administer your instance</p></li>
+<li><p>Run applications and jobs</p></li>
+</ul>
+</li>
+<li><p>If you need to perform actions as the <em>root</em> (administrative) user, once logged in you can “sudo” to the <em>root</em> account as follows:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>su<span class="w"> </span>-<span class="w"> </span>root
+</pre></div>
+</div>
+<p>or run a command with the <code class="docutils literal notranslate"><span class="pre">sudo</span></code> prefix.</p>
+</section>
+<section id="additional-information">
+<h2>Additional Information<a class="headerlink" href="#additional-information" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://curc.readthedocs.io/en/latest/cloud/cumulus.html">CUmulus documentation</a></p></li>
+<li><p><a class="reference external" href="https://docs.openstack.org/horizon/latest/user/index.html">OpenStack User Documentation</a></p></li>
+</ul>
+<blockquote>
+<div><p>This work has been funded in part by the National Science Foundation under grant OAC-1925766</p>
+</div></blockquote>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">CUmulus Cloud</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="cumulus2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Establish a Database to query Twitter and Store Results</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives"><em>Learning Objectives:</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-logging-in-to-cumulus-via-horizon">Part 1: Logging in to CUmulus via Horizon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-in-with-your-institutions-credentials"><em>Log in with your institution’s credentials:</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#navigate-horizon"><em>Navigate Horizon</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#navigate-horizon-overview"><em>Navigate Horizon: Overview</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-instance-creation">Part 2: Instance Creation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-creation-launch-a-new-instance"><em>Instance creation: Launch a new instance</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-creation-details"><em>Instance creation: Details</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-creation-source"><em>Instance creation: Source</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-creation-flavor"><em>Instance creation: Flavor</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-creation-networks-network-ports"><em>Instance creation: Networks &amp; Network Ports</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-creation-security-groups"><em>Instance creation: Security Groups</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-creation-key-pair"><em>Instance creation: Key Pair</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-creation-configuration-server-group-scheduler-hints-and-metadata"><em>Instance creation: Configuration, Server Group, Scheduler Hints, and Metadata</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instance-creation-launch-instance-and-associate-ip"><em>Instance creation: Launch Instance and Associate IP</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-logging-into-your-instance">Part 3: Logging into your Instance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-information">Additional Information</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

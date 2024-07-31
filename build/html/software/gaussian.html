@@ -1,0 +1,660 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Gaussian &#8212; Research Computing
+University of Colorado Boulder  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=31992893" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'software/gaussian';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Matlab" href="matlab.html" />
+    <link rel="prev" title="Load Balancer" href="loadbalancer.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Research_Computing_black_letters.png" class="logo__image only-light" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>
+    <script>document.write(`<img src="../_static/Research_Computing_white_letters.png" class="logo__image only-dark" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accessing RC Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../access/logging-in.html">Logging In</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Compute Environment</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../compute/node-types.html">Node types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/filesystems.html">Filesystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/modules.html">The Modules System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/data-transfer.html">Data Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/compiling.html">Compiling and Linking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/monitoring-resources.html">Monitoring Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Jobs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/running-apps-with-jobs.html">Running applications with Jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/batch-jobs.html">Batch Jobs and Job Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/interactive-jobs.html">Interactive jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/slurm-commands.html">Useful Slurm commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/job-resources.html">Slurm Flags, Partitions, and QoS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/squeue-status-codes.html"><code class="docutils literal notranslate"><span class="pre">squeue</span></code> status and reason codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/roce-enabled.html">Running jobs on RoCE enabled Nodes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gateways &amp; Portals</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../gateways/OnDemand.html">Open OnDemand <em>(Browser Based HPC Portal)</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gateways/jupyterhub.html">Jupyter Sessions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="loadbalancer.html">Load Balancer</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Gaussian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matlab.html">Matlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Python and R with Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GNUParallel.html">GNU Parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vasp.html">VASP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Containerizationon.html">Containerization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alphafold.html">AlphaFold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spack.html">Spack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sratoolkit.html">SRA Toolkit on Alpine</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming and Parallelization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../programming/coding-best-practices.html">Coding best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/parallel-programming-fundamentals.html">Fundamentals of parallel programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPIBestpractices.html">MPI Best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-C.html">Using MPI with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-Fortran.html">Using MPI with Fortran</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-C.html">Using OpenMP with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-Fortran.html">Using OpenMP with Fortran</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/index.html">CUmulus Cloud</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus1.html">Tutorial: Creating a CUmulus instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus2.html">Establish a Database to query Twitter and Store Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus3.html">CUmulus integration with CURC HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus4.html">Mounting a remote filesystem from a CUmulus Virtual Machine</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/utah-videos.html">University of Utah videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/other.html">Facilities, equipment, and other resources</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ResearchComputing/Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/software/gaussian.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Gaussian</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-g16">Running G16</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-notes-on-configuration">Quick notes on configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-node-parallel-jobs-smp">Single-node parallel jobs (SMP)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-node-parallel-jobs-linda">Multi-node parallel jobs (Linda)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#g16-on-alpine-nvidia-gpus">G16 on Alpine NVIDIA GPUs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-gaussview">Running GaussView</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-input-file">Sample input file</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="gaussian">
+<h1>Gaussian<a class="headerlink" href="#gaussian" title="Link to this heading">#</a></h1>
+<p><strong>Important:</strong> Gaussian is available on Alpine and Blanca, only to members of universities that have purchased Gaussian licenses. It cannot be run by other users. Please note and abide by the licensing, rights, and citation information shown at the top of your Gaussian output files.</p>
+<p>This document describes how to run G16 jobs efficiently on Alpine. It does not attempt to teach how to use Gaussian for solving science/engineering questions.</p>
+<p>Good general instructions can be found <a class="reference external" href="http://gaussian.com/running/">here</a>; however some minor modifications are needed when running on Alpine.</p>
+<section id="running-g16">
+<h2>Running G16<a class="headerlink" href="#running-g16" title="Link to this heading">#</a></h2>
+<section id="quick-notes-on-configuration">
+<h3>Quick notes on configuration<a class="headerlink" href="#quick-notes-on-configuration" title="Link to this heading">#</a></h3>
+<p><em>Software environment:</em> To set up your environment to use G16, load the Gaussian software module (<code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">gaussian/g16_c.02</span></code>). You do
+not need to source g16.login or g16.profile!</p>
+<p><em>Scratch storage:</em> It is important to specify <code class="docutils literal notranslate"><span class="pre">GAUSS_SCRDIR</span></code> to tell G16 where to put its large scratch files. These should always be on a <a class="reference internal" href="../compute/filesystems.html"><span class="std std-doc">scratch storage system</span></a> (<code class="docutils literal notranslate"><span class="pre">/scratch/alpine/$USER</span></code> on Alpine or <code class="docutils literal notranslate"><span class="pre">rc_scratch/$USER</span></code> on Blanca).</p>
+<p><em>Memory:</em> The default dynamic memory request in G16 is frequently too small to support the amount of memory that needs to be allocated to efficiently
+support computations on even modest-sized molecules. If too little memory is requested, the job can crash. Thus, use the ‘-m’ flag in
+your g16 command line (e.g. <code class="docutils literal notranslate"><span class="pre">-m=48gb</span></code>) to specify at least 50% of the amount of memory your Slurm job has requested.</p>
+</section>
+<section id="single-node-parallel-jobs-smp">
+<h3>Single-node parallel jobs (SMP)<a class="headerlink" href="#single-node-parallel-jobs-smp" title="Link to this heading">#</a></h3>
+<p>Many G16 functions scale well to 8 or more cores on the same node. You can specify how many cores to use via the ‘-p’ flag to g16 (e.g. <code class="docutils literal notranslate"><span class="pre">-p=64</span></code>). This value should correspond to the number of cores that your Slurm job has requested. You should test your G16 computations with several different core counts to see how well they scale, as there may be diminishing returns beyond a certain number of cores.  The batch script below demonstrates how to run <code class="docutils literal notranslate"><span class="pre">g16</span></code> on a single node with multiple cores. A sample input file is at the bottom of this documentation page.</p>
+<p><strong>Example SMP job script:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --job-name=g16-test</span>
+<span class="c1">#SBATCH --partition=amilan</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --ntasks-per-node=1</span>
+<span class="c1">#SBATCH --cpus-per-task=64</span>
+<span class="c1">#SBATCH --time=00:50:00</span>
+<span class="c1">#SBATCH --output=g16-test.%j.out</span>
+
+<span class="c1"># load gaussian c.02</span>
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>gaussian/g16_c.02
+
+<span class="c1"># Always specify a scratch directory on a fast storage space</span>
+<span class="c1"># (not /home or /projects!)</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">GAUSS_SCRDIR</span><span class="o">=</span>/scratch/alpine/<span class="nv">$USER</span>/<span class="nv">$SLURM_JOBID</span>
+mkdir<span class="w"> </span><span class="nv">$GAUSS_SCRDIR</span>
+
+<span class="c1"># the next line prevents OpenMP parallelism from conflicting</span>
+<span class="c1"># with Gaussian&#39;s internal parallelization</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">1</span>
+
+<span class="c1"># run gaussian!</span>
+g16<span class="w"> </span>-m<span class="o">=</span>20gb<span class="w"> </span>-p<span class="o">=</span><span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span><span class="w"> </span>my_input.com
+</pre></div>
+</div>
+</section>
+<section id="multi-node-parallel-jobs-linda">
+<h3>Multi-node parallel jobs (Linda)<a class="headerlink" href="#multi-node-parallel-jobs-linda" title="Link to this heading">#</a></h3>
+<p>In order to run on more than 64 cores in the “amilan” partition on Alpine, your job will need to span multiple nodes using the Linda network parallel communication model. We advise using one Linda worker per node, with multiple (up to 64) SMP cores per node. The nodes on which <code class="docutils literal notranslate"><span class="pre">g16</span></code> will run will be determined once the job starts, before invoking <code class="docutils literal notranslate"><span class="pre">g16</span></code> The batch script example below demonstrates how to run <code class="docutils literal notranslate"><span class="pre">g16</span></code> across multiple nodes. A sample input file is at the bottom of this documentation page.</p>
+<p><strong>Example Linda Parallel job script</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --job-name=g16-test</span>
+<span class="c1">#SBATCH --partition=amilan</span>
+<span class="c1">#SBATCH --nodes=2</span>
+<span class="c1">#SBATCH --ntasks-per-node=1</span>
+<span class="c1">#SBATCH --cpus-per-task=64</span>
+<span class="c1">#SBATCH --time=00:50:00</span>
+<span class="c1">#SBATCH --output=g16-test.%j.out</span>
+
+<span class="c1"># load gaussian c.02</span>
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>gaussian/g16_c.02
+
+<span class="k">for</span><span class="w"> </span>n<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="sb">`</span>scontrol<span class="w"> </span>show<span class="w"> </span>hostname<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-u<span class="sb">`</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">n</span><span class="si">}</span>
+<span class="k">done</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>paste<span class="w"> </span>-s<span class="w"> </span>-d,<span class="w"> </span>&gt;<span class="w"> </span>tsnet.nodes.<span class="nv">$SLURM_JOBID</span>
+
+<span class="c1"># Always specify a scratch directory on a fast storage space</span>
+<span class="c1"># (not /home or /projects!)</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">GAUSS_SCRDIR</span><span class="o">=</span>/scratch/alpine/<span class="nv">$USER</span>/<span class="nv">$SLURM_JOBID</span>
+mkdir<span class="w"> </span><span class="nv">$GAUSS_SCRDIR</span>
+
+<span class="c1"># the next line prevents OpenMP parallelism from conflicting</span>
+<span class="c1"># with Gaussian&#39;s internal parallelization</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">1</span>
+
+<span class="c1"># the next line increases the verbosity of Linda output messages</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">GAUSS_LFLAGS</span><span class="o">=</span><span class="s2">&quot;-v&quot;</span>
+
+<span class="c1"># run gaussian!</span>
+g16<span class="w"> </span>-m<span class="o">=</span>20gb<span class="w"> </span>-p<span class="o">=</span><span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span><span class="w"> </span>-w<span class="o">=</span><span class="sb">`</span>cat<span class="w"> </span>tsnet.nodes.<span class="nv">$SLURM_JOBID</span><span class="sb">`</span><span class="w"> </span>my_input.com
+
+<span class="c1"># remove nodefile </span>
+rm<span class="w"> </span>tsnet.nodes.<span class="nv">$SLURM_JOBID</span>
+</pre></div>
+</div>
+<p><em>Note:</em> Not all G16 computations scale efficiently beyond a single node! According to the G16 documentation: “HF, CIS=Direct, and DFT calculations are Linda parallel, including energies, optimizations, and frequencies. TDDFT energies and gradients and MP2 energies and gradients are also Linda parallel. Portions of MP2 frequency and CCSD calculations are Linda parallel.” As with SMP parallelism, testing the scaling of your Linda parallel computation is very important.</p>
+</section>
+<section id="g16-on-alpine-nvidia-gpus">
+<h3>G16 on Alpine NVIDIA GPUs<a class="headerlink" href="#g16-on-alpine-nvidia-gpus" title="Link to this heading">#</a></h3>
+<p>Please see the <a class="reference external" href="https://gaussian.com/running/?tabid=5">Gaussian GPU documentation</a>] for information on how configure Gaussian input files to run on GPUs. CURC presently does not have example job scripts for running Gaussian on GPUs. The Gaussian GPU documentation will also enable you to determine whether the A100 GPUs in Alpine’s “aa100” partition will be effective for your calculations. In many cases, SMP parallelization across all of the cores in an amilan node will provide better speedup than offloading computational work to a GPU.</p>
+<p><em>Note:</em> G16 can not use the AMD MI100 GPUs in Alpine’s “ami100” partition.</p>
+</section>
+</section>
+<section id="running-gaussview">
+<h2>Running GaussView<a class="headerlink" href="#running-gaussview" title="Link to this heading">#</a></h2>
+<p>Gaussview can be run within a <a class="reference internal" href="../gateways/OnDemand.html#core-desktop-remote-desktop"><span class="std std-ref">Core Desktop session in CURC OnDemand</span></a>.  Once you’ve spawned a Core Desktop session, do the following to invoke <code class="docutils literal notranslate"><span class="pre">GaussView</span></code>:</p>
+<p><em>Step 1:</em> Open a terminal by selecting the “MATE Terminal” icon in the upper menu bar.</p>
+<p><em>Step 2:</em> Type the following in the terminal to load and invoke <code class="docutils literal notranslate"><span class="pre">GaussView</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load gaussian/g16_c.02
+$ gview.exe
+</pre></div>
+</div>
+<p>…this will start the <code class="docutils literal notranslate"><span class="pre">GaussView</span></code> graphical user interface.  Your screen should look similar to the following example:</p>
+<p><img alt="" src="../_images/gview_ood.png" /></p>
+</section>
+<section id="sample-input-file">
+<h2>Sample input file<a class="headerlink" href="#sample-input-file" title="Link to this heading">#</a></h2>
+<p>Here’s an input file, <code class="docutils literal notranslate"><span class="pre">my_input.com</span></code>, that can be used for testing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#P b3lyp/6-31g* test stable=(opt,qconly)</span>
+
+<span class="n">Gaussian</span> <span class="n">Test</span> <span class="n">Job</span> <span class="mi">135</span><span class="p">:</span>
+<span class="n">Fe</span><span class="o">=</span><span class="n">O</span> <span class="n">perpendicular</span> <span class="n">to</span> <span class="n">ethene</span><span class="p">,</span> <span class="ow">in</span> <span class="n">triplet</span> <span class="n">state</span><span class="o">.</span>
+
+<span class="mi">0</span> <span class="mi">3</span>
+<span class="n">X</span>
+<span class="n">Fe</span> <span class="n">X</span>  <span class="n">RXFe</span>
+<span class="n">C1</span> <span class="n">X</span>  <span class="n">RXC</span>  <span class="n">Fe</span>  <span class="mf">90.</span>
+<span class="n">C2</span> <span class="n">X</span>  <span class="n">RXC</span>  <span class="n">Fe</span>  <span class="mf">90.</span>  <span class="n">C1</span>  <span class="mf">180.</span>
+<span class="n">O</span>  <span class="n">X</span>  <span class="n">RXO</span>  <span class="n">C1</span>  <span class="mf">90.</span>  <span class="n">Fe</span>	<span class="mf">0.</span>
+<span class="n">H1</span> <span class="n">C1</span> <span class="n">RCH</span>  <span class="n">C2</span> <span class="n">CCH</span>   <span class="n">Fe</span>  <span class="n">Angle1</span>
+<span class="n">H2</span> <span class="n">C1</span> <span class="n">RCH</span>  <span class="n">C2</span> <span class="n">CCH</span>   <span class="n">Fe</span> <span class="o">-</span><span class="n">Angle1</span>
+<span class="n">H3</span> <span class="n">C2</span> <span class="n">RCH</span>  <span class="n">C1</span> <span class="n">CCH</span>   <span class="n">Fe</span>  <span class="n">Angle2</span>
+<span class="n">H4</span> <span class="n">C2</span> <span class="n">RCH</span>  <span class="n">C1</span> <span class="n">CCH</span>   <span class="n">Fe</span> <span class="o">-</span><span class="n">Angle2</span>
+
+<span class="n">RXFe</span>  <span class="mf">1.7118</span>
+<span class="n">RXC</span>   <span class="mf">0.7560</span>
+<span class="n">RXO</span>   <span class="mf">3.1306</span>
+<span class="n">RCH</span>   <span class="mf">1.1000</span>
+<span class="n">Angle1</span> <span class="mf">110.54</span>
+<span class="n">Angle2</span> <span class="mf">110.53</span>
+<span class="n">CCH</span>   <span class="mf">117.81</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="loadbalancer.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Load Balancer</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="matlab.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Matlab</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-g16">Running G16</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-notes-on-configuration">Quick notes on configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-node-parallel-jobs-smp">Single-node parallel jobs (SMP)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-node-parallel-jobs-linda">Multi-node parallel jobs (Linda)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#g16-on-alpine-nvidia-gpus">G16 on Alpine NVIDIA GPUs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-gaussview">Running GaussView</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-input-file">Sample input file</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

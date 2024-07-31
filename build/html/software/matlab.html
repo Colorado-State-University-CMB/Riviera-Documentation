@@ -1,0 +1,701 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Matlab &#8212; Research Computing
+University of Colorado Boulder  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=31992893" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'software/matlab';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Python and R with Anaconda" href="python.html" />
+    <link rel="prev" title="Gaussian" href="gaussian.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Research_Computing_black_letters.png" class="logo__image only-light" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>
+    <script>document.write(`<img src="../_static/Research_Computing_white_letters.png" class="logo__image only-dark" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accessing RC Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../access/logging-in.html">Logging In</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Compute Environment</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../compute/node-types.html">Node types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/filesystems.html">Filesystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/modules.html">The Modules System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/data-transfer.html">Data Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/compiling.html">Compiling and Linking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/monitoring-resources.html">Monitoring Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Jobs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/running-apps-with-jobs.html">Running applications with Jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/batch-jobs.html">Batch Jobs and Job Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/interactive-jobs.html">Interactive jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/slurm-commands.html">Useful Slurm commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/job-resources.html">Slurm Flags, Partitions, and QoS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/squeue-status-codes.html"><code class="docutils literal notranslate"><span class="pre">squeue</span></code> status and reason codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/roce-enabled.html">Running jobs on RoCE enabled Nodes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gateways &amp; Portals</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../gateways/OnDemand.html">Open OnDemand <em>(Browser Based HPC Portal)</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gateways/jupyterhub.html">Jupyter Sessions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="loadbalancer.html">Load Balancer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gaussian.html">Gaussian</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Matlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Python and R with Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GNUParallel.html">GNU Parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vasp.html">VASP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Containerizationon.html">Containerization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alphafold.html">AlphaFold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spack.html">Spack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sratoolkit.html">SRA Toolkit on Alpine</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming and Parallelization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../programming/coding-best-practices.html">Coding best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/parallel-programming-fundamentals.html">Fundamentals of parallel programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPIBestpractices.html">MPI Best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-C.html">Using MPI with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-Fortran.html">Using MPI with Fortran</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-C.html">Using OpenMP with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-Fortran.html">Using OpenMP with Fortran</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/index.html">CUmulus Cloud</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus1.html">Tutorial: Creating a CUmulus instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus2.html">Establish a Database to query Twitter and Store Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus3.html">CUmulus integration with CURC HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus4.html">Mounting a remote filesystem from a CUmulus Virtual Machine</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/utah-videos.html">University of Utah videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/other.html">Facilities, equipment, and other resources</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ResearchComputing/Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/software/matlab.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Matlab</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-matlab-interactive-jobs">Running Matlab Interactive Jobs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-matlab-batch-jobs">Running Matlab Batch Jobs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parallel-matlab-on-alpine">Parallel Matlab on Alpine</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="matlab">
+<h1>Matlab<a class="headerlink" href="#matlab" title="Link to this heading">#</a></h1>
+<p>Research Computing (RC) provides a large suite of software on RC
+resources. In this tutorial we will learn how to run Matlab on these
+resources. The tutorial assumes you are familiar with Matlab and basic
+Linux terminal commands.</p>
+<p>There are two basic ways to run Matlab (or many other kinds of
+software) on RC resources. The first is through an interactive job,
+and the second is through a batch job. An interactive job allows one
+to work in real-time with Matlab. Two reasons you may want to do this
+would be if you are actively debugging your code, or if you would like
+to use the GUI (in this instance, the Matlab Desktop). However, there
+might be other reasons you would like to work interactively with
+Matlab.</p>
+<p>The second way to run Matlab on RC resources is through a
+batch job. This allows the job to run in the background when resources
+become available. You may choose to use this method if you have a
+large job that may wait in the queue for awhile, or if you are not
+debugging or in need of a GUI. Both ways to work with Matlab are
+below.</p>
+<section id="running-matlab-interactive-jobs">
+<h2>Running Matlab Interactive Jobs<a class="headerlink" href="#running-matlab-interactive-jobs" title="Link to this heading">#</a></h2>
+<p>Running Matlab interactive jobs on RC resources is both a simple and
+easy task to accomplish. In this section we will learn 2 ways to launch
+Matlab as an interactive job:</p>
+<ol class="arabic">
+<li><p>MATLAB Interactive Application (CURC OnDemand):</p>
+<p>You can access a full Matlab GUI in your browser with CURC
+OnDemand. CURC OnDemand is a browser-based, integrated, single access
+point for HPC resources. It includes access to interactive apps such
+as Matlab, a virtual desktop, and more.</p>
+<p>You can find instructions to start an interactive Matlab session in our <a class="reference internal" href="../gateways/OnDemand.html#matlab"><span class="std std-ref">OnDemand documentation</span></a>.</p>
+</li>
+<li><p>Interactive SLURM job:</p>
+<p>For more information on launching
+interactive jobs <a class="reference internal" href="../running-jobs/interactive-jobs.html"><span class="std std-doc">check out our interactive jobs
+tutorial</span></a></p>
+<p>Begin by launching an interactive job by loading slurm/alpine into
+your environment and running the <code class="docutils literal notranslate"><span class="pre">sinteractive</span></code> command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>slurm/alpine
+sinteractive
+</pre></div>
+</div>
+<p>From here you will load the Matlab module into your environment.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>matlab
+</pre></div>
+</div>
+<p>Lastly we will run Matlab from the terminal.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>matlab<span class="w"> </span>-nosplash
+</pre></div>
+</div>
+<p>By default Matlab will load an interactive terminal session. If you would like to access the Matlab GUI
+then simply run Matlab with X11 forwarding enabled.</p>
+<p>To find out how you enable X11 forwarding in your terminal
+session, check out our <a class="reference internal" href="../running-jobs/interactive-jobs.html#interactive-gui-applications"><span class="std std-ref">X11 forwarding tutorial.</span></a></p>
+</li>
+</ol>
+</section>
+<section id="running-matlab-batch-jobs">
+<h2>Running Matlab Batch Jobs<a class="headerlink" href="#running-matlab-batch-jobs" title="Link to this heading">#</a></h2>
+<p>Here, we will learn how to run a Matlab script in a non-interactive
+batch job. For more general information on batch job scripts on
+Alpine, <a class="reference internal" href="../running-jobs/batch-jobs.html"><span class="std std-doc">please see our tutorial on batch
+jobs</span></a></p>
+<p>Let’s begin by constructing a small Matlab script that prints ‘hello
+world’ to the user.  The Matlab script we will use for the purposes of
+this tutorial is called <code class="docutils literal notranslate"><span class="pre">hello_world.m</span></code> and contains only one line,
+the Matlab command:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">fprintf</span><span class="p">(</span>‘<span class="n">Hello</span><span class="w"> </span><span class="n">world</span><span class="o">\</span><span class="n">n</span>’<span class="p">)</span>
+</pre></div>
+</div>
+<p>Which simply prints “Hello world” when called.</p>
+<p>Next, we will construct a batch script that will enable us to run
+this job. The batch script organizes the variety of flags slurm needs
+to run a job and specifies the software commands we want to
+execute. One advantage of batch scripts is that they are easily
+reusable and adaptable for other similar tasks.</p>
+<p>We will run this job using a bash script titled: <code class="docutils literal notranslate"><span class="pre">slurm_hello.sh</span></code>,
+which contains the following lines:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --time=0:01:00</span>
+<span class="c1">#SBATCH --partition=atesting</span>
+<span class="c1">#SBATCH --qos=testing</span>
+<span class="c1">#SBATCH --ntasks=1</span>
+<span class="c1">#SBATCH --job-name=Matlab_Hello_World</span>
+<span class="c1">#SBATCH --output=Matlab_Hello_World.out</span>
+
+module<span class="w"> </span>purge
+
+module<span class="w"> </span>load<span class="w"> </span>matlab
+
+matlab<span class="w"> </span>-nodesktop<span class="w"> </span>-nodisplay<span class="w"> </span>-r<span class="w"> </span>‘clear<span class="p">;</span><span class="w"> </span>hello_world<span class="p">;</span>’
+</pre></div>
+</div>
+<p>This file has a few basic parts:</p>
+<ol class="arabic simple">
+<li><p>The first line specifies that it is a bash shell script, and
+ensures the rest of the lines will be interpreted in the correct
+shell.</p></li>
+<li><p>The lines beginning with <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> specify the Slurm parameters
+that will be used for this job. These lines are viewed as comments
+by bash, but will be read by Slurm. Of particular note is the
+<code class="docutils literal notranslate"><span class="pre">--output</span></code> parameter which specifies the file where stderr and
+stdout (including the output from our Matlab script) will be
+written. For a description of the Slurm parameters, <a class="reference external" href="https://slurm.schedmd.com/sbatch.html">please see the
+general Slurm documentation
+here</a></p></li>
+<li><p>The lines beginning with <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code> remove any unneeded
+software and ensure that the appropriate Matlab module is loaded on
+the compute node.</p></li>
+<li><p>The final line calls Matlab and instructs it to run our
+script. This entire line includes commands that are specific to
+Matlab; the <code class="docutils literal notranslate"><span class="pre">nodesktop</span></code> and <code class="docutils literal notranslate"><span class="pre">nodisplay</span></code> flags ensure that the
+Matlab Desktop will not open, and the <code class="docutils literal notranslate"><span class="pre">r</span></code> flag will run the script
+<code class="docutils literal notranslate"><span class="pre">hello_world</span></code>. The <code class="docutils literal notranslate"><span class="pre">clear</span></code> command forces Matlab to clear any
+existing variables, and is simply included as good coding practice.</p></li>
+</ol>
+<p>You have now completed your batch script. After saving the script and
+exiting your text editor, run the job as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>slurm_hello.sh
+</pre></div>
+</div>
+<p>Once the job has run, the output of the Matlab script, “Hello world”
+will be shown in <code class="docutils literal notranslate"><span class="pre">Matlab_Hello_World.out</span></code>.</p>
+</section>
+<section id="parallel-matlab-on-alpine">
+<h2>Parallel Matlab on Alpine<a class="headerlink" href="#parallel-matlab-on-alpine" title="Link to this heading">#</a></h2>
+<p>To fully utilize the multi-core capabilities of Alpine to speed up
+jobs, most code must first be parallelized. Matlab has many built in
+tools to accomplish this task. In this tutorial we will parallelize
+our “Hello World” program.</p>
+<p>Let’s begin with the Matlab script we created above called
+<code class="docutils literal notranslate"><span class="pre">hello_world.m</span></code>. First we will modify the fprintf line so that it
+includes a variable ‘i’ that will print out the iteration of the
+parallel loop.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">fprintf</span><span class="p">(</span>“<span class="n">Hello</span><span class="w"> </span><span class="n">World</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="c">%i”, i)</span>
+</pre></div>
+</div>
+<p>Next, we need to encapsulate the print statement in a parallel ‘for’
+loop. Matlab uses the construct <code class="docutils literal notranslate"><span class="pre">parfor</span></code> to separate the task into
+multiple threads. In order to utilize the <code class="docutils literal notranslate"><span class="pre">parfor</span></code> command one must
+ensure that the Parallel Computing Toolbox is available as part of the
+Matlab software package. CURC has this available and thus no additional
+action is required on your part if you are utilizing CURC resources.</p>
+<p>The order of runtime in the loop is not guaranteed, so the output may
+not be in sequential order. The loop is formatted as such:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">parfor</span><span class="p">(</span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">initial_Value</span><span class="p">:</span><span class="n">final_Value</span><span class="p">,</span><span class="w"> </span><span class="n">maximum_amount_of_threads</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For example, let’s use <code class="docutils literal notranslate"><span class="pre">parfor</span></code> to implement an 5-iteration loop with a
+maximum of 4 processors in our script:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">parfor</span><span class="p">(</span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
+<span class="w">        </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">&quot;Hello, World from process %i&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">i</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>Now all we have left to do is modify our batch script to specify that
+we want to run 4 tasks on the node (we can use up to 64 cores on each
+‘amilan’ node on Alpine). We can also change the name of the job and the
+output file if we choose.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --time=0:01:00</span>
+<span class="c1">#SBATCH --partition=atesting</span>
+<span class="c1">#SBATCH --qos=testing</span>
+<span class="c1">#SBATCH --ntasks=4</span>
+<span class="c1">#SBATCH --job-name=Matlab_Parallel_Hello</span>
+<span class="c1">#SBATCH --output=Matlab_Parallel_Hello.out</span>
+
+module<span class="w"> </span>purge
+
+module<span class="w"> </span>load<span class="w"> </span>matlab
+
+matlab<span class="w"> </span>-nodesktop<span class="w"> </span>-nodisplay<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;clear; hello_world;&#39;</span>
+</pre></div>
+</div>
+<p>Now we run the job using the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command shown above, and our
+output in <code class="docutils literal notranslate"><span class="pre">Matlab_Parallel_Hello.out</span></code> will be as follows (the process
+order may be different in your output):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Hello</span> <span class="n">World</span> <span class="kn">from</span> <span class="nn">process</span> <span class="mi">4</span>
+<span class="n">Hello</span> <span class="n">World</span> <span class="kn">from</span> <span class="nn">process</span> <span class="mi">1</span>
+<span class="n">Hello</span> <span class="n">World</span> <span class="kn">from</span> <span class="nn">process</span> <span class="mi">2</span>
+<span class="n">Hello</span> <span class="n">World</span> <span class="kn">from</span> <span class="nn">process</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>CURC Matlab currently does not support parallelization across nodes,
+only across cores on one node.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="gaussian.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Gaussian</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="python.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Python and R with Anaconda</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-matlab-interactive-jobs">Running Matlab Interactive Jobs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-matlab-batch-jobs">Running Matlab Batch Jobs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parallel-matlab-on-alpine">Parallel Matlab on Alpine</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

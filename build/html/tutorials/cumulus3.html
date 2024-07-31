@@ -1,0 +1,677 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CUmulus integration with CURC HPC &#8212; Research Computing
+University of Colorado Boulder  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=31992893" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/cumulus3';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mounting a remote filesystem from a CUmulus Virtual Machine" href="cumulus4.html" />
+    <link rel="prev" title="Establish a Database to query Twitter and Store Results" href="cumulus2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Research_Computing_black_letters.png" class="logo__image only-light" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>
+    <script>document.write(`<img src="../_static/Research_Computing_white_letters.png" class="logo__image only-dark" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accessing RC Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../access/logging-in.html">Logging In</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Compute Environment</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../compute/node-types.html">Node types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/filesystems.html">Filesystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/modules.html">The Modules System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/data-transfer.html">Data Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/compiling.html">Compiling and Linking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/monitoring-resources.html">Monitoring Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Jobs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/running-apps-with-jobs.html">Running applications with Jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/batch-jobs.html">Batch Jobs and Job Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/interactive-jobs.html">Interactive jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/slurm-commands.html">Useful Slurm commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/job-resources.html">Slurm Flags, Partitions, and QoS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/squeue-status-codes.html"><code class="docutils literal notranslate"><span class="pre">squeue</span></code> status and reason codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/roce-enabled.html">Running jobs on RoCE enabled Nodes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gateways &amp; Portals</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../gateways/OnDemand.html">Open OnDemand <em>(Browser Based HPC Portal)</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gateways/jupyterhub.html">Jupyter Sessions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/loadbalancer.html">Load Balancer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/gaussian.html">Gaussian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/matlab.html">Matlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/python.html">Python and R with Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/GNUParallel.html">GNU Parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vasp.html">VASP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/Containerizationon.html">Containerization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/alphafold.html">AlphaFold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/spack.html">Spack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/sratoolkit.html">SRA Toolkit on Alpine</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming and Parallelization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../programming/coding-best-practices.html">Coding best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/parallel-programming-fundamentals.html">Fundamentals of parallel programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPIBestpractices.html">MPI Best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-C.html">Using MPI with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-Fortran.html">Using MPI with Fortran</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-C.html">Using OpenMP with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-Fortran.html">Using OpenMP with Fortran</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">CUmulus Cloud</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cumulus1.html">Tutorial: Creating a CUmulus instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cumulus2.html">Establish a Database to query Twitter and Store Results</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">CUmulus integration with CURC HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cumulus4.html">Mounting a remote filesystem from a CUmulus Virtual Machine</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/utah-videos.html">University of Utah videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/other.html">Facilities, equipment, and other resources</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ResearchComputing/Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/tutorials/cumulus3.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>CUmulus integration with CURC HPC</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions-for-ubuntu-20-04">Instructions for Ubuntu 20.04:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-create-your-cumlus-instance">Part 1 Create your CUmlus instance:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-install-slurm-on-cumlus-instance">Part 2: Install SLURM on CUmlus Instance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-configure-slurm-in-cumulus">Part 3. Configure SLURM in CUmulus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4-generate-java-web-token-jwt-in-curc-hpc">Part 4. Generate Java Web Token (JWT) in CURC HPC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-5-submit-your-job-from-your-cumulus-instance">Part 5. Submit your job from your CUmulus instance</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="cumulus-integration-with-curc-hpc">
+<h1>CUmulus integration with CURC HPC<a class="headerlink" href="#cumulus-integration-with-curc-hpc" title="Link to this heading">#</a></h1>
+<p>One potentially useful application of CUmulus is the ability to integrate your VMs with CU Research Computing High Performance Computing (HPC) resources. HPC compute is typically time-limited (at CURC 24 hours for regular job and 7 days long job) due to finite resources and user competition for those resources. One way to deal with this problem is to schedule your jobs over time (e.g. by using cronjobs) though this isn’t always practical for more complex workflows. Using authentication keys (in this case Java Web Tokens or JWTs) you can setup a connection from your CUmulus instance to CURC HPC and schedule jobs remotely to set up more complex workflow specific pipelines.</p>
+<p>We have documented the process for an <strong>Ubuntu 20.04 instance on CUmulus connecting to the CURC Blanca cluster</strong>. Below is an outline with links to specific sections:</p>
+<ol class="arabic simple">
+<li><p>Create your CUmulus instance</p></li>
+<li><p>Install SLURM on CUmlus Instance</p></li>
+<li><p>Configure SLURM in CUmulus</p></li>
+<li><p>Generate Java Web Token (JWT) in CURC HPC</p></li>
+<li><p>Submit your job from your CUmulus instance</p></li>
+</ol>
+<section id="instructions-for-ubuntu-20-04">
+<h2>Instructions for Ubuntu 20.04:<a class="headerlink" href="#instructions-for-ubuntu-20-04" title="Link to this heading">#</a></h2>
+<section id="part-1-create-your-cumlus-instance">
+<h3>Part 1 Create your CUmlus instance:<a class="headerlink" href="#part-1-create-your-cumlus-instance" title="Link to this heading">#</a></h3>
+<p>The first thing we will need to do is create a Ubuntu 20.04 CUmulus instance. Log in to the <a class="reference external" href="https://cumulus.rc.colorado.edu">CUmlus portal</a> and follow our <a class="reference internal" href="cumulus1.html"><span class="doc std std-doc">tutorial1</span></a> to create a CUmulus instance with the following specifications:</p>
+<ul class="simple">
+<li><p>Image: Ubuntu 20.04</p></li>
+<li><p>Flavor:</p></li>
+<li><p>Network:</p></li>
+<li><p>Security groups: ssh-restricted</p></li>
+<li><p>Set up a Floating IP</p></li>
+</ul>
+</section>
+<section id="part-2-install-slurm-on-cumlus-instance">
+<h3>Part 2: Install SLURM on CUmlus Instance<a class="headerlink" href="#part-2-install-slurm-on-cumlus-instance" title="Link to this heading">#</a></h3>
+<p>The second thing we’ll need to do is install SLURM on our CUmulus instance. To do so we will log into our instance using ssh, update our instance, then install SLURM.</p>
+<ul>
+<li><p><strong>Log in to your instance</strong> from a local machine by specifying your ssh key file (with the <code class="docutils literal notranslate"><span class="pre">-i</span></code> flag) and the floating IP you set up in step 1:</p>
+<blockquote>
+<div><p>Note: this command is entered from your local machine’s terminal</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ssh -i ~/.ssh/&lt;ssh_key&gt; ubuntu@&lt;Floating IP&gt;
+</pre></div>
+</div>
+</li>
+<li><p>From your CUmulus instance <strong>update and install SLURM dependencies</strong></p>
+<blockquote>
+<div><p>Note: these commands require administative (sudo) privilage</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get update
+$ sudo apt install -y libmysqlclient-dev libjwt-dev munge gcc make
+</pre></div>
+</div>
+</li>
+<li><p><strong>Install SLURM</strong>. It looks like there’s a lot going on with this step, but all we’re doing is downloading SLURM from github to the <code class="docutils literal notranslate"><span class="pre">/opt</span></code> directory of your instance, configuring the compilation to include Java Web Tokens (JWT) functionality, and then compiling and installing SLURM. Note that it is <strong>VERY IMPORTANT</strong> that the SLURM version on your CUmulus instance matches the CURC HPC version otherwise it will not connect.</p>
+<blockquote>
+<div><p>You can check the SLURM version on CURC HPC resources by loading your cluster specific SLURM module from a login node (either <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">slurm/blanca</span></code> or <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">slurm/alpine</span></code>) then checking the version of a SLURM command (e.g. <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">--version</span></code>).</p>
+</div></blockquote>
+<blockquote>
+<div><p>In this example we’re using the 20.02.4 SLURM version and specifying it with git clone branch flag (<code class="docutils literal notranslate"><span class="pre">-b</span></code>)</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd /opt
+$ sudo git clone -b slurm-20-02-4-1 https://github.com/SchedMD/slurm.git
+$ cd slurm
+$ sudo ./configure --with-jwt --disable-dependency-tracking
+$ sudo make &amp;&amp; sudo make install
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="part-3-configure-slurm-in-cumulus">
+<h3>Part 3. Configure SLURM in CUmulus<a class="headerlink" href="#part-3-configure-slurm-in-cumulus" title="Link to this heading">#</a></h3>
+<p>Now that we have SLURM installed we can start to configure our instance to make the proper connection to CURC HPC resources. In this step we’ll add/edit the <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code> file, create a user and group for SLURM, create a user and group for you that match your user/group from CURC HPC.</p>
+<ul>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code>. Here we make a slurm directory at <code class="docutils literal notranslate"><span class="pre">/etc/slurm</span></code> and copy the <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code> file straight from CURC HPC using the secure copy (<code class="docutils literal notranslate"><span class="pre">scp</span></code>) tool into that new directory.</p>
+<blockquote>
+<div><p>Note: We are copying the <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code> file from Blanca in this example</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo mkdir -p /etc/slurm
+$ cd /etc/slurm
+$ sudo scp &lt;RC_username&gt;@dtn.rc.colorado.edu:/curc/slurm/blanca/etc/slurm.conf . 
+</pre></div>
+</div>
+<p>to finish the copy from CURC HPC, type your CURC password and accept Duo push.</p>
+</li>
+<li><p>Edit the following two variables in slurm.conf using a text editor of your choice (i.e. vim, nano):</p>
+<ul class="simple">
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">ControlMachine=slurm3</span></code> to <code class="docutils literal notranslate"><span class="pre">ControlMachine=slurm3.rc.int.colorado.edu</span></code></p></li>
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">BackupController=slurm4</span></code> to <code class="docutils literal notranslate"><span class="pre">BackupController=slurm4.rc.int.colorado.edu</span></code></p></li>
+</ul>
+</li>
+<li><p>Create a SLURM user &amp; group. Use the group and user add commands to create the SLURM user and group with the 515 IDs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">groupadd</span> <span class="o">-</span><span class="n">g</span> <span class="mi">515</span> <span class="n">slurm</span>
+<span class="n">sudo</span> <span class="n">useradd</span> <span class="o">-</span><span class="n">u</span> <span class="mi">515</span> <span class="o">-</span><span class="n">g</span> <span class="mi">515</span> <span class="n">slurm</span>
+</pre></div>
+</div>
+</li>
+<li><p>Configure your user and group on the VM. First we will query our user/group info on CURC HPC. From a CURC login node run the following commands and note the outputs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[user@login11 ~]$ id -u $USER
+&lt;userid&gt;
+[user@login11 ~]$ id -g $USER
+&lt;groupid&gt;
+[user@login11 ~]$ whoami
+&lt;username&gt;
+[user@login11 ~]$ id -g -n $USER
+&lt;groupname&gt;
+</pre></div>
+</div>
+<p>We can now create a user and group for ourselves on our instance that match CURC HPC:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo groupadd -g &lt;groupid&gt; &lt;groupname&gt; 
+$ sudo useradd -u &lt;userid&gt; -g &lt;groupid&gt; &lt;username&gt; 
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="part-4-generate-java-web-token-jwt-in-curc-hpc">
+<h3>Part 4. Generate Java Web Token (JWT) in CURC HPC<a class="headerlink" href="#part-4-generate-java-web-token-jwt-in-curc-hpc" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Next we will generate the Java Web Token on a CURC login node. Keep in mind that these tokens are generated with an expiration. Note the JWT output in order submit jobs.</p>
+<blockquote>
+<div><p>Note: In this example we are generating this token on the Blanca cluster</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load slurm/blanca
+$ scontrol token lifespan=72000 #token with 2 hour duration
+$ SLURM_JWT=&lt;jwt-token&gt;
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="part-5-submit-your-job-from-your-cumulus-instance">
+<h3>Part 5. Submit your job from your CUmulus instance<a class="headerlink" href="#part-5-submit-your-job-from-your-cumulus-instance" title="Link to this heading">#</a></h3>
+<p>Our CUmulus instance is now configured to submit jobs to CURC HPC resources. When we ssh to our instance we are (likely) logged in as the admin user. We need to log in to the user we created in the previous step to submit jobs so CURC HPC will recognize the incoming request.</p>
+<ul>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">su</span> <span class="pre">-</span></code> command to log into your user</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo su - &lt;username&gt; 
+</pre></div>
+</div>
+</li>
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">SLURM_JWT</span></code> and <code class="docutils literal notranslate"><span class="pre">SLURM_CONF</span></code> variables in your environemt:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">SLURM_JWT</span><span class="o">=&lt;</span><span class="n">jwt</span><span class="o">-</span><span class="n">token</span><span class="o">&gt;</span>
+<span class="n">export</span> <span class="n">SLURM_CONF</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="n">slurm</span><span class="o">/</span><span class="n">slurm</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+</li>
+<li><p>Submit a test job! We’re finally ready to test a job submission from CUmulus. Use the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command to submit a job from the command line (i.e. without a batch script). In the example job submission below we use the <code class="docutils literal notranslate"><span class="pre">--chdir</span></code> flag to change into our home directory (so we can easily find the job output) and use the <code class="docutils literal notranslate"><span class="pre">--wrap</span></code> command to run the simple <code class="docutils literal notranslate"><span class="pre">hostname</span></code> bash command on a CURC compute node.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sbatch --qos=&lt;blanca-qos&gt; --chdir=&quot;/home/&lt;username&gt;&quot; --wrap=&quot;hostname&quot;
+Submitted batch job 12451234
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note: you can use the <code class="docutils literal notranslate"><span class="pre">--chdir</span></code> flag to direct the output to an directory you have write access to.</p>
+</div></blockquote>
+</li>
+</ul>
+<p>You have now successfully connected your CUmulus instance to CURC HPC resources! From this point you have a number of ways to integrate this connection into your workflow:</p>
+<ul class="simple">
+<li><p>Pass raw data to CURC HPC resources for post-processing once it becomes available.</p></li>
+</ul>
+<blockquote>
+<div><p>This work has been funded in part by the National Science Foundation under grant OAC-1925766</p>
+</div></blockquote>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="cumulus2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Establish a Database to query Twitter and Store Results</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="cumulus4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Mounting a remote filesystem from a CUmulus Virtual Machine</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions-for-ubuntu-20-04">Instructions for Ubuntu 20.04:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-create-your-cumlus-instance">Part 1 Create your CUmlus instance:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-install-slurm-on-cumlus-instance">Part 2: Install SLURM on CUmlus Instance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-configure-slurm-in-cumulus">Part 3. Configure SLURM in CUmulus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4-generate-java-web-token-jwt-in-curc-hpc">Part 4. Generate Java Web Token (JWT) in CURC HPC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-5-submit-your-job-from-your-cumulus-instance">Part 5. Submit your job from your CUmulus instance</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,770 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Python and R with Anaconda &#8212; Research Computing
+University of Colorado Boulder  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=31992893" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'software/python';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="GNU Parallel" href="GNUParallel.html" />
+    <link rel="prev" title="Matlab" href="matlab.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Research_Computing_black_letters.png" class="logo__image only-light" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>
+    <script>document.write(`<img src="../_static/Research_Computing_white_letters.png" class="logo__image only-dark" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accessing RC Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../access/logging-in.html">Logging In</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Compute Environment</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../compute/node-types.html">Node types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/filesystems.html">Filesystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/modules.html">The Modules System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/data-transfer.html">Data Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/compiling.html">Compiling and Linking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/monitoring-resources.html">Monitoring Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Jobs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/running-apps-with-jobs.html">Running applications with Jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/batch-jobs.html">Batch Jobs and Job Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/interactive-jobs.html">Interactive jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/slurm-commands.html">Useful Slurm commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/job-resources.html">Slurm Flags, Partitions, and QoS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/squeue-status-codes.html"><code class="docutils literal notranslate"><span class="pre">squeue</span></code> status and reason codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/roce-enabled.html">Running jobs on RoCE enabled Nodes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gateways &amp; Portals</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../gateways/OnDemand.html">Open OnDemand <em>(Browser Based HPC Portal)</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gateways/jupyterhub.html">Jupyter Sessions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="loadbalancer.html">Load Balancer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gaussian.html">Gaussian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matlab.html">Matlab</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Python and R with Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GNUParallel.html">GNU Parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vasp.html">VASP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Containerizationon.html">Containerization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alphafold.html">AlphaFold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spack.html">Spack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sratoolkit.html">SRA Toolkit on Alpine</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming and Parallelization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../programming/coding-best-practices.html">Coding best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/parallel-programming-fundamentals.html">Fundamentals of parallel programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPIBestpractices.html">MPI Best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-C.html">Using MPI with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-Fortran.html">Using MPI with Fortran</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-C.html">Using OpenMP with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-Fortran.html">Using OpenMP with Fortran</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/index.html">CUmulus Cloud</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus1.html">Tutorial: Creating a CUmulus instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus2.html">Establish a Database to query Twitter and Store Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus3.html">CUmulus integration with CURC HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus4.html">Mounting a remote filesystem from a CUmulus Virtual Machine</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/utah-videos.html">University of Utah videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/other.html">Facilities, equipment, and other resources</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ResearchComputing/Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/software/python.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Python and R with Anaconda</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-conda-with-condarc">Configuring conda with <code class="docutils literal notranslate"><span class="pre">.condarc</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-curc-anaconda-environment">Using the CURC Anaconda environment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activate-the-curc-anaconda-environment">Activate the CURC Anaconda environment:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-conda">Using Conda:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-one-of-curc-s-pre-installed-enviroments">Using one of CURC’s pre-installed enviroments:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-your-own-custom-environment">Create your own custom environment:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-conda-commands-to-get-you-started">Basic conda commands to get you started:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mamba-package-manager">Mamba Package Manager</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbus-error">Dbus Error</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="python-and-r-with-anaconda">
+<h1>Python and R with Anaconda<a class="headerlink" href="#python-and-r-with-anaconda" title="Link to this heading">#</a></h1>
+<p>To support diverse <em>Python</em> and <em>R</em> workflows, Research Computing users can utilize <a class="reference external" href="http://anaconda.com">Anaconda</a>. Anaconda
+provides the <em>conda</em> package manager, which allows for easy installation of software and associated
+packages. The <em>conda</em> package manager provides support for <em>Python</em>, <em>R</em>, and many other application stacks.
+CURC also supports <a class="reference external" href="https://mamba.readthedocs.io/">Mamba</a>, an alternative package manager that allows parallel downloading of repository data and package files using multi-threading.</p>
+<p>The following documentation describes how to activate the CURC Anaconda distribution and our default environments, as well as how to create and activate your own custom Anaconda environments. For more information on utilizing <a class="reference external" href="https://mamba.readthedocs.io/">Mamba</a> (an alternative package manager) please see the section <a class="reference internal" href="#mamba-package-manager">Mamba Package Manger</a> below. Additional documentation on <a class="reference internal" href="../gateways/OnDemand.html"><span class="std std-doc">CURC OpenOnDemand</span></a> is available for users desiring to interact with their custom environments via <a class="reference external" href="https://jupyter.org">Jupyter notebooks</a>.</p>
+<section id="configuring-conda-with-condarc">
+<h2>Configuring conda with <code class="docutils literal notranslate"><span class="pre">.condarc</span></code><a class="headerlink" href="#configuring-conda-with-condarc" title="Link to this heading">#</a></h2>
+<p>The conda package manager allows modification of default settings to be done through a text file known as the <code class="docutils literal notranslate"><span class="pre">.condarc</span></code>. This file exists within a user’s <code class="docutils literal notranslate"><span class="pre">/home/$USER/</span></code> directory and can be quickly be accessed using the file’s full path at <code class="docutils literal notranslate"><span class="pre">~/.condarc</span></code>.</p>
+<p>Your <code class="docutils literal notranslate"><span class="pre">/home/$USER</span></code> directory is small – only 2 GB. By default, conda puts all package source code and environments in your <code class="docutils literal notranslate"><span class="pre">/home/$USER</span></code> directory , and it will quickly become full. The steps here modify the conda configration file to change the default locations for packages and environments to your larger <code class="docutils literal notranslate"><span class="pre">/projects/$USER</span></code> directory.</p>
+<p>Open your <code class="docutils literal notranslate"><span class="pre">.condarc</span></code> file in your favorite text editor (e.g., nano, vim):</p>
+<blockquote>
+<div><p><em>Note: this file may not exist yet – if not, just create a new file with this name; you can open or create file with the following command</em></p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[johndoe@sc3cpu-a7-u19-1 ~]$ nano ~/.condarc
+</pre></div>
+</div>
+<p>…and paste the following four lines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pkgs_dirs:
+  - /projects/$USER/.conda_pkgs
+envs_dirs:
+  - /projects/$USER/software/anaconda/envs
+</pre></div>
+</div>
+<blockquote>
+<div><p><em><strong>Note:</strong></em> CSU and XSEDE/ACCESS users may need to use a custom <code class="docutils literal notranslate"><span class="pre">$USER</span></code>
+variable because the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> symbol in the usernames can occasionally be misinterpreted by environments that employ PERL. Directions to set up a custom user variable can be found at our <a class="reference internal" href="#../additional-resources/csu-xsede-usernames.md"><span class="xref myst">CSU and XSEDE username documentation</span></a>.</p>
+</div></blockquote>
+<p>…then save and exit the file. You won’t need to perform this step again – it’s permanent unless you modify <code class="docutils literal notranslate"><span class="pre">.condarc</span></code> later.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.condarc</span></code> file provides a variety of settings that can be detailed to speed up your workflows. For more information on <code class="docutils literal notranslate"><span class="pre">.condarc</span></code>, <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/configuration/use-condarc.html">check out the Anaconda documentation</a>.</p>
+</section>
+<section id="using-the-curc-anaconda-environment">
+<h2>Using the CURC Anaconda environment<a class="headerlink" href="#using-the-curc-anaconda-environment" title="Link to this heading">#</a></h2>
+<p>Follow these steps from a Research Computing terminal session on an Alpine
+<code class="docutils literal notranslate"><span class="pre">acompile</span></code> node or within a Alpine/Blanca batch or interactive job.</p>
+<section id="activate-the-curc-anaconda-environment">
+<h3>Activate the CURC Anaconda environment:<a class="headerlink" href="#activate-the-curc-anaconda-environment" title="Link to this heading">#</a></h3>
+<p>Run the following command to load the base Anaconda software:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[johndoe@c3cpu-a7-u19-1 ~]$ module load anaconda
+</pre></div>
+</div>
+<blockquote>
+<div><p><em><strong>Note</strong>: The command above activates the base envioronment for python3, which as of 2020 is the only supported python standard. For users requiring legacy python2, you can still use conda to create a custom environment with the python2.X version of your choice (we provide an example of how to do this below)</em>.</p>
+</div></blockquote>
+<p>You will know that you have properly activated the environment because you
+should see <code class="docutils literal notranslate"><span class="pre">(base)</span></code> in front of your prompt. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(base) [johndoe@c3cpu-a7-u19-1 ~]$
+</pre></div>
+</div>
+</section>
+<section id="using-conda">
+<h3>Using Conda:<a class="headerlink" href="#using-conda" title="Link to this heading">#</a></h3>
+<p>Now that you have activated the base conda environment, you can use conda for python and R! There are two ways forward, depending on your needs. You can:</p>
+<p><strong>1. Use one of CURC’s pre-installed environments.</strong></p>
+<ul class="simple">
+<li><p>Pros: You can begin using one of these immediately, and they contain mainy of the most widely used python and R packages.</p></li>
+<li><p>Cons: These are root-owned environments, so you <strong>can not</strong> add additional packages.</p></li>
+</ul>
+<p>or</p>
+<p><strong>2. Create your own custom environment(s).</strong></p>
+<ul class="simple">
+<li><p>Pros: You own these, so you can add packages as needed, control package versions, etc.</p></li>
+<li><p>Cons: There really aren’t any cons, other than the time needed to create a custom environment (usually 5-30 minutes depending on the number of packages you install).</p></li>
+</ul>
+<p>Both options are discussed below.</p>
+<section id="using-one-of-curc-s-pre-installed-enviroments">
+<h4>Using one of CURC’s pre-installed enviroments:<a class="headerlink" href="#using-one-of-curc-s-pre-installed-enviroments" title="Link to this heading">#</a></h4>
+<p>To use the CURC environment with OpenMP, run the following command with
+Anaconda initialized:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(base) [johndoe@c3cpu-a7-u19-1 ~]$ conda activate 
+/curc/sw/anaconda3/2022.10/envs/pyomp_2022 
+</pre></div>
+</div>
+<p>You will know that you have properly activated the environment because you
+should see <code class="docutils literal notranslate"><span class="pre">(pyomp_2022)</span></code> replace the <code class="docutils literal notranslate"><span class="pre">(base)</span></code> in front of your prompt.</p>
+<p>To see the python packages available in the environment, you can type <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span></code>.</p>
+<p>Similarly, to use the CURC R distribution (R v3.6.0), run the following
+command with Anaconda initialized:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(base) [johndoe@c3cpu-a7-u19-1 ~]$ conda activate 
+/curc/sw/anaconda3/2019.03/envs/rstudio
+</pre></div>
+</div>
+<p>You will know that you have properly activated the environment because you should see <code class="docutils literal notranslate"><span class="pre">(rstudio)</span></code> in front of your prompt. To see the R packages available in the environment, you can type <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span></code>. Now, you can use R as you normally would.</p>
+<p>Because interactive development is more easily done locally, most CURC R
+users exclusively run R code within batch jobs. Should you need to use
+rstudio on top of R for interactive development on Alpine, you can login
+to
+our system with X11-forwarding (<code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-X</span></code>) and initiate an rstudio session from within an interactive job.</p>
+</section>
+<section id="create-your-own-custom-environment">
+<h4>Create your own custom environment:<a class="headerlink" href="#create-your-own-custom-environment" title="Link to this heading">#</a></h4>
+<blockquote>
+<div><p>Note: In the examples below the environment is created in <code class="docutils literal notranslate"><span class="pre">/projects/$USER/software/anaconda/envs</span></code>, which is specified under <code class="docutils literal notranslate"><span class="pre">envs_dirs</span></code> in your <code class="docutils literal notranslate"><span class="pre">.condarc</span> <span class="pre">file</span></code>. Environments can be installed in any user-writable location the user chooses; just add the path to <code class="docutils literal notranslate"><span class="pre">~/.condarc</span></code>.</p>
+</div></blockquote>
+<p><strong>1. Initialize Anaconda if you haven’t already done so:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[johndoe@c3cpu-a7-u19-1 ~]$ module load anaconda
+(base) [johndoe@c3cpu-a7-u19-1 ~]$ 
+</pre></div>
+</div>
+<p><strong>2. Create a custom environment:</strong></p>
+<p>Here we create a new environment called <em>mycustomenv</em> (you can call it anything you want!)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(base) [johndoe@c3cpu-a7-u19-1 ~]$ conda create -n mycustomenv
+</pre></div>
+</div>
+<p>If you want a specific version of python or R, you can modify the above commmand as follows (e.g.):</p>
+<p><em>Python v2.7.16:</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(base) [johndoe@c3cpu-a7-u19-1 ~]$ conda create -n mycustomenv python==2.7.16
+</pre></div>
+</div>
+<p><em>Python v3.6.8:</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(base) [johndoe@c3cpu-a7-u19-1 ~]$ conda create -n mycustomenv python==3.6.8
+</pre></div>
+</div>
+<p><em>Latest version of R:</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(base) [johndoe@c3cpu-a7-u19-1 ~]$ conda create -n mycustomenv r-base
+</pre></div>
+</div>
+<p><strong>3. Activate your new environment:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(base) [johndoe@c3cpu-a7-u19-1 ~]$ conda activate mycustomenv
+(mycustomenv) [johndoe@c3cpu-a7-u19-1 ~]$ 
+</pre></div>
+</div>
+<p>If successful, your prompt will now be preceded with <code class="docutils literal notranslate"><span class="pre">(mycustomenv)</span></code>.</p>
+<p><strong>4. Install needed packages in your new environment:</strong></p>
+<p>The best way to do this for python packages is to install everything you
+need with one command, because it forces conda to resolve package
+conflicts. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(mycustomenv) [johndoe@c3cpu-a7-u19-1 ~]$ conda install numpy scipy tensorflow
+</pre></div>
+</div>
+<p>For R packages, it is easiest to start an R session and then install the
+packages as you normally would with “install.packages”. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(mycustomenv) [johndoe@c3cpu-a7-u19-1 ~]$ R
+&gt;install.packages(&quot;ggplot2&quot;)
+</pre></div>
+</div>
+<p>If you encounter a <code class="docutils literal notranslate"><span class="pre">---</span> <span class="pre">Please</span> <span class="pre">select</span> <span class="pre">a</span> <span class="pre">CRAN</span> <span class="pre">mirror</span> <span class="pre">for</span> <span class="pre">use</span> <span class="pre">in</span> <span class="pre">this</span> <span class="pre">session</span> <span class="pre">---</span></code> message, you can select a US mirror from the provided list or use the <code class="docutils literal notranslate"><span class="pre">repos</span></code> install flag:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s1">&#39;RMySQL&#39;</span><span class="p">,</span> <span class="n">repos</span><span class="o">=</span><span class="s1">&#39;http://cran.us.r-project.org&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For more information on managing conda enviornments, <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">check out Anaconda’s documentation here.</a></p>
+</section>
+</section>
+<section id="basic-conda-commands-to-get-you-started">
+<h3>Basic conda commands to get you started:<a class="headerlink" href="#basic-conda-commands-to-get-you-started" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span></code></p></td>
+<td><p>List the packages currently installed in the environment</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">search</span> <span class="pre">&lt;package&gt;</span></code></p></td>
+<td><p>Searches the Anaconda package channel for a package named <code class="docutils literal notranslate"><span class="pre">&lt;pakage&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">&lt;package&gt;</span></code></p></td>
+<td><p>Installs a package named <code class="docutils literal notranslate"><span class="pre">&lt;package&gt;</span></code> to your currently loaded environment</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">uninstall</span> <span class="pre">&lt;package&gt;</span></code></p></td>
+<td><p>Uninstalls a package named <code class="docutils literal notranslate"><span class="pre">&lt;package&gt;</span></code> from your currently loaded environment</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">list</span></code></p></td>
+<td><p>List the conda environments currently available</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">&lt;env&gt;</span></code></p></td>
+<td><p>Creates a new anaconda enviornment named <code class="docutils literal notranslate"><span class="pre">&lt;env&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">remove</span> <span class="pre">--name</span> <span class="pre">&lt;env&gt;</span> <span class="pre">--all</span></code></p></td>
+<td><p>Removes an environment named <code class="docutils literal notranslate"><span class="pre">&lt;env&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span></code></p></td>
+<td><p>Deactivates current enviornment</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="troubleshooting">
+<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h3>
+<p>If you are having trouble loading a package, you can use <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span></code> or <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">freeze</span></code> to list the available packages and their version numbers in your current conda environment. Use <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">&lt;package&gt;</span></code> to add a new package or <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">&lt;package==version&gt;</span></code> for a specific verison; e.g., <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">numpy=1.16.2</span></code>.</p>
+<p>Sometimes conda environments can “break” if two packages in the environment require different versions of the same shared library. In these cases you try a couple of things.</p>
+<ul class="simple">
+<li><p>Reinstall the packages all within the same install command (e.g., <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">&lt;package1&gt;</span> <span class="pre">&lt;package2&gt;</span></code>). This forces conda to attempt to resolve shared library conflicts.</p></li>
+<li><p>Create a new environment and reinstall the packages you need (preferably installing all with the same <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span></code> command, rather than one-at-a-time, in order to resolve the conflicts).</p></li>
+</ul>
+</section>
+</section>
+<section id="mamba-package-manager">
+<h2>Mamba Package Manager<a class="headerlink" href="#mamba-package-manager" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://mamba.readthedocs.io/">Mamba</a> is a fast, robust, and cross-platform package manager that aims to be a drop-in replacement for <em>conda</em>. Utilizing Mamba can improve the speed and reliability of constructing an environment. To use Mamba on an Alpine or Blanca compute node, perform the following module load:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[johndoe@c3cpu-a7-u19-1 ~]$ module load mambaforge
+</pre></div>
+</div>
+<p>The command above activates the base environment provided by Mamba. You will know that Mamba has been correctly loaded once you see <code class="docutils literal notranslate"><span class="pre">(base)</span></code> in front of your prompt. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(base) [johndoe@c3cpu-a7-u19-1 ~]$
+</pre></div>
+</div>
+<p>Once Mamba has been properly loaded, you can utilize almost all core command and configuration options available to <em>conda</em>. For commands, this can be done by replacing <code class="docutils literal notranslate"><span class="pre">conda</span></code> with <code class="docutils literal notranslate"><span class="pre">mamba</span></code>. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[johndoe@c3cpu-a7-u19-1 ~]$ mamba create -n mycustomenv
+</pre></div>
+</div>
+<blockquote>
+<div><p><em><strong>Note:</strong></em> If one specified a <code class="docutils literal notranslate"><span class="pre">.condarc</span></code> following the instructions in the section <a class="reference internal" href="#configuring-conda-with-condarc">Configuring conda with .condarc</a> above, then Mamba will automatically use the instructions provided.</p>
+</div></blockquote>
+</section>
+<section id="dbus-error">
+<h2>Dbus Error<a class="headerlink" href="#dbus-error" title="Link to this heading">#</a></h2>
+<p>If you see a ‘dbus’ connection error when trying to connect via a virtual environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Could</span> <span class="ow">not</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">session</span> <span class="n">bus</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">socket</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">dbus</span><span class="o">-</span><span class="n">oBg2HbRfLi</span><span class="p">:</span> <span class="n">Connection</span> <span class="n">refused</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>This is likely due to your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> configuration file auto-activating a conda environment with a problematic dbus package. You can resolve this issue by opening your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> with a text editor (ex. vim, nano) and commenting out the following lines (or any lines that add a conda environment to your <code class="docutils literal notranslate"><span class="pre">$PATH</span></code>):</p>
+<blockquote>
+<div><p>Note: Commenting lines out instead of removing them will allow you to add them back in later if needed. These lines have been commented out using <code class="docutils literal notranslate"><span class="pre">#</span></code> preceeding each line.</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># &gt;&gt;&gt; conda initialize &gt;&gt;&gt;</span>
+<span class="c1"># !! Contents within this block are managed by &#39;conda init&#39; !!</span>
+<span class="c1"># __conda_setup=&quot;$(&#39;/curc/sw/anaconda3/2019.07/bin/conda&#39; &#39;shell.bash&#39; &#39;hook&#39; 2&gt; /dev/null)&quot;</span>
+<span class="c1"># if [ $? -eq 0 ]; then</span>
+<span class="c1">#     eval &quot;$__conda_setup&quot;</span>
+<span class="c1"># else</span>
+<span class="c1">#     if [ -f &quot;/curc/sw/anaconda3/2019.07/etc/profile.d/conda.sh&quot; ]; then</span>
+<span class="c1">#         . &quot;/curc/sw/anaconda3/2019.07/etc/profile.d/conda.sh&quot;</span>
+<span class="c1">#     else</span>
+<span class="c1">#         export PATH=&quot;/curc/sw/anaconda3/2019.07/bin:$PATH&quot;</span>
+<span class="c1">#     fi</span>
+<span class="c1"># fi</span>
+<span class="c1"># unset __conda_setup</span>
+<span class="c1"># &lt;&lt;&lt; conda initialize &lt;&lt;&lt;</span>
+
+</pre></div>
+</div>
+<p>Keep in mind that doing this means conda is not automatically sourced by your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> so you will have to manually source the base conda envioronment with <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">anaconda</span></code> to activate the base environment.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="matlab.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Matlab</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="GNUParallel.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">GNU Parallel</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-conda-with-condarc">Configuring conda with <code class="docutils literal notranslate"><span class="pre">.condarc</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-curc-anaconda-environment">Using the CURC Anaconda environment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activate-the-curc-anaconda-environment">Activate the CURC Anaconda environment:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-conda">Using Conda:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-one-of-curc-s-pre-installed-enviroments">Using one of CURC’s pre-installed enviroments:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-your-own-custom-environment">Create your own custom environment:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-conda-commands-to-get-you-started">Basic conda commands to get you started:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mamba-package-manager">Mamba Package Manager</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbus-error">Dbus Error</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

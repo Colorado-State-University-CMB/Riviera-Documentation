@@ -1,0 +1,975 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Open OnDemand (Browser Based HPC Portal) &#8212; Research Computing
+University of Colorado Boulder  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=31992893" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'gateways/OnDemand';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Jupyter Sessions" href="jupyterhub.html" />
+    <link rel="prev" title="Running jobs on RoCE enabled Nodes" href="../running-jobs/roce-enabled.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Research_Computing_black_letters.png" class="logo__image only-light" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>
+    <script>document.write(`<img src="../_static/Research_Computing_white_letters.png" class="logo__image only-dark" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accessing RC Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../access/logging-in.html">Logging In</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Compute Environment</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../compute/node-types.html">Node types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/filesystems.html">Filesystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/modules.html">The Modules System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/data-transfer.html">Data Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/compiling.html">Compiling and Linking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/monitoring-resources.html">Monitoring Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Jobs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/running-apps-with-jobs.html">Running applications with Jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/batch-jobs.html">Batch Jobs and Job Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/interactive-jobs.html">Interactive jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/slurm-commands.html">Useful Slurm commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/job-resources.html">Slurm Flags, Partitions, and QoS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/squeue-status-codes.html"><code class="docutils literal notranslate"><span class="pre">squeue</span></code> status and reason codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/roce-enabled.html">Running jobs on RoCE enabled Nodes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gateways &amp; Portals</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Open OnDemand <em>(Browser Based HPC Portal)</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="jupyterhub.html">Jupyter Sessions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/loadbalancer.html">Load Balancer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/gaussian.html">Gaussian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/matlab.html">Matlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/python.html">Python and R with Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/GNUParallel.html">GNU Parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vasp.html">VASP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/Containerizationon.html">Containerization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/alphafold.html">AlphaFold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/spack.html">Spack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/sratoolkit.html">SRA Toolkit on Alpine</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming and Parallelization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../programming/coding-best-practices.html">Coding best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/parallel-programming-fundamentals.html">Fundamentals of parallel programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPIBestpractices.html">MPI Best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-C.html">Using MPI with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-Fortran.html">Using MPI with Fortran</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-C.html">Using OpenMP with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-Fortran.html">Using OpenMP with Fortran</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/index.html">CUmulus Cloud</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus1.html">Tutorial: Creating a CUmulus instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus2.html">Establish a Database to query Twitter and Store Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus3.html">CUmulus integration with CURC HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus4.html">Mounting a remote filesystem from a CUmulus Virtual Machine</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/utah-videos.html">University of Utah videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/other.html">Facilities, equipment, and other resources</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ResearchComputing/Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/gateways/OnDemand.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Open OnDemand (Browser Based HPC Portal)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started-with-curc-open-ondemand">Getting started with CURC Open OnDemand</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features">Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#files">Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jobs">Jobs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clusters-shell-access">Clusters (Shell Access)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-applications-menu">Interactive Applications Menu</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#core-desktop-remote-desktop">Core Desktop (remote desktop)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab">MATLAB</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-session">Jupyter Session</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-jupyter-session-conda-environment">Creating a Jupyter Session Conda Environment</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rstudio">RStudio</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-dependencies-for-rstudio-currently-available-only-on-alpine">Installing dependencies for RStudio (currently available only on Alpine)</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vs-code-server">VS Code-Server</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-vs-code-server-extensions">Installing VS Code-Server Extensions</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-custom-interactive-applications">Running <em>Custom</em> Interactive applications</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#gpu-access-for-jupyter-sessions">GPU access for Jupyter Sessions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#my-interactive-sessions">My Interactive Sessions</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="open-ondemand-browser-based-hpc-portal">
+<h1>Open OnDemand <em>(Browser Based HPC Portal)</em><a class="headerlink" href="#open-ondemand-browser-based-hpc-portal" title="Link to this heading">#</a></h1>
+<p>CURC Open OnDemand is a browser based, integrated, single access point for all of your high performance computing (HPC) resources at CU Research Computing. CURC Open OnDemand provides a graphical interface to view, edit, download, and upload files; manage and create job templates for CURC’s clusters; and access CURC interactive applications (Virtual Desktops, Matlab, Jupyter Notebooks, and RStudio). All of these actions are completed via a web browser and require only minimal knowledge of Linux and scheduler commands.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cP6lfRWywk0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<section id="getting-started-with-curc-open-ondemand">
+<h2>Getting started with CURC Open OnDemand<a class="headerlink" href="#getting-started-with-curc-open-ondemand" title="Link to this heading">#</a></h2>
+<p>To connect to CURC Open OnDemand, visit <a class="reference external" href="https://ondemand.rc.colorado.edu/">https://ondemand.rc.colorado.edu</a>. The first page of CURC Open OnDemand will bring you to a login prompt. Use your CU Research Computing credentials and Duo 2-factor authentication to login. If you need a CU Research Computing account please visit <a class="reference internal" href="../access/logging-in.html"><span class="std std-doc">our account request page</span></a> to get started. If you are an RMACC member, please follow our provided instructions on accessing <a class="reference internal" href="#../access/rmacc.md"><span class="xref myst">Alpine resources for RMACC members</span></a>.</p>
+<p><img alt="" src="../_images/login_page.png" /></p>
+<p><em><strong>Notes on logging out:</strong></em></p>
+<ul class="simple">
+<li><p>You must <strong>completely quit your browser in order for “logout” to occur</strong>. If after reopening your browser you are still logged in, please clear your cookies. If you are on a Chromebook or Chromebox, you will need to reboot your device in order to “quit the browser” and thus “logout”.</p></li>
+<li><p><strong>Tip: Using a “private browsing mode”</strong> window while using OnDemand is a great way to handle “auto-logout”, as closing your browser window will remove all associated cookies and session information.</p></li>
+</ul>
+</section>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Link to this heading">#</a></h2>
+<p>When you have successfully logged into CU Open OnDemand, you will see the landing page with the following features broken into tabs along the top of the page: <strong>Files</strong>, <strong>Jobs</strong>, <strong>Clusters</strong> (shell access), <strong>Interactive Apps</strong>, and <strong>My Interactive Sessions</strong>.</p>
+<p><img alt="" src="../_images/landing_page.png" /></p>
+<p>We’ll step through these features one at a time.</p>
+<section id="files">
+<h3>Files<a class="headerlink" href="#files" title="Link to this heading">#</a></h3>
+<p>The <em>File</em> menu allows you to view and operate on files in different file spaces: your <em>home</em> directory, <em>projects</em> directory, scratch spaces, and (if you own one or are part of a group with one) access to <em>PetaLibary</em> allocations.</p>
+<p>Selecting one of the file spaces will open a separate browser window which will allow you to navigate the space in a graphical setting similar to a file browser on a personal computer. From here you can download, upload, create, delete, and open files.</p>
+<blockquote>
+<div><p><strong><em>NOTE:</em></strong> <em>Please use
+<a class="reference internal" href="../compute/data-transfer.html#globus-transfers"><span class="std std-ref">Globus</span></a>
+to transfer files to and from <code class="docutils literal notranslate"><span class="pre">/scratch/alpine</span></code> or <code class="docutils literal notranslate"><span class="pre">/rc_scratch</span></code>. Additionally, Globus should be used if you have more than 1 GB of data to transfer. <span style="background-color: #FFF36D">Open OnDemand is not designed to handle large file transfers.</span></em></p>
+</div></blockquote>
+<p><img alt="" src="../_images/home_file.png" /></p>
+<blockquote>
+<div><p>For additional documentation visit <a class="reference external" href="https://www.osc.edu/resources/online_portals/ondemand/file_transfer_and_management">OSC’s File Transfer and Management help page</a>.</p>
+</div></blockquote>
+</section>
+<section id="jobs">
+<h3>Jobs<a class="headerlink" href="#jobs" title="Link to this heading">#</a></h3>
+<p>Jobs can be monitored, created, edited and scheduled with the job management tools under the <em>Jobs</em> menu.</p>
+<ul class="simple">
+<li><p><strong>Active Jobs:</strong> Under the “Active Jobs” tab you can view active jobs. You can choose to view your jobs (or all jobs) as well as choose from specific clusters (Alpine, Core, or All Clusters). From this menu you can also cancel your own jobs.</p></li>
+</ul>
+<p><img alt="" src="../_images/active_jobs.png" /></p>
+<ul class="simple">
+<li><p><strong>Job Composer:</strong> Create and edit job scripts and schedule jobs under this menu.</p></li>
+</ul>
+<blockquote>
+<div><p>See <a class="reference external" href="https://www.osc.edu/resources/online_portals/ondemand/job_management">OSC’s Job Management help page</a> for detailed use of the job composer feature.</p>
+</div></blockquote>
+<p><img alt="" src="../_images/job_composer.png" /></p>
+</section>
+<section id="clusters-shell-access">
+<h3>Clusters (Shell Access)<a class="headerlink" href="#clusters-shell-access" title="Link to this heading">#</a></h3>
+<p>The <em>Clusters</em> menu provides shell access to login nodes on CURC clusters. The shell terminal is similar to many other tools that provide terminal access.</p>
+<br>
+<p><img alt="" src="../_images/shell_access.png" /></p>
+<blockquote>
+<div><p>Currently, Alpine shells log you into a basic login node. You can
+load in either Alpine or Blanca slurm instances from here: <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span>&#160; <span class="pre">slurm/&lt;cluster&gt;</span></code> with either Alpine or Blanca.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>Alpine:</strong> The Alpine tab will launch a terminal that RC users can use to manually access an RC Login node. After the tab opens, type your CURC password and accept the Duo push to your phone, which will complete the login to the terminal.</p></li>
+</ul>
+<!-- * __Blanca:__ The Blanca tab will launch a terminal that RC users can use to manually access an RC Login node. After the tab opens, type your CURC password and accept the Duo push to your phone to complete login to the terminal. To load the Blanca Slurm environment, make sure to type “module load slurm/blanca upon login. More information on using the Blanca cluster can be found [in the Blanca documentation](https://curc.readthedocs.io/en/latest/access/blanca.html). -->
+</section>
+<section id="interactive-applications-menu">
+<h3>Interactive Applications Menu<a class="headerlink" href="#interactive-applications-menu" title="Link to this heading">#</a></h3>
+<p>The <em>Interactive Applications</em> menu contains options to launch certain applications that have graphical user interfaces (GUIs) for interactive use on CURC clusters. Currently supported applications include a <strong>remote desktop</strong>, <strong>MATLAB</strong>, <strong>Jupyter session</strong>, <strong>RStudio session</strong>, and <strong>VS Code-Server</strong>.</p>
+<section id="core-desktop-remote-desktop">
+<h4>Core Desktop (remote desktop)<a class="headerlink" href="#core-desktop-remote-desktop" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>To start a remote desktop session, you can select either <code class="docutils literal notranslate"><span class="pre">Core</span> <span class="pre">Desktop</span></code> or <code class="docutils literal notranslate"><span class="pre">Core</span> <span class="pre">Desktop</span> <span class="pre">(Presets)</span></code> from the interactive applications menu. When starting a <code class="docutils literal notranslate"><span class="pre">Core</span> <span class="pre">Desktop</span></code> session, you may customize the runtime and number of cores for the session. If you select <code class="docutils literal notranslate"><span class="pre">Core</span> <span class="pre">Desktop</span> <span class="pre">(Presets)</span></code>, you may select from standard configurations we provide.
+<img alt="" src="../_images/core_desktop_presets.png" /></p></li>
+<li><p>Once either option is selected, click “Launch” to submit the remote desktop job to the queue. The wait time depends on the number of other users presently on the resource. Requesting smaller and shorter jobs may facilitate shorter wait times.</p></li>
+<li><p>When your remote desktop is ready, you can click the “Launch Core Desktop” or “Launch Core Desktop (Presets)” button to bring up a web page with the remote desktop. In most cases, the default compression and image quality will suffice. If you do have problems with image quality you can adjust these settings as necessary.
+<img alt="" src="../_images/core_desktop_presets_launch.png" /></p></li>
+<li><p>With the remote desktop session running and open, you should be able to run standard Linux desktop applications that have a graphical user interface (GUI).</p></li>
+</ol>
+<p><strong>Notes</strong>:</p>
+<ul>
+<li><mark style="background-color: #FFF36D">
+GPU based options are not meant for computationally intensive workflows. Additionally,
+please keep in mind that these GPU based options are a shared
+resource amongst all users. Thus, significant computation by one
+user can affect other users of this service.
+</mark>
+</li>
+<li><p>You can copy/paste into/out of the VNC desktop using the clipboard in the “hidden” tab on the left-hand-side of the virtual desktop.
+<img alt="" src="../_images/copypasta.png" /></p></li>
+<li><p>Closing the window will not terminate the job. You can use the “My Interactive Sessions” tab to view all open interactive sessions and terminate them.</p></li>
+</ul>
+</section>
+<section id="matlab">
+<h4>MATLAB<a class="headerlink" href="#matlab" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>To start an interactive MATLAB session, select either <code class="docutils literal notranslate"><span class="pre">MATLAB</span> <span class="pre">(Custom)</span></code> or <code class="docutils literal notranslate"><span class="pre">MATLAB</span> <span class="pre">(Presets)</span></code> from the interactive applications menu. When starting a <code class="docutils literal notranslate"><span class="pre">MATLAB</span> <span class="pre">(Custom)</span></code> session, you may customize resources allocated to the session and other characteristics of the dispatched Slurm job. For more information on these options, please see the <a class="reference internal" href="#running-custom-interactive-applications">Running Custom Interactive applications</a> section below. If you select <code class="docutils literal notranslate"><span class="pre">MATLAB</span> <span class="pre">(Presets)</span></code>, you may select from standard configurations we provide.
+<img alt="" src="../_images/matlab_custom.png" /></p></li>
+<li><p>Once either option is selected, click “Launch” to submit the MATLAB job to the queue. The wait time depends on user provided options, such as the number of cores and time requested.</p></li>
+<li><p>When your Matlab session is ready, you can click the “Launch MATLAB (Custom)” or “Launch MATLAB (Presets)” button to bring up a web page with the MATLAB session. In most cases, the default compression and image quality will suffice. If you do have problems with image quality of the MATLAB session, you can adjust as necessary.
+<img alt="" src="../_images/matlab_custom_launch.png" /></p></li>
+<li><p>Once launched, it may take a few minutes for MATLAB to begin. However, once started, you should be able to interact with MATLAB as you would on your own computer.</p></li>
+</ol>
+<p><strong><em>Notes:</em></strong></p>
+<ul>
+<li><mark style="background-color: #FFF36D">
+GPU based options are not meant for computationally intensive workflows. Additionally,
+please keep in mind that these GPU based options are a shared
+resource amongst all users. Thus, significant computation by one
+user can affect other users of this service.
+</mark>
+</li>
+<li><p>Closing the window will not terminate the job, you can use the “My Interactive Sessions” tab to view all open interactive sessions and terminate them.</p></li>
+</ul>
+</section>
+<section id="jupyter-session">
+<h4>Jupyter Session<a class="headerlink" href="#jupyter-session" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>When starting an interactive Jupyter session job, you may select <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Session</span> <span class="pre">(Custom)</span></code> or <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Session</span> <span class="pre">(Presets)</span></code> from the menu. The <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Session</span> <span class="pre">(Custom)</span></code> option allows you to modify the resources and Slurm configurations for the job. For more information on these options, please see the <a class="reference internal" href="#running-custom-interactive-applications">Running Custom Interactive applications</a> section below. If you select <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Session</span> <span class="pre">(Presets)</span></code>, you may select from standard configurations we provide.  Most use cases can be accommodated by one of the presets. The <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Session</span> <span class="pre">(Presets)</span></code> option submits jobs to Alpine’s <code class="docutils literal notranslate"><span class="pre">ahub</span></code> partition. This partition provides users with rapid start times, but <strong>limits users to one Jupyter session</strong> (or any one job using the partition).
+<img alt="" src="../_images/jupyter_session_custom.png" /></p></li>
+<li><p>Click “Launch” to submit the Jupyter session job to the queue. The wait time depends on the number of cores and time requested. The preset options generally start within a few moments.</p></li>
+<li><p>Once your Jupyter Notebook session is ready, you can click “Connect to Jupyter”. An interactive Jupyter session will be started in a new window.
+<img alt="" src="../_images/jupyter_session_custom_launch.png" /></p></li>
+</ol>
+<p><strong><em>Notes:</em></strong></p>
+<ul class="simple">
+<li><p>When the session starts, the file navigator panel displays CURC root. You can navigate to one of your CURC spaces by selecting <code class="docutils literal notranslate"><span class="pre">home</span></code> or <code class="docutils literal notranslate"><span class="pre">projects</span></code> from the file panel on the left. Alternatively, you can go to “File” then “Open Path” and enter your path in the field (e.g. <code class="docutils literal notranslate"><span class="pre">/projects/&lt;your</span> <span class="pre">username&gt;</span></code>).</p></li>
+<li><p>For more information on running Jupyter sessions, <a class="reference internal" href="jupyterhub.html"><span class="std std-doc">check out RC’s page on Jupyter</span></a>.</p></li>
+<li><p>Closing the window will not terminate the job, you can use the “My Interactive Sessions” tab to view all open interactive sessions and terminate them.</p></li>
+<li><p>One can access a single GPU via the <code class="docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Session</span> <span class="pre">(Custom)</span></code> application by following the instructions provided in the <a class="reference internal" href="#gpu-access-for-jupyter-sessions">GPU access for Jupyter Sessions</a> section below.</p></li>
+</ul>
+<section id="creating-a-jupyter-session-conda-environment">
+<h5>Creating a Jupyter Session Conda Environment<a class="headerlink" href="#creating-a-jupyter-session-conda-environment" title="Link to this heading">#</a></h5>
+<p>In Jupyter Session applications you have the option to launch a Jupyter session using a Conda environment that you have created. This becomes extremely useful if you are using a package that requires extensions be installed in the environment that is launching the Jupyter session. In order to configure your environment so that it launches correctly, you need to ensure that the appropriate packages are installed in it. Below we provide the process needed to correctly create your environment using a Jupyter Session terminal.</p>
+<ol class="arabic">
+<li><p>Obtain a compute node by launching a Jupyter session using the Anaconda version of your choice and using the <code class="docutils literal notranslate"><span class="pre">base</span></code> environment</p>
+<p><img alt="" src="../_images/jupyter_session_base_env.png" /></p>
+</li>
+<li><p>Once the Jupyter session has been launched, open up a terminal in Jupyter</p>
+<p><img alt="" src="../_images/jupyter_session_open_terminal.png" /></p>
+</li>
+<li><p>In your terminal, load the Anaconda version you wish to use e.g.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[user@c3cpu-a2-u3-4 ~]$ module load anaconda/2020.11
+</pre></div>
+</div>
+</li>
+<li><p>Create a Conda environment with the name and Python version of your choice (here we use <code class="docutils literal notranslate"><span class="pre">my-conda-env</span></code> and Python version 3.10)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[user@c3cpu-a2-u3-4 ~]$ conda create -n my-conda-env python=3.10
+</pre></div>
+</div>
+</li>
+<li><p>Activate your conda environment</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[user@c3cpu-a2-u3-4 ~]$ conda activate my-conda-env
+</pre></div>
+</div>
+</li>
+<li><p>Install either JupyterLab <strong>or</strong> Jupyter Notebook (it is preferred that users install JupyterLab)</p>
+<ul>
+<li><p>If you would like to install JupyterLab:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(my-conda-env) [user@c3cpu-a2-u3-4 ~]$ conda install -c conda-forge jupyterlab
+</pre></div>
+</div>
+</li>
+<li><p>If you would like to install Jupyter Notebook (the classic version of Jupyter)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(my-conda-env) [user@c3cpu-a2-u3-4 ~]$ conda install -c conda-forge notebook
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>You can now install the rest of the packages you require in this environment.</p></li>
+</ol>
+<p>Now that we have our environment correctly created, we can launch a Jupyter session utilizing this environment. This can be done as follows:</p>
+<ol class="arabic">
+<li><p>Launch the Jupyter session using the environment you created:
+<img alt="" src="../_images/jupyter_session_use_env.png" /></p></li>
+<li><p>Once the session is launched, it is also important to ensure that your environment is being correctly utilized. To do this, open up a terminal application and determine what Python and Jupyter are being used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[user@c3cpu-a2-u3-4 ~]$ which python
+/projects/user/software/anaconda/envs/my-conda-env/bin/python
+[user@c3cpu-a2-u3-4 ~]$ which jupyter
+/projects/user/software/anaconda/envs/my-conda-env/bin/jupyter
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The provided output should be utilizing the environment you created, as seen by the output <code class="docutils literal notranslate"><span class="pre">anaconda/envs/my-conda-env</span></code>.</p></li>
+<li><p>If your environment is not being used, this is usually due to one of two reasons:</p>
+<ul>
+<li><p>You have incorrectly provided the name of your Conda environment</p></li>
+<li><p>You have chosen an Anaconda version that is not the same as the one you used to install your Conda environment</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>In both of these scenarios, you can confirm that your environment is not being used by looking at the <code class="docutils literal notranslate"><span class="pre">output.log</span></code> for your job:</p>
+<ol class="arabic simple">
+<li><p>Select “My Interactive Sessions”
+<img alt="" src="../_images/my_interactive_sess_tab.png" /></p></li>
+<li><p>Click the link next to the “Session ID” for your running job
+<img alt="" src="../_images/session_id_for_job.png" /></p></li>
+<li><p>Open the file <code class="docutils literal notranslate"><span class="pre">output.log</span></code> by clicking it
+<img alt="" src="../_images/output_log_file.png" /></p></li>
+<li><p>If you see an <code class="docutils literal notranslate"><span class="pre">EnvironmentNameNotFound</span></code> this means that your environment is <strong>NOT</strong> being used
+<img alt="" src="../_images/env_not_found.png" /></p></li>
+</ol>
+</section>
+</section>
+<section id="rstudio">
+<h4>RStudio<a class="headerlink" href="#rstudio" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>To start an interactive RStudio job, select <code class="docutils literal notranslate"><span class="pre">RStudio</span> <span class="pre">Server</span> <span class="pre">(Custom)</span></code> or <code class="docutils literal notranslate"><span class="pre">RStudio</span> <span class="pre">Server</span> <span class="pre">(Presets)</span></code> from the menu. The <code class="docutils literal notranslate"><span class="pre">RStudio</span> <span class="pre">Server</span> <span class="pre">(Custom)</span></code> option allows you to modify the resources and Slurm configurations for the job. For more information on these options, please see the <a class="reference internal" href="#running-custom-interactive-applications">Running Custom Interactive applications</a> section below. The <code class="docutils literal notranslate"><span class="pre">RStudio</span> <span class="pre">Server</span> <span class="pre">(Presets)</span></code> application provides configurations for your convenience. Most use cases can be accommodated by one of the presets. The <code class="docutils literal notranslate"><span class="pre">RStudio</span> <span class="pre">Server</span> <span class="pre">(Presets)</span></code> option submits jobs to Alpine’s <code class="docutils literal notranslate"><span class="pre">ahub</span></code> partition. This partition provides users with rapid start times, but <strong>limits users to one RStudio Server session</strong> (or any one job using the partition; for example if you have a Jupyter session that is also using the <code class="docutils literal notranslate"><span class="pre">ahub</span></code> partition, you will not be able to start an RStudio Server session using the preset options).
+<img alt="" src="../_images/rstudio_session_custom.png" /></p></li>
+<li><p>Click “Launch” to submit the RStudio job to the queue. The wait time depends on the number of cores and time requested.  The preset options provided generally start within a few moments.</p></li>
+<li><p>Once your RStudio session is ready, you can click “Connect to RStudio Server”. An interactive RStudio session will be started in a new window.
+<img alt="" src="../_images/rstudio_session_custom_launch.png" /></p></li>
+</ol>
+<ul class="simple">
+<li><p>Please note that the first time you launch the session it may take awhile before you can connect to the session. This is because we are creating a unique <a class="reference external" href="https://apptainer.org/docs/user/main/persistent_overlays.html">persistent overlay</a> for you that can give you the ability to install dependencies. Subsequent launches will not take as long.</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p>To shut down an RStudio server, go to the “File” menu at the top and choose “Quit session…”. If you have made changes to the workspace, then you will be asked if you would like to save them to <code class="docutils literal notranslate"><span class="pre">~/.RData</span></code>, this is not necessary, but can be helpful. Once completed, a prompt will notify you that your R session has ended and will give you the option to restart a server, if desired. However, it is important to note that quitting the session will not cancel the job you are running. Additionally, closing the window will not terminate the job. To terminate the job, you can use the “My Interactive Sessions” tab in Open OnDemand to terminate running sessions.</p></li>
+</ol>
+<p><strong><em>Important Notes:</em></strong></p>
+<ul class="simple">
+<li><p>We have designed the RStudio app in Open OnDemand such that it employs versions of R that match the versions of R that are also available in the CURC module stack. This is done to facilitate moving between using RStudio for interactive work, and running larger R workflows as batch jobs on Alpine or Blanca. Due to system constraints, packages you install in a given version of R in RStudio will not be available if you load the equivalent version of the R module, and vice versa. You will need to (re-)install the packages you need when using the equivalent module. This is due to the fact that RStudio is run from an Ubuntu <a class="reference internal" href="../software/Containerizationon.html"><span class="std std-doc">container</span></a>.</p></li>
+</ul>
+<section id="installing-dependencies-for-rstudio-currently-available-only-on-alpine">
+<h5>Installing dependencies for RStudio (currently available only on Alpine)<a class="headerlink" href="#installing-dependencies-for-rstudio-currently-available-only-on-alpine" title="Link to this heading">#</a></h5>
+<p>As previously mentioned, the RStudio application is run from an Ubuntu <a class="reference internal" href="../software/Containerizationon.html"><span class="std std-doc">container</span></a>. More specifically, the application uses an Ubuntu container paired with a <a class="reference external" href="https://apptainer.org/docs/user/main/persistent_overlays.html">persistent overlay</a> that is unique to each user. For this reason, when installing a library via <code class="docutils literal notranslate"><span class="pre">install.packages</span></code>, you may receive an error because the container and overlay do not have a dependency required by the library. For example, let’s try to install the library <code class="docutils literal notranslate"><span class="pre">XVector</span></code> using the Bioconductor package manager <code class="docutils literal notranslate"><span class="pre">BiocManager</span></code>, using the below commands in the R command prompt.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s2">&quot;BiocManager&quot;</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">BiocManager</span><span class="p">)</span>
+<span class="n">BiocManager</span><span class="p">::</span><span class="n">install</span><span class="p">(</span><span class="s2">&quot;XVector&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Please note that if you are ever provided the prompt “Update all/some/none? [a/s/n]:”,  always choose “n”. You will not be able to update the items because RStudio needs to be launched using a read only container, which cannot be modified. However, choosing the wrong option should not harm anything.</p></li>
+</ul>
+<p>When the above lines are executed, we will eventually reach a state in the <code class="docutils literal notranslate"><span class="pre">XVector</span></code> install where we receive the following error.</p>
+<p><img alt="" src="../_images/xvector_install_error.png" /></p>
+<p>This install failed because our container and overlay do not have <code class="docutils literal notranslate"><span class="pre">zlib</span></code> installed. To remedy this, we can install <code class="docutils literal notranslate"><span class="pre">zlib</span></code> by modifying our overlay. To do this, we must first completely close the RStudio session <strong>AND</strong> delete the job. This is necessary because our overlay cannot be changed if it is being used. Next, open up a terminal in Open OnDemand by selecting “Clusters” -&gt; “Alpine Shell” from the top menu bar.</p>
+<p><img alt="" src="../_images/alpine_shell_depiction.png" /></p>
+<p>Next, start an interactive session on a compute node.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">acompile</span> <span class="o">--</span><span class="n">ntasks</span><span class="o">=</span><span class="mi">4</span>
+</pre></div>
+</div>
+<p>Once on a compute node, we can now modify the overlay by launching the overlay using fakeroot.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>apptainer shell --fakeroot --bind /projects,/scratch/alpine,$CURC_CONTAINER_DIR_OOD --overlay /projects/$USER/.rstudioserver/rstudio-server-4.2.2_overlay.img $CURC_CONTAINER_DIR_OOD/rstudio-server-4.2.2.sif
+</pre></div>
+</div>
+<p>You should now be in a terminal starting with <code class="docutils literal notranslate"><span class="pre">Apptainer&gt;</span></code>. In this shell we can install anything using the standard Ubuntu package manager. Let’s go ahead and install <code class="docutils literal notranslate"><span class="pre">zlib1g-dev</span></code>, which will give us <code class="docutils literal notranslate"><span class="pre">zlib.h</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span> 
+<span class="n">apt</span> <span class="n">install</span> <span class="n">zlib1g</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+<p>Once completed, the overlay will be updated and you can exit the shell and compute node by executing <code class="docutils literal notranslate"><span class="pre">exit</span></code> twice.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">exit</span>
+<span class="n">exit</span>
+</pre></div>
+</div>
+<p>Now, we can startup a new Rstudio session and attempt the XVector install.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BiocManager</span><span class="p">::</span><span class="n">install</span><span class="p">(</span><span class="s2">&quot;XVector&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We should now see that the XVector install goes through!</p>
+<p><img alt="" src="../_images/successful_x_vector_install_rstudio.png" /></p>
+<p><strong><em>Important Notes:</em></strong></p>
+<ul>
+<li><p>Currently, this functionality is only available on Alpine. Once we update the operating system on Blanca, we will enable this functionality.</p></li>
+<li><p>For users who want to utilize the command line version of R or run a script without RStudio, this can be done using Apptainer. Below we provide two methods that can be used once a user has access to an Alpine compute node:</p>
+<ul class="simple">
+<li><p>To utilize R in an interactive session, you can execute the following command to start the container.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>apptainer shell --bind /projects,/scratch/alpine,$CURC_CONTAINER_DIR_OOD --overlay /projects/$USER/.rstudioserver/rstudio-server-4.2.2_overlay.img:ro $CURC_CONTAINER_DIR_OOD/rstudio-server-4.2.2.sif
+</pre></div>
+</div>
+<p>You can then launch R and interact with it (you can also utilize <code class="docutils literal notranslate"><span class="pre">Rscript</span></code> here too).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Apptainer</span><span class="o">&gt;</span> <span class="n">R</span>
+<span class="o">&gt;</span> <span class="n">library</span><span class="p">(</span><span class="n">XVector</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>To execute the script “test_R.r” without an interactive session, you can execute the following command.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>apptainer exec --bind /projects,/scratch/alpine,$CURC_CONTAINER_DIR_OOD --overlay /projects/$USER/.rstudioserver/rstudio-server-4.2.2_overlay.img:ro $CURC_CONTAINER_DIR_OOD/rstudio-server-4.2.2.sif Rscript test_R.r
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+<section id="vs-code-server">
+<h4>VS Code-Server<a class="headerlink" href="#vs-code-server" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>To start an interactive <a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code (VS Code)</a> job, you may select <code class="docutils literal notranslate"><span class="pre">VS</span> <span class="pre">Code-Server</span> <span class="pre">(Custom)</span></code> or <code class="docutils literal notranslate"><span class="pre">VS</span> <span class="pre">Code-Server</span> <span class="pre">(Presets)</span></code> from the menu. The <code class="docutils literal notranslate"><span class="pre">VS</span> <span class="pre">Code-Server</span> <span class="pre">(Custom)</span></code> option allows you to modify the resources and Slurm configurations for the job. For more information on these options, please see the <a class="reference internal" href="#running-custom-interactive-applications">Running Custom Interactive applications</a> section below. If you select <code class="docutils literal notranslate"><span class="pre">VS</span> <span class="pre">Code-Server</span> <span class="pre">(Presets)</span></code>, you may select from standard configurations we provide.  Most use cases can be accommodated by one of the presets. The <code class="docutils literal notranslate"><span class="pre">VS</span> <span class="pre">Code-Server</span> <span class="pre">(Presets)</span></code> option submits jobs to Alpine’s <code class="docutils literal notranslate"><span class="pre">ahub</span></code> partition. This partition provides users with rapid start times, but <strong>limits users to one VS Code-Server session</strong> (or any one job using the partition).
+<img alt="" src="../_images/vs_code_custom.png" /></p></li>
+<li><p>Click “Launch” to submit the VS Code-Server job to the queue. The wait time depends on the number of cores and time requested. The preset options generally start within a few moments.</p></li>
+<li><p>Once your VS Code-Server session is ready, you can click “Connect to VS Code”. An interactive VS Code-Server session will be started in a new window.
+<img alt="" src="../_images/vs_code_custom_launch.png" /></p></li>
+</ol>
+<p><strong><em>Notes:</em></strong></p>
+<ul class="simple">
+<li><p>One can access a single GPU via the <code class="docutils literal notranslate"><span class="pre">VS</span> <span class="pre">Code-Server</span> <span class="pre">(Custom)</span></code> application by following the instructions provided in the <a class="reference internal" href="#gpu-access-for-jupyter-sessions">GPU access for Jupyter Sessions</a> section below.</p></li>
+</ul>
+<section id="installing-vs-code-server-extensions">
+<h5>Installing VS Code-Server Extensions<a class="headerlink" href="#installing-vs-code-server-extensions" title="Link to this heading">#</a></h5>
+<p>The provided VS Code application is utilizing <a class="reference external" href="https://coder.com/docs/code-server/latest">VS Code-Server</a>. For this reason, some aspects of the application may differ from the
+standard installation of VS Code. One of these differences is accessing and installing extensions. While a majority of extensions are available in the Marketplace within the
+application (and installable), some extensions may be missing. Although this is the case, thankfully one can download extensions directly from the <a class="reference external" href="https://marketplace.visualstudio.com/vscode">VS Code Marketplace</a> and then install them within the application. Below we provide a video that demonstrates three ways one can install extensions from within
+the application. Additionally, we provide a short description of these methods below the video.</p>
+<iframe width="700" height="400" src="https://www.youtube.com/embed/2kgZQmm5TF4?si=NUVzamnXYojcd79e" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<p>When attempting to install an extension, we suggest the following methods (listed in order of preference):</p>
+<ul>
+<li><p>If possible, install extensions using the Marketplace from within the application.</p>
+<ol class="arabic simple">
+<li><p>On the left-hand side of the screen select the <code class="docutils literal notranslate"><span class="pre">Extensions</span></code> button.</p></li>
+<li><p>Use the provided search bar to search for the application you want.</p></li>
+<li><p>Select the application and then click the <code class="docutils literal notranslate"><span class="pre">Install</span></code> button.
+<img alt="" src="../_images/vs_code_marketplace_install.png" /></p></li>
+</ol>
+</li>
+<li><p>Install the application by dragging the downloaded file into the <strong>extensions column</strong> (for visual representation, please see above video).</p>
+<ol class="arabic simple">
+<li><p>Navigate to the <a class="reference external" href="https://marketplace.visualstudio.com/vscode">VS Code Marketplace</a> in your browser.</p></li>
+<li><p>Select the application you want and click <code class="docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Extension</span></code> on the right-hand side. Some applications require that you chose the operating system. For
+these applications, select the drop-down menu next to <code class="docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Extension</span></code> and then select <code class="docutils literal notranslate"><span class="pre">Linux</span> <span class="pre">x64</span></code>.</p></li>
+<li><p>Drag and drop the downloaded file into the <strong>extensions column</strong> within the VS Code-Server application.</p></li>
+</ol>
+</li>
+<li><p>Install the application by dragging the downloaded file into the <strong>folder column</strong> (for visual representation, please see above video).</p>
+<ul class="simple">
+<li><p><strong>Note:</strong> This option is sometimes necessary if the extensions rely on dependencies located in the downloaded file.</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>Navigate to the <a class="reference external" href="https://marketplace.visualstudio.com/vscode">VS Code Marketplace</a> in your browser.</p></li>
+<li><p>Select the application you want and click <code class="docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Extension</span></code> on the right-hand side. Some applications require that you chose the operating system. For
+these applications, select the drop-down menu next to <code class="docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Extension</span></code> and then select <code class="docutils literal notranslate"><span class="pre">Linux</span> <span class="pre">x64</span></code>.</p></li>
+<li><p>Drag and drop the downloaded file into the <strong>folder column</strong> within the VS Code-Server application.</p></li>
+<li><p>Right click the downloaded file and select <code class="docutils literal notranslate"><span class="pre">Install</span> <span class="pre">Extension</span> <span class="pre">VSIX</span></code>.</p></li>
+</ol>
+</li>
+</ul>
+</section>
+</section>
+<section id="running-custom-interactive-applications">
+<h4>Running <em>Custom</em> Interactive applications<a class="headerlink" href="#running-custom-interactive-applications" title="Link to this heading">#</a></h4>
+<p>The Matlab, Jupyter, VS Code-Server, and RStudio interactive applications each have <code class="docutils literal notranslate"><span class="pre">Custom</span></code> menus available for starting sessions (jobs) in addition to <code class="docutils literal notranslate"><span class="pre">Preset</span></code> menus. The <code class="docutils literal notranslate"><span class="pre">Custom</span></code> menus are intended to provide the ability to start jobs that require unconventional resources that aren’t available through the <code class="docutils literal notranslate"><span class="pre">Preset</span></code> menu, for example:</p>
+<ul class="simple">
+<li><p>access to GPU nodes;</p></li>
+<li><p>access to high-memory nodes;</p></li>
+<li><p>large numbers of cores;</p></li>
+<li><p>longer job durations.</p></li>
+</ul>
+<p>To help you use the <code class="docutils literal notranslate"><span class="pre">Custom</span></code> menu for interactive applications, below is a table describing each field and possible options.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Input</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Cluster</p></td>
+<td><p>Possible options are <a class="reference internal" href="#docs/clusters/Riviera/index.md"><span class="xref myst">Alpine</span></a> and <a class="reference internal" href="#../clusters/blanca/blanca.md"><span class="xref myst">Blanca</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Account</p></td>
+<td><p>The account you would like to use. If you do not have a project allocation, then CU Boulder users specify <code class="docutils literal notranslate"><span class="pre">ucb-general</span></code>; CSU users specify <code class="docutils literal notranslate"><span class="pre">csu-general</span></code>; RMACC users specify <code class="docutils literal notranslate"><span class="pre">rmacc-general</span></code>; and AMC users provide <code class="docutils literal notranslate"><span class="pre">amc-general</span></code>. If you have a project allocation you can use this allocation e.g. <code class="docutils literal notranslate"><span class="pre">ucbXXX_asc1</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>Partition</p></td>
+<td><p>Specifies a particular node type to use. For example, you can provide <code class="docutils literal notranslate"><span class="pre">ahub</span></code> for quicker access or utilize another <a class="reference internal" href="#riviera-hardware.md#partitions"><span class="xref myst">partition on Alpine</span></a>.  Blanca users may use their <code class="docutils literal notranslate"><span class="pre">blanca-&lt;groupname&gt;</span></code> partition.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Number of cores<sup>1</sup></p></td>
+<td><p>The number of physical CPU cores for the job. Jobs started on the OnDemand interactive apps may use up to 32 cores.  All jobs are limited to a single compute node.</p></td>
+</tr>
+<tr class="row-even"><td><p>Memory [GB]<sup>1</sup></p></td>
+<td><p>The total amount of memory allocated for the Job. Memory in GB should be roughly the number of cores multiplied by 3.8 for standard Alpine <code class="docutils literal notranslate"><span class="pre">amilan</span></code> nodes. For specifications on memory for each Alpine partition, see <a class="reference internal" href="#riviera-hardware.md"><span class="xref myst">Alpine hardware</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>QoS Name</p></td>
+<td><p>Quality of Service (QoS) constrains or modifies certain job characteristics. On most Alpine partitions you can specify <code class="docutils literal notranslate"><span class="pre">normal</span></code> for jobs of up to 24 hours and <code class="docutils literal notranslate"><span class="pre">long</span></code> for jobs of up to 7 days in duration. For more information see <a class="reference internal" href="#riviera-hardware.md#quality-of-service-qos"><span class="xref myst">Alpine QoS</span></a>. Blanca users should specify their <code class="docutils literal notranslate"><span class="pre">blanca-&lt;groupname&gt;</span></code> for QoS.</p></td>
+</tr>
+<tr class="row-even"><td><p>Time<sup>1</sup></p></td>
+<td><p>The duration of the job, in hours. This is dependent on both the partition and the QoS on Alpine (see above).  On Blanca, users may specify jobs of up to 7 days (168 hours) in duration.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><sup>1</sup>Please note that jobs scheduled on partitions other than <code class="docutils literal notranslate"><span class="pre">ahub</span></code> may take up to several hours to start depending on the number of cores, memory and duration.</p>
+<section id="gpu-access-for-jupyter-sessions">
+<h5>GPU access for Jupyter Sessions<a class="headerlink" href="#gpu-access-for-jupyter-sessions" title="Link to this heading">#</a></h5>
+<p>When launching custom Jupyter sessions, one can access a single GPU on Alpine by specifying the correct partition and QoS name. However, only the testing partitions are valid on Jupyter sessions and they are limited to a run time of one hour. For GPU jobs that require more resources or more time, please submit a <a class="reference internal" href="../running-jobs/batch-jobs.html"><span class="std std-doc">batch job</span></a> using the standard <code class="docutils literal notranslate"><span class="pre">ami100</span></code> or <code class="docutils literal notranslate"><span class="pre">aa100</span></code> partitions. The table below provides the inputs needed to start a Jupyter session with a GPU:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Partition</p></th>
+<th class="head"><p>QoS Name</p></th>
+<th class="head"><p>Type of GPU</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>atesting_a100</p></td>
+<td><p>testing</p></td>
+<td><p>NVIDIA A100</p></td>
+</tr>
+<tr class="row-odd"><td><p>atesting_mi100</p></td>
+<td><p>testing</p></td>
+<td><p>AMD MI100</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+</section>
+<section id="my-interactive-sessions">
+<h3>My Interactive Sessions<a class="headerlink" href="#my-interactive-sessions" title="Link to this heading">#</a></h3>
+<p>The <em>My Interactive Sessions</em> menu will let you view and manage all of your current open Interactive applications. From this window, you can view the node/core count, status, as well as time remaining for current sessions.</p>
+<p>Closing the window an interactive application is opened in will not terminate the session. You will need to click the “Delete” button for the individual session.
+<img alt="" src="../_images/my_interactive_sessions.png" /></p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../running-jobs/roce-enabled.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Running jobs on RoCE enabled Nodes</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="jupyterhub.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Jupyter Sessions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started-with-curc-open-ondemand">Getting started with CURC Open OnDemand</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features">Features</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#files">Files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jobs">Jobs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clusters-shell-access">Clusters (Shell Access)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-applications-menu">Interactive Applications Menu</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#core-desktop-remote-desktop">Core Desktop (remote desktop)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab">MATLAB</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-session">Jupyter Session</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-jupyter-session-conda-environment">Creating a Jupyter Session Conda Environment</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rstudio">RStudio</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-dependencies-for-rstudio-currently-available-only-on-alpine">Installing dependencies for RStudio (currently available only on Alpine)</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vs-code-server">VS Code-Server</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-vs-code-server-extensions">Installing VS Code-Server Extensions</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#running-custom-interactive-applications">Running <em>Custom</em> Interactive applications</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#gpu-access-for-jupyter-sessions">GPU access for Jupyter Sessions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#my-interactive-sessions">My Interactive Sessions</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

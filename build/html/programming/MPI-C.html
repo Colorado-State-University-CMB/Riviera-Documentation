@@ -1,0 +1,1087 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Using MPI with C &#8212; Research Computing
+University of Colorado Boulder  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=31992893" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'programming/MPI-C';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Using MPI with Fortran" href="MPI-Fortran.html" />
+    <link rel="prev" title="MPI Best practices" href="MPIBestpractices.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Research_Computing_black_letters.png" class="logo__image only-light" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>
+    <script>document.write(`<img src="../_static/Research_Computing_white_letters.png" class="logo__image only-dark" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accessing RC Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../access/logging-in.html">Logging In</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Compute Environment</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../compute/node-types.html">Node types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/filesystems.html">Filesystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/modules.html">The Modules System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/data-transfer.html">Data Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/compiling.html">Compiling and Linking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/monitoring-resources.html">Monitoring Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Jobs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/running-apps-with-jobs.html">Running applications with Jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/batch-jobs.html">Batch Jobs and Job Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/interactive-jobs.html">Interactive jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/slurm-commands.html">Useful Slurm commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/job-resources.html">Slurm Flags, Partitions, and QoS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/squeue-status-codes.html"><code class="docutils literal notranslate"><span class="pre">squeue</span></code> status and reason codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/roce-enabled.html">Running jobs on RoCE enabled Nodes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gateways &amp; Portals</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../gateways/OnDemand.html">Open OnDemand <em>(Browser Based HPC Portal)</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gateways/jupyterhub.html">Jupyter Sessions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/loadbalancer.html">Load Balancer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/gaussian.html">Gaussian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/matlab.html">Matlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/python.html">Python and R with Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/GNUParallel.html">GNU Parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vasp.html">VASP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/Containerizationon.html">Containerization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/alphafold.html">AlphaFold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/spack.html">Spack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/sratoolkit.html">SRA Toolkit on Alpine</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming and Parallelization</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="coding-best-practices.html">Coding best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel-programming-fundamentals.html">Fundamentals of parallel programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MPIBestpractices.html">MPI Best practices</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Using MPI with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MPI-Fortran.html">Using MPI with Fortran</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OpenMP-C.html">Using OpenMP with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OpenMP-Fortran.html">Using OpenMP with Fortran</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/index.html">CUmulus Cloud</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus1.html">Tutorial: Creating a CUmulus instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus2.html">Establish a Database to query Twitter and Store Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus3.html">CUmulus integration with CURC HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus4.html">Mounting a remote filesystem from a CUmulus Virtual Machine</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/utah-videos.html">University of Utah videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/other.html">Facilities, equipment, and other resources</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ResearchComputing/Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/programming/MPI-C.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Using MPI with C</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-and-hello-world">Setup and “Hello, World”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mpi-barriers-and-synchronization">MPI Barriers and Synchronization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#message-passing">Message Passing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-operators-scatter-and-gather">Group Operators: Scatter and Gather</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Example</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="using-mpi-with-c">
+<h1>Using MPI with C<a class="headerlink" href="#using-mpi-with-c" title="Link to this heading">#</a></h1>
+<p>Parallel programs enable users to fully utilize the multi-node
+structure of supercomputing clusters. Message Passing Interface (MPI)
+is a standard used to allow several different processors on a cluster
+to communicate with each other. In this tutorial we will be using the
+Intel C++ Compiler, GCC, IntelMPI, and OpenMPI to create a
+multiprocessor ‘hello world’ program in C++.  This tutorial assumes
+the user has experience in both the Linux terminal and C++.</p>
+<p><strong>Resources:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.dartmouth.edu/~rc/classes/intro_mpi/intro_mpi_overview.html">http://www.dartmouth.edu/~rc/classes/intro_mpi/intro_mpi_overview.html</a></p></li>
+<li><p><a class="reference external" href="http://mpitutorial.com/tutorials/">http://mpitutorial.com/tutorials/</a></p></li>
+<li><p><a class="reference external" href="http://condor.cc.ku.edu/~grobe/docs/intro-MPI-C.shtml">http://condor.cc.ku.edu/~grobe/docs/intro-MPI-C.shtml</a></p></li>
+</ul>
+<section id="setup-and-hello-world">
+<h2>Setup and “Hello, World”<a class="headerlink" href="#setup-and-hello-world" title="Link to this heading">#</a></h2>
+<p>Begin by logging into the cluster and logging in to a compile
+node. This can be done by loading the Alpine scheduler and using the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>acompile
+</pre></div>
+</div>
+<p>Next we must load MPI into our environment. Begin by loading in your
+choice of C++ compiler and its corresponding MPI library. Use the
+following commands if using the GNU C++ compiler:</p>
+<p><strong>GNU C++ Compiler</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>gcc
+module<span class="w"> </span>load<span class="w"> </span>openmpi
+</pre></div>
+</div>
+<p>Or, use the following commands if you prefer to use the Intel C++
+compiler:</p>
+<p><strong>Intel C++ Compiler</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>intel
+module<span class="w"> </span>load<span class="w"> </span>impi
+</pre></div>
+</div>
+<p>This should prepare your environment with all the necessary tools to
+compile and run your MPI code. Let’s now begin to construct our C++
+file. In this tutorial, we will name our code file:
+<code class="docutils literal notranslate"><span class="pre">hello_world_mpi.cpp</span></code></p>
+<p>Open <code class="docutils literal notranslate"><span class="pre">hello_world_mpi.cpp</span></code> and begin by including the C standard
+library <code class="docutils literal notranslate"><span class="pre">&lt;stdio.h&gt;</span></code> and the MPI library <code class="docutils literal notranslate"><span class="pre">&lt;mpi.h&gt;</span></code> , and by
+constructing the main function of the C++ code:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mpi.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">){</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now let’s set up several MPI directives to parallelize our code. In
+this ‘Hello World’ tutorial we’ll be utilizing the following four
+directives:</p>
+<p><em>MPI_Init():</em></p>
+<blockquote>
+<div><p>This function initializes the MPI environment. It takes in the addresses of the C++
+command line arguments argc and argv.</p>
+</div></blockquote>
+<p><em>MPI_Comm_size():</em></p>
+<blockquote>
+<div><p>This function returns the total size of the environment via quantity of
+processes. The function takes in the MPI environment, and the memory address of an
+integer variable.</p>
+</div></blockquote>
+<p><em>MPI_Comm_rank():</em></p>
+<blockquote>
+<div><p>This function returns the process id of the processor that called the
+function. The function takes in the MPI environment, and the memory address of an
+integer variable.</p>
+</div></blockquote>
+<p><em>MPI_Finalize():</em></p>
+<blockquote>
+<div><p>This function cleans up the MPI environment and ends MPI communications.</p>
+</div></blockquote>
+<p>These four directives should be enough to get our parallel ‘hello
+world’ running. We will begin by creating two variables,
+<code class="docutils literal notranslate"><span class="pre">process_Rank</span></code>, and <code class="docutils literal notranslate"><span class="pre">size_Of_Cluster</span></code>, to store an identifier for each
+of the parallel processes and the number of processes running in the
+cluster respectively. We will also implement the <code class="docutils literal notranslate"><span class="pre">MPI_Init</span></code> function
+which will initialize the mpi communicator:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mpi.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">process_Rank</span><span class="p">,</span><span class="w"> </span><span class="n">size_Of_Cluster</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">MPI_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Let’s now obtain some information about our cluster of processors and
+print the information out for the user. We will use the functions
+<code class="docutils literal notranslate"><span class="pre">MPI_Comm_size()</span></code> and <code class="docutils literal notranslate"><span class="pre">MPI_Comm_rank()</span></code> to obtain the count of
+processes and the rank of a process respectively:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mpi.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">process_Rank</span><span class="p">,</span><span class="w"> </span><span class="n">size_Of_Cluster</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">MPI_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span>
+<span class="w">    </span><span class="n">MPI_Comm_size</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size_Of_Cluster</span><span class="p">);</span>
+<span class="w">    </span><span class="n">MPI_Comm_rank</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">process_Rank</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello World from process %d of %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">process_Rank</span><span class="p">,</span><span class="w"> </span><span class="n">size_Of_Cluster</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Lastly let’s close the environment using <code class="docutils literal notranslate"><span class="pre">MPI_Finalize()</span></code>:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mpi.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">process_Rank</span><span class="p">,</span><span class="w"> </span><span class="n">size_Of_Cluster</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">MPI_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span>
+<span class="w">    </span><span class="n">MPI_Comm_size</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size_Of_Cluster</span><span class="p">);</span>
+<span class="w">    </span><span class="n">MPI_Comm_rank</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">process_Rank</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello World from process %d of %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">process_Rank</span><span class="p">,</span><span class="w"> </span><span class="n">size_Of_Cluster</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">MPI_Finalize</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now the code is complete and ready to be compiled. Because this is an
+MPI program, we have to use a specialized compiler. Be sure to use the
+correct command based off of what compiler you have loaded.</p>
+<p><strong>OpenMPI</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mpic++<span class="w"> </span>hello_world_mpi.cpp<span class="w"> </span>-o<span class="w"> </span>hello_world_mpi.exe
+</pre></div>
+</div>
+<p><strong>Intel MPI</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mpiicc<span class="w"> </span>hello_world_mpi.cpp<span class="w"> </span>-o<span class="w"> </span>hello_world_mpi.exe
+</pre></div>
+</div>
+<p>This will produce an executable we can pass to the cluster as a job. In
+order to execute MPI compiled code, a special command must be used:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">4</span><span class="w"> </span>./hello_world_mpi.exe
+</pre></div>
+</div>
+<p>The flag <code class="docutils literal notranslate"><span class="pre">-np</span></code> specifies the number of processor that are to be utilized
+in execution of the program.</p>
+<p>In your job script, load the same compiler and OpenMPI
+choices you used above to compile the program, and run the job with
+Slurm to execute the application. Your job script should look
+something like this:</p>
+<p><strong>OpenMPI</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -N 1</span>
+<span class="c1">#SBATCH --ntasks 4</span>
+<span class="c1">#SBATCH --job-name parallel_hello</span>
+<span class="c1">#SBATCH --constraint ib</span>
+<span class="c1">#SBATCH --partition atesting</span>
+<span class="c1">#SBATCH --time 0:01:00</span>
+<span class="c1">#SBATCH --output parallel_hello_world.out</span>
+
+module<span class="w"> </span>purge
+
+module<span class="w"> </span>load<span class="w"> </span>gcc
+module<span class="w"> </span>load<span class="w"> </span>openmpi
+
+mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">4</span><span class="w"> </span>./hello_world_mpi.exe
+</pre></div>
+</div>
+<p><strong>Intel MPI</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -N 1</span>
+<span class="c1">#SBATCH --ntasks 4</span>
+<span class="c1">#SBATCH --job-name parallel_hello</span>
+<span class="c1">#SBATCH --partition shas-testing</span>
+<span class="c1">#SBATCH --time 0:01:00</span>
+<span class="c1">#SBATCH --output parallel_hello_world.out</span>
+
+module<span class="w"> </span>purge
+
+module<span class="w"> </span>load<span class="w"> </span>intel
+module<span class="w"> </span>load<span class="w"> </span>impi
+
+mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">4</span><span class="w"> </span>./hello_world_mpi.exe
+</pre></div>
+</div>
+<p>It is important to note that on Alpine, there is a total of 64 cores
+per node. For applications that require more than 64 processes, you
+will need to request multiple nodes in your job. Our
+output file should look something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Hello</span> <span class="n">World</span> <span class="kn">from</span> <span class="nn">process</span> <span class="mi">3</span> <span class="n">of</span> <span class="mi">4</span>
+<span class="n">Hello</span> <span class="n">World</span> <span class="kn">from</span> <span class="nn">process</span> <span class="mi">2</span> <span class="n">of</span> <span class="mi">4</span>
+<span class="n">Hello</span> <span class="n">World</span> <span class="kn">from</span> <span class="nn">process</span> <span class="mi">1</span> <span class="n">of</span> <span class="mi">4</span>
+<span class="n">Hello</span> <span class="n">World</span> <span class="kn">from</span> <span class="nn">process</span> <span class="mi">0</span> <span class="n">of</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<p>Ref: <a class="reference external" href="http://www.dartmouth.edu/~rc/classes/intro_mpi/hello_world_ex.html">http://www.dartmouth.edu/~rc/classes/intro_mpi/hello_world_ex.html</a></p>
+</section>
+<section id="mpi-barriers-and-synchronization">
+<h2>MPI Barriers and Synchronization<a class="headerlink" href="#mpi-barriers-and-synchronization" title="Link to this heading">#</a></h2>
+<p>Like many other parallel programming utilities, synchronization is an
+essential tool in thread safety and ensuring certain sections of code
+are handled at certain points. <code class="docutils literal notranslate"><span class="pre">MPI_Barrier</span></code> is a process lock that
+holds each process at a certain line of code until all processes have
+reached that line in code. <code class="docutils literal notranslate"><span class="pre">MPI_Barrier</span></code> can be called as such:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">MPI_Barrier</span><span class="p">(</span><span class="n">MPI_Comm</span><span class="w"> </span><span class="n">comm</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>To get a handle on barriers, let’s modify our “Hello World” program so
+that it prints out each process in order of thread id. Starting with
+our “Hello World” code from the previous section, begin by nesting our
+print statement in a loop:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mpi.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">process_Rank</span><span class="p">,</span><span class="w"> </span><span class="n">size_Of_Cluster</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">MPI_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span>
+<span class="w">    </span><span class="n">MPI_Comm_size</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size_Of_Cluster</span><span class="p">);</span>
+<span class="w">    </span><span class="n">MPI_Comm_rank</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">process_Rank</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">size_Of_Cluster</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello World from process %d of %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">process_Rank</span><span class="p">,</span><span class="w"> </span><span class="n">size_Of_Cluster</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">MPI_Finalize</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Next, let’s implement a conditional statement in the loop to print
+only when the loop iteration matches the process rank.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mpi.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">process_Rank</span><span class="p">,</span><span class="w"> </span><span class="n">size_Of_Cluster</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">MPI_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span>
+<span class="w">    </span><span class="n">MPI_Comm_size</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size_Of_Cluster</span><span class="p">);</span>
+<span class="w">    </span><span class="n">MPI_Comm_rank</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">process_Rank</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">size_Of_Cluster</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">process_Rank</span><span class="p">){</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello World from process %d of %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">process_Rank</span><span class="p">,</span><span class="w"> </span><span class="n">size_Of_Cluster</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">MPI_Finalize</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Lastly, implement the barrier function in the loop. This will ensure
+that all processes are synchronized when passing through the loop.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mpi.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">process_Rank</span><span class="p">,</span><span class="w"> </span><span class="n">size_Of_Cluster</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">MPI_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span>
+<span class="w">    </span><span class="n">MPI_Comm_size</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size_Of_Cluster</span><span class="p">);</span>
+<span class="w">    </span><span class="n">MPI_Comm_rank</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">process_Rank</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">size_Of_Cluster</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">process_Rank</span><span class="p">){</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello World from process %d of %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">process_Rank</span><span class="p">,</span><span class="w"> </span><span class="n">size_Of_Cluster</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">MPI_Barrier</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">MPI_Finalize</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Compiling and running this code will result in this output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Hello</span> <span class="n">World</span> <span class="kn">from</span> <span class="nn">process</span> <span class="mi">0</span> <span class="n">of</span> <span class="mi">4</span>
+<span class="n">Hello</span> <span class="n">World</span> <span class="kn">from</span> <span class="nn">process</span> <span class="mi">1</span> <span class="n">of</span> <span class="mi">4</span>
+<span class="n">Hello</span> <span class="n">World</span> <span class="kn">from</span> <span class="nn">process</span> <span class="mi">2</span> <span class="n">of</span> <span class="mi">4</span>
+<span class="n">Hello</span> <span class="n">World</span> <span class="kn">from</span> <span class="nn">process</span> <span class="mi">3</span> <span class="n">of</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</section>
+<section id="message-passing">
+<h2>Message Passing<a class="headerlink" href="#message-passing" title="Link to this heading">#</a></h2>
+<p>Message passing is the primary utility in the MPI application
+interface that allows for processes to communicate with each other. In
+this tutorial, we will learn the basics of message passing between 2
+processes.</p>
+<p>Message passing in MPI is handled by the corresponding functions and
+their arguments:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">MPI_Send</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_Datatype</span><span class="w"> </span><span class="n">datatype</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dest</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tag</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_Comm</span><span class="p">,</span><span class="w"> </span><span class="n">communicator</span><span class="p">);</span>
+<span class="n">MPI_Recv</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_Datatype</span><span class="w"> </span><span class="n">datatype</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">tag</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_Comm</span><span class="w"> </span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_Status</span><span class="o">*</span><span class="w"> </span><span class="n">status</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The arguments are as follows:</p>
+<p><em>MPI_Send</em></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">message</span><span class="p">;</span><span class="w">          </span><span class="c1">//Address for the message you are sending.</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w">              </span><span class="c1">//Number of elements being sent through the address.</span>
+<span class="n">MPI_Datatype</span><span class="w"> </span><span class="n">datatype</span><span class="p">;</span><span class="w">  </span><span class="c1">//The MPI specific data type being passed through the address.</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">dest</span><span class="p">;</span><span class="w">               </span><span class="c1">//Rank of destination process.</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span><span class="w">                </span><span class="c1">//Message tag.</span>
+<span class="n">MPI_Comm</span><span class="w"> </span><span class="n">comm</span><span class="p">;</span><span class="w">          </span><span class="c1">//The MPI Communicator handle.</span>
+</pre></div>
+</div>
+<p><em>MPI_Recv</em></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">message</span><span class="p">;</span><span class="w">          </span><span class="c1">//Address to the message you are receiving.</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w">              </span><span class="c1">//Number of elements being sent through the address.</span>
+<span class="n">MPI_Datatype</span><span class="w"> </span><span class="n">datatype</span><span class="p">;</span><span class="w">  </span><span class="c1">//The MPI specific data type being passed through the address.</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">from</span><span class="p">;</span><span class="w">               </span><span class="c1">//Process rank of sending process.</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">tag</span><span class="p">;</span><span class="w">                </span><span class="c1">//Message tag.</span>
+<span class="n">MPI_Comm</span><span class="w"> </span><span class="n">comm</span><span class="p">;</span><span class="w">          </span><span class="c1">//The MPI Communicator handle.</span>
+<span class="n">MPI_Status</span><span class="o">*</span><span class="w"> </span><span class="n">status</span><span class="p">;</span><span class="w">     </span><span class="c1">//Status object.</span>
+</pre></div>
+</div>
+<p>Let’s implement message passing in an example:</p>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
+<p>We will create a two-process process that will pass the number 42 from
+one process to another.  We will use our “Hello World” program as a
+starting point for this program. Let’s begin by creating a variable to
+store some information.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mpi.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">process_Rank</span><span class="p">,</span><span class="w"> </span><span class="n">size_Of_Cluster</span><span class="p">,</span><span class="w"> </span><span class="n">message_Item</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">MPI_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span>
+<span class="w">    </span><span class="n">MPI_Comm_size</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size_Of_Cluster</span><span class="p">);</span>
+<span class="w">    </span><span class="n">MPI_Comm_rank</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">process_Rank</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">MPI_Finalize</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now create <code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">if</span></code> conditionals that specify appropriate
+process to call <code class="docutils literal notranslate"><span class="pre">MPI_Send()</span></code> and <code class="docutils literal notranslate"><span class="pre">MPI_Recv()</span></code> functions. In this
+example we want process 1 to send out a message containing the integer
+42 to process 2.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mpi.h&gt;</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">process_Rank</span><span class="p">,</span><span class="w"> </span><span class="n">size_Of_Cluster</span><span class="p">,</span><span class="w"> </span><span class="n">message_Item</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">MPI_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span>
+<span class="w">    </span><span class="n">MPI_Comm_size</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size_Of_Cluster</span><span class="p">);</span>
+<span class="w">    </span><span class="n">MPI_Comm_rank</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">process_Rank</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">process_Rank</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<span class="w">        </span><span class="n">message_Item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sending message containing: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">message_Item</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">process_Rank</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">){</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Received message containing: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">message_Item</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">MPI_Finalize</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Lastly we must call <code class="docutils literal notranslate"><span class="pre">MPI_Send()</span></code> and <code class="docutils literal notranslate"><span class="pre">MPI_Recv()</span></code>. We will pass the following parameters into the
+functions:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">MPI_Send</span><span class="p">(</span>
+<span class="w">    </span><span class="o">&amp;</span><span class="n">message_Item</span><span class="p">,</span><span class="w">      </span><span class="c1">//Address of the message we are sending.</span>
+<span class="w">    </span><span class="mi">1</span><span class="p">,</span><span class="w">                  </span><span class="c1">//Number of elements handled by that address.</span>
+<span class="w">    </span><span class="n">MPI_INT</span><span class="p">,</span><span class="w">            </span><span class="c1">//MPI_TYPE of the message we are sending.</span>
+<span class="w">    </span><span class="mi">1</span><span class="p">,</span><span class="w">                  </span><span class="c1">//Rank of receiving process</span>
+<span class="w">    </span><span class="mi">1</span><span class="p">,</span><span class="w">                  </span><span class="c1">//Message Tag</span>
+<span class="w">    </span><span class="n">MPI_COMM_WORLD</span><span class="w">      </span><span class="c1">//MPI Communicator</span>
+<span class="p">);</span>
+
+<span class="n">MPI_Recv</span><span class="p">(</span>
+<span class="w">    </span><span class="o">&amp;</span><span class="n">message_Item</span><span class="p">,</span><span class="w">      </span><span class="c1">//Address of the message we are receiving.</span>
+<span class="w">    </span><span class="mi">1</span><span class="p">,</span><span class="w">                  </span><span class="c1">//Number of elements handled by that address.</span>
+<span class="w">    </span><span class="n">MPI_INT</span><span class="p">,</span><span class="w">            </span><span class="c1">//MPI_TYPE of the message we are sending.</span>
+<span class="w">    </span><span class="mi">0</span><span class="p">,</span><span class="w">                  </span><span class="c1">//Rank of sending process</span>
+<span class="w">    </span><span class="mi">1</span><span class="p">,</span><span class="w">                  </span><span class="c1">//Message Tag</span>
+<span class="w">    </span><span class="n">MPI_COMM_WORLD</span><span class="w">      </span><span class="c1">//MPI Communicator</span>
+<span class="w">    </span><span class="n">MPI_STATUS_IGNORE</span><span class="w">   </span><span class="c1">//MPI Status Object</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Lets implement these functions in our code:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mpi.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">process_Rank</span><span class="p">,</span><span class="w"> </span><span class="n">size_Of_Cluster</span><span class="p">,</span><span class="w"> </span><span class="n">message_Item</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">MPI_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span>
+<span class="w">    </span><span class="n">MPI_Comm_size</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size_Of_Cluster</span><span class="p">);</span>
+<span class="w">    </span><span class="n">MPI_Comm_rank</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">process_Rank</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">process_Rank</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<span class="w">        </span><span class="n">message_Item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span>
+<span class="w">        </span><span class="n">MPI_Send</span><span class="p">(</span><span class="o">&amp;</span><span class="n">message_Item</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_INT</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_COMM_WORLD</span><span class="p">);</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Message Sent: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">message_Item</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">process_Rank</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">){</span>
+<span class="w">        </span><span class="n">MPI_Recv</span><span class="p">(</span><span class="o">&amp;</span><span class="n">message_Item</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_INT</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_STATUS_IGNORE</span><span class="p">);</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Message Received: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">message_Item</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">MPI_Finalize</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Compiling and running our code with 2 processes will result in the
+following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Message</span> <span class="n">Sent</span><span class="p">:</span> <span class="mi">42</span>
+<span class="n">Message</span> <span class="n">Received</span><span class="p">:</span> <span class="mi">42</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="group-operators-scatter-and-gather">
+<h2>Group Operators: Scatter and Gather<a class="headerlink" href="#group-operators-scatter-and-gather" title="Link to this heading">#</a></h2>
+<p>Group operators are very useful for MPI. They allow for swaths of data
+to be distributed from a root process to all other available
+processes, or data from all processes can be collected at one
+process. These operators can eliminate the need for a surprising
+amount of boilerplate code via the use of two functions:</p>
+<p><strong>MPI_Scatter</strong>:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">send_Var</span><span class="p">;</span><span class="w">         </span><span class="c1">//Address of the variable that will be scattered.</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">send_Count</span><span class="p">;</span><span class="w">         </span><span class="c1">//Number of elements that will be scattered.</span>
+<span class="n">MPI_Datatype</span><span class="w"> </span><span class="n">send_Type</span><span class="p">;</span><span class="w"> </span><span class="c1">//MPI Datatype of the data that is scattered.</span>
+<span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">recv_Var</span><span class="p">;</span><span class="w">         </span><span class="c1">//Address of the variable that will store the scattered data.</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">recv_Count</span><span class="p">;</span><span class="w">         </span><span class="c1">//Number of data elements that will be received per process.</span>
+<span class="n">MPI_Datatype</span><span class="w"> </span><span class="n">recv_Type</span><span class="p">;</span><span class="w"> </span><span class="c1">//MPI Datatype of the data that will be received.</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">root_Process</span><span class="p">;</span><span class="w">       </span><span class="c1">//The rank of the process that will scatter the information.</span>
+<span class="n">MPI_Comm</span><span class="w"> </span><span class="n">comm</span><span class="p">;</span><span class="w">          </span><span class="c1">//The MPI_Communicator.</span>
+</pre></div>
+</div>
+<p><strong>MPI_Gather</strong>:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">send_Var</span><span class="p">;</span><span class="w">         </span><span class="c1">//Address of the variable that will be sent.</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">send_Count</span><span class="p">;</span><span class="w">         </span><span class="c1">//Number of data elements that will sent .</span>
+<span class="n">MPI_Datatype</span><span class="w"> </span><span class="n">send_Type</span><span class="p">;</span><span class="w"> </span><span class="c1">//MPI Datatype of the data that is sent.</span>
+<span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">recv_Var</span><span class="p">;</span><span class="w">         </span><span class="c1">//Address of the variable that will store the received data.</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">recv_Count</span><span class="p">;</span><span class="w">         </span><span class="c1">//Number of data elements per process that will be received.</span>
+<span class="n">MPI_Datatype</span><span class="w"> </span><span class="n">recv_Type</span><span class="p">;</span><span class="w"> </span><span class="c1">//MPI Datatype of the data that will be received.</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">root_Process</span><span class="p">;</span><span class="w">       </span><span class="c1">//The rank of the process rank that will gather the information.</span>
+<span class="n">MPI_Comm</span><span class="w"> </span><span class="n">comm</span><span class="p">;</span><span class="w">          </span><span class="c1">//The MPI_Communicator.</span>
+</pre></div>
+</div>
+<p>In order to get a better grasp on these functions, let’s go ahead and
+create a program that will utilize the scatter function. Note that the
+gather function (not shown in the example) works similarly, and is
+essentially the converse of the scatter function. Further examples
+which utilize the gather function can be found in the MPI tutorials
+listed as resources at the beginning of this document.</p>
+<section id="id1">
+<h3>Example<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>We will create a program that scatters one element of a data array to
+each process. Specifically, this code will scatter the four elements
+of an array to four different processes. We will start with a basic
+C++ main function along with variables to store process rank and
+number of processes.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mpi.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">process_Rank</span><span class="p">,</span><span class="w"> </span><span class="n">size_Of_Comm</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now let’s setup the MPI environment using <code class="docutils literal notranslate"><span class="pre">MPI_Init</span></code> , <code class="docutils literal notranslate"><span class="pre">MPI_Comm_size</span></code>
+, <code class="docutils literal notranslate"><span class="pre">MPI_Comm_rank</span></code> , and</p>
+<p><code class="docutils literal notranslate"><span class="pre">MPI_Finaize</span></code>:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mpi.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">process_Rank</span><span class="p">,</span><span class="w"> </span><span class="n">size_Of_Comm</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">MPI_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span>
+<span class="w">    </span><span class="n">MPI_Comm_size</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size_Of_Comm</span><span class="p">);</span>
+<span class="w">    </span><span class="n">MPI_Comm_rank</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">process_Rank</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">MPI_Finalize</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Next let’s generate an array named <code class="docutils literal notranslate"><span class="pre">distro_Array</span></code> to store four
+numbers. We will also create a variable called <code class="docutils literal notranslate"><span class="pre">scattered_Data</span></code> that
+we shall scatter the data to.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mpi.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">){</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">process_Rank</span><span class="p">,</span><span class="w"> </span><span class="n">size_Of_Comm</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">distro_Array</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">39</span><span class="p">,</span><span class="w"> </span><span class="mi">72</span><span class="p">,</span><span class="w"> </span><span class="mi">129</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">};</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">scattered_Data</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">MPI_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span>
+<span class="w">    </span><span class="n">MPI_Comm_size</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size_Of_Comm</span><span class="p">);</span>
+<span class="w">    </span><span class="n">MPI_Comm_rank</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">process_Rank</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">MPI_Finalize</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now we will begin the use of group operators. We will use the operator
+scatter to distribute <code class="docutils literal notranslate"><span class="pre">distro_Array</span></code> into <code class="docutils literal notranslate"><span class="pre">scattered_Data</span></code> . Let’s
+take a look at the parameters we will use in this function:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">MPI_Scatter</span><span class="p">(</span>
+<span class="w">    </span><span class="o">&amp;</span><span class="n">distro_Array</span><span class="p">,</span><span class="w">      </span><span class="c1">//Address of array we are scattering from.</span>
+<span class="w">    </span><span class="mi">1</span><span class="p">,</span><span class="w">                  </span><span class="c1">//Number of items we are sending each processor</span>
+<span class="w">    </span><span class="n">MPI_INT</span><span class="p">,</span><span class="w">            </span><span class="c1">//MPI Datatype of scattering array.</span>
+<span class="w">    </span><span class="o">&amp;</span><span class="n">scattered_Data</span><span class="p">,</span><span class="w">    </span><span class="c1">//Address of array we are receiving scattered data.</span>
+<span class="w">    </span><span class="mi">1</span><span class="p">,</span><span class="w">                  </span><span class="c1">//Amount of data each process will receive.</span>
+<span class="w">    </span><span class="n">MPI_INT</span><span class="p">,</span><span class="w">            </span><span class="c1">//MPI Datatype of receiver array.</span>
+<span class="w">    </span><span class="mi">0</span><span class="p">,</span><span class="w">                  </span><span class="c1">//Process ID that will distribute the data.</span>
+<span class="w">    </span><span class="n">MPI_COMM_WORLD</span><span class="w">      </span><span class="c1">//MPI Communicator.</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Let’s see this implemented in code. We will also write a print
+statement following the scatter call:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mpi.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">){</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">process_Rank</span><span class="p">,</span><span class="w"> </span><span class="n">size_Of_Comm</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">distro_Array</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">39</span><span class="p">,</span><span class="w"> </span><span class="mi">72</span><span class="p">,</span><span class="w"> </span><span class="mi">129</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">};</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">scattered_Data</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">MPI_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span>
+<span class="w">    </span><span class="n">MPI_Comm_size</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">size_Of_Comm</span><span class="p">);</span>
+<span class="w">    </span><span class="n">MPI_Comm_rank</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">process_Rank</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">MPI_Scatter</span><span class="p">(</span><span class="o">&amp;</span><span class="n">distro_Array</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_INT</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">scattered_Data</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_INT</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_COMM_WORLD</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Process has received: %d </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">scattered_Data</span><span class="p">);</span>
+<span class="n">MPI_Finalize</span><span class="p">();</span>
+<span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Running this code will print out the four numbers in the distro array
+as four separate numbers each from different processors (note the
+order of ranks isn’t necessarily sequential):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Process</span> <span class="n">has</span> <span class="n">received</span><span class="p">:</span> <span class="mi">39</span>
+<span class="n">Process</span> <span class="n">has</span> <span class="n">received</span><span class="p">:</span> <span class="mi">72</span>
+<span class="n">Process</span> <span class="n">has</span> <span class="n">received</span><span class="p">:</span> <span class="mi">129</span>
+<span class="n">Process</span> <span class="n">has</span> <span class="n">received</span><span class="p">:</span> <span class="mi">42</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="MPIBestpractices.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">MPI Best practices</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="MPI-Fortran.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Using MPI with Fortran</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-and-hello-world">Setup and “Hello, World”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mpi-barriers-and-synchronization">MPI Barriers and Synchronization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#message-passing">Message Passing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-operators-scatter-and-gather">Group Operators: Scatter and Gather</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Example</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

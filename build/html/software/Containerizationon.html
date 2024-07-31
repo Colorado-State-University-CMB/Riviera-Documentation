@@ -1,0 +1,832 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Containerization &#8212; Research Computing
+University of Colorado Boulder  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=31992893" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'software/Containerizationon';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AlphaFold" href="alphafold.html" />
+    <link rel="prev" title="VASP" href="vasp.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Research_Computing_black_letters.png" class="logo__image only-light" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>
+    <script>document.write(`<img src="../_static/Research_Computing_white_letters.png" class="logo__image only-dark" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accessing RC Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../access/logging-in.html">Logging In</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Compute Environment</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../compute/node-types.html">Node types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/filesystems.html">Filesystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/modules.html">The Modules System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/data-transfer.html">Data Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/compiling.html">Compiling and Linking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/monitoring-resources.html">Monitoring Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Jobs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/running-apps-with-jobs.html">Running applications with Jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/batch-jobs.html">Batch Jobs and Job Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/interactive-jobs.html">Interactive jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/slurm-commands.html">Useful Slurm commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/job-resources.html">Slurm Flags, Partitions, and QoS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/squeue-status-codes.html"><code class="docutils literal notranslate"><span class="pre">squeue</span></code> status and reason codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/roce-enabled.html">Running jobs on RoCE enabled Nodes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gateways &amp; Portals</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../gateways/OnDemand.html">Open OnDemand <em>(Browser Based HPC Portal)</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gateways/jupyterhub.html">Jupyter Sessions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="loadbalancer.html">Load Balancer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gaussian.html">Gaussian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matlab.html">Matlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Python and R with Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GNUParallel.html">GNU Parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vasp.html">VASP</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Containerization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alphafold.html">AlphaFold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spack.html">Spack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sratoolkit.html">SRA Toolkit on Alpine</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming and Parallelization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../programming/coding-best-practices.html">Coding best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/parallel-programming-fundamentals.html">Fundamentals of parallel programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPIBestpractices.html">MPI Best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-C.html">Using MPI with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-Fortran.html">Using MPI with Fortran</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-C.html">Using OpenMP with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-Fortran.html">Using OpenMP with Fortran</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tutorials/index.html">CUmulus Cloud</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus1.html">Tutorial: Creating a CUmulus instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus2.html">Establish a Database to query Twitter and Store Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus3.html">CUmulus integration with CURC HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/cumulus4.html">Mounting a remote filesystem from a CUmulus Virtual Machine</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/utah-videos.html">University of Utah videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/other.html">Facilities, equipment, and other resources</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ResearchComputing/Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/software/Containerizationon.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Containerization</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#containerization-fundamentals">Containerization Fundamentals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#container-engines">Container engines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apptainer">Apptainer</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pulling-images">Pulling Images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-sif-image-as-a-container">Running a SIF image as a container</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#file-access">File Access</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-sif-image">Building a SIF image</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#apptainer-build">Apptainer Build</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-apptainer-features">Useful Apptainer Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-mpi-enabled-images">Building MPI-enabled images</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker">Docker</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-docker-container">Running a Docker container</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-docker-image">Building a Docker image</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">File access</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bind-mounts">Bind Mounts</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#volume-mounts">Volume Mounts</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-hub">Docker Hub</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requesting-a-container-installation">Requesting a Container Installation</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="containerization">
+<h1>Containerization<a class="headerlink" href="#containerization" title="Link to this heading">#</a></h1>
+<p>When installing software, you may come across applications that have complex chains of dependencies that are challenging to compile and install. Some software may require very specific versions of libraries that may not be available on Alpine or conflict with libraries needed for other applications. You may also need to move between several workstations or HPC platforms, which often requires reinstalling your software on each  system. Containers are a good way to tackle all of these issues and more.</p>
+<section id="containerization-fundamentals">
+<h2>Containerization Fundamentals<a class="headerlink" href="#containerization-fundamentals" title="Link to this heading">#</a></h2>
+<p>Containers build upon an idea that has long existed within computing: hardware can be emulated through software. <strong>Virtualization</strong> simulates some or all components of computation through a software application. Virtual machines use this concept to generate an entire operating system as an application on a host system. Containers follow the same idea, but at a much smaller scale and contained within a system’s kernel.</p>
+<p><strong>Containers</strong> are portable compartmentalizations of an operating system, software, libraries, data, and/or workflows. Containers offer portability and reproducibility.</p>
+<ul class="simple">
+<li><p>Portability: containers can run on any system equipped with its specified container manager.</p></li>
+<li><p>Reproducibility: because containers are instances of prebuilt isolated software, software will always execute the same every time.</p></li>
+</ul>
+<p>Containers distinguish themselves through their low computational overhead and their ability to utilize all of a host system’s resources. Building containers is a relatively simple process that starts with a container engine.</p>
+</section>
+<section id="container-engines">
+<h2>Container engines<a class="headerlink" href="#container-engines" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://www.docker.com/">Docker</a> is the most widely used container engine, and  can be used on any system where you have administrative privileges. <em>Docker cannot be run directly on high-performance computing (HPC) platforms like Alpine because users do not have administrative privileges.</em> CURC documentation on Docker can be found below.</p>
+<p><a class="reference external" href="https://apptainer.org/">Apptainer</a> (formerly Singularity) is a container engine that does not require administrative privileges to execute. Therefore, it is safe to run on HPC platforms like Alpine or Blanca.</p>
+</section>
+<section id="apptainer">
+<h2>Apptainer<a class="headerlink" href="#apptainer" title="Link to this heading">#</a></h2>
+<p>Apptainer is a containerization software package that does not require users to have administrative privileges when running containers, and can thus be safely used on Research Computing resources. Apptainer is installed directly on all Alpine compute nodes, so there is no need to load any module to run Apptainer commands on Alpine. However, <strong>Apptainer is not currently installed on Blanca nodes</strong>. It is recommended that users running containers on Blanca load the newest Singularity module, rather than Apptainer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">singularity</span><span class="o">/</span><span class="mf">3.7.4</span>
+</pre></div>
+</div>
+<p><strong>Note that users who use Singularity instead of Apptainer will not be able to deploy all of the functionality illustrated in this documentation.</strong> Most notably, users will be unable to deploy <code class="docutils literal notranslate"><span class="pre">build</span></code> functionality when using Singularity instead of Apptainer.</p>
+<p>Much like Docker, Apptainer is a containerization software designed around compartmentalization of applications, libraries, and workflows. This is done through the creation of compressed images in the <code class="docutils literal notranslate"><span class="pre">.sif</span></code> format which can be run as ephemeral containers. Unlike Docker, however, Apptainer does not manage images, containers, or volumes through a central application. Instead, Apptainer generates saved image files that can either be mutable or immutable based on compression.</p>
+<section id="pulling-images">
+<h3>Pulling Images<a class="headerlink" href="#pulling-images" title="Link to this heading">#</a></h3>
+<p>In the case that there is an existing container for an application, we can simply load the images from another location. Pulling images from public repositories is often the easiest method of using a containerized application.</p>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">apptainer</span> <span class="pre">pull</span></code> command to remotely download our chosen image file and convert it to the Apptainer <code class="docutils literal notranslate"><span class="pre">.sif</span></code> format. The command requires the container registry we would like to use, followed by the repository’s name:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apptainer</span> <span class="n">pull</span> <span class="o">&lt;</span><span class="n">localname</span><span class="o">&gt;.</span><span class="n">sif</span> <span class="o">&lt;</span><span class="n">container</span><span class="o">-</span><span class="n">registry</span><span class="o">&gt;</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">repository</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">&lt;localname&gt;.sif</span></code> is the name you choose for the Apptainer image.</p>
+<p>A container registry is simply a server that manages uploaded containers. Docker Hub is the most widely used register. To pull a container image from Docker Hub:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apptainer</span> <span class="n">pull</span> <span class="n">docker</span><span class="p">:</span><span class="o">//</span><span class="n">another</span><span class="p">:</span><span class="n">example</span>
+</pre></div>
+</div>
+</section>
+<section id="running-a-sif-image-as-a-container">
+<h3>Running a SIF image as a container<a class="headerlink" href="#running-a-sif-image-as-a-container" title="Link to this heading">#</a></h3>
+<p>SIF images can be run as containers much like Docker images. Apptainer commands, however, follow a bit more nuanced syntax depending on what you’d like to do. After pulling your image from Docker Hub you can run the image by using the <code class="docutils literal notranslate"><span class="pre">apptainer</span> <span class="pre">run</span></code> command. Type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apptainer</span> <span class="n">run</span> <span class="o">&lt;</span><span class="n">image</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Running a container will execute the default program that the container developer will have specified in the container definition file. To execute specific programs in your container, we can use the <code class="docutils literal notranslate"><span class="pre">apptainer</span> <span class="pre">exec</span></code> command, and then specify the program:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apptainer</span> <span class="n">exec</span> <span class="o">&lt;</span><span class="n">image</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">program</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Much like specifying an application in Docker, this will allow a user to execute any program that is installed within your container. Unlike Docker however, you do not need to specify a shell application to shell into the container. We can simply use the <code class="docutils literal notranslate"><span class="pre">apptainer</span> <span class="pre">shell</span></code> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apptainer</span> <span class="n">shell</span> <span class="o">&lt;</span><span class="n">image</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Note that both <code class="docutils literal notranslate"><span class="pre">apptainer</span> <span class="pre">run</span></code> and <code class="docutils literal notranslate"><span class="pre">apptainer</span> <span class="pre">shell</span></code> will create an interactive terminal within the container, whereas <code class="docutils literal notranslate"><span class="pre">apptainer</span> <span class="pre">exec</span></code> will not. Rather, <code class="docutils literal notranslate"><span class="pre">apptainer</span> <span class="pre">exec</span></code> will execute the provided command and return the output.</p>
+<p><em>Example:</em></p>
+<p>Say we have an image that contains Python 3.7 as the default software, and we want to run Python from the container. We can do this with the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apptainer</span> <span class="n">run</span> <span class="n">python</span><span class="o">-</span><span class="n">cont</span><span class="o">.</span><span class="n">sif</span>
+</pre></div>
+</div>
+<p>If the default application for the image is not Python we could run Python as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apptainer</span> <span class="n">exec</span> <span class="n">python</span><span class="o">-</span><span class="n">cont</span><span class="o">.</span><span class="n">sif</span> <span class="n">python</span>
+</pre></div>
+</div>
+</section>
+<section id="file-access">
+<h3>File Access<a class="headerlink" href="#file-access" title="Link to this heading">#</a></h3>
+<p>By default, only <code class="docutils literal notranslate"><span class="pre">/home/$USER</span></code> is available within any given container. This means that a user will need to bind any other required folders to the container’s directory tree. Furthermore, a container will also have access to the files in the same folder where it was initialized (<code class="docutils literal notranslate"><span class="pre">$PWD</span></code>).</p>
+<p>To bind any additional folders or files to your container, you can utilize the <code class="docutils literal notranslate"><span class="pre">-B</span></code> flag in your Apptainer run, exec, and shell commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apptainer</span> <span class="n">run</span> <span class="o">-</span><span class="n">B</span> <span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">directory</span><span class="p">:</span><span class="o">/</span><span class="n">target</span><span class="o">/</span><span class="n">directory</span> <span class="n">sample</span><span class="o">-</span><span class="n">image</span><span class="o">.</span><span class="n">sif</span>
+</pre></div>
+</div>
+<p>Alternatively, users wishing to bind their entire CURC filesystem to a container do not necessarily need to specify the target directory in the container when using <code class="docutils literal notranslate"><span class="pre">run</span></code>, <code class="docutils literal notranslate"><span class="pre">shell</span></code>, and <code class="docutils literal notranslate"><span class="pre">exec</span></code> commands. Rather, you can run the container as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>apptainer run -B /projects/$USER,/pl/active,/scratch/alpine/$USER sample-image.sif
+</pre></div>
+</div>
+<p>Additionally, you can bind directories by utilizing the <code class="docutils literal notranslate"><span class="pre">APPTAINER_BINDPATH</span></code> environment variable. Simply export a list of directory pairs you would like to bind to the your container:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">APPTAINER_BINDPATH</span><span class="o">=/</span><span class="n">source</span><span class="o">/</span><span class="n">directory1</span><span class="p">:</span><span class="o">/</span><span class="n">target</span><span class="o">/</span><span class="n">directory1</span><span class="p">,</span>\
+<span class="o">/</span><span class="n">source</span><span class="o">/</span><span class="n">directory2</span><span class="p">:</span><span class="o">/</span><span class="n">target</span><span class="o">/</span><span class="n">directory2</span>
+</pre></div>
+</div>
+<p>Then run, execute, or shell into the container as normal.</p>
+</section>
+<section id="building-a-sif-image">
+<h3>Building a SIF image<a class="headerlink" href="#building-a-sif-image" title="Link to this heading">#</a></h3>
+<p>In the event that a container is unavailable for a given application, you may need to build your own container from scratch. Apptainer allows a user to build images using a <em>definition file</em>. This file has a variety of directives that allow for the customization of your image. A sample image would look something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Bootstrap: docker
+From: ubuntu:20.04
+
+%help
+	I am help text!
+
+%setup		
+	apt-get update
+	apt-get install nano
+	apt-get install gcc 
+
+%runscript
+	echo “hello! I am a container!”
+</pre></div>
+</div>
+<section id="apptainer-build">
+<h4>Apptainer Build<a class="headerlink" href="#apptainer-build" title="Link to this heading">#</a></h4>
+<p>Once you have written your Apptainer definition file, you can build the application locally on <strong>Alpine</strong> with the <code class="docutils literal notranslate"><span class="pre">apptainer</span> <span class="pre">build</span></code> command, as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apptainer</span> <span class="n">build</span> <span class="o">&lt;</span><span class="n">localname</span><span class="o">&gt;.</span><span class="n">sif</span> <span class="o">&lt;</span><span class="n">recipe</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;.</span><span class="k">def</span>
+</pre></div>
+</div>
+<p>Although the above build command can be sufficient, for more complex container builds, it may be necessary to add the <code class="docutils literal notranslate"><span class="pre">--fix-perms</span></code> and <code class="docutils literal notranslate"><span class="pre">--fakeroot</span></code> options to <code class="docutils literal notranslate"><span class="pre">apptainer</span> <span class="pre">build</span></code>. Please see the “Useful Apptainer Features” section below.</p>
+</section>
+</section>
+<section id="useful-apptainer-features">
+<h3>Useful Apptainer Features<a class="headerlink" href="#useful-apptainer-features" title="Link to this heading">#</a></h3>
+<p>When using/constructing containers using Apptainer, there are a number of tools that users can deploy to ensure desired functionality. Features of high-importance are as follows:</p>
+<ul class="simple">
+<li><p><strong>Fakeroot</strong>: Fakeroot is a feature which allows a non-root user to obtain nearly-root-level administrative permissions <strong>only within the requisite container</strong>. This affords users the ability to perform high-level operations within a container, such as:</p></li>
+</ul>
+<ol>
+  <li>Package installation using `sudo`</li>
+  <li>Changing user/group identity</li>
+  <li>Permissions changes</li>
+</ol> 
+<p>Note that any changes made within the container with Fakeroot are not reflected outside of the container. Users can deploy fakeroot by running any of <code class="docutils literal notranslate"><span class="pre">shell</span></code>, <code class="docutils literal notranslate"><span class="pre">exec</span></code>, <code class="docutils literal notranslate"><span class="pre">run</span></code>, or <code class="docutils literal notranslate"><span class="pre">build</span></code> with the <code class="docutils literal notranslate"><span class="pre">--fakeroot</span></code> flag. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apptainer</span> <span class="n">build</span> <span class="o">--</span><span class="n">fakeroot</span> <span class="n">test</span><span class="o">.</span><span class="n">sif</span> <span class="n">test</span><span class="o">.</span><span class="k">def</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Fix-Perms</strong>: Performing a container operation with the fix-perms flag will ensure that the user has read, write, and execute permissions for all container content. This flag can often be needed for software installs (e.g. <code class="docutils literal notranslate"><span class="pre">apt</span> <span class="pre">install</span> <span class="pre">&lt;program&gt;</span></code>). For example, if you receive a error stating permission issues, this command often resolves those errors. Users can deploy fix-perms by running <code class="docutils literal notranslate"><span class="pre">build</span></code> with the <code class="docutils literal notranslate"><span class="pre">--fix-perms</span></code> flag. For example:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apptainer</span> <span class="n">build</span> <span class="o">--</span><span class="n">fix</span><span class="o">-</span><span class="n">perms</span> <span class="n">test</span><span class="o">.</span><span class="n">sif</span> <span class="n">test</span><span class="o">.</span><span class="k">def</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Sandbox</strong>: Building containers can be a time-consuming process if building from the definition file. This is because you may have build errors that need to be resolved, which requires that you rebuild the container multiple times. For this reason, you may want to perform iterative installs within the container first to ensure compatibility, then transfer these commands to a definition file. For this purpose, you can use the sandbox option. Users can construct a sandbox by using the <code class="docutils literal notranslate"><span class="pre">--sandbox</span></code> flag. For example:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apptainer</span> <span class="n">build</span> <span class="o">--</span><span class="n">sandbox</span> <span class="n">test</span><span class="o">.</span><span class="n">sif</span>
+</pre></div>
+</div>
+<p>From there, you can install software and dependencies directly within the sandbox and have those changes reflected in the sandbox using <code class="docutils literal notranslate"><span class="pre">apptainer</span> <span class="pre">shell</span> <span class="pre">--writable</span> <span class="pre">&lt;my.sif&gt;</span></code>. <strong>Important: a sandbox cannot be converted into a definition file. This means there is no record of what you installed in the sandbox. It is highly suggested that you add actions completed in the sandbox (e.g. software installs) to a definition file as you modify the sandbox. This will ensure that you can reproduce the sandbox at a later time.</strong></p>
+</section>
+<section id="building-mpi-enabled-images">
+<h3>Building MPI-enabled images<a class="headerlink" href="#building-mpi-enabled-images" title="Link to this heading">#</a></h3>
+<p>MPI-enabled Apptainer containers can be deployed on Alpine with the caveat that the MPI software within the container has a similar (not necessarily exact) version with MPI software available on the system. This requirement diminishes the portability of MPI-enabled containers, as they may not run on other systems without compatible MPI software. Regardless, MPI-enabled containers can still be a very useful option in many cases.</p>
+<p>Here we provide an example of using a gcc compiler with OpenMPI. Alpine uses an Infiniband interconnect. In order to use a Singularity container with OpenMPI (or any MPI) on Alpine, OpenMPI needs to be installed both inside and outside of the container. More specifically, the <em>same</em> version of OpenMPI needs to be installed inside and outside (at least very similar, you can sometimes get away with two different minor versions, e.g. 2.1 and 2.0).</p>
+<p>CURC can provide users with a recipe that ensures the appropriate version of OpenMPI is installed in the image. This recipe can be used as a template to build your own MPI-enabled container images for Alpine.</p>
+<p>Once you’ve built the container with one of the methods outlined above, you can place it on Alpine and run it on a compute node. The following is an example of running a gcc/OpenMPI container with Apptainer on Alpine. The syntax is a normal MPI run where multiple instances of a Singularity image are run. The following example runs <code class="docutils literal notranslate"><span class="pre">mpi_hello_world</span></code> with MPI from a container.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ml</span> <span class="n">gcc</span><span class="o">/</span><span class="mf">11.2.0</span>
+<span class="n">ml</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">4.1.1</span>
+
+<span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="mi">4</span> <span class="n">apptainer</span> <span class="n">exec</span> <span class="n">openmpi</span><span class="o">.</span><span class="n">sif</span> <span class="n">mpi_hello_world</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="docker">
+<h2>Docker<a class="headerlink" href="#docker" title="Link to this heading">#</a></h2>
+<p><strong>Note:</strong> Docker containers cannot be run <em>with Docker</em> on Alpine or Blanca, because the Docker software is not HPC-safe. Instead, Docker containers are run using Apptainer.  See the documentation on Apptainer above if you wish to run a Docker container on Alpine or Blanca.</p>
+<p>Docker can be divided into 4 primary components:</p>
+<ul class="simple">
+<li><p>The Docker application</p></li>
+<li><p>A Dockerfile</p></li>
+<li><p>A Docker image</p></li>
+<li><p>A Docker container</p></li>
+</ul>
+<p>The <strong>Docker application</strong> is the primary tool that creates, runs, and manages Docker images and containers. This application acts as the user interface for Docker images and containers stored on a system.</p>
+<p>A <strong>Dockerfile</strong> is essentially <em>the recipe</em> for how to construct a Docker image. Dockerfiles can be created when attempting to build your own containers.</p>
+<p>A <strong>Docker image</strong> is a saved instance of all the software, tools, and workflows you would like containerized. A Docker image is never run with the Docker application. Instead, Docker generates a running version of this image called a <strong>Docker container</strong>. A Docker image is immutable upon creation and must be recreated to make any changes.</p>
+<p>A <strong>Docker container</strong> is an ephemeral instance of a Docker image. Docker images are mutable, but because they are killed on exit, and do not actually save any changes made to the container.</p>
+<section id="running-a-docker-container">
+<h3>Running a Docker container<a class="headerlink" href="#running-a-docker-container" title="Link to this heading">#</a></h3>
+<p>To run a Docker container on your laptop or other system on which you have Docker installed, simply type the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">&lt;</span><span class="n">docker</span><span class="o">-</span><span class="n">image</span><span class="o">&gt;</span> 
+</pre></div>
+</div>
+<p>If you run a docker container from an image that does not currently exist on your computer, then Docker will go ahead and search Docker-hub and attempt to pull the image from a public repository.</p>
+<p>Docker will then run the default command executed for the application. This can range from printing a help message to the terminal to executing a complex workflow using multiple applications in your image. If there is no default command to execute, the Docker container will simply run Bash.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">&lt;</span><span class="n">docker</span><span class="o">-</span><span class="n">image</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>You can also run specific applications within a container by specifying the application after the command.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">&lt;</span><span class="n">docker</span><span class="o">-</span><span class="n">image</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">application</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Docker containers will execute non-interactively by default. You can run a container interactively with the <code class="docutils literal notranslate"><span class="pre">-it</span></code> flag:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">&lt;</span><span class="n">docker</span><span class="o">-</span><span class="n">image</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Using all of this we can effectively <em>shell</em> into our container by specifying bash as our application and passing the <code class="docutils literal notranslate"><span class="pre">-it</span></code> flag.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">&lt;</span><span class="n">docker</span><span class="o">-</span><span class="n">image</span><span class="o">&gt;</span> <span class="n">bash</span> 
+</pre></div>
+</div>
+<p>Shelling into a container interactively will take you into the root directory of the container. From here you can run applications or tools that have been built into the container. By default, Docker containers will have very few tools available for users. If you need generic Linux tools, you will want to include a base Linux distribution.</p>
+<p><strong>It is important to note that when you run a Docker image you are actually running an instance of that image called a container. Because of this, any changes you may make to the container will be lost on exiting that process.</strong></p>
+<p>Example:</p>
+<p>Say we have an image named: <em>example-python</em> and we wish to interactively run the Python application within the container. If Python is set up to be the default application of this container, we can do this with the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="n">example</span><span class="o">-</span><span class="n">python</span> 
+</pre></div>
+</div>
+<p>If Python is not the default application of the container, then we can specify the Python application by appending python to the end of the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="n">example</span><span class="o">-</span><span class="n">python</span> <span class="n">python</span>
+</pre></div>
+</div>
+</section>
+<section id="building-a-docker-image">
+<h3>Building a Docker image<a class="headerlink" href="#building-a-docker-image" title="Link to this heading">#</a></h3>
+<p>To build your own custom Docker images that can then be run as containers, you will need to first create a Dockerfile. As stated above, a Dockerfile is essentially a recipe that specifies a source image to build upon, along with a set of instructions Docker will run when building the new image. The Dockerfile will also contain a set of instructions that Docker can run by default when the image is executed as a container instance.</p>
+<p>Just like a Makefile, a Dockerfile must be named `Dockerfile and will look something like this:</p>
+<div class="highlight-dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> 	</span><span class="s">ubuntu:18.04</span>
+
+<span class="k">RUN</span><span class="w"> 	</span>apt-get<span class="w"> </span>update<span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   		</span>apt-get<span class="w"> </span>install<span class="w"> </span>nano<span class="w"> </span>-y<span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">   	    </span>apt-get<span class="w"> </span>install<span class="w"> </span>gcc<span class="w"> </span>-y<span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  	    </span>mkdir<span class="w"> </span>target<span class="p">;</span>
+
+<span class="k">CMD</span><span class="w">		</span><span class="nb">echo</span><span class="w"> </span>“Default<span class="w"> </span>Command”
+
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/target</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">FROM</span></code> tag indicates the source image you wish to build upon.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">RUN</span></code> tag indicates commands that you wish to run inside the container.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">CMD</span></code> tag indicates the default command you wish your container to run (optional)</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">WORKDIR</span></code> tag indicates the directory you wish start in when running the container.</p>
+<p>Docker will parse through the Dockerfile and build the image exactly as you’ve specified. There is a large assortment of commands that can be utilized in a Dockerfile including default file transfers, volume mounting, changing the default shell, and more. Read more about creating Dockerfiles here: <a class="reference external" href="https://docs.docker.com/engine/reference/builder/">https://docs.docker.com/engine/reference/builder/</a></p>
+<p>In the directory with your Dockerfile, you can build your Docker image with the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="o">&lt;</span><span class="n">container</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">-t</span></code> flag specifies the name or title of container. If you do not provide a title for the container then docker will assign the image with an auto-generated name.</p>
+</section>
+<section id="id1">
+<h3>File access<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>By default, Docker containers are run without access to any part of the host file system. Luckily we can use Docker mounts to circumvent this restriction and link a location in the container file system with a location in the host file system. Directories linked this way will be visible to both the host operating system and the container. There are 2 different forms of mounting available to Docker containers: <strong>Bind mounts</strong> and <strong>Volume mounts</strong>.</p>
+<section id="bind-mounts">
+<h4>Bind Mounts<a class="headerlink" href="#bind-mounts" title="Link to this heading">#</a></h4>
+<p>A bind mount is a simple binding between a folder on the host filesystem and a folder on the container filesystem. All files within the bind mount are available to both container and host operating systems. To invoke a bind mount, simply add the following to your docker run script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">mount</span> <span class="nb">type</span><span class="o">=</span><span class="n">bind</span><span class="p">,</span><span class="n">source</span><span class="o">=&lt;</span><span class="n">host</span><span class="o">-</span><span class="n">folder</span><span class="o">&gt;</span><span class="n">target</span><span class="o">=&lt;</span><span class="n">container</span><span class="o">-</span><span class="n">folder</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">docker</span><span class="o">-</span><span class="n">image</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="volume-mounts">
+<h4>Volume Mounts<a class="headerlink" href="#volume-mounts" title="Link to this heading">#</a></h4>
+<p>Similar to a bind mount, a volume mount is a simple bind between a folder on the host filesystem and and a folder on the container filesystem. Volumes, however, are completely managed by Docker. Because of this, volumes must be managed much like containers and images. You must first create a volume with the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">create</span> <span class="n">volume</span> <span class="o">&lt;</span><span class="n">volume</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Then to invoke a volume mount, simply add the following to your docker run script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">mount</span> <span class="nb">type</span><span class="o">=</span><span class="n">volume</span><span class="p">,</span><span class="n">source</span><span class="o">=&lt;</span><span class="n">volume</span><span class="o">&gt;</span><span class="n">target</span><span class="o">=&lt;</span><span class="n">container</span><span class="o">-</span><span class="n">folder</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">docker</span><span class="o">-</span><span class="n">image</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Docker volumes are almost entirely managed by Docker so you will not be able to specify the location of your volume in the filesystem directly.</p>
+</section>
+</section>
+<section id="docker-hub">
+<h3>Docker Hub<a class="headerlink" href="#docker-hub" title="Link to this heading">#</a></h3>
+<p>Docker Hub is Docker’s solution for cloud storage of Docker images. Docker Hub is a repository system that allows users of docker to upload or download docker images from public or private repositories. Unlimited public repositories are available for free while users are limited to 1 private repository on free accounts. To pull an image from Docker Hub, use the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="o">&lt;</span><span class="n">image</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>To push a Docker image to a new repository or existing repository, begin by logging into your Docker Hub account via web browser and creating a new repository. Take note of the repository name being <code class="docutils literal notranslate"><span class="pre">&lt;your-docker-username&gt;/&lt;repository&gt;</span></code>. Then, log into your docker account within your host machine by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">login</span> <span class="o">--</span><span class="n">username</span><span class="o">=&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">docker</span><span class="o">-</span><span class="n">username</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>…and type in your password to finish logging in. From here we must create a tag for the image we would like to push. First we obtain the image’s Image ID by utilizing the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">image</span> <span class="pre">ls</span></code> command. Once we obtain this information, we can tag our image to our repository by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">tag</span> <span class="o">&lt;</span><span class="n">image</span><span class="o">-</span><span class="n">ID</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">docker</span><span class="o">-</span><span class="n">username</span><span class="o">&gt;/&lt;</span><span class="n">repository</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">tag</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>We can then push our image with the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">push</span> <span class="o">&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">docker</span><span class="o">-</span><span class="n">username</span><span class="o">&gt;/&lt;</span><span class="n">repository</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Note that it is also possible to build intel/IMPI containers for use on Alpine. If you would like assistance building MPI-enabled containers contact <a class="reference external" href="mailto:rc-help&#37;&#52;&#48;colorado&#46;edu">rc-help<span>&#64;</span>colorado<span>&#46;</span>edu</a>.</p>
+</section>
+</section>
+<section id="requesting-a-container-installation">
+<h2>Requesting a Container Installation<a class="headerlink" href="#requesting-a-container-installation" title="Link to this heading">#</a></h2>
+<p>Users can request that a container be installed on our system by filling out the <a class="reference external" href="https://www.colorado.edu/rc/userservices/software-request">Software Request Form</a>. Please note that all software installations are “Best Effort” and are not guaranteed. RC reserves the right to deny any software installation that is requested on CURC resources. Additionally, please review the <a class="reference external" href="https://curc.readthedocs.io/en/latest/clusters/alpine/software.html#alpine-software-policy">Alpine Software Policy</a>.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="vasp.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">VASP</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="alphafold.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">AlphaFold</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#containerization-fundamentals">Containerization Fundamentals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#container-engines">Container engines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apptainer">Apptainer</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pulling-images">Pulling Images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-sif-image-as-a-container">Running a SIF image as a container</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#file-access">File Access</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-sif-image">Building a SIF image</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#apptainer-build">Apptainer Build</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-apptainer-features">Useful Apptainer Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-mpi-enabled-images">Building MPI-enabled images</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker">Docker</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-docker-container">Running a Docker container</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-docker-image">Building a Docker image</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">File access</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bind-mounts">Bind Mounts</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#volume-mounts">Volume Mounts</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-hub">Docker Hub</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requesting-a-container-installation">Requesting a Container Installation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

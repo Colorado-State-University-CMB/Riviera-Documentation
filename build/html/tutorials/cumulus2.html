@@ -1,0 +1,757 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Establish a Database to query Twitter and Store Results &#8212; Research Computing
+University of Colorado Boulder  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=31992893" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tutorials/cumulus2';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CUmulus integration with CURC HPC" href="cumulus3.html" />
+    <link rel="prev" title="Tutorial: Creating a CUmulus instance" href="cumulus1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/Research_Computing_black_letters.png" class="logo__image only-light" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>
+    <script>document.write(`<img src="../_static/Research_Computing_white_letters.png" class="logo__image only-dark" alt="Research Computing
+University of Colorado Boulder  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Accessing RC Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../access/logging-in.html">Logging In</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Compute Environment</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../compute/node-types.html">Node types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/filesystems.html">Filesystems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/modules.html">The Modules System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/data-transfer.html">Data Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/compiling.html">Compiling and Linking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../compute/monitoring-resources.html">Monitoring Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Jobs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/running-apps-with-jobs.html">Running applications with Jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/batch-jobs.html">Batch Jobs and Job Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/interactive-jobs.html">Interactive jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/slurm-commands.html">Useful Slurm commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/job-resources.html">Slurm Flags, Partitions, and QoS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/squeue-status-codes.html"><code class="docutils literal notranslate"><span class="pre">squeue</span></code> status and reason codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../running-jobs/roce-enabled.html">Running jobs on RoCE enabled Nodes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Gateways &amp; Portals</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../gateways/OnDemand.html">Open OnDemand <em>(Browser Based HPC Portal)</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gateways/jupyterhub.html">Jupyter Sessions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/loadbalancer.html">Load Balancer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/gaussian.html">Gaussian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/matlab.html">Matlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/python.html">Python and R with Anaconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/GNUParallel.html">GNU Parallel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vasp.html">VASP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/Containerizationon.html">Containerization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/alphafold.html">AlphaFold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/spack.html">Spack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/sratoolkit.html">SRA Toolkit on Alpine</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming and Parallelization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../programming/coding-best-practices.html">Coding best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/parallel-programming-fundamentals.html">Fundamentals of parallel programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPIBestpractices.html">MPI Best practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-C.html">Using MPI with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/MPI-Fortran.html">Using MPI with Fortran</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-C.html">Using OpenMP with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/OpenMP-Fortran.html">Using OpenMP with Fortran</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">CUmulus Cloud</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cumulus1.html">Tutorial: Creating a CUmulus instance</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Establish a Database to query Twitter and Store Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cumulus3.html">CUmulus integration with CURC HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cumulus4.html">Mounting a remote filesystem from a CUmulus Virtual Machine</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/utah-videos.html">University of Utah videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional-resources/other.html">Facilities, equipment, and other resources</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ResearchComputing/Documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/tutorials/cumulus2.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Establish a Database to query Twitter and Store Results</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial">Tutorial</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-instance-setup">Part 1: Instance Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-getting-your-twitter-api-credentials">Part 2: Getting your Twitter API Credentials</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-getting-the-source-code">Part 3: Getting the Source Code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4-configuring-your-environment">Part 4: Configuring your Environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-5-setting-up-docker">Part 5: Setting up Docker</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-testing">Installing and Testing</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-6-setting-up-docker-compose">Part 6: Setting  up Docker-Compose</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Installing and Testing</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-images">Docker images</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#persistent-data">Persistent Data</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-7-running-the-application">Part 7: Running the Application</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-8-finishing-up">Part 8: Finishing up</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="establish-a-database-to-query-twitter-and-store-results">
+<h1>Establish a Database to query Twitter and Store Results<a class="headerlink" href="#establish-a-database-to-query-twitter-and-store-results" title="Link to this heading">#</a></h1>
+<p><em><strong>Learning Objectives:</strong></em></p>
+<ul class="simple">
+<li><p>Download software to our new CUmululs instance.</p></li>
+<li><p>Run a simple web application on our instance.</p></li>
+<li><p>Run a simple persistent db from our instance.</p></li>
+</ul>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>We will use CUmulus to create an instance with a persistent database (MySQL) and a python application which will use the Twitter API and a Flask web server to query data from Twitter and store it in the database. The following tutorial uses Docker containers and the Docker-Compose orchestration tool to allow simple build-up/tear-down and development of the application.</p>
+<blockquote>
+<div><p>Note: An in depth discussion of Docker and Docker-Compose is out of the scope of this demo, but further reading will be provided.</p>
+</div></blockquote>
+<p>Our main objective in tutorial is to demonstrate potential workflows that could be useful in research. This tutorial showcases a few important features of Cumulus:</p>
+<ul class="simple">
+<li><p>A persistent workflow not limited by wall clock times</p></li>
+<li><p>User administration of compute resources (using root privileges for applications such as Docker)</p></li>
+<li><p>Routable floating IPs that enable you to access your instance via the Public Internet</p></li>
+</ul>
+</section>
+<section id="tutorial">
+<h2>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading">#</a></h2>
+<p>Before we can get this application up and running in a CUmulus instance we have some house-keeping to take care of. Many of the steps below assume you have worked through <a class="reference internal" href="cumulus1.html"><span class="std std-doc">tutorial1</span></a>, which describes the instance creation process.</p>
+<section id="part-1-instance-setup">
+<h3>Part 1: Instance Setup<a class="headerlink" href="#part-1-instance-setup" title="Link to this heading">#</a></h3>
+<p>We need a working CUmulus instance running Ubuntu with http port exposed (default 80) and a public floating IP.</p>
+<ul>
+<li><p>Adding a routable http port to an instance can be done within the instance creation launcher by adding the <code class="docutils literal notranslate"><span class="pre">http</span></code> security groups or after the instance has been created by editing the security groups of the individual instance.</p></li>
+<li><p>Add a floating IP after the instance has been created.</p>
+<ul>
+<li><p>Log into your instance via ssh (see  <a class="reference internal" href="cumulus1.html"><span class="std std-doc">tutorial 1</span></a>); <em>ensure you are on the CU VPN</em>.</p></li>
+<li><p>Updating and upgrading you instance at this point is a good idea, you can do so with the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get update &amp;&amp; sudo apt-get upgrade -y
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="part-2-getting-your-twitter-api-credentials">
+<h3>Part 2: Getting your Twitter API Credentials<a class="headerlink" href="#part-2-getting-your-twitter-api-credentials" title="Link to this heading">#</a></h3>
+<p>In order to query Twitter with the Twitter API V2 you must first obtain a Twitter Developer Account and get access to a number of secret API keys:</p>
+<ul class="simple">
+<li><p>go to the following website <a class="reference external" href="https://developer.twitter.com/content/developer-twitter/en.html">https://developer.twitter.com/</a> and create an account.</p></li>
+<li><p>Once you have verified your email you can log into your account. You should be able to create a new app on the following webpage: <a class="reference external" href="https://developer.twitter.com/en/apps">https://developer.twitter.com/en/apps</a></p></li>
+<li><p>Fill in all the details about your app and then create your access token.</p></li>
+<li><p>Make a note of your consumer key, consumer secret, OAuth access token and OAuth access token secret. These are needed to connect to the API.</p></li>
+</ul>
+</section>
+<section id="part-3-getting-the-source-code">
+<h3>Part 3: Getting the Source Code<a class="headerlink" href="#part-3-getting-the-source-code" title="Link to this heading">#</a></h3>
+<p>Download the source code into your home (<code class="docutils literal notranslate"><span class="pre">~</span></code>) directory, unzip it, and cd into it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd ~
+$ wget https://github.com/ResearchComputing/CUmulus_tutorials/raw/main/app.zip
+$ unzip ~/app.zip
+$ cd ~/app
+</pre></div>
+</div>
+</section>
+<section id="part-4-configuring-your-environment">
+<h3>Part 4: Configuring your Environment<a class="headerlink" href="#part-4-configuring-your-environment" title="Link to this heading">#</a></h3>
+<p>Once you have your Twitter API keys, we can set up our config file which will allow for our applications to use the necessary passwords, ports, keys, etc. as environment variables.</p>
+<ul class="simple">
+<li><p>Using a text editor of your choice create the file <code class="docutils literal notranslate"><span class="pre">~/app/.env</span></code> (<em>note the period in front of <code class="docutils literal notranslate"><span class="pre">.env</span></code></em>) and paste the following lines in adding your web port (default 80 for http in CUmulus), your mysql password (you choose this), and your Twitter API keys. You can use the examples to format your environment variables.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#### Comment out or delete any unused entries
+
+#### EXAMPLE 
+# DO NOT USE QUOTES TO ENCLOSE THE VALUES
+EXAMPLE_VARIABLE=true
+EXAMPLE_PORT=1234
+EXAMPLE_PASSWORD=kdos9lsk@1l1!
+EXAMPLE_EMAIL=myemail@domain.com
+EXAMPLE_IP=123.123.123.123
+
+#### BELOW ARE SOME OF THE VARIABLES USED IN docker-compose.yml
+
+WEB_PORT=
+
+MYSQL_ROOT_PASSWORD=
+
+API_KEY=
+API_KEY_SECRET=
+BEARER_TOKEN=
+ACCESS_TOKEN=
+ACCESS_TOKEN_SECRET=
+</pre></div>
+</div>
+<p>Okay, now we can get into the  real content of this Demo!</p>
+</section>
+<section id="part-5-setting-up-docker">
+<h3>Part 5: Setting up Docker<a class="headerlink" href="#part-5-setting-up-docker" title="Link to this heading">#</a></h3>
+<p>The next thing we’ll need to do is install Docker. Docker is an open source containerization platform. It enables developers to package applications into containers—standardized executable components combining application source code with the operating system (OS) libraries and dependencies required to run that code in any environment. For a great overview of Docker containerization visit https://docs.docker.com/get-started/overview/. In this tutorial we will use Docker to “pull” and “run” a mysql database image that we can store data (in this case tweets) into. A Docker image is a file used to execute code in a Docker container. Docker images act as a set of instructions to build a Docker container, like a template. Docker images also act as the starting point when using Docker. An image is comparable to a snapshot in virtual machine (VM) environments.  Instead of downloading mysql directly to the host machine (your instance) and having to deal with dependencies and uninstalling/fixing if anything goes wrong we can use the mysql image which we can easily create/remove a Docker container from.</p>
+<p>The python application will also be containerized when run, but in order to give you a platform to iterate and develop this application on your own going forward we are going to include the source code and Dockerfile which will allow you to tweak the application, build the container back up to use it, and even <a class="reference external" href="https://docs.docker.com/docker-hub/">publish the container</a> if you’d like.</p>
+<section id="installing-and-testing">
+<h4>Installing and Testing<a class="headerlink" href="#installing-and-testing" title="Link to this heading">#</a></h4>
+<ol class="arabic">
+<li><p>The first thing we’ll need to do is install Docker. There are many ways to install Docker based on your OS, but we’re going for an <a class="reference external" href="https://docs.docker.com/engine/install/ubuntu/">Ubuntu install</a> in this tutorial. We will assume this is a brand new instance so we don’t have to check for previous versions of Docker so we will go straight to the “install with the convenience script” section (bottom of the page). From the home directory (<code class="docutils literal notranslate"><span class="pre">~</span></code>) of your instance run the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> $ curl -fsSL https://get.docker.com -o get-docker.sh
+ $ sudo sh get-docker.sh
+</pre></div>
+</div>
+</li>
+<li><p>To test the install we can check for versioning, then run a Docker hello world.</p>
+<ul class="simple">
+<li><p>Check version:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo docker --version
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Run docker hello world:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">run</span> <span class="n">hello</span><span class="o">-</span><span class="n">world</span>
+</pre></div>
+</div>
+<p>It will download a test container and run it. You should see an output similar to the one below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Docker is setup!</p>
+</section>
+</section>
+<section id="part-6-setting-up-docker-compose">
+<h3>Part 6: Setting  up Docker-Compose<a class="headerlink" href="#part-6-setting-up-docker-compose" title="Link to this heading">#</a></h3>
+<p>Docker Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application’s services. Then, with a single command, you create and start all the services from your configuration. Read more about docker compose here: https://docs.docker.com/compose/.</p>
+<section id="id1">
+<h4>Installing and Testing<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<ol class="arabic">
+<li><p>We’ll install docker-compose next (https://docs.docker.com/compose/install/), from the home directory (<code class="docutils literal notranslate"><span class="pre">~</span></code>) of your instance run the following command to download the current stable release of Docker Compose:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> $ sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose
+</pre></div>
+</div>
+<p>Apply executable permissions to the binary:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo chmod +x /usr/local/bin/docker-compose
+</pre></div>
+</div>
+</li>
+<li><p>Test the Docker Compose installation by verifying the version:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker-compose --version
+</pre></div>
+</div>
+<p>You should see the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ubuntu@RC-teaching:~$ docker-compose --version 
+docker-compose version 1.29.2, build 5becea4c
+</pre></div>
+</div>
+</li>
+</ol>
+<p>We define two images in our <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> file, if you’d like you can take a look inside the Compose file. Briefly, you will see that we start off by explicitly declaring the Compose version then move into the images (called “services” in the context of Compose) in which we see the two containers we’ll use:</p>
+</section>
+<section id="docker-images">
+<h4>Docker images<a class="headerlink" href="#docker-images" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>Python Web App: This container is build and run straight from this directory (i.e. we’re not pulling it from a docker repository). In the compose file we pass the web app environment variables (such as our port and Twitter API keys) which it will access directly from the <code class="docutils literal notranslate"><span class="pre">.env</span></code> file. This particular application was modeled after the <a class="reference external" href="https://docs.docker.com/language/python/">official Docker Python App tutorial</a> and the twitter python api tutorial from <a class="reference external" href="https://github.com/skolo-online/twitter-v2-api">Skolo Online Learning</a>. The twitter application uses a combination of a Flask web server and the Tweepy Python library to query twitter then return those results to us via a a browser. Feel free to dig into the <code class="docutils literal notranslate"><span class="pre">app.py</span></code> page for a look into how this application actually works.</p></li>
+<li><p><a class="reference external" href="https://hub.docker.com/_/mysql">Official mysql database</a>: We use the official mysql database image hosted on the Dockerhub repository and pass it the mysql password you chose in <code class="docutils literal notranslate"><span class="pre">.env</span></code> as well as some paths for volumes (which we will discuss below)</p></li>
+</ol>
+</section>
+<section id="persistent-data">
+<h4>Persistent Data<a class="headerlink" href="#persistent-data" title="Link to this heading">#</a></h4>
+<p>When a container runs, it uses the various layers from an image for its filesystem. Each container also gets its own “scratch space” to create/update/remove files. Any changes won’t be seen in another container, <em>even if</em> they are using the same image. This means that anytime you stop a container from running, all of the data will vanish. There are a couple different ways of persisting data while using Docker (read more https://docs.docker.com/storage/volumes/) such as volumes and bind-mounts. Here we will be using volumes which we define at the bottom of the Compose file.</p>
+</section>
+</section>
+<section id="part-7-running-the-application">
+<h3>Part 7: Running the Application<a class="headerlink" href="#part-7-running-the-application" title="Link to this heading">#</a></h3>
+<p>We’re all set and ready to run our application and database! From the <code class="docutils literal notranslate"><span class="pre">~/app</span></code> directory run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo docker-compose up --build -d
+</pre></div>
+</div>
+<p>This command brings up <em>all</em> of the images in the <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> file (the “up”), builds the web application (the “–build”), and run’s the containers in “detached” mode (the “-d”) which will give us access to our terminal once the images have been pulled and containers are running. If you need to debug you can leave off the “-d” flag to see the output straight to the console, then exit and stop the containers with “ctr-c.”</p>
+<p>If all went well, in a browser you can navigate to <code class="docutils literal notranslate"><span class="pre">&lt;your</span> <span class="pre">floating</span> <span class="pre">IP&gt;:80</span></code>, for example: 123.456.789.123:80 and find a web page which allows you query Twitter via a keyword and will return the last 10 tweets. On the back-end, those tweets are being stored in our mysql database. You can view the full database store via the browser as well by navigating to 123.456.789.123:80/tweets. This route just spits out all of the data we’re collecting from the tweets, in this case just username and tweet contents. If you go back to the original tweet query page you can search for more tweets and see that those tweets will be populated in our database for later retrieval.</p>
+</section>
+<section id="part-8-finishing-up">
+<h3>Part 8: Finishing up<a class="headerlink" href="#part-8-finishing-up" title="Link to this heading">#</a></h3>
+<p>Your application is up and running and accessible through the Public internet! Because this is a public facing page, I would suggest bringing down the application after playing around with it a bit in order to prevent others from finding and filling up the database. You can do that with the following command from  the <code class="docutils literal notranslate"><span class="pre">~/app</span></code> directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker-compose down
+</pre></div>
+</div>
+<p>This will shut down all of the containers.</p>
+<p>This Demo demonstrated a basic workflow to get a web application and persistent data via Docker containers running on CUmulus. Docker containers allow for easy creation and tear-down of your applications and allows them to persist as long as you’d like them to. This demo took advantage of:</p>
+<ul class="simple">
+<li><p>A persistent workflow not limited by wall clock times: this application could be long-lived querying data whenever necessary.</p></li>
+<li><p>User administration of compute resources: using root privileges to download software and run applications such as Docker.</p></li>
+<li><p>Routable floating IPs: we made our application available via http port 80 which allowed us to access access instance via the Public Internet.</p></li>
+</ul>
+<blockquote>
+<div><p>This work has been funded in part by the National Science Foundation under grant OAC-1925766</p>
+</div></blockquote>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="cumulus1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tutorial: Creating a CUmulus instance</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="cumulus3.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">CUmulus integration with CURC HPC</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial">Tutorial</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-instance-setup">Part 1: Instance Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-getting-your-twitter-api-credentials">Part 2: Getting your Twitter API Credentials</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-getting-the-source-code">Part 3: Getting the Source Code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4-configuring-your-environment">Part 4: Configuring your Environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-5-setting-up-docker">Part 5: Setting up Docker</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-testing">Installing and Testing</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-6-setting-up-docker-compose">Part 6: Setting  up Docker-Compose</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Installing and Testing</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-images">Docker images</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#persistent-data">Persistent Data</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-7-running-the-application">Part 7: Running the Application</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-8-finishing-up">Part 8: Finishing up</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
