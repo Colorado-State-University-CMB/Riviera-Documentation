@@ -1,0 +1,36 @@
+name: Generate Documentation
+
+on:
+  push:
+    paths:
+      - 'README.md'
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Set up Conda
+      uses: conda-incubator/setup-miniconda@v2
+      with:
+        activate-environment: rc-docs
+        environment-file: conda_dev_env.yml
+        auto-activate-base: false
+
+    - name: Generate HTML documentation
+      shell: bash -l {0}
+      run: |
+        conda activate rc-docs
+        make html
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build/html
